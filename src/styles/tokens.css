@@ -1,0 +1,78 @@
+/*
+ * Design Tokens — Holterservice.eu
+ *
+ * Single source of truth for global visual styling. Designer should be able
+ * to globally restyle the site by editing only this file (and optionally the
+ * @theme block in `global.css`, which references these tokens).
+ *
+ * All tokens are exposed as CSS custom properties on :root so they can be
+ * consumed from Tailwind utilities, raw CSS, or component-level styles.
+ */
+
+:root {
+  /* ─── Color ──────────────────────────────────────────────────────────────
+   * Neutral, premium-medical palette. Replace with brand palette once the
+   * Designer provides it. Keep the same token names — components reference
+   * the names, not the values.
+   */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;       /* slate-900 */
+  --color-primary: #0e7490;          /* cyan-700 — calm clinical accent */
+  --color-primary-contrast: #ffffff;
+  --color-muted: #f1f5f9;            /* slate-100 */
+  --color-muted-foreground: #475569; /* slate-600 */
+  --color-border: #e2e8f0;           /* slate-200 */
+  --color-accent: #f8fafc;           /* slate-50 — section bg */
+
+  /* ─── Typography ─────────────────────────────────────────────────────── */
+  --font-heading: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Type scale (modular, mobile-first). */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* ─── Spacing scale (rem-based, 4px grid) ────────────────────────────── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* ─── Radius ─────────────────────────────────────────────────────────── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* ─── Shadow ─────────────────────────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-md: 0 4px 12px -2px rgb(15 23 42 / 0.08);
+  --shadow-lg: 0 12px 32px -6px rgb(15 23 42 / 0.12);
+
+  /* ─── Layout ─────────────────────────────────────────────────────────── */
+  --container-max: 72rem;          /* 1152px */
+  --container-prose: 42rem;        /* 672px — long-form text width */
+  --header-height: 4rem;
+}

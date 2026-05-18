@@ -1,0 +1,148 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const nav = [
+  { href: '/usluga', label: 'Usluga' },
+  { href: '/za-partnere', label: 'Za partnere' },
+  { href: '/za-pacijente', label: 'Za pacijente' },
+  { href: '/partneri', label: 'Partneri' },
+  { href: '/o-nama', label: 'O nama' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const isActive = (href: string) => pathname === href;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="Holterservice — početna">
+      <span class="brand-mark" aria-hidden="true">◇</span>
+      <span class="brand-text">Holterservice</span>
+    </a>
+
+    <nav aria-label="Glavna navigacija">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Otvori izbornik" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-list">
+        {nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class={isActive(item.href) ? 'active' : ''}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+    gap: var(--space-4);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--color-foreground);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .brand:hover { text-decoration: none; }
+
+  .brand-mark {
+    color: var(--color-primary);
+    font-size: var(--text-xl);
+  }
+
+  /* Mobile-first: hide nav behind a toggle */
+  .nav-toggle { display: none; }
+
+  .nav-toggle-label {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    cursor: pointer;
+    justify-content: center;
+  }
+
+  .nav-toggle-label span {
+    display: block;
+    height: 2px;
+    background: var(--color-foreground);
+    border-radius: 1px;
+  }
+
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: var(--space-3);
+    gap: var(--space-1);
+    box-shadow: var(--shadow-md);
+  }
+
+  .nav-toggle:checked ~ .nav-list { display: flex; }
+
+  .nav-list li { width: 100%; }
+
+  .nav-list a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-md);
+    color: var(--color-foreground);
+    text-decoration: none;
+    font-size: var(--text-base);
+  }
+
+  .nav-list a:hover { background: var(--color-muted); }
+  .nav-list a.active { background: var(--color-muted); font-weight: 600; }
+
+  @media (min-width: 768px) {
+    .nav-toggle-label { display: none; }
+    .nav-list {
+      display: flex !important;
+      position: static;
+      flex-direction: row;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      gap: var(--space-1);
+    }
+    .nav-list a { padding: var(--space-2) var(--space-3); font-size: var(--text-sm); }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+/**
+ * SEO + social tags. Use on every page via BaseLayout.
+ *
+ * Props:
+ *  - title:       page title (without site suffix)
+ *  - description: meta description (Croatian)
+ *  - path:        canonical path starting with "/" (e.g. "/usluga")
+ *  - ogImage:     optional override image path (defaults to /og-default.png)
+ *  - type:        og:type (default "website")
+ */
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, path, ogImage = '/og-default.svg', type = 'website' } = Astro.props;
+
+const siteName = 'Holterservice';
+const fullTitle = title === siteName ? siteName : `${title} — ${siteName}`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://holterservice.eu';
+const canonical = `${siteUrl}${path === '/' ? '' : path}`;
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="hr_HR" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />

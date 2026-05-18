@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Politika kolačića';
+const description =
+  'Koji kolačići se koriste na holterservice.eu i kako njima upravljati. Trenutno koristimo samo tehnički nužne kolačiće.';
+
+const lastUpdated = '2026-05-18';
+---
+
+<BaseLayout title={title} description={description} path="/kolacici">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Pravne informacije</p>
+      <h1>Politika kolačića</h1>
+      <p><small>Zadnja izmjena: {lastUpdated}</small></p>
+
+      <p>
+        Kolačić (cookie) je malena tekstualna datoteka koju web stranica pohranjuje
+        u vaš preglednik. Kolačići se koriste za osnovno funkcioniranje stranice,
+        pamćenje postavki i mjerenje statistike.
+      </p>
+
+      <h2>Koje kolačiće koristimo</h2>
+      <p>
+        <strong>Trenutno koristimo samo tehnički nužne kolačiće</strong> potrebne za
+        ispravan rad web stranice. Ne koristimo marketinške kolačiće niti kolačiće
+        trećih strana za praćenje korisnika.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kolačić</th>
+            <th>Svrha</th>
+            <th>Trajanje</th>
+            <th>Vrsta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tehnički nužni kolačići (npr. session)</td>
+            <td>Osnovno funkcioniranje stranice i sigurnost.</td>
+            <td>Sesijski</td>
+            <td>Nužni — ne traže pristanak</td>
+          </tr>
+          {/* PLACEHOLDER: ako uvedemo analitiku ili embed mapu, dopuniti tablicu */}
+        </tbody>
+      </table>
+
+      <h2>Kako upravljati kolačićima</h2>
+      <p>
+        Kolačiće u svakom trenutku možete obrisati ili blokirati u postavkama
+        svog preglednika. Onemogućivanje tehnički nužnih kolačića može utjecati na
+        ispravan rad web stranice.
+      </p>
+
+      <h2>Promjene</h2>
+      <p>
+        Ako u budućnosti uvedemo dodatne kategorije kolačića (npr. analitika ili
+        ugrađene mape), prije njihovog aktiviranja zatražit ćemo vaš pristanak putem
+        odgovarajućeg banera i ažurirati ovu stranicu.
+      </p>
+
+      <p>
+        Više informacija o obradi osobnih podataka možete pročitati u
+        <a href="/privatnost">politici privatnosti</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  th, td {
+    padding: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th { background: var(--color-accent); font-weight: 600; }
+</style>

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Za pacijente';
+const description =
+  'Kako do Holter EKG nalaza specijalista preko partnerske klinike u vašem mjestu. Saznajte što ponijeti, kako teče pretraga i kada očekivati nalaz.';
+---
+
+<BaseLayout title={title} description={description} path="/za-pacijente">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Za pacijente</p>
+      <h1>Kako do nalaza preko partnerske klinike</h1>
+      <p class="lede">
+        Pretraga je dostupna u partnerskim klinikama, najčešće u manjim mjestima i
+        otocima — bez potrebe za putovanjem u Split, Zagreb ili druga središta.
+        Nalaz potpisuje specijalist kardiologije.
+      </p>
+
+      <h2>1. Pronađite partnera u svom mjestu</h2>
+      <p>
+        Popis partnerskih klinika nalazi se na stranici <a href="/partneri">Partneri</a>.
+        {/* PLACEHOLDER: kad founder dostavi popis, ovaj odjeljak će linkati na konkretne klinike */}
+      </p>
+
+      <h2>2. Naručite se</h2>
+      <p>
+        Naručivanje obavljate izravno kod partnerske klinike, telefonom ili e-mailom.
+        Mi ne vodimo centralni raspored. Termin i sve administrativne detalje
+        dogovara partner.
+      </p>
+
+      <h2>3. Što ponijeti na pregled</h2>
+      <ul>
+        <li>Uputnicu ili medicinsku dokumentaciju liječnika koji vas šalje.</li>
+        <li>Osobnu iskaznicu.</li>
+        <li>Popis lijekova koje uzimate.</li>
+        <li>Praktičnu odjeću — gornji dio bi trebao biti lagano dostupan radi
+          postavljanja elektroda.</li>
+      </ul>
+
+      <h2>4. Pretraga traje 24 sata</h2>
+      <p>
+        Educirano osoblje partnera postavlja uređaj. Cijeli dan obavljate svoje
+        uobičajene aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
+        dnevnik — kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
+      </p>
+      <p>
+        <strong>Nemojte:</strong> tuširati se ili kupati s uređajem, osim ako vas
+        partner izričito uputi drugačije.
+      </p>
+
+      <h2>5. Skidanje i očitanje</h2>
+      <p>
+        Vraćate uređaj u kliniku, partner skida elektrode i prosljeđuje snimak dr.
+        Obadu. Nalaz osobno očitava i potpisuje specijalist kardiologije.
+      </p>
+
+      <h2>6. Preuzimanje nalaza</h2>
+      <p>
+        Službeni nalaz dobivate od partnerske klinike, najčešće u roku od nekoliko
+        radnih dana. Nalaz pokažete svom obiteljskom liječniku ili kardiologu radi
+        daljnjeg vođenja.
+        {/* PLACEHOLDER: točan rok ako founder želi standardizirati (npr. 3-5 dana) */}
+      </p>
+
+      <h2>Cijena</h2>
+      <p>
+        Cijenu i način plaćanja određuje partnerska klinika. Za točan iznos
+        kontaktirajte odabranog partnera.
+      </p>
+
+      <div class="cta-block">
+        <a href="/partneri" class="btn btn-primary">Pronađite partnera</a>
+        <a href="/usluga" class="btn btn-secondary">Što je Holter EKG</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
+</style>

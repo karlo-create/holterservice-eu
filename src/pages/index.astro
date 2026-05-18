@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Holter EKG nalaz iz vrhunske ustanove — bez putovanja';
+const description =
+  'Holterservice: dr. Obad daje Holter EKG uređaje partnerskim klinikama i osobno potpisuje specijalistički nalaz. Pacijenti u udaljenim područjima dobivaju vrhunsku kardiološku obradu bez putovanja u Split ili Zagreb.';
+
+const medicalBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Holterservice',
+  description,
+  url: 'https://holterservice.eu',
+  medicalSpecialty: 'Cardiovascular',
+  areaServed: { '@type': 'Country', name: 'Hrvatska' },
+  availableService: {
+    '@type': 'MedicalProcedure',
+    name: 'Holter EKG monitoring i specijalistički nalaz',
+    procedureType: 'https://schema.org/DiagnosticProcedure',
+  },
+  // PLACEHOLDER: real address/contact when founder confirms.
+};
+---
+
+<BaseLayout title={title} description={description} path="/">
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(medicalBusinessJsonLd)}
+    slot="head"
+  />
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">Holter EKG · Specijalistički nalaz</p>
+      <h1>Vrhunski kardiološki nalaz — bez putovanja u Split ili Zagreb.</h1>
+      <p class="lede">
+        Dr. Obad, kardiolog iz provjerene ustanove, daje Holter EKG uređaje partnerskim
+        klinikama u manjim mjestima i otocima. Vaš nalaz osobno očita i potpiše
+        specijalist — gdje god da se nalazite.
+      </p>
+      <div class="cta-row">
+        <a href="/za-partnere" class="btn btn-primary">Postanite partner</a>
+        <a href="/za-pacijente" class="btn btn-secondary">Tražim nalaz u svom mjestu</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container">
+      <div class="value-grid">
+        <div class="value">
+          <h3>Specijalistički nalaz</h3>
+          <p>
+            Svaki snimak osobno očita i potpiše dr. Obad. Bez delegiranja, bez automatskih
+            izvještaja — kvaliteta kao u referentnoj ustanovi.
+          </p>
+        </div>
+        <div class="value">
+          <h3>Dostupnost u manjim mjestima</h3>
+          <p>
+            Uređaji su raspoređeni u partnerskim klinikama u područjima u kojima
+            kardiološka obrada inače znači cjelodnevni put. Lastovo, Virovitica i drugi.
+          </p>
+        </div>
+        <div class="value">
+          <h3>Edukacija osoblja</h3>
+          <p>
+            Obučavamo medicinsko i ne-medicinsko osoblje partnera za ispravno postavljanje
+            i skidanje uređaja. Po potrebi izdajemo certifikat osposobljenosti.
+            {/* PLACEHOLDER: točan naziv i opseg certifikata */}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container how-it-works">
+      <h2>Kako proces izgleda</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <div>
+            <h3>Pacijent dolazi u partnersku kliniku</h3>
+            <p>
+              Osoblje partnera postavlja Holter EKG uređaj. Pacijent ga nosi 24 sata
+              tijekom svog uobičajenog dana.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <div>
+            <h3>Snimak se šalje dr. Obadu</h3>
+            <p>
+              Nakon skidanja, podatci se sigurno prosljeđuju u ustanovu na očitanje.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <div>
+            <h3>Specijalist potpisuje nalaz</h3>
+            <p>
+              Pacijent putem partnera preuzima službeni Holter EKG nalaz potpisan od
+              specijaliste kardiologije.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <p class="how-cta">
+        <a href="/usluga">Saznajte više o usluzi</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-muted">
+    <div class="container partner-cta">
+      <div>
+        <h2>Vodite kliniku u manjem mjestu?</h2>
+        <p>
+          Ponudite pacijentima specijalistički Holter EKG nalaz bez slanja u udaljena
+          središta. Mi dostavljamo opremu, obučavamo osoblje i preuzimamo očitanje.
+        </p>
+      </div>
+      <a href="/za-partnere" class="btn btn-primary">Detalji za partnere</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-20);
+    background:
+      radial-gradient(80% 60% at 50% 0%, color-mix(in oklab, var(--color-primary) 8%, transparent) 0%, transparent 70%),
+      var(--color-background);
+  }
+
+  .hero-inner { max-width: 52rem; }
+
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .lede {
+    font-size: var(--text-lg);
+    color: var(--color-muted-foreground);
+    margin-top: var(--space-5);
+    max-width: 38rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .value-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .value h3 { margin-bottom: var(--space-3); }
+
+  .how-it-works h2 { margin-bottom: var(--space-8); }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    max-width: 44rem;
+  }
+
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .step-num {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: var(--color-primary-contrast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-family: var(--font-heading);
+  }
+
+  .steps h3 { margin-bottom: var(--space-2); font-size: var(--text-xl); }
+
+  .how-cta { margin-top: var(--space-8); }
+
+  .partner-cta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .partner-cta {
+      grid-template-columns: 2fr 1fr;
+      gap: var(--space-12);
+    }
+    .partner-cta a { justify-self: end; }
+  }
+</style>

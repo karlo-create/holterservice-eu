@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Stranica nije pronađena';
+const description = 'Tražena stranica ne postoji na holterservice.eu. Vratite se na početnu ili koristite navigaciju.';
+---
+
+<BaseLayout title={title} description={description} path="/404">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">404</p>
+      <h1>Stranica nije pronađena</h1>
+      <p>Tražena stranica ne postoji ili je premještena.</p>
+      <p>
+        <a href="/" class="btn btn-primary">Natrag na početnu</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+</style>

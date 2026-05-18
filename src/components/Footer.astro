@@ -1,0 +1,116 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-col">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span>Holterservice</span>
+      </div>
+      <p class="footer-tag">
+        Specijalistički Holter EKG nalaz iz vrhunske ustanove — dostupan u
+        partnerskim klinikama diljem Hrvatske.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Stranice</h4>
+      <ul>
+        <li><a href="/usluga">Usluga</a></li>
+        <li><a href="/za-partnere">Za partnere</a></li>
+        <li><a href="/za-pacijente">Za pacijente</a></li>
+        <li><a href="/partneri">Partneri</a></li>
+        <li><a href="/o-nama">O nama</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Pravne informacije</h4>
+      <ul>
+        <li><a href="/privatnost">Politika privatnosti</a></li>
+        <li><a href="/kolacici">Kolačići</a></li>
+        <li><a href="/impressum">Impressum</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul class="footer-contact">
+        {/* PLACEHOLDER: real contact details (phone, email, address) */}
+        <li>E-pošta: <a href="mailto:info@holterservice.eu">info@holterservice.eu</a></li>
+        <li>Telefon: <span class="placeholder">uskoro</span></li>
+        <li>Adresa: <span class="placeholder">uskoro</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-meta">
+    <small>© {year} Holterservice. Sva prava pridržana.</small>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-24);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-accent);
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-foreground);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-3);
+  }
+
+  .brand-mark { color: var(--color-primary); }
+
+  .footer-tag { max-width: 30rem; }
+
+  h4 {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+  }
+
+  ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+
+  ul a { color: var(--color-muted-foreground); text-decoration: none; }
+  ul a:hover { color: var(--color-foreground); text-decoration: underline; }
+
+  .footer-contact .placeholder {
+    color: var(--color-muted-foreground);
+    font-style: italic;
+  }
+
+  .footer-meta {
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border);
+  }
+</style>

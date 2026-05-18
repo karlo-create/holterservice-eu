@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { partners } from '../data/partners';
+
+const title = 'Partnerske klinike';
+const description =
+  'Popis i mapa partnerskih klinika u kojima možete obaviti Holter EKG pretragu i dobiti specijalistički nalaz potpisan od dr. Obada.';
+
+// LocalBusiness JSON-LD per partner. Empty array OK until founder supplies list.
+const partnerJsonLd = partners.map((p) => ({
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: p.name,
+  address: p.address
+    ? {
+        '@type': 'PostalAddress',
+        streetAddress: p.address,
+        addressLocality: p.city,
+        addressCountry: 'HR',
+      }
+    : { '@type': 'PostalAddress', addressLocality: p.city, addressCountry: 'HR' },
+  ...(p.phone ? { telephone: p.phone } : {}),
+  ...(p.email ? { email: p.email } : {}),
+  ...(p.website ? { url: p.website } : {}),
+  ...(p.lat && p.lng
+    ? { geo: { '@type': 'GeoCoordinates', latitude: p.lat, longitude: p.lng } }
+    : {}),
+}));
+---
+
+<BaseLayout title={title} description={description} path="/partneri">
+  {partnerJsonLd.length > 0 && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(partnerJsonLd)}
+      slot="head"
+    />
+  )}
+
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Partneri</p>
+      <h1>Gdje obaviti Holter EKG</h1>
+      <p class="lede">
+        Pretragu obavljate u jednoj od partnerskih klinika. Termin i administrativne
+        detalje dogovarate izravno s partnerom. Specijalistički nalaz potpisuje dr.
+        Obad.
+      </p>
+
+      {partners.length === 0 ? (
+        <div class="empty card">
+          <h2>Popis partnera uskoro</h2>
+          <p>
+            Trenutačno finaliziramo popis partnerskih klinika. Ako vodite kliniku ili
+            ordinaciju i želite ponuditi ovu uslugu, javite nam se na
+            <a href="/za-partnere"> stranici za partnere</a>.
+          </p>
+          <p>
+            Pacijenti — ako trebate pretragu prije nego javno objavimo cijeli popis,
+            kontaktirajte nas izravno na <a href="/kontakt">kontakt stranici</a> pa
+            ćemo vas uputiti na najbliskijeg dostupnog partnera.
+          </p>
+        </div>
+      ) : (
+        <ul class="partner-list">
+          {partners.map((p) => (
+            <li id={p.slug} class="partner card">
+              <h2>{p.name}</h2>
+              <p class="meta">{p.city}{p.address ? ` · ${p.address}` : ''}</p>
+              <ul class="contact">
+                {p.phone && (
+                  <li>Telefon: <a href={`tel:${p.phone.replace(/\s+/g, '')}`}>{p.phone}</a></li>
+                )}
+                {p.email && (
+                  <li>E-pošta: <a href={`mailto:${p.email}`}>{p.email}</a></li>
+                )}
+                {p.website && (
+                  <li>Web: <a href={p.website} rel="noopener">{p.website}</a></li>
+                )}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h2>Mapa partnera</h2>
+      <div class="map-placeholder" role="img" aria-label="Mapa partnerskih klinika (uskoro)">
+        <p>Interaktivna mapa partnera bit će postavljena kad popis bude potvrđen.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+
+  .empty { background: var(--color-accent); }
+  .empty h2 { margin-top: 0; }
+
+  .partner-list { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
+
+  @media (min-width: 768px) {
+    .partner-list { grid-template-columns: 1fr 1fr; }
+  }
+
+  .partner h2 { margin: 0 0 var(--space-2); font-size: var(--text-xl); }
+  .partner .meta { color: var(--color-muted-foreground); margin-block: 0; }
+  .contact { margin-top: var(--space-3); }
+
+  .map-placeholder {
+    margin-top: var(--space-4);
+    padding: var(--space-12);
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    color: var(--color-muted-foreground);
+    background: var(--color-accent);
+  }
+</style>

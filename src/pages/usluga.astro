@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Što je Holter EKG i kako funkcionira nalaz';
+const description =
+  'Holter EKG je 24-satno snimanje rada srca. Saznajte kako uređaj funkcionira, kako se nosi i kako dolazi do specijalističkog nalaza koji potpisuje dr. Obad.';
+---
+
+<BaseLayout title={title} description={description} path="/usluga">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Usluga</p>
+      <h1>Holter EKG nalaz, korak po korak</h1>
+      <p class="lede">
+        Holter EKG je jednostavna i ne-invazivna pretraga koja kontinuirano snima rad
+        srca tijekom 24 sata (ili dulje, prema indikaciji). Pomaže otkriti probleme
+        koje standardni EKG u ordinaciji često ne vidi — povremene aritmije, ishemiju
+        i poremećaje provođenja.
+      </p>
+
+      <h2>Što je Holter EKG?</h2>
+      <p>
+        Riječ je o malom prijenosnom uređaju koji se nosi na tijelu i bilježi rad
+        srca pomoću nekoliko elektroda zalijepljenih na kožu. Uređaj je tih, lagan i
+        ne ometa svakodnevne aktivnosti — pacijent radi sve što inače radi.
+      </p>
+
+      <h2>Kako teče pregled</h2>
+      <ol>
+        <li>
+          <strong>Dolazak u partnersku kliniku.</strong> Naručujete se kod partnera koji
+          surađuje s nama. Vidite popis u sekciji <a href="/partneri">Partneri</a>.
+        </li>
+        <li>
+          <strong>Postavljanje uređaja.</strong> Educirano osoblje partnera postavlja
+          elektrode i pokreće snimanje. Cijela procedura traje desetak minuta.
+        </li>
+        <li>
+          <strong>Nošenje 24 sata.</strong> Tijekom dana radite uobičajene aktivnosti.
+          Preporuka je voditi kratak dnevnik (vrijeme spavanja, simptomi, fizička
+          aktivnost) — to pomaže pri tumačenju.
+        </li>
+        <li>
+          <strong>Skidanje i slanje snimke.</strong> Vraćate se u kliniku, osoblje
+          skida uređaj i sigurno prosljeđuje snimak dr. Obadu.
+        </li>
+        <li>
+          <strong>Očitanje nalaza.</strong> Snimak osobno pregledava i potpisuje
+          specijalist kardiologije.
+        </li>
+        <li>
+          <strong>Preuzimanje nalaza.</strong> Službeni potpisani nalaz preuzimate
+          kod partnera, obično u roku od nekoliko radnih dana.
+        </li>
+      </ol>
+
+      <h2>Kvaliteta nalaza</h2>
+      <p>
+        Svaki snimak ručno pregledava i potpisuje dr. Obad — bez delegiranja i bez
+        automatskih izvještaja koji često propuste klinički relevantne nalaze. Cilj
+        nam je da nalaz koji dobijete u partnerskoj klinici bude jednake kvalitete
+        kao nalaz koji biste dobili u referentnoj ustanovi.
+      </p>
+
+      <h2>Kome je namijenjen</h2>
+      <ul>
+        <li>Pacijentima s povremenim palpitacijama, vrtoglavicom ili nesvjesticom.</li>
+        <li>U praćenju poznatih aritmija.</li>
+        <li>Nakon ugradnje pacemakera ili u kontroli terapije.</li>
+        <li>Po preporuci obiteljskog liječnika ili kardiologa.</li>
+      </ul>
+      <p>
+        <em>
+          Holterservice ne ordinira terapiju — pružamo dijagnostički nalaz koji
+          potom koristite kod svog liječnika. {/* PLACEHOLDER: ako je opseg drugačiji, founder potvrđuje */}
+        </em>
+      </p>
+
+      <h2>Što treba ponijeti</h2>
+      <ul>
+        <li>Uputnicu ili nalaz/zapis liječnika koji vas šalje na pretragu.</li>
+        <li>Osobnu iskaznicu.</li>
+        <li>Popis lijekova koje uzimate.</li>
+      </ul>
+
+      <h2>Cijena</h2>
+      <p>
+        Cijenu i način plaćanja određuje partnerska klinika u kojoj obavljate
+        pretragu. Kontaktirajte odabranog partnera za točne uvjete.
+        {/* PLACEHOLDER: preciznija formulacija ako founder želi standardizirati cjenik */}
+      </p>
+
+      <div class="cta-block">
+        <a href="/za-pacijente" class="btn btn-secondary">Kako do pretrage</a>
+        <a href="/partneri" class="btn btn-primary">Pronađite partnera</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
+</style>

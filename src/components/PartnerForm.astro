@@ -1,0 +1,158 @@
+---
+/**
+ * Partner inquiry form.
+ *
+ * v1 ships as a `mailto:` form — no backend wired up. When a real
+ * endpoint exists, swap the `<form action>` to a POST handler and add a
+ * server-side recipient. See PLACEHOLDERS.md.
+ */
+interface Props {
+  /** Heading shown above the form. */
+  heading?: string;
+  /** Override the recipient email if needed. */
+  to?: string;
+  /** Form id so multiple instances on a page don't collide. */
+  id?: string;
+}
+
+const {
+  heading = 'Zainteresirani ste za partnerstvo?',
+  to = 'partneri@holterservice.eu',
+  id = 'partner-form',
+} = Astro.props;
+---
+
+<section class="partner-form-block">
+  <div class="container">
+    <div class="form-card card">
+      <h2>{heading}</h2>
+      <p>
+        Ostavite podatke o klinici i javit ćemo vam se s detaljima o uvjetima,
+        opremi i edukaciji. Sve poruke obrađuje dr. Obad osobno.
+      </p>
+
+      <form
+        id={id}
+        method="post"
+        action={`mailto:${to}?subject=${encodeURIComponent('Upit za partnerstvo — Holterservice')}`}
+        enctype="text/plain"
+      >
+        <div class="grid">
+          <label>
+            Naziv klinike / ustanove
+            <input type="text" name="Naziv klinike" required autocomplete="organization" />
+          </label>
+
+          <label>
+            Mjesto
+            <input type="text" name="Mjesto" required autocomplete="address-level2" />
+          </label>
+
+          <label>
+            Kontakt osoba
+            <input type="text" name="Kontakt osoba" required autocomplete="name" />
+          </label>
+
+          <label>
+            E-pošta
+            <input type="email" name="E-posta" required autocomplete="email" />
+          </label>
+
+          <label>
+            Telefon (neobavezno)
+            <input type="tel" name="Telefon" autocomplete="tel" />
+          </label>
+
+          <label>
+            Broj zainteresiranih pacijenata / mjesec (procjena)
+            <input type="text" name="Procjena pacijenata mjesecno" inputmode="numeric" />
+          </label>
+        </div>
+
+        <label class="full">
+          Poruka
+          <textarea
+            name="Poruka"
+            rows="5"
+            placeholder="Ukratko opišite klinitu i kakvu suradnju očekujete."
+            required
+          ></textarea>
+        </label>
+
+        <p class="consent">
+          <input type="checkbox" name="Suglasnost" required id={`${id}-consent`} />
+          <label for={`${id}-consent`}>
+            Suglasan/na sam da se moji podaci koriste isključivo za odgovor na ovaj upit.
+            Više informacija u <a href="/privatnost">politici privatnosti</a>.
+          </label>
+        </p>
+
+        <button type="submit" class="btn btn-primary">Pošalji upit</button>
+
+        <p class="note">
+          Slanjem otvarate svoj e-mail klijent s pripremljenom porukom. Možete nas i izravno
+          kontaktirati na <a href={`mailto:${to}`}>{to}</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .partner-form-block { padding-block: var(--space-16); }
+
+  .form-card { max-width: 48rem; margin-inline: auto; }
+
+  form { display: flex; flex-direction: column; gap: var(--space-5); margin-top: var(--space-6); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  input, textarea {
+    font: inherit;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    width: 100%;
+  }
+
+  input:focus, textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+    border-color: var(--color-primary);
+  }
+
+  textarea { resize: vertical; min-height: 8rem; }
+
+  .full { width: 100%; }
+
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+  }
+
+  .consent input { width: auto; margin-top: 0.2rem; }
+
+  .note { font-size: var(--text-sm); color: var(--color-muted-foreground); margin: 0; }
+</style>

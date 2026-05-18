@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Impressum';
+const description =
+  'Impressum web stranice holterservice.eu — podaci o pružatelju usluge informacijskog društva i o ustanovi koja stoji iza Holterservice usluge.';
+---
+
+<BaseLayout title={title} description={description} path="/impressum">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Pravne informacije</p>
+      <h1>Impressum</h1>
+
+      <p>
+        Sukladno Zakonu o elektroničkoj trgovini i članku 5. Direktive EU
+        2000/31/EZ, navodimo podatke o pružatelju usluga informacijskog društva
+        i nositelju web stranice <strong>holterservice.eu</strong>.
+      </p>
+
+      <h2>Nositelj web stranice</h2>
+      <ul>
+        <li>
+          <strong>Naziv ustanove / nositelja:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>Sjedište / adresa:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>OIB:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>MBS / upis u registar:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>Odgovorna osoba:</strong>
+          <span class="placeholder">dr. Obad (titule uskoro)</span> {/* PLACEHOLDER */}
+        </li>
+      </ul>
+
+      <h2>Kontakt</h2>
+      <ul>
+        <li>
+          <strong>E-pošta:</strong>
+          <a href="mailto:info@holterservice.eu">info@holterservice.eu</a>
+        </li>
+        <li>
+          <strong>Telefon:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+      </ul>
+
+      <h2>Nadležna tijela</h2>
+      <p>
+        <span class="placeholder">
+          Naziv nadležne komore i tijela koje izdaje odobrenje za rad — popunjava
+          founder/pravna provjera.
+        </span>
+        {/* PLACEHOLDER: HLK, ministarstvo zdravstva itd. */}
+      </p>
+
+      <h2>Zaštita osobnih podataka</h2>
+      <p>
+        Pravila o obradi osobnih podataka opisana su u
+        <a href="/privatnost">politici privatnosti</a>. Za sve upite vezane uz
+        privatnost pišite na
+        <a href="mailto:privacy@holterservice.eu">privacy@holterservice.eu</a>.
+      </p>
+
+      <h2>Odricanje od odgovornosti</h2>
+      <p>
+        Sadržaj na ovoj web stranici ima informativnu narav i nije zamjena za
+        liječnički savjet. Za individualne medicinske odluke uvijek se obratite
+        svom liječniku ili specijalistu.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .placeholder { color: var(--color-muted-foreground); font-style: italic; }
+</style>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Politika privatnosti';
+const description =
+  'Politika privatnosti web stranice holterservice.eu — koje podatke prikupljamo, zašto, koliko ih čuvamo i koja su vaša prava prema GDPR-u.';
+
+const lastUpdated = '2026-05-18';
+---
+
+<BaseLayout title={title} description={description} path="/privatnost">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Pravne informacije</p>
+      <h1>Politika privatnosti</h1>
+      <p><small>Zadnja izmjena: {lastUpdated}</small></p>
+
+      <p>
+        Ova politika privatnosti opisuje kako Holterservice (dalje u tekstu: „mi“)
+        obrađuje osobne podatke posjetitelja web stranice
+        <strong>holterservice.eu</strong> i osoba koje s nama stupaju u kontakt
+        putem obrazaca ili e-pošte.
+      </p>
+      <p>
+        <em>
+          Ovo je predložak prilagođen sukladno Općoj uredbi o zaštiti podataka (GDPR,
+          Uredba EU 2016/679). Konačnu verziju provjerava i potvrđuje pravnik. {/* PLACEHOLDER: pravna provjera */}
+        </em>
+      </p>
+
+      <h2>1. Voditelj obrade</h2>
+      <p>
+        Voditelj obrade osobnih podataka je:
+      </p>
+      <ul>
+        <li>
+          <strong>Naziv ustanove:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>Adresa:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>OIB:</strong>
+          <span class="placeholder">uskoro</span> {/* PLACEHOLDER */}
+        </li>
+        <li>
+          <strong>Kontakt:</strong>
+          <a href="mailto:privacy@holterservice.eu">privacy@holterservice.eu</a>
+        </li>
+      </ul>
+
+      <h2>2. Koje podatke prikupljamo</h2>
+      <ul>
+        <li>
+          <strong>Podatci iz kontakt obrazaca:</strong> ime, naziv klinike, e-pošta,
+          telefon, mjesto i sadržaj poruke koju nam šaljete.
+        </li>
+        <li>
+          <strong>Tehnički podatci:</strong> osnovne anonimne statistike posjeta
+          (vrsta uređaja, jezik preglednika), bez identifikacije pojedinca.
+          {/* PLACEHOLDER: ako uvedemo analitiku, dopuniti */}
+        </li>
+      </ul>
+      <p>
+        Ne prikupljamo medicinske podatke putem web stranice. Medicinski podatci o
+        pretragama obrađuju se isključivo u kontekstu pružene zdravstvene usluge u
+        partnerskoj klinici, prema posebnoj dokumentaciji.
+      </p>
+
+      <h2>3. Svrha i pravna osnova obrade</h2>
+      <ul>
+        <li>
+          <strong>Odgovor na vaš upit</strong> — pravna osnova: vaš pristanak
+          (čl. 6. st. 1. (a) GDPR).
+        </li>
+        <li>
+          <strong>Predugovorni razgovori za partnerstvo</strong> — pravna osnova:
+          poduzimanje radnji na vaš zahtjev prije sklapanja ugovora (čl. 6. st. 1. (b) GDPR).
+        </li>
+        <li>
+          <strong>Statistika posjeta i tehnička sigurnost</strong> — pravna osnova:
+          legitimni interes (čl. 6. st. 1. (f) GDPR).
+        </li>
+      </ul>
+
+      <h2>4. Koliko dugo čuvamo podatke</h2>
+      <p>
+        Sadržaj komunikacije čuvamo dok je to potrebno za odgovor i eventualnu
+        suradnju, a najduže <strong>24 mjeseca</strong> od zadnjeg kontakta, osim ako
+        je dulje čuvanje propisano zakonom ili neophodno za izvršenje ugovora.
+        {/* PLACEHOLDER: rok prilagoditi politici ustanove */}
+      </p>
+
+      <h2>5. Tko ima pristup</h2>
+      <p>
+        Vašim podacima pristupaju isključivo ovlaštene osobe Holterservice-a.
+        Podatke ne prodajemo i ne ustupamo trećim stranama u marketinške svrhe.
+        Pružatelji usluga (npr. hosting, e-pošta) obrađuju podatke isključivo prema
+        našim uputama i ugovorima o obradi (DPA).
+      </p>
+
+      <h2>6. Vaša prava</h2>
+      <p>Imate sljedeća prava prema GDPR-u:</p>
+      <ul>
+        <li>Pravo na pristup vlastitim podatcima.</li>
+        <li>Pravo na ispravak netočnih podataka.</li>
+        <li>Pravo na brisanje („pravo na zaborav“).</li>
+        <li>Pravo na ograničenje obrade.</li>
+        <li>Pravo na prenosivost podataka.</li>
+        <li>Pravo na prigovor.</li>
+        <li>Pravo na povlačenje pristanka u svakom trenutku.</li>
+        <li>
+          Pravo na podnošenje pritužbe nadzornom tijelu — u Hrvatskoj Agencija za
+          zaštitu osobnih podataka (AZOP), <a href="https://azop.hr" rel="noopener">azop.hr</a>.
+        </li>
+      </ul>
+
+      <h2>7. Kolačići</h2>
+      <p>
+        Korištenje kolačića opisano je na zasebnoj stranici
+        <a href="/kolacici">Politika kolačića</a>.
+      </p>
+
+      <h2>8. Izmjene politike</h2>
+      <p>
+        Ovu politiku možemo s vremena na vrijeme ažurirati. Bitne izmjene
+        objavljujemo na ovoj stranici uz datum zadnje izmjene.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .placeholder { color: var(--color-muted-foreground); font-style: italic; }
+</style>

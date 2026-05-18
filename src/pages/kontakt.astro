@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PartnerForm from '../components/PartnerForm.astro';
+
+const title = 'Kontakt';
+const description =
+  'Kontaktirajte Holterservice — za upite o usluzi, partnerstvu ili tehničkoj podršci. Najbrži odgovor dobivate putem e-pošte ili forme.';
+---
+
+<BaseLayout title={title} description={description} path="/kontakt">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">Kontakt</p>
+      <h1>Stupite u kontakt</h1>
+      <p class="lede">
+        Pišite nam za sve što vas zanima — od pretrage u svom mjestu do uspostave
+        partnerstva. Trudimo se odgovoriti unutar dva radna dana.
+      </p>
+
+      <div class="contact-grid">
+        <div class="card">
+          <h2>Općeniti upiti</h2>
+          <p>
+            <strong>E-pošta:</strong>
+            <a href="mailto:info@holterservice.eu">info@holterservice.eu</a>
+          </p>
+          <p>
+            <strong>Telefon:</strong>
+            <span class="placeholder">uskoro</span>
+            {/* PLACEHOLDER: telefon */}
+          </p>
+          <p>
+            <strong>Adresa:</strong>
+            <span class="placeholder">uskoro</span>
+            {/* PLACEHOLDER: adresa ustanove */}
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Za partnerske klinike</h2>
+          <p>
+            <strong>E-pošta:</strong>
+            <a href="mailto:partneri@holterservice.eu">partneri@holterservice.eu</a>
+          </p>
+          <p>
+            Vodite ordinaciju ili kliniku? Pogledajte uvjete partnerstva na stranici
+            <a href="/za-partnere">Za partnere</a> i ispunite formu niže.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Za pacijente</h2>
+          <p>
+            Za naručivanje na pretragu obratite se izravno odabranoj partnerskoj
+            klinici (popis na stranici <a href="/partneri">Partneri</a>). Mi ne vodimo
+            centralni raspored termina.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PartnerForm
+    heading="Upit za partnerstvo ili općeniti upit"
+    to="info@holterservice.eu"
+    id="partner-form-kontakt"
+  />
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .contact-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .contact-grid h2 { font-size: var(--text-xl); margin-top: 0; margin-bottom: var(--space-3); }
+  .placeholder { color: var(--color-muted-foreground); font-style: italic; }
+</style>

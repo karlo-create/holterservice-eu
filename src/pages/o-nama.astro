@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'O nama — dr. Obad i ustanova';
+const description =
+  'Iza Holterservice-a stoji dr. Obad, specijalist kardiologije iz provjerene ustanove. Pružamo Holter EKG nalaz partnerskim klinikama diljem Hrvatske.';
+---
+
+<BaseLayout title={title} description={description} path="/o-nama">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">O nama</p>
+      <h1>Specijalistički nalaz, gdje god se nalazite</h1>
+      <p class="lede">
+        Holterservice je inicijativa dr. Obada, specijalista kardiologije, čiji je
+        cilj učiniti kvalitetan Holter EKG nalaz dostupnim pacijentima u manjim
+        sredinama — bez da moraju putovati u Split, Zagreb ili druga velika
+        središta.
+      </p>
+
+      <h2>Dr. Obad</h2>
+      <p>
+        Specijalist kardiologije iz provjerene ustanove. Posjeduje flotu Holter EKG
+        uređaja koje stavlja na korištenje partnerskim klinikama, obučava njihovo
+        osoblje i osobno potpisuje svaki nalaz.
+        {/* PLACEHOLDER: točan ustanovski naziv, titule, biografija — founder potvrđuje */}
+      </p>
+
+      <h2>Zašto ovaj model</h2>
+      <p>
+        Kardiološka dijagnostika u Hrvatskoj često znači dugotrajno čekanje i
+        putovanje u jedan od većih gradova. Za pacijente s otoka i iz udaljenih
+        područja to je neproporcionalno opterećenje — vremensko, financijsko i
+        zdravstveno.
+      </p>
+      <p>
+        Naš model rješava to tako da opremu i ekspertizu donosimo lokalno.
+        Partnerska klinika u vašem mjestu postavlja uređaj, a vrhunski
+        specijalistički nalaz dolazi iz referentne ustanove.
+      </p>
+
+      <h2>Što radimo</h2>
+      <ul>
+        <li>Dajemo Holter EKG uređaje partnerskim klinikama na korištenje.</li>
+        <li>Obučavamo osoblje partnera — medicinsko i, prema potrebi, ne-medicinsko.</li>
+        <li>Osobno očitavamo i potpisujemo svaki nalaz.</li>
+        <li>Održavamo i mijenjamo uređaje.</li>
+        <li>Po potrebi izdajemo certifikat osposobljenosti za rad s uređajem.
+          {/* PLACEHOLDER: točan naziv i opseg certifikata */}
+        </li>
+      </ul>
+
+      <h2>Što ne radimo</h2>
+      <ul>
+        <li>Ne ordiniramo terapiju — to ostaje u rukama vašeg liječnika.</li>
+        <li>Ne pružamo hitnu kardiološku obradu.</li>
+        <li>Ne organiziramo prijevoz pacijenata.</li>
+      </ul>
+
+      <div class="cta-block">
+        <a href="/usluga" class="btn btn-secondary">Detalji o usluzi</a>
+        <a href="/kontakt" class="btn btn-primary">Kontaktirajte nas</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+  .cta-block { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
+</style>

@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PartnerForm from '../components/PartnerForm.astro';
+
+const title = 'Za partnerske klinike';
+const description =
+  'Ponudite pacijentima Holter EKG nalaz specijalista bez slanja u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi ostvarujete novu uslugu i prihod.';
+---
+
+<BaseLayout title={title} description={description} path="/za-partnere">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">B2B · Partnerstvo</p>
+      <h1>Postanite partnerska klinika za Holter EKG nalaz</h1>
+      <p class="lede">
+        Vodite ordinaciju ili kliniku u manjem mjestu, na otoku ili u području u
+        kojem pacijenti teško dolaze do kardiologa? Mi vam dajemo opremu i
+        specijalistički nalaz — vi pružate uslugu lokalno.
+      </p>
+
+      <h2>Što partnerska klinika dobiva</h2>
+      <ul>
+        <li>
+          <strong>Holter EKG uređaj na korištenju.</strong> Dostavljamo, postavljamo i
+          mijenjamo prema potrebi. Bez kapitalnog ulaganja s vaše strane.
+        </li>
+        <li>
+          <strong>Edukaciju osoblja.</strong> Obučavamo medicinsko i ne-medicinsko
+          osoblje za ispravno postavljanje i skidanje uređaja. Po potrebi izdajemo
+          certifikat osposobljenosti.
+          {/* PLACEHOLDER: točan naziv i opseg certifikata */}
+        </li>
+        <li>
+          <strong>Specijalistički nalaz.</strong> Svaki snimak osobno očita i potpiše
+          dr. Obad, specijalist kardiologije iz provjerene ustanove.
+        </li>
+        <li>
+          <strong>Tehničku podršku i održavanje.</strong> Kvarovi, kalibracija, zamjena —
+          rješavamo mi.
+        </li>
+      </ul>
+
+      <h2>Kako funkcionira komercijalni dio</h2>
+      <p>
+        Partner naplaćuje pretragu izravno pacijentu i zadržava dogovoreni dio
+        cijene. Veći dio cijene odlazi na pokriće opreme, edukacije i očitanja
+        nalaza. Konkretan postotak i model definira se ugovorom — prilagođen je
+        volumenu i regiji.
+        {/* PLACEHOLDER: točan postotak / model podjele prihoda — founder potvrđuje */}
+      </p>
+
+      <h2>Kome odgovara</h2>
+      <ul>
+        <li>Obiteljskim ambulantama i privatnim ordinacijama u manjim sredinama.</li>
+        <li>Klinikama na otocima i u udaljenim područjima.</li>
+        <li>Ustanovama koje žele proširiti ponudu bez ulaganja u opremu i
+          kardiološku ekspertizu.</li>
+      </ul>
+
+      <h2>Tijek suradnje</h2>
+      <ol>
+        <li>Pošaljete upit putem forme niže ili e-poštom.</li>
+        <li>Dogovaramo kratki poziv da razumijemo lokaciju, volumen i potrebe.</li>
+        <li>Potpisujemo okvirni ugovor i isporučujemo uređaj.</li>
+        <li>Provodimo edukaciju vašeg osoblja (na licu mjesta ili online).</li>
+        <li>Krećete primati pacijente. Nalaz potpisuje dr. Obad.</li>
+      </ol>
+    </div>
+  </section>
+
+  <PartnerForm heading="Pošaljite upit za partnerstvo" id="partner-form-za-partnere" />
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+</style>

@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/*
+ * Tailwind v4 @theme bridge. This maps our design tokens (in tokens.css)
+ * to Tailwind's utility classes. Designer-facing rule: edit tokens.css to
+ * change colors/type/spacing globally. This block only renames things for
+ * Tailwind's consumption.
+ */
+@theme {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-contrast: var(--color-primary-contrast);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+}
+
+/* ─── Base element styles ──────────────────────────────────────────────── */
+
+html {
+  font-family: var(--font-body);
+  color: var(--color-foreground);
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: 100%;
+}
+
+body {
+  line-height: var(--leading-normal);
+  font-size: var(--text-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-tight);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+@media (min-width: 768px) {
+  h1 { font-size: var(--text-5xl); }
+  h2 { font-size: var(--text-4xl); }
+  h3 { font-size: var(--text-3xl); }
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+/* ─── Reusable patterns ────────────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .container { padding-inline: var(--space-8); }
+}
+
+.prose {
+  max-width: var(--container-prose);
+}
+
+.prose p { margin-block: var(--space-4); }
+.prose h2 { margin-top: var(--space-12); margin-bottom: var(--space-4); }
+.prose h3 { margin-top: var(--space-8); margin-bottom: var(--space-3); }
+.prose ul { margin-block: var(--space-4); padding-left: var(--space-6); list-style: disc; }
+.prose ol { margin-block: var(--space-4); padding-left: var(--space-6); list-style: decimal; }
+.prose li { margin-block: var(--space-2); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--text-base);
+  line-height: 1;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.btn-primary:hover { filter: brightness(0.95); text-decoration: none; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover { background: var(--color-muted); text-decoration: none; }
+
+.section {
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .section { padding-block: var(--space-24); }
+}
+
+.section-muted { background: var(--color-accent); }
+
+.card {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: var(--space-2);
+  background: var(--color-foreground);
+  color: var(--color-background);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transform: translateY(-150%);
+  transition: transform 150ms ease;
+  z-index: 100;
+}
+
+.skip-link:focus { transform: translateY(0); text-decoration: none; }
