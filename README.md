@@ -94,6 +94,20 @@ Vercel auto-detects Astro. No `vercel.json` is required. The build command
 is `npm run build` and the output directory is `dist/`. Static-only — no
 serverless functions needed for v1.
 
+**One-click hookup:**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkarlo-create%2Fholterservice-eu&project-name=holterservice-eu&repository-name=holterservice-eu)
+
+Or from the CLI (after `vercel login`):
+
+```bash
+npx vercel link        # one-time, connects local dir to a Vercel project
+npx vercel             # preview deploy
+npx vercel --prod      # production deploy
+```
+
+Connecting via the Vercel GitHub App is preferred — each push to `main`
+becomes a production deploy and every PR gets its own preview URL.
+
 ## What's intentionally NOT in here
 
 See [PLACEHOLDERS.md](PLACEHOLDERS.md) for things stubbed for the founder
