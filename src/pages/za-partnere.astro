@@ -68,17 +68,99 @@ const description =
     </div>
   </section>
 
+  <!-- B2B trust signal: key commitments before the contact form -->
+  <section class="section section-muted">
+    <div class="container">
+      <p class="commitment-label">Naša obveza prema partnerima</p>
+      <div class="commitment-grid">
+        <div class="commitment-item">
+          <div class="commitment-mark">01</div>
+          <h3>Bez kapitalnog ulaganja</h3>
+          <p>Uređaj, edukacija i protokol — sve na našoj strani. Vaša klinika ne snosi trošak opremanja.</p>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-mark">02</div>
+          <h3>Specijalist potpisuje svaki nalaz</h3>
+          <p>Dr. Obad osobno očitava i potpisuje svaki snimak. Vaši pacijenti dobivaju referentnu kvalitetu.</p>
+        </div>
+        <div class="commitment-item">
+          <div class="commitment-mark">03</div>
+          <h3>Vi naplaćujete, vi zadržavate dio</h3>
+          <p>Uslugu naplaćujete direktno. Model podjele prihoda definira se ugovorom prema volumenu i regiji.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <PartnerForm heading="Pošaljite upit za partnerstvo" id="partner-form-za-partnere" />
 </BaseLayout>
 
 <style>
   .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     color: var(--color-primary);
-    font-weight: 600;
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
+    margin-bottom: var(--space-5);
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--color-primary);
+    opacity: 0.6;
+  }
+
+  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+
+  /* B2B commitment grid */
+  .commitment-label {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: var(--space-8);
+  }
+
+  .commitment-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .commitment-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .commitment-item {
+    border-top: 2px solid var(--color-primary);
+    padding-top: var(--space-5);
+  }
+
+  .commitment-mark {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    opacity: 0.5;
     margin-bottom: var(--space-3);
   }
-  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+
+  .commitment-item h3 {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-3);
+    color: var(--color-foreground);
+  }
+
+  .commitment-item p { color: var(--color-muted-foreground); }
 </style>

@@ -11,15 +11,27 @@ comment in code, add a row here too.
 
 ## 1. Brand & visual direction
 
-- **Inspiration references.** Founder will supply moodboard / reference sites
-  after the Obad meeting. Designer will translate these into tokens.
-- **Brand assets.** Logo, exact color palette, type pairing.
-  Until provided, the site uses a neutral premium-medical default (cyan
-  primary `#0e7490`, system body font, Source Serif for headings).
-  - Files: `src/styles/tokens.css`, `public/favicon.svg`, `public/og-default.svg`.
+- **Inspiration references.** ~~Founder will supply moodboard / reference
+  sites.~~ **RESOLVED (VEY-157):** Designer applied a "premium specialist
+  medical" direction — Swiss/Berlin private-clinic reference — without
+  founder moodboard. Founder may refine further.
+- **Brand colors.** ~~Cyan primary `#0e7490`, system body font.~~
+  **RESOLVED (VEY-157):** Updated to deep cobalt navy `#1e4576` (primary),
+  warm off-white `#f7f5f2` (section backgrounds), warm border `#e4e1db`.
+  All tokens in `src/styles/tokens.css`. Founder may adjust to match real
+  brand identity once it is confirmed.
+- **Type pairing.** ~~System body font, Source Serif for headings.~~
+  **RESOLVED (VEY-157):** Source Serif 4 (headings, Google Fonts) + Inter
+  (body, Google Fonts). Both loaded via `<link>` in `BaseLayout.astro`.
+  Founder may replace with licensed typefaces if brand guidelines demand it.
+- **Logo / wordmark.** `public/favicon.svg` still uses a generic SVG
+  placeholder. Header uses `◇ Holterservice` text mark as v1 placeholder.
+  **Still needed:** real wordmark / SVG logo from founder or brand designer.
+  - Files: `public/favicon.svg`, `src/components/Header.astro`
 - **Photography.** No stock medical clichés. Awaiting real photography of
   ustanova / dr. Obad / a partner clinic interaction. Currently no hero image;
   the homepage relies on type + a subtle radial gradient.
+  **Still needed:** original photography or curated editorial-quality images.
 
 ## 2. Business / clinical wording (do NOT invent)
 

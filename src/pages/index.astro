@@ -131,21 +131,42 @@ const medicalBusinessJsonLd = {
 
 <style>
   .hero {
-    padding-block: var(--space-20);
+    padding-block: var(--space-24);
+    /* Stronger gradient — the navy primary creates a dignified tinted field at the top */
     background:
-      radial-gradient(80% 60% at 50% 0%, color-mix(in oklab, var(--color-primary) 8%, transparent) 0%, transparent 70%),
+      radial-gradient(90% 70% at 50% 0%, color-mix(in oklab, var(--color-primary) 12%, transparent) 0%, transparent 75%),
       var(--color-background);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .hero-inner { max-width: 52rem; }
 
   .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     color: var(--color-primary);
-    font-weight: 600;
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-5);
+  }
+
+  /* Subtle rule before eyebrow on desktop */
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--color-primary);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
 
   .lede {
@@ -153,26 +174,39 @@ const medicalBusinessJsonLd = {
     color: var(--color-muted-foreground);
     margin-top: var(--space-5);
     max-width: 38rem;
+    line-height: var(--leading-normal);
   }
 
   .cta-row {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
-    margin-top: var(--space-8);
+    margin-top: var(--space-10);
   }
 
   .value-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-8);
   }
 
   @media (min-width: 768px) {
     .value-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  .value h3 { margin-bottom: var(--space-3); }
+  /* Value items get a top rule — editorial, not card-heavy */
+  .value {
+    border-top: 2px solid var(--color-primary-light);
+    padding-top: var(--space-5);
+  }
+
+  .value h3 {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-xl);
+    color: var(--color-foreground);
+  }
+
+  .value p { color: var(--color-muted-foreground); }
 
   .how-it-works h2 { margin-bottom: var(--space-8); }
 
@@ -193,8 +227,8 @@ const medicalBusinessJsonLd = {
   }
 
   .step-num {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: var(--radius-full);
     background: var(--color-primary);
     color: var(--color-primary-contrast);
@@ -202,7 +236,10 @@ const medicalBusinessJsonLd = {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
   }
 
   .steps h3 { margin-bottom: var(--space-2); font-size: var(--text-xl); }

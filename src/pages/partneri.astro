@@ -49,18 +49,20 @@ const partnerJsonLd = partners.map((p) => ({
       </p>
 
       {partners.length === 0 ? (
-        <div class="empty card">
-          <h2>Popis partnera uskoro</h2>
-          <p>
-            Trenutačno finaliziramo popis partnerskih klinika. Ako vodite kliniku ili
-            ordinaciju i želite ponuditi ovu uslugu, javite nam se na
-            <a href="/za-partnere"> stranici za partnere</a>.
-          </p>
-          <p>
-            Pacijenti — ako trebate pretragu prije nego javno objavimo cijeli popis,
-            kontaktirajte nas izravno na <a href="/kontakt">kontakt stranici</a> pa
-            ćemo vas uputiti na najbliskijeg dostupnog partnera.
-          </p>
+        <div class="empty-state">
+          <div class="empty-state-inner">
+            <p class="empty-label">U pripremi</p>
+            <h2 class="empty-heading">Prva partnerska mjesta se potvrđuju</h2>
+            <p class="empty-body">
+              Mreža partnerskih klinika trenutačno se uspostavlja. Svaki partner prolazi
+              through uhodavanje s dr. Obadom — tek kad su uređaj, osoblje i protokol
+              usklađeni, klinika se uvrštava na popis.
+            </p>
+            <div class="empty-actions">
+              <a href="/za-partnere" class="btn btn-primary">Vodim kliniku — zanima me partnerstvo</a>
+              <a href="/kontakt" class="btn btn-secondary">Trebam pretragu odmah</a>
+            </div>
+          </div>
         </div>
       ) : (
         <ul class="partner-list">
@@ -84,10 +86,14 @@ const partnerJsonLd = partners.map((p) => ({
         </ul>
       )}
 
-      <h2>Mapa partnera</h2>
-      <div class="map-placeholder" role="img" aria-label="Mapa partnerskih klinika (uskoro)">
-        <p>Interaktivna mapa partnera bit će postavljena kad popis bude potvrđen.</p>
-      </div>
+      {partners.length > 0 && (
+        <>
+          <h2>Mapa partnera</h2>
+          <div class="map-placeholder" role="img" aria-label="Mapa partnerskih klinika (uskoro)">
+            <p>Interaktivna mapa partnera bit će postavljena kad popis bude potvrđen.</p>
+          </div>
+        </>
+      )}
     </div>
   </section>
 </BaseLayout>
@@ -103,8 +109,56 @@ const partnerJsonLd = partners.map((p) => ({
   }
   .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
 
-  .empty { background: var(--color-accent); }
-  .empty h2 { margin-top: 0; }
+  /* Empty state — intentional anticipation, not broken placeholder */
+  .empty-state {
+    margin-block: var(--space-12);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-primary-light);
+    padding: var(--space-12) var(--space-8);
+  }
+
+  .empty-state-inner { max-width: 36rem; }
+
+  .empty-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .empty-label::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: var(--color-primary);
+  }
+
+  .empty-heading {
+    font-size: var(--text-3xl);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+    color: var(--color-foreground);
+  }
+
+  .empty-body {
+    color: var(--color-muted-foreground);
+    margin-bottom: var(--space-8);
+    line-height: var(--leading-normal);
+  }
+
+  .empty-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
 
   .partner-list { list-style: none; padding: 0; display: grid; gap: var(--space-4); }
 
