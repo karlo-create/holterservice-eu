@@ -34,6 +34,17 @@
   --color-surface: #ffffff;
   --color-primary-light: #eef2f8;    /* very light navy tint — callout backgrounds */
 
+  /* Dark section palette (hero + footer) */
+  --color-dark-bg: #0d1f3c;          /* deep navy for hero and footer */
+  --color-dark-bg-subtle: #122444;   /* slightly lighter for cards on dark */
+  --color-dark-fg: #f7f5f2;          /* warm off-white on dark */
+  --color-dark-fg-muted: rgba(247, 245, 242, 0.65);  /* subdued text on dark */
+  --color-dark-border: rgba(255, 255, 255, 0.1);     /* subtle dividers on dark */
+
+  /* Brand accent — warm gold, used sparingly */
+  --color-gold: #c49a3c;             /* warm gold for ECG mark and key accents */
+  --color-gold-light: rgba(196, 154, 60, 0.15);      /* gold tint for backgrounds */
+
   /* ─── Typography ─────────────────────────────────────────────────────── */
   /* Source Serif 4: optical-size aware editorial serif — conveys authority
    * and precision without feeling old-fashioned. Loaded from Google Fonts.

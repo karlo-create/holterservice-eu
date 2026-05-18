@@ -15,14 +15,18 @@ const isActive = (href: string) => pathname === href;
 
 <header class="site-header">
   <div class="container header-inner">
+    <!-- Brand / wordmark -->
     <a href="/" class="brand" aria-label="Holterservice — početna">
-      <span class="brand-mark" aria-hidden="true">◇</span>
+      <svg class="brand-ecg" width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+        <path d="M0 8H4L5.5 2L7.5 14L9.5 5L11 11H14L15 8H22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
       <span class="brand-text">Holterservice</span>
     </a>
 
+    <!-- Nav -->
     <nav aria-label="Glavna navigacija">
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Otvori izbornik" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true">
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Otvori izbornik">
         <span></span><span></span><span></span>
       </label>
       <ul class="nav-list">
@@ -37,6 +41,9 @@ const isActive = (href: string) => pathname === href;
             </a>
           </li>
         ))}
+        <li class="nav-cta-item">
+          <a href="/za-partnere" class="btn btn-primary nav-cta">Postanite partner</a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -45,7 +52,9 @@ const isActive = (href: string) => pathname === href;
 <style>
   .site-header {
     border-bottom: 1px solid var(--color-border);
-    background: var(--color-background);
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -59,6 +68,7 @@ const isActive = (href: string) => pathname === href;
     gap: var(--space-4);
   }
 
+  /* Brand wordmark */
   .brand {
     display: inline-flex;
     align-items: center;
@@ -68,26 +78,28 @@ const isActive = (href: string) => pathname === href;
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: var(--text-lg);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    flex-shrink: 0;
   }
 
-  .brand:hover { text-decoration: none; }
+  .brand:hover { text-decoration: none; color: var(--color-primary); }
+  .brand:hover .brand-ecg { color: var(--color-primary); }
 
-  .brand-mark {
+  .brand-ecg {
     color: var(--color-primary);
-    font-size: var(--text-xl);
+    transition: color 150ms ease;
   }
 
-  /* Mobile-first: hide nav behind a toggle */
+  /* Hamburger — mobile only */
   .nav-toggle { display: none; }
 
   .nav-toggle-label {
     display: inline-flex;
     flex-direction: column;
-    gap: 4px;
-    width: 28px;
-    height: 28px;
-    padding: 4px;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    padding: 6px;
     cursor: pointer;
     justify-content: center;
   }
@@ -97,22 +109,35 @@ const isActive = (href: string) => pathname === href;
     height: 2px;
     background: var(--color-foreground);
     border-radius: 1px;
+    transition: transform 200ms ease, opacity 150ms ease;
   }
 
+  /* Animated hamburger */
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Nav list — mobile dropdown */
   .nav-list {
     display: none;
     position: absolute;
     top: var(--header-height);
     left: 0;
     right: 0;
-    background: var(--color-background);
+    background: #fff;
     border-bottom: 1px solid var(--color-border);
     flex-direction: column;
     list-style: none;
     margin: 0;
-    padding: var(--space-3);
+    padding: var(--space-3) var(--space-3) var(--space-4);
     gap: var(--space-1);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
   }
 
   .nav-toggle:checked ~ .nav-list { display: flex; }
@@ -126,13 +151,27 @@ const isActive = (href: string) => pathname === href;
     color: var(--color-foreground);
     text-decoration: none;
     font-size: var(--text-base);
+    font-weight: 500;
   }
 
-  .nav-list a:hover { background: var(--color-muted); }
-  .nav-list a.active { background: var(--color-muted); font-weight: 600; }
+  .nav-list a:hover { background: var(--color-muted); color: var(--color-primary); text-decoration: none; }
+  .nav-list a.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; }
 
+  .nav-cta-item {
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Desktop nav */
   @media (min-width: 768px) {
     .nav-toggle-label { display: none; }
+
     .nav-list {
       display: flex !important;
       position: static;
@@ -142,7 +181,28 @@ const isActive = (href: string) => pathname === href;
       box-shadow: none;
       padding: 0;
       gap: var(--space-1);
+      align-items: center;
     }
-    .nav-list a { padding: var(--space-2) var(--space-3); font-size: var(--text-sm); }
+
+    .nav-list li { width: auto; }
+
+    .nav-list a {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-muted-foreground);
+    }
+
+    .nav-list a:hover { background: var(--color-muted); color: var(--color-foreground); }
+    .nav-list a.active { color: var(--color-primary); background: var(--color-primary-light); }
+
+    .nav-cta-item {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      margin-left: var(--space-2);
+    }
+
+    .nav-cta { width: auto; }
   }
 </style>
