@@ -38,15 +38,21 @@ const partnerJsonLd = partners.map((p) => ({
     />
   )}
 
-  <section class="section">
-    <div class="container prose">
-      <p class="eyebrow">Partneri</p>
+  <!-- ═══ PAGE HERO ═══════════════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-eyebrow">Partneri</p>
       <h1>Gdje obaviti Holter EKG</h1>
-      <p class="lede">
+      <p class="page-lead">
         Pretragu obavljate u jednoj od partnerskih klinika. Termin i administrativne
         detalje dogovarate izravno s partnerom. Specijalistički nalaz potpisuje dr.
         Obad.
       </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
 
       {partners.length === 0 ? (
         <div class="empty-state">
@@ -99,6 +105,49 @@ const partnerJsonLd = partners.map((p) => ({
 </BaseLayout>
 
 <style>
+  /* ── Page hero ─────────────────────────────────────────────────────── */
+  .page-hero {
+    background: var(--color-accent);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-16) var(--space-20);
+  }
+
+  @media (min-width: 768px) {
+    .page-hero { padding-block: var(--space-20) var(--space-24); }
+  }
+
+  .page-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-5);
+    opacity: 0.8;
+  }
+
+  .page-hero h1 {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    margin: 0 0 var(--space-5);
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .page-hero h1 { font-size: var(--text-5xl); }
+  }
+
+  .page-lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted-foreground);
+    max-width: 40rem;
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
   .eyebrow {
     color: var(--color-primary);
     font-weight: 600;
