@@ -13,8 +13,8 @@ const year = new Date().getFullYear();
         <span>Holterservice</span>
       </div>
       <p class="footer-tag">
-        Specijalistički Holter EKG nalaz iz vrhunske ustanove — dostupan u
-        partnerskim klinikama diljem Hrvatske.
+        Specijalistički Holter EKG nalaz iz vrhunske ustanove —
+        dostupan u partnerskim klinikama diljem Hrvatske.
       </p>
     </div>
 
@@ -41,17 +41,16 @@ const year = new Date().getFullYear();
 
     <div class="footer-col">
       <p class="footer-heading">Kontakt</p>
-      <ul class="footer-contact">
-        {/* PLACEHOLDER: real contact details (phone, email, address) */}
+      <ul>
+        {/* PLACEHOLDER: add phone/address when founder confirms — for now only email */}
         <li><a href="mailto:info@holterservice.eu">info@holterservice.eu</a></li>
-        <li><span class="placeholder">Telefon uskoro</span></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="container footer-meta">
-      <small>© {year} Holterservice. Sva prava pridržana.</small>
+      <small>&copy; {year} Holterservice. Sva prava pridržana.</small>
       <small class="footer-legal-links">
         <a href="/privatnost">Privatnost</a>
         <a href="/kolacici">Kolačići</a>
@@ -66,19 +65,19 @@ const year = new Date().getFullYear();
     background: var(--color-dark-bg);
     color: var(--color-dark-fg-muted);
     font-size: var(--text-sm);
-    margin-top: 0;
   }
 
   .footer-inner {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-10);
     padding-block: var(--space-16);
   }
 
   @media (min-width: 768px) {
     .footer-inner {
       grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
       padding-block: var(--space-20);
     }
   }
@@ -96,12 +95,15 @@ const year = new Date().getFullYear();
     margin-bottom: var(--space-4);
   }
 
+  /* Gold is used ONLY here — the micro-accent for the footer ECG mark */
   .brand-ecg { color: var(--color-gold); }
 
   .footer-tag {
-    max-width: 26rem;
+    max-width: 24rem;
     color: var(--color-dark-fg-muted);
     line-height: var(--leading-normal);
+    font-size: var(--text-sm);
+    margin: 0;
   }
 
   .footer-heading {
@@ -127,16 +129,12 @@ const year = new Date().getFullYear();
     color: var(--color-dark-fg-muted);
     text-decoration: none;
     display: block;
-    padding-block: 0.2rem;
+    padding-block: 0.15rem;
     transition: color 150ms ease;
+    font-size: var(--text-sm);
   }
 
   ul a:hover { color: var(--color-dark-fg); }
-
-  .placeholder {
-    font-style: italic;
-    opacity: 0.5;
-  }
 
   /* Bottom bar */
   .footer-bottom {
@@ -151,18 +149,18 @@ const year = new Date().getFullYear();
     gap: var(--space-3);
     padding-block: var(--space-5);
     color: var(--color-dark-fg-muted);
-    opacity: 0.7;
+    font-size: var(--text-xs);
+    opacity: 0.65;
   }
 
   .footer-legal-links {
     display: flex;
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 
   .footer-legal-links a {
     color: inherit;
     text-decoration: none;
-    opacity: 0.7;
   }
 
   .footer-legal-links a:hover { opacity: 1; text-decoration: underline; }

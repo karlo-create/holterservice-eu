@@ -17,7 +17,7 @@ const isActive = (href: string) => pathname === href;
   <div class="container header-inner">
     <!-- Brand / wordmark -->
     <a href="/" class="brand" aria-label="Holterservice — početna">
-      <svg class="brand-ecg" width="22" height="16" viewBox="0 0 22 16" fill="none" aria-hidden="true">
+      <svg class="brand-ecg" width="20" height="14" viewBox="0 0 22 16" fill="none" aria-hidden="true">
         <path d="M0 8H4L5.5 2L7.5 14L9.5 5L11 11H14L15 8H22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="brand-text">Holterservice</span>
@@ -52,7 +52,7 @@ const isActive = (href: string) => pathname === href;
 <style>
   .site-header {
     border-bottom: 1px solid var(--color-border);
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     position: sticky;
@@ -68,7 +68,7 @@ const isActive = (href: string) => pathname === href;
     gap: var(--space-4);
   }
 
-  /* Brand wordmark */
+  /* ── Brand wordmark ───────────────────────────────────────────────────── */
   .brand {
     display: inline-flex;
     align-items: center;
@@ -78,7 +78,7 @@ const isActive = (href: string) => pathname === href;
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: var(--text-lg);
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
     flex-shrink: 0;
   }
 
@@ -90,19 +90,23 @@ const isActive = (href: string) => pathname === href;
     transition: color 150ms ease;
   }
 
-  /* Hamburger — mobile only */
+  /* ── Hamburger (mobile only) ──────────────────────────────────────────── */
   .nav-toggle { display: none; }
 
   .nav-toggle-label {
     display: inline-flex;
     flex-direction: column;
     gap: 5px;
-    width: 32px;
-    height: 32px;
-    padding: 6px;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
     cursor: pointer;
     justify-content: center;
+    border-radius: var(--radius-md);
+    transition: background 150ms ease;
   }
+
+  .nav-toggle-label:hover { background: var(--color-muted); }
 
   .nav-toggle-label span {
     display: block;
@@ -112,7 +116,6 @@ const isActive = (href: string) => pathname === href;
     transition: transform 200ms ease, opacity 150ms ease;
   }
 
-  /* Animated hamburger */
   .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -123,7 +126,7 @@ const isActive = (href: string) => pathname === href;
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Nav list — mobile dropdown */
+  /* ── Nav list — mobile dropdown ───────────────────────────────────────── */
   .nav-list {
     display: none;
     position: absolute;
@@ -136,7 +139,7 @@ const isActive = (href: string) => pathname === href;
     list-style: none;
     margin: 0;
     padding: var(--space-3) var(--space-3) var(--space-4);
-    gap: var(--space-1);
+    gap: 2px;
     box-shadow: var(--shadow-lg);
   }
 
@@ -152,23 +155,21 @@ const isActive = (href: string) => pathname === href;
     text-decoration: none;
     font-size: var(--text-base);
     font-weight: 500;
+    letter-spacing: 0;
   }
 
   .nav-list a:hover { background: var(--color-muted); color: var(--color-primary); text-decoration: none; }
   .nav-list a.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; }
 
   .nav-cta-item {
-    margin-top: var(--space-2);
-    padding-top: var(--space-2);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
     border-top: 1px solid var(--color-border);
   }
 
-  .nav-cta {
-    width: 100%;
-    justify-content: center;
-  }
+  .nav-cta { width: 100%; justify-content: center; }
 
-  /* Desktop nav */
+  /* ── Desktop nav ──────────────────────────────────────────────────────── */
   @media (min-width: 768px) {
     .nav-toggle-label { display: none; }
 
@@ -180,27 +181,30 @@ const isActive = (href: string) => pathname === href;
       border: none;
       box-shadow: none;
       padding: 0;
-      gap: var(--space-1);
+      /* Explicit gap that doesn't depend on CSS variables parsing order */
+      gap: 2px;
       align-items: center;
     }
 
     .nav-list li { width: auto; }
 
     .nav-list a {
-      padding: var(--space-2) var(--space-3);
+      display: block;
+      padding: 0.5rem 0.75rem;
       font-size: var(--text-sm);
       font-weight: 500;
       color: var(--color-muted-foreground);
+      white-space: nowrap;
     }
 
-    .nav-list a:hover { background: var(--color-muted); color: var(--color-foreground); }
+    .nav-list a:hover { background: var(--color-muted); color: var(--color-foreground); text-decoration: none; }
     .nav-list a.active { color: var(--color-primary); background: var(--color-primary-light); }
 
     .nav-cta-item {
       margin-top: 0;
       padding-top: 0;
       border-top: none;
-      margin-left: var(--space-2);
+      margin-left: var(--space-3);
     }
 
     .nav-cta { width: auto; }
