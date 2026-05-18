@@ -28,25 +28,27 @@ const lastUpdated = '2026-05-18';
         trećih strana za praćenje korisnika.
       </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Kolačić</th>
-            <th>Svrha</th>
-            <th>Trajanje</th>
-            <th>Vrsta</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Tehnički nužni kolačići (npr. session)</td>
-            <td>Osnovno funkcioniranje stranice i sigurnost.</td>
-            <td>Sesijski</td>
-            <td>Nužni — ne traže pristanak</td>
-          </tr>
-          {/* PLACEHOLDER: ako uvedemo analitiku ili embed mapu, dopuniti tablicu */}
-        </tbody>
-      </table>
+      <div class="table-wrap" role="region" aria-label="Tablica kolačića" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>Kolačić</th>
+              <th>Svrha</th>
+              <th>Trajanje</th>
+              <th>Vrsta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tehnički nužni kolačići (npr. session)</td>
+              <td>Osnovno funkcioniranje stranice i sigurnost.</td>
+              <td>Sesijski</td>
+              <td>Nužni — ne traže pristanak</td>
+            </tr>
+            {/* PLACEHOLDER: ako uvedemo analitiku ili embed mapu, dopuniti tablicu */}
+          </tbody>
+        </table>
+      </div>
 
       <h2>Kako upravljati kolačićima</h2>
       <p>
@@ -80,11 +82,17 @@ const lastUpdated = '2026-05-18';
     margin-bottom: var(--space-3);
   }
 
+  .table-wrap {
+    margin-block: var(--space-6);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-block: var(--space-6);
     font-size: var(--text-sm);
+    min-width: 32rem;
   }
 
   th, td {
