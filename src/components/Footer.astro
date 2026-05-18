@@ -101,7 +101,12 @@ const year = new Date().getFullYear();
 
   ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
 
-  ul a { color: var(--color-muted-foreground); text-decoration: none; }
+  ul a {
+    color: var(--color-muted-foreground);
+    text-decoration: none;
+    display: block;
+    padding-block: 0.25rem; /* minimum 24px touch target */
+  }
   ul a:hover { color: var(--color-foreground); text-decoration: underline; }
 
   .footer-contact .placeholder {
