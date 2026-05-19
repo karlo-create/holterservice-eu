@@ -325,9 +325,11 @@ const description =
     color: white;
   }
 
-  .bento-card--accent h3 { color: #ffffff; }
-  /* Solid white body copy on the navy fill — WCAG AA on #1457a4 ≈ 8.6:1 */
-  .bento-card--accent p { color: #ffffff; }
+  /* Chained-class selectors (.bento-card.bento-card--accent) bump
+     specificity to (0,2,1) so they win over the generic `.bento-card p`
+     rule defined later in source order. WCAG AA on #1457a4 ≈ 8.6:1. */
+  .bento-card.bento-card--accent h3 { color: #ffffff; }
+  .bento-card.bento-card--accent p { color: #ffffff; }
   .bento-card--accent:hover { border-color: var(--color-primary); }
 
   .bento-icon {
