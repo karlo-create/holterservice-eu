@@ -85,6 +85,7 @@ html {
   background: var(--color-background);
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
+  overflow-x: clip; /* prevent any element from creating horizontal scroll */
 }
 
 body {

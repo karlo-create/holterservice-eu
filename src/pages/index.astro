@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'Holter EKG nalaz iz vrhunske ustanove — bez putovanja';
 const description =
-  'Holterservice: dr. Obad daje Holter EKG uređaje partnerskim klinikama i osobno potpisuje specijalistički nalaz. Pacijenti u udaljenim područjima dobivaju vrhunsku kardiološku obradu bez putovanja u Split ili Zagreb.';
+  'Holterservice opskrbljuje partnerske klinike Holter EKG uređajima i specijalističkim nalazom, kako bi pacijenti dobili kardiološku dijagnostiku bez putovanja u Split ili Zagreb.';
 
 const medicalBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -40,27 +40,80 @@ const medicalBusinessJsonLd = {
     </div>
 
     <div class="container hero-inner">
-      <!-- Credential badge — trust signal above the headline -->
-      <div class="hero-badge">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>dr. Obad · specijalist kardiologije · provjerena ustanova</span>
+      <!-- Left: editorial copy -->
+      <div class="hero-copy">
+        <!-- Credential badge — trust signal above the headline -->
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>dr. Obad · specijalist kardiologije · provjerena ustanova</span>
+        </div>
+
+        <!-- Display headline -->
+        <h1>Vrhunski kardiološki nalaz —<br class="hero-br"> dostupan u vašem mjestu.</h1>
+
+        <p class="hero-lead">
+          Holter EKG uređaj u vašoj lokalnoj klinici. Snimak očita
+          i potpiše specijalist kardiologije. Bez putovanja u Split ili Zagreb.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-cta-row">
+          <a href="/za-partnere" class="btn btn-primary">Postanite partner</a>
+          <a href="/za-pacijente" class="btn btn-secondary">Tražim nalaz u svom mjestu</a>
+        </div>
       </div>
 
-      <!-- Display headline -->
-      <h1>Vrhunski kardiološki nalaz —<br class="hero-br"> dostupan u vašem mjestu.</h1>
+      <!-- Right: credential card (desktop only) -->
+      <div class="hero-credential-card" aria-hidden="true">
+        <div class="cred-header">
+          <div class="cred-ecg-line">
+            <svg viewBox="0 0 240 48" fill="none" preserveAspectRatio="none">
+              <path d="M0 24 H50 L58 8 L68 40 L76 4 L84 44 L90 24 H140 L148 14 L156 36 L162 18 L168 28 L172 24 H240" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="cred-label">Specijalistički nalaz</p>
+        </div>
 
-      <p class="hero-lead">
-        Holter EKG uređaj u vašoj lokalnoj klinici. Snimak osobno očita
-        i potpiše specijalist kardiologije. Bez putovanja u Split ili Zagreb.
-      </p>
+        <div class="cred-specialist">
+          <div class="cred-avatar" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 28c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="cred-name">dr. Obad</p>
+            <p class="cred-title">Specijalist kardiologije</p>
+          </div>
+        </div>
 
-      <!-- CTAs -->
-      <div class="hero-cta-row">
-        <a href="/za-partnere" class="btn btn-primary">Postanite partner</a>
-        <a href="/za-pacijente" class="btn btn-secondary">Tražim nalaz u svom mjestu</a>
+        <div class="cred-divider"></div>
+
+        <div class="cred-metrics">
+          <div class="cred-metric">
+            <span class="cred-metric-val">24h</span>
+            <span class="cred-metric-lbl">monitoring srca</span>
+          </div>
+          <div class="cred-metric">
+            <span class="cred-metric-val">1:1</span>
+            <span class="cred-metric-lbl">osobni pregled svakog nalaza</span>
+          </div>
+          <div class="cred-metric">
+            <span class="cred-metric-val">HR</span>
+            <span class="cred-metric-lbl">mreža partnerskih klinika</span>
+          </div>
+        </div>
+
+        <div class="cred-footer">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Svaki nalaz potpisuje specijalist kardiologije</span>
+        </div>
       </div>
     </div>
   </section>
@@ -73,8 +126,8 @@ const medicalBusinessJsonLd = {
           <div class="pillar-num">01</div>
           <h2>Specijalistički nalaz</h2>
           <p>
-            Svaki snimak osobno očita i potpiše dr. Obad. Bez delegiranja,
-            bez automatskih izvještaja — kvaliteta kao u referentnoj ustanovi.
+            Svaki snimak pregledava i potpisuje specijalist kardiologije —
+            bez delegiranja, bez automatskih izvještaja.
           </p>
         </div>
         <div class="pillar">
@@ -129,7 +182,7 @@ const medicalBusinessJsonLd = {
             <span class="step-num" aria-hidden="true">2</span>
           </div>
           <div class="step-body">
-            <h3>Snimak se šalje dr. Obadu</h3>
+            <h3>Snimak se šalje na specijalističku obradu</h3>
             <p>
               Nakon skidanja, podatci se sigurno prosljeđuju u ustanovu
               na očitanje.
@@ -180,12 +233,12 @@ const medicalBusinessJsonLd = {
     background: var(--color-accent);
     position: relative;
     overflow: hidden;
-    padding-block: var(--space-24);
+    padding-block: var(--space-20);
     border-bottom: 1px solid var(--color-border);
   }
 
   @media (min-width: 768px) {
-    .hero { padding-block: var(--space-32); }
+    .hero { padding-block: var(--space-28); }
   }
 
   /* Decorative ECG waveform — very subtle, behind content */
@@ -202,10 +255,21 @@ const medicalBusinessJsonLd = {
 
   .hero-bg-wave svg { width: 100%; height: 100%; }
 
+  /* Two-column grid on desktop */
   .hero-inner {
     position: relative;
     z-index: 1;
-    max-width: 52rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .hero-inner {
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-16);
+    }
   }
 
   /* Credential badge */
@@ -223,6 +287,15 @@ const medicalBusinessJsonLd = {
     font-weight: 500;
     letter-spacing: 0.01em;
     margin-bottom: var(--space-8);
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-badge span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
   }
 
   /* Display headline */
@@ -239,7 +312,7 @@ const medicalBusinessJsonLd = {
     .hero h1 { font-size: var(--text-5xl); }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 960px) {
     .hero h1 { font-size: var(--text-display); }
   }
 
@@ -249,7 +322,7 @@ const medicalBusinessJsonLd = {
   .hero-lead {
     font-size: var(--text-lg);
     color: var(--color-muted-foreground);
-    max-width: 40rem;
+    max-width: 38rem;
     line-height: var(--leading-normal);
     margin: 0;
   }
@@ -265,6 +338,127 @@ const medicalBusinessJsonLd = {
     margin-top: var(--space-10);
     align-items: center;
   }
+
+  /* ── Credential card (desktop right column) ─────────────────────────── */
+  .hero-credential-card {
+    display: none;
+  }
+
+  @media (min-width: 960px) {
+    .hero-credential-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      gap: var(--space-6);
+    }
+  }
+
+  .cred-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .cred-ecg-line {
+    height: 48px;
+    color: var(--color-primary);
+    opacity: 0.7;
+  }
+
+  .cred-ecg-line svg { width: 100%; height: 100%; }
+
+  .cred-label {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .cred-specialist {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .cred-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cred-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-foreground);
+    margin: 0 0 var(--space-1);
+  }
+
+  .cred-title {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    margin: 0;
+  }
+
+  .cred-divider {
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .cred-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .cred-metric {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .cred-metric-val {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    min-width: 3rem;
+  }
+
+  .cred-metric-lbl {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-snug);
+  }
+
+  .cred-footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-primary);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+
+  .cred-footer svg { flex-shrink: 0; }
 
   /* ── Value pillars ───────────────────────────────────────────────────── */
   .pillars-grid {

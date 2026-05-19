@@ -209,4 +209,17 @@ const isActive = (href: string) => pathname === href;
 
     .nav-cta { width: auto; }
   }
+
+  /* Keep the CTA button white on its blue fill even when nested under .nav-list
+     (overrides the desktop .nav-list a muted color which has higher specificity
+     than the base .btn-primary rule). */
+  .nav-list a.btn-primary,
+  .nav-list a.nav-cta {
+    color: var(--color-primary-contrast);
+  }
+  .nav-list a.btn-primary:hover,
+  .nav-list a.nav-cta:hover {
+    color: var(--color-primary-contrast);
+    background: var(--color-primary-hover, var(--color-primary));
+  }
 </style>

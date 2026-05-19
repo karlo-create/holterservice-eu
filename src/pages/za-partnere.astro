@@ -16,7 +16,7 @@ const description =
       <h1>Specijalistički Holter EKG u vašoj ordinaciji — bez ulaganja u opremu.</h1>
       <p class="page-lead">
         Vodite privatnu ordinaciju ili kliniku izvan velikih gradova?
-        Povežite se s dr. Obadom i ponudite pacijentima nalaz koji inače
+        Ponudite pacijentima specijalistički Holter EKG nalaz koji inače
         zahtijeva put u Split ili Zagreb.
       </p>
     </div>
@@ -73,7 +73,7 @@ const description =
           </div>
           <h3>Specijalist potpisuje svaki nalaz</h3>
           <p>
-            Dr. Obad osobno očitava i potpisuje svaki snimak.
+            Svaki snimak očitava i potpisuje specijalist kardiologije.
             Referentna kvaliteta — vaši pacijenti dobivaju pravi specijalistički nalaz.
           </p>
         </div>
@@ -101,10 +101,10 @@ const description =
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3>Vi naplaćujete, vi zadržavate dio</h3>
+          <h3>Transparentni komercijalni model</h3>
           <p>
-            Pretragu naplaćujete direktno pacijentu. Dio cijene ostaje vama.
-            Model podjele definira se ugovorom — prilagođen volumenu i regiji.
+            Komercijalni uvjeti definiraju se ugovorom — prilagođeni volumenu,
+            regiji i kliničkom protokolu. Cilj je održiv model partnerstva za obje strane.
             {/* PLACEHOLDER: točan postotak / model — founder potvrđuje */}
           </p>
         </div>
@@ -325,8 +325,9 @@ const description =
     color: white;
   }
 
-  .bento-card--accent h3 { color: white; }
-  .bento-card--accent p { color: rgba(255, 255, 255, 0.8); }
+  .bento-card--accent h3 { color: #ffffff; }
+  /* Solid white body copy on the navy fill — WCAG AA on #1457a4 ≈ 8.6:1 */
+  .bento-card--accent p { color: #ffffff; }
   .bento-card--accent:hover { border-color: var(--color-primary); }
 
   .bento-icon {
