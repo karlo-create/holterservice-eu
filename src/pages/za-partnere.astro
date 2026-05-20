@@ -124,145 +124,133 @@ const description =
         </p>
       </div>
 
-      <div class="segments" data-segments role="tablist" aria-label="Segmenti partnera">
-        <!-- Segment 1: Agencije (default active) -->
-        <div class="segments-item">
-          <h3 class="segments-trigger-wrap">
-            <button
-              type="button"
-              class="segments-trigger"
-              role="tab"
-              id="seg-tab-0"
-              aria-controls="seg-panel-0"
-              aria-selected="true"
-              aria-expanded="true"
-              tabindex="0"
-              data-segment-trigger
-              data-index="0"
-            >
-              <span class="segments-trigger-label">Agencije njege u kući</span>
-              <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </h3>
-          <div
-            class="segments-panel"
-            role="tabpanel"
-            id="seg-panel-0"
-            aria-labelledby="seg-tab-0"
-            data-segment-panel
+      <div class="segments" data-segments>
+        <!-- Tablist: tab buttons are direct children to satisfy ARIA tab/tablist parent-child rules -->
+        <div class="segments-tablist" role="tablist" aria-label="Segmenti partnera">
+          <button
+            type="button"
+            class="segments-trigger"
+            role="tab"
+            id="seg-tab-0"
+            aria-controls="seg-panel-0"
+            aria-selected="true"
+            aria-expanded="true"
+            tabindex="0"
+            data-segment-trigger
             data-index="0"
           >
-            <div class="segments-panel-inner">
-              <h4 class="segments-panel-heading">
-                Agencije za njegu u kući i pružatelji socijalnih usluga
-              </h4>
-              <p class="segments-panel-desc">
-                Vašim korisnicima omogućite kardiološku dijagnostiku bez transporta
-                u kliniku. Postavljanje uređaja kod korisnika ili u prostorima
-                agencije, snimak preuzimate i šaljete nama, nalaz potpisuje
-                specijalist kardiologije.
-              </p>
-              <p class="segments-panel-volume">
-                <strong>Tipičan volumen:</strong> 6–8 pretraga mjesečno.
-                Obučavamo medicinsko i ne-medicinsko osoblje (npr. njegovateljice).
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Segment 2: Ordinacije -->
-        <div class="segments-item">
-          <h3 class="segments-trigger-wrap">
-            <button
-              type="button"
-              class="segments-trigger"
-              role="tab"
-              id="seg-tab-1"
-              aria-controls="seg-panel-1"
-              aria-selected="false"
-              aria-expanded="false"
-              tabindex="-1"
-              data-segment-trigger
-              data-index="1"
-            >
-              <span class="segments-trigger-label">Ordinacije i poliklinike</span>
-              <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </h3>
-          <div
-            class="segments-panel"
-            role="tabpanel"
-            id="seg-panel-1"
-            aria-labelledby="seg-tab-1"
-            data-segment-panel
+            <span class="segments-trigger-label">Agencije njege u kući</span>
+            <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="segments-trigger"
+            role="tab"
+            id="seg-tab-1"
+            aria-controls="seg-panel-1"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+            data-segment-trigger
             data-index="1"
-            hidden
           >
-            <div class="segments-panel-inner">
-              <h4 class="segments-panel-heading">
-                Privatne ordinacije i poliklinike
-              </h4>
-              <p class="segments-panel-desc">
-                Proširite portfelj dijagnostike Holter EKG-om bez kapitalnog
-                ulaganja u opremu ni zapošljavanja kardiologa. Vaši pacijenti
-                dobivaju nalaz specijalističke kvalitete potpisan od strane
-                specijalista kardiologije.
-              </p>
-              <p class="segments-panel-volume">
-                <strong>Tipičan volumen:</strong> 12–15 pretraga mjesečno.
-              </p>
-            </div>
-          </div>
+            <span class="segments-trigger-label">Ordinacije i poliklinike</span>
+            <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="segments-trigger"
+            role="tab"
+            id="seg-tab-2"
+            aria-controls="seg-panel-2"
+            aria-selected="false"
+            aria-expanded="false"
+            tabindex="-1"
+            data-segment-trigger
+            data-index="2"
+          >
+            <span class="segments-trigger-label">Domovi zdravlja</span>
+            <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
 
-        <!-- Segment 3: Domovi zdravlja -->
-        <div class="segments-item">
-          <h3 class="segments-trigger-wrap">
-            <button
-              type="button"
-              class="segments-trigger"
-              role="tab"
-              id="seg-tab-2"
-              aria-controls="seg-panel-2"
-              aria-selected="false"
-              aria-expanded="false"
-              tabindex="-1"
-              data-segment-trigger
-              data-index="2"
-            >
-              <span class="segments-trigger-label">Domovi zdravlja</span>
-              <svg class="segments-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </h3>
-          <div
-            class="segments-panel"
-            role="tabpanel"
-            id="seg-panel-2"
-            aria-labelledby="seg-tab-2"
-            data-segment-panel
-            data-index="2"
-            hidden
-          >
-            <div class="segments-panel-inner">
-              <h4 class="segments-panel-heading">
-                Domovi zdravlja i ustanove primarne zdravstvene zaštite
-              </h4>
-              <p class="segments-panel-desc">
-                Smanjite čekanje pacijenata na kardiološku obradu. Uređaj ostaje
-                u vašoj ustanovi, a nalaz potpisuje specijalist kardiologije iz
-                referentne ustanove.
-              </p>
-              <p class="segments-panel-volume">
-                <strong>Tipičan volumen:</strong> 8–12 pretraga mjesečno.
-                Pristup prilagođen institucionalnom procesu i dokumentaciji.
-              </p>
-            </div>
+        <!-- Tabpanels: siblings of the tablist; CSS grid orders them visually under each tab on mobile -->
+        <div
+          class="segments-panel"
+          role="tabpanel"
+          id="seg-panel-0"
+          aria-labelledby="seg-tab-0"
+          data-segment-panel
+          data-index="0"
+        >
+          <div class="segments-panel-inner">
+            <h3 class="segments-panel-heading">
+              Agencije za njegu u kući i pružatelji socijalnih usluga
+            </h3>
+            <p class="segments-panel-desc">
+              Vašim korisnicima omogućite kardiološku dijagnostiku bez transporta
+              u kliniku. Postavljanje uređaja kod korisnika ili u prostorima
+              agencije, snimak preuzimate i šaljete nama, nalaz potpisuje
+              specijalist kardiologije.
+            </p>
+            <p class="segments-panel-volume">
+              <strong>Tipičan volumen:</strong> 6–8 pretraga mjesečno.
+              Obučavamo medicinsko i ne-medicinsko osoblje (npr. njegovateljice).
+            </p>
+          </div>
+        </div>
+        <div
+          class="segments-panel"
+          role="tabpanel"
+          id="seg-panel-1"
+          aria-labelledby="seg-tab-1"
+          data-segment-panel
+          data-index="1"
+          hidden
+        >
+          <div class="segments-panel-inner">
+            <h3 class="segments-panel-heading">
+              Privatne ordinacije i poliklinike
+            </h3>
+            <p class="segments-panel-desc">
+              Proširite portfelj dijagnostike Holter EKG-om bez kapitalnog
+              ulaganja u opremu ni zapošljavanja kardiologa. Vaši pacijenti
+              dobivaju nalaz specijalističke kvalitete potpisan od strane
+              specijalista kardiologije.
+            </p>
+            <p class="segments-panel-volume">
+              <strong>Tipičan volumen:</strong> 12–15 pretraga mjesečno.
+            </p>
+          </div>
+        </div>
+        <div
+          class="segments-panel"
+          role="tabpanel"
+          id="seg-panel-2"
+          aria-labelledby="seg-tab-2"
+          data-segment-panel
+          data-index="2"
+          hidden
+        >
+          <div class="segments-panel-inner">
+            <h3 class="segments-panel-heading">
+              Domovi zdravlja i ustanove primarne zdravstvene zaštite
+            </h3>
+            <p class="segments-panel-desc">
+              Smanjite čekanje pacijenata na kardiološku obradu. Uređaj ostaje
+              u vašoj ustanovi, a nalaz potpisuje specijalist kardiologije iz
+              referentne ustanove.
+            </p>
+            <p class="segments-panel-volume">
+              <strong>Tipičan volumen:</strong> 8–12 pretraga mjesečno.
+              Pristup prilagođen institucionalnom procesu i dokumentaciji.
+            </p>
           </div>
         </div>
       </div>
@@ -400,7 +388,6 @@ const description =
     text-transform: uppercase;
     color: var(--color-primary);
     margin: 0 0 var(--space-5);
-    opacity: 0.8;
   }
 
   .page-hero h1 {
@@ -438,7 +425,6 @@ const description =
     text-transform: uppercase;
     color: var(--color-primary);
     margin: 0 0 var(--space-3);
-    opacity: 0.8;
   }
 
   .bento-header h2 {
@@ -558,30 +544,33 @@ const description =
     margin: 0;
   }
 
-  /* Mobile (default): stacked accordion-style items */
+  /* Mobile (default): stacked accordion-style items.
+     `.segments` is a single-column grid; `.segments-tablist` uses
+     `display: contents` so each tab button becomes a direct grid item.
+     Explicit `grid-row` placement interleaves each tab with its panel
+     to produce the visual accordion order (tab0, panel0, tab1, panel1…). */
   .segments {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--space-3);
   }
 
-  .segments-item {
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
+  .segments-tablist {
+    display: contents;
   }
 
-  .segments-trigger-wrap {
-    margin: 0;
-    font: inherit;
-    font-weight: inherit;
-  }
+  .segments [data-segment-trigger][data-index='0'] { grid-row: 1; grid-column: 1; }
+  .segments [data-segment-panel][data-index='0']   { grid-row: 2; grid-column: 1; }
+  .segments [data-segment-trigger][data-index='1'] { grid-row: 3; grid-column: 1; }
+  .segments [data-segment-panel][data-index='1']   { grid-row: 4; grid-column: 1; }
+  .segments [data-segment-trigger][data-index='2'] { grid-row: 5; grid-column: 1; }
+  .segments [data-segment-panel][data-index='2']   { grid-row: 6; grid-column: 1; }
 
   .segments-trigger {
     width: 100%;
-    background: transparent;
-    border: 0;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
     padding: var(--space-5) var(--space-6);
     font-family: var(--font-body);
     font-size: var(--text-base);
@@ -593,7 +582,7 @@ const description =
     justify-content: space-between;
     gap: var(--space-3);
     text-align: left;
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
   }
 
   .segments-trigger:hover {
@@ -603,12 +592,13 @@ const description =
 
   .segments-trigger:focus-visible {
     outline: 2px solid var(--color-primary);
-    outline-offset: -2px;
+    outline-offset: 2px;
   }
 
   .segments-trigger[aria-selected='true'] {
     background: var(--color-primary);
     color: #ffffff;
+    border-color: var(--color-primary);
   }
 
   .segments-chevron {
@@ -620,8 +610,15 @@ const description =
     transform: rotate(180deg);
   }
 
+  .segments-panel {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+  }
+
   .segments-panel-inner {
-    padding: var(--space-1) var(--space-6) var(--space-6);
+    padding: var(--space-6);
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
@@ -656,36 +653,30 @@ const description =
     font-weight: 600;
   }
 
-  /* Desktop (≥ 640px): tabs on top, single panel area below */
+  /* Desktop (≥ 640px): tabs on top row, single panel area below */
   @media (min-width: 640px) {
     .segments {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto 1fr;
-      gap: var(--space-1);
-      background: transparent;
+      gap: var(--space-3);
     }
 
-    .segments-item {
-      display: contents;
-    }
+    .segments [data-segment-trigger][data-index='0'] { grid-row: 1; grid-column: 1; }
+    .segments [data-segment-trigger][data-index='1'] { grid-row: 1; grid-column: 2; }
+    .segments [data-segment-trigger][data-index='2'] { grid-row: 1; grid-column: 3; }
 
-    .segments-trigger-wrap {
-      grid-row: 1;
+    .segments [data-segment-panel] {
+      grid-row: 2;
+      grid-column: 1 / -1;
+      margin-top: var(--space-2);
     }
 
     .segments-trigger {
-      border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
-      background: var(--color-background);
       padding: var(--space-4) var(--space-5);
       font-size: var(--text-sm);
       min-height: 3.25rem;
       box-shadow: var(--shadow-sm);
-    }
-
-    .segments-trigger[aria-selected='true'] {
-      border-color: var(--color-primary);
     }
 
     .segments-chevron {
@@ -693,12 +684,6 @@ const description =
     }
 
     .segments-panel {
-      grid-row: 2;
-      grid-column: 1 / -1;
-      margin-top: var(--space-4);
-      background: var(--color-background);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-xl);
       box-shadow: var(--shadow-sm);
     }
 
@@ -789,7 +774,6 @@ const description =
     font-weight: 700;
     letter-spacing: 0.12em;
     color: var(--color-primary);
-    opacity: 0.7;
   }
 
   .process-body h3 {
