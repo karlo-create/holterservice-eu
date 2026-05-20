@@ -28,6 +28,27 @@ npm run preview  # serve built dist/
 
 Requires Node ≥ 22.12.
 
+## Analytics configuration
+
+Plausible analytics is enabled only when `PUBLIC_PLAUSIBLE_DOMAIN` is set at
+build time.
+
+```bash
+PUBLIC_PLAUSIBLE_DOMAIN=holterservice.eu npm run build
+```
+
+Tracked events in the current frontend wiring:
+
+- `partner_form_view`
+- `partner_form_submit_attempt`
+- `partner_phone_click`
+- `partner_email_click`
+- `partner_calendar_book_click`
+- `patient_partner_card_click`
+
+`partner_form_submit_success` / `partner_form_submit_error` are intentionally
+not emitted yet because v1 uses a `mailto:` form (no backend response state).
+
 ## Project structure
 
 ```
