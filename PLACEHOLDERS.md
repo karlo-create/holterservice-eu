@@ -1,107 +1,209 @@
-# Placeholders — holterservice.eu
+# Placeholders — what the founder needs to deliver
 
-This is the running list of stubs/unknowns that the founder (and/or designer)
-needs to supply before launch. Each entry includes _where_ in the code the
-placeholder lives so updates are mechanical.
+**Last updated:** 2026-05-20 (VEY-172)
 
-Keep this file as the single source of truth — if you add a `PLACEHOLDER`
-comment in code, add a row here too.
+This is the single source of truth for every stub on holterservice.eu that is
+waiting on founder/legal/designer input. Each item lists **what** to deliver,
+**where on the site** it lands, and **which file(s)** the engineer will touch
+when the asset/text arrives.
+
+If you add a new `PLACEHOLDER` comment in code, add a row here too.
+
+> **Reading guide**
+> - ⏳ = pending — needs founder/designer/legal action
+> - ✅ = resolved — kept here for historical traceability
+> - 🟡 = partial — currently shipped with a working placeholder; replace when real asset lands
 
 ---
 
-## 1. Brand & visual direction
+## 1. Dr. Obad — photo & copy approval (VEY-172)
 
-- **Inspiration references.** ~~Founder will supply moodboard / reference
-  sites.~~ **RESOLVED (VEY-157):** Designer applied a "premium specialist
-  medical" direction — Swiss/Berlin private-clinic reference — without
-  founder moodboard. Founder may refine further.
-- **Brand colors.** ~~Cyan primary `#0e7490`, system body font.~~
-  **RESOLVED (VEY-157):** Updated to deep cobalt navy `#1e4576` (primary),
-  warm off-white `#f7f5f2` (section backgrounds), warm border `#e4e1db`.
-  All tokens in `src/styles/tokens.css`. Founder may adjust to match real
-  brand identity once it is confirmed.
-- **Type pairing.** ~~System body font, Source Serif for headings.~~
-  **RESOLVED (VEY-157):** Source Serif 4 (headings, Google Fonts) + Inter
-  (body, Google Fonts). Both loaded via `<link>` in `BaseLayout.astro`.
-  Founder may replace with licensed typefaces if brand guidelines demand it.
-- **Logo / wordmark.** `public/favicon.svg` still uses a generic SVG
-  placeholder. Header uses `◇ Holterservice` text mark as v1 placeholder.
-  **Still needed:** real wordmark / SVG logo from founder or brand designer.
-  - Files: `public/favicon.svg`, `src/components/Header.astro`
-- **Photography.** No stock medical clichés. Awaiting real photography of
-  ustanova / dr. Obad / a partner clinic interaction. Currently no hero image;
-  the homepage relies on type + a subtle radial gradient.
-  **Still needed:** original photography or curated editorial-quality images.
+### 1.1 ⏳ Photo of dr. Obad
+- **What to deliver:** high-res photo, **min 800×800 px**, square or 4:5 portrait. Editorial style (no stock cliché). Founder must include permission/release to use on website.
+- **Backup source:** [poliklinika-obad.hr/profile/izv-prof-dr-sc-ante-obad-dr-med-spec/](https://poliklinika-obad.hr/profile/izv-prof-dr-sc-ante-obad-dr-med-spec/) — if reused, founder must still confirm permission.
+- **Where it appears on the site:**
+  - `/o-nama` — large photo, ~280 px square, top of the "Osnivač i specijalist" card.
+  - `/` (homepage) — small circular thumbnail, 60–80 px, inside the right-side "Specijalistički nalaz" credential card.
+- **Files to update once delivered:**
+  - Drop the file at `public/dr-obad.jpg` (or `.webp`).
+  - `src/pages/o-nama.astro` — swap `<figure class="about-photo about-photo--placeholder">…</figure>` for `<figure class="about-photo"><img src="/dr-obad.jpg" alt="prof. dr. sc. Ante Obad, dr. med." width="800" height="800" /></figure>`.
+  - `src/pages/index.astro` — swap the `<div class="cred-avatar">` SVG silhouette for an `<img>` with circular crop.
 
-## 2. Business / clinical wording (do NOT invent)
+### 1.2 ⏳ Copy approval — dr. Obad bio + Poliklinika Dr. Obad block
+- **What to deliver:** founder confirms with dr. Obad that the live copy on `/o-nama` is factually accurate and OK to publish.
+- **Specifically check:**
+  - Career mentions (KBC Split, KB Dubrava).
+  - Doctorate year + topic ("2009, kardiovaskularna fiziologija").
+  - Academic roles ("izvanredni profesor", "zamjenik pročelnika", "pomoćnik za inovacije i razvoj").
+  - Poliklinika founding year (1995), founder name ("mr. sc. Marko Obad, dr. med.").
+  - "Nastavna baza Sveučilišta u Splitu" wording.
+- **Where it lives:** `src/pages/o-nama.astro` (lines 26–96).
 
-- **Revenue split with partners.** `/za-partnere` mentions a model where
-  partner keeps a dogovoreni dio cijene. Exact percentage / model intentionally
-  vague — founder must confirm wording before launch.
-  - File: `src/pages/za-partnere.astro`
-- **Certification language.** Site mentions a "certifikat osposobljenosti"
-  for partner staff. Exact name, scope, and issuing-authority phrasing
-  unconfirmed.
-  - Files: `src/pages/index.astro`, `src/pages/za-partnere.astro`,
-    `src/pages/o-nama.astro`
-- **Scope of service.** Currently states "Holterservice ne ordinira terapiju".
-  Confirm this is accurate; adjust if there is some additional clinical
-  service.
-  - File: `src/pages/usluga.astro`
-- **Nalaz turnaround time.** Page says "u roku od nekoliko radnih dana".
-  Founder to confirm if a stricter promise (e.g. 3–5 dana) is appropriate.
-  - File: `src/pages/za-pacijente.astro`
-- **Dr. Obad bio.** Titule, ustanova, biografija — currently "specijalist
-  kardiologije iz provjerene ustanove" used as a placeholder.
-  - File: `src/pages/o-nama.astro`
+---
 
-## 3. Partner registry
+## 2. Brand & visual assets
 
-- **Partner list.** `src/data/partners.ts` is empty. Populating it
-  automatically:
-  - Renders cards on `/partneri`
-  - Emits `LocalBusiness` JSON-LD per partner
-  - Removes the "uskoro" empty-state on that page
-- **Mapa partnera.** When the partner list lands, decide whether to embed an
-  interactive map (e.g. Leaflet + OSM tiles). Until then `/partneri` shows a
-  static placeholder block.
+### 2.1 ⏳ Logo / wordmark
+- **What to deliver:** real SVG wordmark + favicon. Current header uses a small ECG-line SVG + the word "Holterservice" as a text mark — placeholder only.
+- **Files to update:**
+  - `public/favicon.svg` — replace with real favicon.
+  - `src/components/Header.astro` — swap the ECG + text mark for the real logo SVG.
 
-## 4. Contact details
+### 2.2 🟡 Brand colors (already in place, founder may refine)
+- ✅ Current: deep cobalt navy `#1e4576` (primary), warm off-white `#f7f5f2` (sections), warm border `#e4e1db`. All tokens in `src/styles/tokens.css`.
+- **If founder wants to adjust:** send hex codes; engineer updates `src/styles/tokens.css`.
 
-- **Telefon, e-pošta, adresa.** Currently `info@holterservice.eu` (likely
-  valid eventually) and "uskoro" for phone/address. Touch points:
-  - `src/components/Footer.astro`
-  - `src/pages/kontakt.astro`
-  - `src/pages/impressum.astro`
-- **Inquiry form backend.** `src/components/PartnerForm.astro` ships as a
-  `mailto:` form (no server). When a real endpoint is wired up, swap the
-  `action`. Document recipient + retention in `/privatnost`.
+### 2.3 🟡 Typography (already in place, founder may refine)
+- ✅ Current: Source Serif 4 (headings) + Inter (body), self-hosted via fontsource (`src/styles/global.css`).
+- **If founder wants licensed typefaces:** send font files + license; engineer swaps fontsource imports.
 
-## 5. Legal copy
+### 2.4 ⏳ Photography (general)
+- **What to deliver:** original photography of (a) ustanova interior, (b) partner clinic interaction, (c) optional: redacted sample Holter nalaz. Editorial / "premium specialist medical" tone — no stock medical clichés.
+- **Where it could appear:**
+  - Homepage hero — currently relies on type + ECG waveform. Optional editorial image.
+  - `/usluga` — optional redacted sample nalaz (see §7 below).
+  - `/o-nama` — could anchor the page if multiple photos available.
 
-- **Politika privatnosti / Impressum / Kolačići.** Templates aligned with
-  GDPR + HR e-trgovina, but final wording needs pravna provjera.
-  - Voditelj obrade: naziv, adresa, OIB — unknown.
-  - Nadležna tijela (HLK, Ministarstvo zdravstva itd.) — unknown.
-  - Rok čuvanja podataka (currently 24 mjeseca) — confirm or adjust.
-  - Files: `src/pages/privatnost.astro`, `src/pages/kolacici.astro`,
-    `src/pages/impressum.astro`
+### 2.5 🟡 Open Graph (social share) image
+- ✅ Current: `public/og-default.svg` placeholder.
+- **What to deliver:** rasterized 1200×630 PNG/JPG (some social scrapers prefer raster).
+- **Files to update:** drop at `public/og-default.png`; update `defaultOgImage` in `src/components/Seo.astro`.
 
-## 6. Sample report
+---
 
-- **Sample report image.** Designer may want to show a redacted sample nalaz
-  on `/usluga`. Not currently rendered. Add as `public/sample-report.png` and
-  reference once approved by founder.
+## 3. Business / clinical wording (do NOT invent)
 
-## 7. OG image
+### 3.1 ⏳ Revenue split with partners
+- **What to deliver:** confirm the exact wording for the partner revenue model. Currently `/za-partnere` says "klinika zadržava dogovoreni dio cijene", intentionally vague.
+- **Where it lives:** `src/pages/za-partnere.astro` (~line 108).
 
-- **`/og-default.svg`** ships an SVG OG image as a placeholder. Some social
-  scrapers prefer PNG/JPG at exactly 1200×630. Replace with a rasterized
-  `/og-default.png` when designer ships proper brand assets and update the
-  default in `src/components/Seo.astro`.
+### 3.2 ⏳ Certification language
+- **What to deliver:** confirm the exact name/scope/issuing authority for "certifikat osposobljenosti" for partner staff.
+- **Where it appears:** `src/pages/index.astro`, `src/pages/za-partnere.astro`, `src/pages/o-nama.astro`.
+
+### 3.3 ⏳ Scope of service confirmation
+- **What to deliver:** confirm "Holterservice ne ordinira terapiju" is accurate. Adjust if there's any additional clinical service.
+- **Where it lives:** `src/pages/usluga.astro`.
+
+### 3.4 ⏳ Nalaz turnaround time
+- **What to deliver:** confirm if "u roku od nekoliko radnih dana" is final, or whether a stricter promise (e.g. 3–5 dana) should be made.
+- **Where it lives:** `src/pages/za-pacijente.astro` (~line 65).
+
+---
+
+## 4. Partner registry
+
+### 4.1 ⏳ List of partner clinics
+- **What to deliver:** for each partner clinic — name, city/region, address (or area served if no public address), optional website URL, optional phone. Populating this auto-renders cards on `/partneri` and emits `LocalBusiness` JSON-LD per partner.
+- **Where it lives:** `src/data/partners.ts` — currently an empty `partners: []` array with an example structure commented out.
+- **Effect once populated:**
+  - `/partneri` cards render.
+  - Empty-state ("uskoro") on `/partneri` disappears.
+  - Each partner gets its own `LocalBusiness` schema in the page head.
+
+### 4.2 ⏳ Map of partners (decision)
+- **Decision needed:** once partner list lands, decide whether to embed an interactive map (Leaflet + OpenStreetMap) or keep the static "uskoro" block.
+- **Where it lives:** `src/pages/partneri.astro` (`.map-placeholder`, ~line 98).
+
+---
+
+## 5. Contact details
+
+### 5.1 ⏳ Telefon
+- **What to deliver:** real phone number (with country code).
+- **Where it appears:**
+  - `src/components/Footer.astro` (~line 45)
+  - `src/pages/kontakt.astro` (~line 29)
+  - `src/pages/impressum.astro` (~line 25)
+
+### 5.2 ⏳ Adresa ustanove
+- **What to deliver:** full registered address.
+- **Where it appears:**
+  - `src/pages/kontakt.astro` (~line 34)
+  - `src/pages/impressum.astro` (~line 29)
+
+### 5.3 🟡 E-pošta
+- ✅ Currently `info@holterservice.eu` (sitewide). Confirm this mailbox is live before launch.
+
+### 5.4 ⏳ Inquiry form backend
+- **What to deliver:** decision — keep `mailto:` form or wire a real POST endpoint (Formspree / Resend / serverless function). If a real endpoint, also document recipient + retention in `/privatnost`.
+- **Where it lives:** `src/components/PartnerForm.astro`.
+
+---
+
+## 6. Legal copy (Impressum / Privatnost / Kolačići)
+
+Templates are GDPR-aligned + HR e-trgovina, but final wording needs **pravna provjera by a lawyer**.
+
+### 6.1 ⏳ Voditelj obrade — naziv, adresa, OIB
+- **Where it appears:** `src/pages/impressum.astro` (~lines 25–53), `src/pages/privatnost.astro` (~lines 38–46).
+
+### 6.2 ⏳ Titule odgovorne osobe
+- Currently "dr. Obad (titule uskoro)". After VEY-172 ships, this should be updated to the full "prof. dr. sc. Ante Obad, dr. med."
+- **Where it lives:** `src/pages/impressum.astro` (~line 41).
+
+### 6.3 ⏳ Nadležna tijela
+- **What to deliver:** confirmed list of supervisory bodies (HLK, Ministarstvo zdravstva itd.) for the impressum.
+- **Where it lives:** `src/pages/impressum.astro` (~line 63).
+
+### 6.4 ⏳ Rok čuvanja podataka
+- Currently 24 mjeseca placeholder. Confirm or adjust to ustanova policy.
+- **Where it lives:** `src/pages/privatnost.astro` (~line 93).
+
+### 6.5 ⏳ Pravna provjera — Privatnost / Kolačići
+- Lawyer must sign off on the final text of `/privatnost` and `/kolacici`.
+
+---
+
+## 7. Sample report (optional)
+
+### 7.1 ⏳ Redacted sample nalaz image
+- **What to deliver:** anonymized image of a real Holter nalaz, with all patient identifiers removed. Optional but high-impact for `/usluga`.
+- **File to drop:** `public/sample-report.png` (or `.jpg`).
+- **Where it appears:** `src/pages/usluga.astro` — engineer will add a `<figure>` once approved.
+
+---
 
 ## 8. Analytics
 
-- **None installed.** Cookie policy currently states only technically
-  necessary cookies. If analytics (e.g. Plausible, Umami) is added later,
-  update `/kolacici` table and re-evaluate consent banner need.
+> **Note:** Plausible details below describe planned/in-flight work on parallel branches (VEY-170, VEY-177). The VEY-172 branch itself does not yet contain that wiring; this doc reflects the consolidated state once the in-flight branches merge to main.
+
+### 8.1 🟡 Plausible (cookieless) — opt-in via env var
+- **Status:** wired on parallel branches. Set `PUBLIC_PLAUSIBLE_DOMAIN=holterservice.eu` (Vercel project env) to enable. When unset, no script loads, no events fire. Plausible is cookieless → no consent banner required.
+- **What to deliver:** founder decision — enable Plausible at launch (recommended), or stay with no analytics.
+- **Custom events wired on those branches:** `partner_form_view`, `partner_form_submit_attempt`, `partner_email_click`, `partner_phone_click`, `partner_calendar_book_click`, `patient_partner_card_click`.
+
+### 8.2 ⏳ Form-submit events (depend on §5.4)
+- `partner_form_submit_success` / `partner_form_submit_error` can only fire once the form has a real POST backend. Wire them when §5.4 is resolved.
+
+### 8.3 ⏳ If founder picks GA4 instead
+- Requires full cookie consent flow (banner + reject-all + cookie table update). Significantly more work. **Recommendation: stay with Plausible.**
+
+---
+
+## Quick checklist — single page version
+
+Sorted by what unblocks ship-readiness fastest:
+
+- [ ] **Dr. Obad photo** (≥800×800, square/4:5) + usage permission → `/o-nama` + `/` (§1.1)
+- [ ] **Copy approval** from dr. Obad on bio + Poliklinika block → `/o-nama` (§1.2)
+- [ ] **Telefon** → footer, `/kontakt`, `/impressum` (§5.1)
+- [ ] **Adresa ustanove** → `/kontakt`, `/impressum` (§5.2)
+- [ ] **Voditelj obrade** (naziv, adresa, OIB) → `/impressum`, `/privatnost` (§6.1)
+- [ ] **Partner list** → `src/data/partners.ts` (§4.1)
+- [ ] **Revenue split wording** → `/za-partnere` (§3.1)
+- [ ] **Certifikat osposobljenosti** — exact name → 3 pages (§3.2)
+- [ ] **Real logo / wordmark / favicon** → header + favicon (§2.1)
+- [ ] **Pravna provjera** of `/privatnost` + `/kolacici` by lawyer (§6.5)
+- [ ] **Photography** (ustanova / partner / sample report) — optional but desired (§2.4, §7.1)
+- [ ] **Raster OG image** (1200×630 PNG/JPG) (§2.5)
+- [ ] **Plausible env var** decision at launch (§8.1)
+- [ ] **Form backend** — `mailto:` vs real POST (§5.4)
+
+---
+
+## Notes for engineer (when assets land)
+
+- Every entry above points to the exact file. Most placeholders are visually marked `uskoro` (italic muted text) or are `<figure class="about-photo--placeholder">`. Removing them is mechanical: drop asset → swap markup → done.
+- If a placeholder is removed but a new dependency is introduced (e.g. real POST endpoint depends on a new env var), update this doc + add the env var to the Vercel project.
+- Historical "RESOLVED" entries (brand colors, typography, design direction from VEY-157) are not repeated above to keep the founder-facing list short. Git history is the source of truth for those.
