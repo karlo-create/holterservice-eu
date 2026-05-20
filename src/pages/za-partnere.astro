@@ -1,13 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PartnerForm from '../components/PartnerForm.astro';
+import Faq from '../components/Faq.astro';
+import { partnerFaq, buildFaqJsonLd } from '../data/faq';
 
 const title = 'Za partnerske klinike';
 const description =
   'Ponudite pacijentima Holter EKG nalaz specijalista bez slanja u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi ostvarujete novu uslugu i prihod.';
+
+const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
 ---
 
 <BaseLayout title={title} description={description} path="/za-partnere">
+  <script slot="head" type="application/ld+json" set:html={faqJsonLd} />
 
   <!-- ═══ PAGE HERO — B2B specific, compact, authoritative ═════════════════ -->
   <section class="page-hero">
@@ -205,6 +210,14 @@ const description =
       </ol>
     </div>
   </section>
+
+  <!-- ═══ FAQ ═══════════════════════════════════════════════════════════════ -->
+  <Faq
+    id="faq"
+    eyebrow="Česta pitanja"
+    heading="Što partneri najčešće pitaju"
+    items={partnerFaq}
+  />
 
   <!-- ═══ FORMA ═════════════════════════════════════════════════════════════ -->
   <div id="kontakt-forma" class="kontakt-forma-anchor">
