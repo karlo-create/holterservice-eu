@@ -101,12 +101,23 @@ const description =
               <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
           </div>
-          <h3>Transparentni komercijalni model</h3>
+          <h3>Jasan komercijalni model</h3>
           <p>
-            Komercijalni uvjeti definiraju se ugovorom — prilagođeni volumenu,
-            regiji i kliničkom protokolu. Cilj je održiv model partnerstva za obje strane.
-            {/* PLACEHOLDER: točan postotak / model — founder potvrđuje */}
+            Cijena pretrage za pacijenta je fiksna i transparentna.
+            Vi naplaćujete pretragu pacijentu i zadržavate udio koji pokriva vaše
+            operativne troškove, postavljanje i skidanje uređaja, prostor, osoblje
+            i administraciju.
           </p>
+          <p>
+            Preostali iznos prepuštate Holterservicu za održavanje uređaja,
+            prijenos podataka i specijalističko očitanje nalaza koje potpisuje
+            specijalist kardiologije.
+          </p>
+          <ul class="commercial-highlights" aria-label="Ključne pogodnosti partnerstva">
+            <li><strong>Bez kapitalnog ulaganja.</strong></li>
+            <li><strong>Bez fiksnih mjesečnih naknada.</strong></li>
+            <li>Vi zarađujete na svakoj realiziranoj pretrazi.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -362,6 +373,46 @@ const description =
     font-size: var(--text-sm);
     line-height: var(--leading-normal);
     margin: 0;
+  }
+
+  /* ── Commercial highlights (inside accent bento card) ────────────────── */
+  .commercial-highlights {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-2) 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .commercial-highlights li {
+    position: relative;
+    padding-left: var(--space-5);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  /* Checkmark bullet using border-bottom + border-right rotated */
+  .commercial-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 0.6rem;
+    height: 0.3rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    opacity: 0.9;
+  }
+
+  .commercial-highlights li strong {
+    font-weight: 600;
+  }
+
+  /* On the dark accent card, force pure white for highlighted strong text */
+  .bento-card.bento-card--accent .commercial-highlights li strong {
+    color: #ffffff;
   }
 
   /* ── Fit section ─────────────────────────────────────────────────────── */
