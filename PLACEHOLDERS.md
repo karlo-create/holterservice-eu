@@ -73,9 +73,20 @@ comment in code, add a row here too.
   - `src/components/Footer.astro`
   - `src/pages/kontakt.astro`
   - `src/pages/impressum.astro`
-- **Inquiry form backend.** `src/components/PartnerForm.astro` ships as a
-  `mailto:` form (no server). When a real endpoint is wired up, swap the
-  `action`. Document recipient + retention in `/privatnost`.
+- **Inquiry form backend.** ~~`src/components/PartnerForm.astro` ships as a
+  `mailto:` form.~~ **RESOLVED (VEY-170):** Form now POSTs to
+  `/api/partner-inquiry` (Astro + Vercel serverless), validates with zod,
+  applies a 3/IP/hour rate limit + honeypot, and sends both a notification
+  to `partneri@holterservice.eu` and an autoresponder to the submitter via
+  Resend. **Still needed from founder:**
+  - `RESEND_API_KEY` env var (Production + Preview in Vercel).
+  - Verified sender domain `holterservice.eu` in Resend (SPF/DKIM/DMARC).
+  - `partneri@holterservice.eu` inbox provisioned and tested.
+  - Real `PUBLIC_CAL_LINK` (Cal.com 15-min discovery event) — currently
+    placeholder `https://cal.com/holterservice`.
+  - Update `/privatnost` to mention the new recipient + retention.
+  - Set `PUBLIC_PLAUSIBLE_DOMAIN=holterservice.eu` once the Plausible
+    site is created (or leave empty for v1 launch).
 
 ## 5. Legal copy
 
@@ -102,6 +113,16 @@ comment in code, add a row here too.
 
 ## 8. Analytics
 
-- **None installed.** Cookie policy currently states only technically
-  necessary cookies. If analytics (e.g. Plausible, Umami) is added later,
-  update `/kolacici` table and re-evaluate consent banner need.
+- **Plausible wired but inert by default (VEY-170).** `BaseLayout.astro`
+  only injects the Plausible script when `PUBLIC_PLAUSIBLE_DOMAIN` is set,
+  so default builds still ship zero analytics. Custom events
+  (`partner_form_view`, `partner_form_submit_attempt`,
+  `partner_form_submit_success`, `partner_form_submit_error`,
+  `partner_form_thank_you_view`, `partner_calendar_book_click`) are sent
+  via `window.plausible(...)`. Founder action:
+  - Create Plausible site for `holterservice.eu`, set
+    `PUBLIC_PLAUSIBLE_DOMAIN=holterservice.eu` in Vercel.
+  - Enable "Custom events" in the Plausible site settings to see the
+    above events.
+  - Plausible is cookieless — `/kolacici` still accurate as-is. If a
+    different provider is chosen instead, update `/kolacici`.

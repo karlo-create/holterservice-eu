@@ -1,102 +1,392 @@
 ---
 /**
- * Partner inquiry form.
+ * Partner inquiry form (VEY-170).
  *
- * v1 ships as a `mailto:` form — no backend wired up. When a real
- * endpoint exists, swap the `<form action>` to a POST handler and add a
- * server-side recipient. See PLACEHOLDERS.md.
+ * v2 — POSTs JSON to `/api/partner-inquiry`. Validates fields client-side
+ * (HTML5 + a light JS layer mirroring `PartnerInquirySchema`) and shows
+ * inline server errors when zod on the server rejects. On success, the
+ * browser is redirected to `/za-partnere/hvala`.
+ *
+ * Analytics events emitted via window.plausible when available:
+ *   - partner_form_view
+ *   - partner_form_submit_attempt
+ *   - partner_form_submit_success
+ *   - partner_form_submit_error
  */
+import { PARTNER_TYPES } from '../lib/partner-inquiry-schema';
+
 interface Props {
   /** Heading shown above the form. */
   heading?: string;
-  /** Override the recipient email if needed. */
-  to?: string;
   /** Form id so multiple instances on a page don't collide. */
   id?: string;
 }
 
-const {
-  heading = 'Zainteresirani ste za partnerstvo?',
-  to = 'partneri@holterservice.eu',
-  id = 'partner-form',
-} = Astro.props;
+const { heading = 'Zainteresirani ste za partnerstvo?', id = 'partner-form' } =
+  Astro.props;
+
+const supportEmail = 'partneri@holterservice.eu';
 ---
 
-<section class="partner-form-block">
+<section class="partner-form-block" data-partner-form-root>
   <div class="container">
     <div class="form-card card">
       <h2>{heading}</h2>
       <p>
-        Ostavite podatke o klinici i javit ćemo vam se s detaljima o uvjetima,
+        Ostavite podatke o ustanovi i javit ćemo vam se s detaljima o uvjetima,
         opremi i edukaciji. Sve poruke obrađuje naš specijalistički tim.
       </p>
 
       <form
         id={id}
         method="post"
-        action={`mailto:${to}?subject=${encodeURIComponent('Upit za partnerstvo — Holterservice')}`}
-        enctype="text/plain"
+        action="/api/partner-inquiry"
+        novalidate
+        data-partner-form
       >
+        <!-- Honeypot: hidden from real users + assistive tech. Bots that
+             auto-fill every field will trip this and be silently dropped. -->
+        <div class="hp" aria-hidden="true">
+          <label>
+            Website
+            <input
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
         <div class="grid">
           <label>
-            Naziv klinike / ustanove
-            <input type="text" name="Naziv klinike" required autocomplete="organization" />
+            Naziv ustanove *
+            <input
+              type="text"
+              name="ustanova"
+              required
+              maxlength="200"
+              autocomplete="organization"
+              data-field
+            />
+            <span class="field-error" data-error-for="ustanova"></span>
           </label>
 
           <label>
-            Mjesto
-            <input type="text" name="Mjesto" required autocomplete="address-level2" />
+            Tip ustanove *
+            <select name="tipUstanove" required data-field>
+              <option value="">Odaberite…</option>
+              {PARTNER_TYPES.map((t) => <option value={t}>{t}</option>)}
+            </select>
+            <span class="field-error" data-error-for="tipUstanove"></span>
           </label>
 
           <label>
-            Kontakt osoba
-            <input type="text" name="Kontakt osoba" required autocomplete="name" />
+            Mjesto *
+            <input
+              type="text"
+              name="mjesto"
+              required
+              maxlength="120"
+              autocomplete="address-level2"
+              data-field
+            />
+            <span class="field-error" data-error-for="mjesto"></span>
           </label>
 
           <label>
-            E-pošta
-            <input type="email" name="E-posta" required autocomplete="email" />
+            Kontakt osoba *
+            <input
+              type="text"
+              name="kontaktOsoba"
+              required
+              maxlength="120"
+              autocomplete="name"
+              data-field
+            />
+            <span class="field-error" data-error-for="kontaktOsoba"></span>
           </label>
 
           <label>
-            Telefon (neobavezno)
-            <input type="tel" name="Telefon" autocomplete="tel" />
+            E-pošta *
+            <input
+              type="email"
+              name="email"
+              required
+              maxlength="200"
+              autocomplete="email"
+              inputmode="email"
+              data-field
+            />
+            <span class="field-error" data-error-for="email"></span>
           </label>
 
           <label>
-            Broj zainteresiranih pacijenata / mjesec (procjena)
-            <input type="text" name="Procjena pacijenata mjesecno" inputmode="numeric" />
+            Telefon
+            <input
+              type="tel"
+              name="telefon"
+              maxlength="60"
+              autocomplete="tel"
+              inputmode="tel"
+              data-field
+            />
+            <span class="field-error" data-error-for="telefon"></span>
+          </label>
+
+          <label>
+            Procjena broja pacijenata / mj.
+            <input
+              type="text"
+              name="procjenaPacijenata"
+              maxlength="40"
+              inputmode="numeric"
+              data-field
+            />
+            <span class="field-error" data-error-for="procjenaPacijenata"></span>
           </label>
         </div>
 
         <label class="full">
           Poruka
           <textarea
-            name="Poruka"
+            name="poruka"
             rows="5"
-            placeholder="Ukratko opišite klinitu i kakvu suradnju očekujete."
-            required
+            maxlength="1000"
+            placeholder="Ukratko opišite ustanovu i kakvu suradnju očekujete."
+            data-field
           ></textarea>
+          <span class="field-hint" data-counter>0 / 1000</span>
+          <span class="field-error" data-error-for="poruka"></span>
         </label>
 
         <p class="consent">
-          <input type="checkbox" name="Suglasnost" required id={`${id}-consent`} />
+          <input
+            type="checkbox"
+            name="gdpr"
+            required
+            id={`${id}-consent`}
+            data-field
+          />
           <label for={`${id}-consent`}>
-            Suglasan/na sam da se moji podaci koriste isključivo za odgovor na ovaj upit.
-            Više informacija u <a href="/privatnost">politici privatnosti</a>.
+            Suglasan/na sam da se moji podaci koriste isključivo za odgovor na
+            ovaj upit. Više informacija u <a href="/privatnost">politici
+            privatnosti</a>. *
           </label>
         </p>
+        <span class="field-error field-error--block" data-error-for="gdpr"></span>
 
-        <button type="submit" class="btn btn-primary">Pošalji upit</button>
+        <div
+          class="form-status"
+          role="status"
+          aria-live="polite"
+          data-form-status
+        ></div>
+
+        <button type="submit" class="btn btn-primary" data-submit>
+          <span data-submit-label>Pošalji upit</span>
+        </button>
 
         <p class="note">
-          Slanjem otvarate svoj e-mail klijent s pripremljenom porukom. Možete nas i izravno
-          kontaktirati na <a href={`mailto:${to}`}>{to}</a>.
+          Ili nam izravno pišite na
+          <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.
         </p>
       </form>
     </div>
   </div>
 </section>
+
+<script>
+  /**
+   * Partner-form client behaviour.
+   * Mirrors the zod schema in `src/lib/partner-inquiry-schema.ts` for
+   * fast feedback; the server is still authoritative.
+   */
+  type Plausible = (event: string, opts?: { props?: Record<string, unknown> }) => void;
+  declare global {
+    interface Window {
+      plausible?: Plausible;
+    }
+  }
+
+  function track(event: string, props?: Record<string, unknown>) {
+    try {
+      window.plausible?.(event, props ? { props } : undefined);
+    } catch {
+      /* no-op */
+    }
+  }
+
+  function initForm(form: HTMLFormElement) {
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
+    const submitLabel = form.querySelector<HTMLElement>('[data-submit-label]');
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const counter = form.querySelector<HTMLElement>('[data-counter]');
+    const messageEl = form.querySelector<HTMLTextAreaElement>(
+      'textarea[name="poruka"]'
+    );
+
+    if (counter && messageEl) {
+      const update = () => {
+        counter.textContent = `${messageEl.value.length} / 1000`;
+      };
+      messageEl.addEventListener('input', update);
+      update();
+    }
+
+    function clearErrors() {
+      form
+        .querySelectorAll<HTMLElement>('[data-error-for]')
+        .forEach((el) => (el.textContent = ''));
+      if (status) {
+        status.textContent = '';
+        status.classList.remove('is-error', 'is-success');
+      }
+    }
+
+    function setFieldError(name: string, message: string) {
+      const el = form.querySelector<HTMLElement>(
+        `[data-error-for="${CSS.escape(name)}"]`
+      );
+      if (el) el.textContent = message;
+    }
+
+    function setFormStatus(message: string, kind: 'error' | 'success') {
+      if (!status) return;
+      status.textContent = message;
+      status.classList.toggle('is-error', kind === 'error');
+      status.classList.toggle('is-success', kind === 'success');
+    }
+
+    function setBusy(busy: boolean) {
+      if (!submit) return;
+      submit.disabled = busy;
+      if (submitLabel) {
+        submitLabel.textContent = busy ? 'Šaljemo upit…' : 'Pošalji upit';
+      }
+    }
+
+    function readForm(): Record<string, unknown> {
+      const fd = new FormData(form);
+      const out: Record<string, unknown> = {};
+      for (const [key, value] of fd.entries()) {
+        if (typeof value !== 'string') continue;
+        out[key] = value;
+      }
+      // gdpr is a checkbox — present only when checked. Normalise to boolean.
+      out['gdpr'] = (form.elements.namedItem('gdpr') as HTMLInputElement | null)
+        ?.checked
+        ? true
+        : false;
+      return out;
+    }
+
+    // Lightweight client checks (zod parity for the common cases).
+    function validateClient(payload: Record<string, unknown>): boolean {
+      let ok = true;
+      const required: Array<[string, string]> = [
+        ['ustanova', 'Naziv ustanove je obavezno polje.'],
+        ['tipUstanove', 'Odaberite tip ustanove.'],
+        ['mjesto', 'Mjesto je obavezno polje.'],
+        ['kontaktOsoba', 'Kontakt osoba je obavezno polje.'],
+        ['email', 'E-pošta je obavezno polje.'],
+      ];
+      for (const [name, msg] of required) {
+        const v = payload[name];
+        if (typeof v !== 'string' || v.trim() === '') {
+          setFieldError(name, msg);
+          ok = false;
+        }
+      }
+      const email = String(payload['email'] ?? '').trim();
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setFieldError('email', 'Unesite ispravnu e-pošta adresu.');
+        ok = false;
+      }
+      if (payload['gdpr'] !== true) {
+        setFieldError('gdpr', 'Morate prihvatiti uvjete obrade podataka.');
+        ok = false;
+      }
+      const poruka = String(payload['poruka'] ?? '');
+      if (poruka.length > 1000) {
+        setFieldError('poruka', 'Poruka može imati najviše 1000 znakova.');
+        ok = false;
+      }
+      return ok;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearErrors();
+      track('partner_form_submit_attempt');
+
+      const payload = readForm();
+
+      if (!validateClient(payload)) {
+        setFormStatus('Provjerite obavezna polja.', 'error');
+        track('partner_form_submit_error', { reason: 'client_validation' });
+        return;
+      }
+
+      setBusy(true);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json', accept: 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        let body: any = null;
+        try {
+          body = await res.json();
+        } catch {
+          /* not JSON */
+        }
+
+        if (!res.ok || !body?.ok) {
+          if (body?.fieldErrors && typeof body.fieldErrors === 'object') {
+            for (const [name, msg] of Object.entries(body.fieldErrors)) {
+              setFieldError(name, String(msg));
+            }
+          }
+          const msg =
+            body?.error ??
+            'Došlo je do greške. Pokušajte ponovno za nekoliko trenutaka.';
+          setFormStatus(msg, 'error');
+          track('partner_form_submit_error', {
+            reason: body?.code ?? `http_${res.status}`,
+          });
+          setBusy(false);
+          return;
+        }
+
+        // Spam path: honeypot tripped. Pretend success so bots don't learn.
+        if (body.spam) {
+          window.location.assign(body.redirect ?? '/za-partnere/hvala');
+          return;
+        }
+
+        track('partner_form_submit_success');
+        window.location.assign(body.redirect ?? '/za-partnere/hvala');
+      } catch (err) {
+        console.error('[partner-form] network error', err);
+        setFormStatus(
+          'Mrežna greška. Provjerite vezu i pokušajte ponovno.',
+          'error'
+        );
+        track('partner_form_submit_error', { reason: 'network' });
+        setBusy(false);
+      }
+    });
+
+    track('partner_form_view');
+  }
+
+  document
+    .querySelectorAll<HTMLFormElement>('[data-partner-form]')
+    .forEach(initForm);
+</script>
 
 <style>
   .partner-form-block { padding-block: var(--space-16); }
@@ -124,7 +414,7 @@ const {
     color: var(--color-foreground);
   }
 
-  input, textarea {
+  input, select, textarea {
     font: inherit;
     padding: var(--space-3);
     border: 1px solid var(--color-border);
@@ -134,7 +424,9 @@ const {
     width: 100%;
   }
 
-  input:focus, textarea:focus {
+  select { appearance: auto; }
+
+  input:focus, select:focus, textarea:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 1px;
     border-color: var(--color-primary);
@@ -150,9 +442,53 @@ const {
     gap: var(--space-3);
     font-size: var(--text-sm);
     color: var(--color-muted-foreground);
+    margin: 0;
   }
 
   .consent input { width: auto; margin-top: 0.2rem; }
 
   .note { font-size: var(--text-sm); color: var(--color-muted-foreground); margin: 0; }
+
+  /* Hidden honeypot. Off-screen + aria-hidden so screen readers skip it. */
+  .hp {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .field-error {
+    color: #b3261e;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    min-height: 1em;
+  }
+
+  .field-error--block { display: block; }
+
+  .field-hint {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-xs);
+    font-weight: 400;
+  }
+
+  .form-status {
+    min-height: 1.5em;
+    font-size: var(--text-sm);
+  }
+
+  .form-status.is-error {
+    color: #b3261e;
+  }
+
+  .form-status.is-success {
+    color: #15803d;
+  }
+
+  [data-submit][disabled] {
+    opacity: 0.6;
+    cursor: progress;
+  }
 </style>

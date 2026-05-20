@@ -13,6 +13,12 @@ interface Props {
 }
 
 const { title, description, path, ogImage, type } = Astro.props;
+
+// Plausible analytics (VEY-170 default per spec). Script only injected
+// when PUBLIC_PLAUSIBLE_DOMAIN is set so dev / preview builds stay quiet.
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+const plausibleSrc =
+  import.meta.env.PUBLIC_PLAUSIBLE_SRC ?? 'https://plausible.io/js/script.js';
 ---
 
 <!doctype html>
@@ -24,6 +30,19 @@ const { title, description, path, ogImage, type } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Fonts: Source Serif 4 Variable + Inter Variable — self-hosted via fontsource (imported in global.css) -->
     <Seo title={title} description={description} path={path} ogImage={ogImage} type={type} />
+    {plausibleDomain && (
+      <script
+        is:inline
+        defer
+        data-domain={plausibleDomain}
+        src={plausibleSrc}
+      ></script>
+    )}
+    {plausibleDomain && (
+      <script is:inline>
+        {`window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments); };`}
+      </script>
+    )}
     <slot name="head" />
   </head>
   <body>

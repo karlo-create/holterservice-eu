@@ -11,9 +11,12 @@ specialist nalaz service for partner clinics across Croatia.
 
 ## Stack
 
-- **Astro 6** (static output)
+- **Astro 6** (mostly static, on-demand via `@astrojs/vercel` for the
+  `/api/partner-inquiry` route)
 - **Tailwind v4** via PostCSS, driven by tokens
 - **TypeScript**
+- **zod** for shared client/server validation
+- **resend** for transactional email
 - **@astrojs/sitemap** for `sitemap-index.xml`
 - Deploys to **Vercel**
 
@@ -71,10 +74,33 @@ Requires Node ≥ 22.12.
 
 ## Forms
 
-`PartnerForm.astro` ships as a **`mailto:`** form for v1 — opens the user's
-mail client with a pre-filled body. To upgrade later, swap the `<form action>`
-to a POST endpoint and add a server-side recipient. Recipient is documented
-in `/privatnost`.
+`PartnerForm.astro` POSTs JSON to `/api/partner-inquiry` (Astro endpoint
+running as a Vercel serverless function — see VEY-170). The route:
+
+1. Validates the payload with `PartnerInquirySchema` (zod). Field errors
+   come back as `{ fieldErrors: { name: 'msg' } }` and render inline.
+2. Honeypots the hidden `website` field — silent 200 + redirect for bots.
+3. Rate-limits to **3 submissions per IP per hour** (in-memory; swap to
+   Vercel KV when provisioned).
+4. Sends a notification email to `partneri@holterservice.eu` (subject
+   includes ustanova + mjesto, body is HTML + text).
+5. Sends a Croatian autoresponder to the submitter with the Cal.com link.
+6. Redirects the client to `/za-partnere/hvala` on success.
+
+**Required env vars** (see `.env.example`):
+
+| Var                       | Required? | Notes                                   |
+| ------------------------- | --------- | --------------------------------------- |
+| `RESEND_API_KEY`          | Yes       | Endpoint returns 503 without it.        |
+| `PARTNER_INQUIRY_TO`      | Optional  | Default `partneri@holterservice.eu`.    |
+| `PARTNER_INQUIRY_FROM`    | Optional  | Must be a verified Resend sender.       |
+| `PUBLIC_CAL_LINK`         | Optional  | Default `https://cal.com/holterservice`. |
+| `PUBLIC_PLAUSIBLE_DOMAIN` | Optional  | Empty = analytics script not injected.  |
+
+**Analytics events** (sent via `window.plausible(...)` when configured):
+`partner_form_view`, `partner_form_submit_attempt`,
+`partner_form_submit_success`, `partner_form_submit_error`,
+`partner_form_thank_you_view`, `partner_calendar_book_click`.
 
 ## Performance budget
 
@@ -90,9 +116,10 @@ zero JavaScript, comfortably under budget.
 
 ## Deployment
 
-Vercel auto-detects Astro. No `vercel.json` is required. The build command
-is `npm run build` and the output directory is `dist/`. Static-only — no
-serverless functions needed for v1.
+Vercel auto-detects Astro. The `@astrojs/vercel` adapter outputs the
+static pages to the CDN and the `/api/partner-inquiry` route as a Vercel
+serverless function. Configure the env vars in **Project Settings → Env
+Variables** for both Production and Preview (see `.env.example`).
 
 **One-click hookup:**
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkarlo-create%2Fholterservice-eu&project-name=holterservice-eu&repository-name=holterservice-eu)
