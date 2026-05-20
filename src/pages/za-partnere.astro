@@ -123,6 +123,43 @@ const description =
     </div>
   </section>
 
+  <!-- ═══ GDPR — ZAŠTITA PODATAKA ══════════════════════════════════════════ -->
+  <section class="section section-muted">
+    <div class="container gdpr-section">
+      <div class="gdpr-icon" aria-hidden="true">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="gdpr-body">
+        <p class="section-eyebrow">Pravna sigurnost</p>
+        <h2>Zaštita podataka pacijenata</h2>
+        <p>
+          Voditelj obrade osobnih podataka pacijenata u sklopu Holterservice
+          usluge je <strong>Poliklinika Dr. Obad</strong>. Sve obrade snimaka i
+          nalaza obavljaju se u skladu s Općom uredbom o zaštiti podataka
+          (GDPR) i Zakonom o zaštiti osobnih podataka Republike Hrvatske.
+        </p>
+        <p>
+          Snimak se s partnerskog mjesta prosljeđuje sigurnim kanalom u
+          referentnu ustanovu, gdje ga analizira i potpisuje specijalist
+          kardiologije. Partner ne zadržava medicinske podatke pacijenta dulje
+          nego što je potrebno za prijenos snimka.
+        </p>
+        <p>
+          Detaljni protokoli zaštite podataka definirani su u
+          <strong>Sporazumu o partnerstvu</strong> i
+          <strong>Ugovoru o obradi osobnih podataka</strong> koji potpisujemo
+          s partnerom.
+        </p>
+        <p class="gdpr-link-row">
+          <a href="/privatnost" class="gdpr-link">Politika privatnosti →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ KOME ODGOVARA ════════════════════════════════════════════════════ -->
   <section class="section section-muted">
     <div class="container fit-section">
@@ -414,6 +451,82 @@ const description =
   .bento-card.bento-card--accent .commercial-highlights li strong {
     color: #ffffff;
   }
+
+  /* ── GDPR section ────────────────────────────────────────────────────── */
+  .gdpr-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    max-width: 56rem;
+  }
+
+  @media (min-width: 768px) {
+    .gdpr-section {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-8);
+      padding: var(--space-10);
+      align-items: start;
+    }
+  }
+
+  .gdpr-icon {
+    width: 3rem;
+    height: 3rem;
+    background: var(--color-primary-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .gdpr-body h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .gdpr-body h2 { font-size: var(--text-3xl); }
+  }
+
+  .gdpr-body p {
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  .gdpr-body strong {
+    color: var(--color-foreground);
+    font-weight: 600;
+  }
+
+  .gdpr-link-row {
+    margin-top: var(--space-5);
+    margin-bottom: 0;
+  }
+
+  .gdpr-link {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--text-base);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 150ms ease;
+  }
+
+  .gdpr-link:hover { opacity: 0.7; }
 
   /* ── Fit section ─────────────────────────────────────────────────────── */
   .fit-section {
