@@ -120,6 +120,49 @@ const description =
           </ul>
         </div>
       </div>
+
+      {/* v1.1 PATCH: orijentacijska projekcija prihoda po segmentu.
+          Lives on branch `feature/partner-revenue-table`. DO NOT merge
+          until founder + dr. Obad approve publishing the partner share.
+          (Astro/JSX comment — stripped at build, never reaches HTML.) */}
+      <div class="revenue-table-wrap">
+        <h3 class="revenue-table-heading">
+          Orijentacijska projekcija prihoda po segmentu
+        </h3>
+        <div class="revenue-table-scroll" role="region" aria-label="Tablica orijentacijskih prihoda po tipu partnera">
+          <table class="revenue-table">
+            <thead>
+              <tr>
+                <th scope="col">Tip partnera</th>
+                <th scope="col">Tipičan volumen/mj.</th>
+                <th scope="col">Tipičan prihod partnera/mj.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Agencija njege u kući</th>
+                <td>6–8 pretraga</td>
+                <td>120–200 EUR</td>
+              </tr>
+              <tr>
+                <th scope="row">Privatna klinika</th>
+                <td>12–15 pretraga</td>
+                <td>240–375 EUR</td>
+              </tr>
+              <tr>
+                <th scope="row">Dom zdravlja</th>
+                <td>8–12 pretraga</td>
+                <td>160–300 EUR</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="revenue-table-note">
+          Brojke su orijentacijske. Točan model: partner zadržava 20–25 EUR
+          po realiziranoj pretrazi. Volumen ovisi o lokaciji, profilu
+          pacijenata i intenzitetu aktivacije partnerstva.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -413,6 +456,69 @@ const description =
   /* On the dark accent card, force pure white for highlighted strong text */
   .bento-card.bento-card--accent .commercial-highlights li strong {
     color: #ffffff;
+  }
+
+  /* ── v1.1 Revenue table (gated behind feature/partner-revenue-table) ─── */
+  .revenue-table-wrap {
+    margin-top: var(--space-10);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    background: var(--color-background);
+  }
+
+  .revenue-table-heading {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-foreground);
+    margin: 0 0 var(--space-4);
+  }
+
+  .revenue-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .revenue-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    color: var(--color-foreground);
+  }
+
+  .revenue-table th,
+  .revenue-table td {
+    text-align: left;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+  }
+
+  .revenue-table thead th {
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted-foreground);
+    background: var(--color-primary-light);
+  }
+
+  .revenue-table tbody th[scope="row"] {
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .revenue-table tbody tr:last-child th,
+  .revenue-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .revenue-table-note {
+    margin: var(--space-4) 0 0;
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+    color: var(--color-muted-foreground);
   }
 
   /* ── Fit section ─────────────────────────────────────────────────────── */
