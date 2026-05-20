@@ -86,6 +86,7 @@ html {
   -webkit-font-smoothing: antialiased;
   text-size-adjust: 100%;
   overflow-x: clip; /* prevent any element from creating horizontal scroll */
+  scroll-behavior: smooth;
 }
 
 body {
