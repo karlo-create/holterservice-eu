@@ -1,0 +1,222 @@
+---
+/**
+ * Reusable FAQ accordion section.
+ *
+ * Uses native <details>/<summary> for built-in keyboard support
+ * (Tab to focus, Enter/Space to toggle), no JS required.
+ * All items default to closed; multiple items can be open at once.
+ *
+ * The component also emits a FAQPage JSON-LD <script> inline,
+ * so each page that includes <Faq> automatically ships the
+ * schema.org markup eligible for Google FAQ rich results.
+ *
+ * Props:
+ *  - heading: section heading text (e.g. "Često postavljana pitanja")
+ *  - eyebrow: optional eyebrow text above heading
+ *  - items:   array of { question, answer } pairs (Croatian copy)
+ *  - id:      optional id for the section anchor
+ */
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  heading: string;
+  eyebrow?: string;
+  items: FaqItem[];
+  id?: string;
+}
+
+const { heading, eyebrow, items, id } = Astro.props;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<section class="section faq-section" id={id}>
+  <div class="container faq-container">
+    {eyebrow && <p class="section-eyebrow">{eyebrow}</p>}
+    <h2 class="faq-heading">{heading}</h2>
+
+    <ul class="faq-list" role="list">
+      {items.map((item) => (
+        <li class="faq-item">
+          <details class="faq-details">
+            <summary class="faq-summary">
+              <span class="faq-question">{item.question}</span>
+              <span class="faq-indicator" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path class="faq-indicator-h" d="M4 10h12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                  <path class="faq-indicator-v" d="M10 4v12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+
+<style>
+  .faq-section {
+    /* Inherit section spacing from global */
+  }
+
+  .faq-container {
+    max-width: 48rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-3);
+    opacity: 0.8;
+  }
+
+  .faq-heading {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-8);
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .faq-heading {
+      font-size: var(--text-4xl);
+      margin-bottom: var(--space-10);
+    }
+  }
+
+  .faq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .faq-item {
+    /* spacing handled by list gap */
+  }
+
+  .faq-details {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .faq-details[open] {
+    border-color: rgba(20, 87, 164, 0.25);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+    font-size: var(--text-base);
+    color: var(--color-foreground);
+    line-height: var(--leading-snug);
+    transition: background-color 150ms ease;
+  }
+
+  @media (min-width: 768px) {
+    .faq-summary {
+      font-size: var(--text-lg);
+      padding: var(--space-6) var(--space-7);
+    }
+  }
+
+  /* Hide the native disclosure triangle (Safari + WebKit) */
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-summary::marker { display: none; content: ''; }
+
+  .faq-summary:hover {
+    background-color: var(--color-primary-light);
+  }
+
+  .faq-summary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+
+  .faq-question {
+    flex: 1;
+  }
+
+  .faq-indicator {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--radius-full, 999px);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 150ms ease;
+  }
+
+  .faq-indicator-v {
+    transform-origin: center;
+    transition: transform 200ms ease;
+  }
+
+  .faq-details[open] .faq-indicator-v {
+    transform: scaleY(0);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-6) var(--space-6);
+    color: var(--color-muted-foreground);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+
+  @media (min-width: 768px) {
+    .faq-answer {
+      padding: 0 var(--space-7) var(--space-6);
+    }
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Respect users who prefer no motion */
+  @media (prefers-reduced-motion: reduce) {
+    .faq-details,
+    .faq-indicator-v,
+    .faq-summary { transition: none; }
+  }
+</style>

@@ -1,9 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
 
 const title = 'Za pacijente';
 const description =
   'Kako do Holter EKG nalaza specijalista preko partnerske klinike u vašem mjestu. Saznajte što ponijeti, kako teče pretraga i kada očekivati nalaz.';
+
+const patientFaq = [
+  {
+    question: 'Koliko košta pretraga?',
+    answer:
+      'Cijenu određuje partnerska klinika. Tipično 60 EUR. Za točan iznos kontaktirajte partnera.',
+  },
+  {
+    question: 'Pokriva li HZZO ovu pretragu?',
+    answer:
+      'Holterservice radi kao privatna usluga preko partnerskih klinika. HZZO pokrivenost ovisi o statusu partnera i Vašoj uputnici. Pitajte partnera pri naručivanju.',
+  },
+  {
+    question: 'Mogu li tuširati uređaj?',
+    answer:
+      'Ne. Uređaj je otporan na prskanje ali ne na uranjanje. Tuširanje izbjegavajte tijekom nošenja, osim ako vas partner izričito ne uputi drugačije.',
+  },
+  {
+    question: 'Što ako mi se otkače elektroda?',
+    answer:
+      'Nazovite partnersku kliniku. Ne pokušavajte sami namještati. Većina kratkih prekida ne ugrožava kvalitetu nalaza.',
+  },
+  {
+    question: 'Koliko dugo nakon pretrage dobivam nalaz?',
+    answer: 'Tipično nekoliko radnih dana nakon što vratite uređaj.',
+  },
+  {
+    question: 'Mogu li uzimati lijekove i jesti normalno?',
+    answer:
+      'Da. Pretraga ne mijenja vaše uobičajene navike. Upravo zato Holter EKG hvata stvarno stanje srca tijekom vašeg običnog dana.',
+  },
+  {
+    question: 'Što ako se ne mogu vratiti u kliniku za 24 sata?',
+    answer:
+      'Dogovorite drugi termin. Snimka može trajati i nekoliko dana ako je tako dogovoreno.',
+  },
+];
 ---
 
 <BaseLayout title={title} description={description} path="/za-pacijente">
@@ -77,6 +115,13 @@ const description =
       </div>
     </div>
   </section>
+
+  <Faq
+    eyebrow="Pitanja pacijenata"
+    heading="Često postavljana pitanja"
+    items={patientFaq}
+    id="faq"
+  />
 </BaseLayout>
 
 <style>

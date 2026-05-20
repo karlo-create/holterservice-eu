@@ -1,10 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PartnerForm from '../components/PartnerForm.astro';
+import Faq from '../components/Faq.astro';
 
 const title = 'Za partnerske klinike';
 const description =
   'Ponudite pacijentima Holter EKG nalaz specijalista bez slanja u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi ostvarujete novu uslugu i prihod.';
+
+const partnerFaq = [
+  {
+    question: 'Tko snosi odgovornost ako se uređaj pokvari ili izgubi?',
+    answer:
+      'Uređaj ostaje vlasništvo Holterservicea. U slučaju kvara mi smo obvezni izvršiti popravak ili zamjenu. U slučaju gubitka uvjeti su definirani Sporazumom o partnerstvu i ovise o okolnostima.',
+  },
+  {
+    question: 'Koliko dugo traje onboarding od potpisa do prve pretrage?',
+    answer:
+      'Tipično 2 tjedna. Tjedan dana dostava + edukacija osoblja, tjedan dana priprema lokalnih protokola.',
+  },
+  {
+    question: 'Trebam li medicinsko osoblje da bih postavljao uređaj?',
+    answer:
+      'Ne nužno. Obučavamo i medicinsko i ne-medicinsko osoblje (npr. njegovateljice). Po potrebi izdajemo certifikat osposobljenosti.',
+  },
+  {
+    question: 'Koliko brzo pacijent dobiva nalaz?',
+    answer:
+      'Nakon što je snimak proslijeđen referentnoj ustanovi, ciljni rok je nekoliko radnih dana. Hitnost se rješava bilateralno.',
+  },
+  {
+    question: 'Imam li ekskluzivu na svojem području?',
+    answer:
+      'Razgovaramo o tome od slučaja do slučaja. Za otoke i manja mjesta ekskluzivnost ima smisla i moguća je. U urbanim zonama tipično ne.',
+  },
+  {
+    question: 'Mogu li raskinuti suradnju?',
+    answer:
+      'Da. Otkazni rok i uvjeti definirani su Sporazumom o partnerstvu. Cilj je da partnerstvo bude održivo, ne zaključano.',
+  },
+  {
+    question: 'Što s pacijentovim podacima i medicinskom tajnom?',
+    answer:
+      'Voditelj obrade je Poliklinika Dr. Obad. Detalji u sekciji "Zaštita podataka pacijenata" iznad i u Sporazumu o partnerstvu.',
+  },
+];
 ---
 
 <BaseLayout title={title} description={description} path="/za-partnere">
@@ -205,6 +244,14 @@ const description =
       </ol>
     </div>
   </section>
+
+  <!-- ═══ FAQ ═══════════════════════════════════════════════════════════════ -->
+  <Faq
+    eyebrow="Pitanja partnera"
+    heading="Često postavljana pitanja"
+    items={partnerFaq}
+    id="faq"
+  />
 
   <!-- ═══ FORMA ═════════════════════════════════════════════════════════════ -->
   <PartnerForm heading="Pošaljite upit za partnerstvo" id="partner-form-za-partnere" />
