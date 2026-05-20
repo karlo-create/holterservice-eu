@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'EU projekt';
+const description =
+  'Informacije o projektu sufinanciranom sredstvima Europske unije — naziv projekta, fond, iznos sufinanciranja, trajanje, ciljevi i korisnik.';
+---
+
+<BaseLayout title={title} description={description} path="/eu-projekt">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">EU vidljivost</p>
+      <h1>Projekt sufinanciran sredstvima Europske unije</h1>
+
+      <p class="lede">
+        Holterservice je sufinanciran iz sredstava Europske unije. Sukladno
+        pravilima o vidljivosti EU sredstava za razdoblje 2021. – 2027.,
+        na ovoj stranici objavljujemo obvezne informacije o projektu.
+      </p>
+
+      {/*
+        PLACEHOLDER (VEY-175): cijeli sadržaj ove stranice ovisi o ugovoru o
+        dodjeli bespovratnih sredstava. Founder mora dostaviti:
+        - točan naziv projekta
+        - operativni program / fond (NPOO, ESF+, EFRR, EU4Health, …)
+        - ukupnu vrijednost projekta + iznos i postotak EU sufinanciranja
+        - trajanje (datum početka i završetka)
+        - cilj i očekivane rezultate
+        - korisnika (Move Do d.o.o. ili Poliklinika Obad — po ugovoru)
+        - točan tekst obvezne izjave o odricanju odgovornosti za taj fond
+        - službene SVG logotipe (EU + nacionalni / programski lockup)
+      */}
+
+      <h2>Naziv projekta</h2>
+      <p>
+        <span class="placeholder">
+          Točan naziv projekta prema ugovoru o dodjeli bespovratnih sredstava —
+          founder.
+        </span>
+      </p>
+
+      <h2>Operativni program / fond</h2>
+      <p>
+        <span class="placeholder">
+          Npr. „Nacionalni plan oporavka i otpornosti 2021. – 2026. (NPOO)",
+          „Europski socijalni fond plus (ESF+)", „Europski fond za regionalni
+          razvoj (EFRR)", „EU4Health" — founder potvrđuje točan naziv programa
+          i poziva.
+        </span>
+      </p>
+
+      <h2>Vrijednost projekta i iznos sufinanciranja</h2>
+      <ul>
+        <li>
+          <strong>Ukupna vrijednost projekta:</strong>
+          <span class="placeholder">iznos u EUR — founder</span>
+        </li>
+        <li>
+          <strong>Iznos bespovratnih sredstava EU:</strong>
+          <span class="placeholder">iznos u EUR — founder</span>
+        </li>
+        <li>
+          <strong>Stopa sufinanciranja:</strong>
+          <span class="placeholder">postotak (%) — founder</span>
+        </li>
+      </ul>
+
+      <h2>Trajanje projekta</h2>
+      <p>
+        <span class="placeholder">
+          Datum početka – datum završetka projekta prema ugovoru — founder.
+        </span>
+      </p>
+
+      <h2>Cilj projekta</h2>
+      <p>
+        <span class="placeholder">
+          Kratki opis cilja projekta — što se njime postiže za pacijente,
+          partnerske ustanove i sustav zdravstva. Founder dostavlja u skladu s
+          formulacijom iz ugovora.
+        </span>
+      </p>
+
+      <h2>Očekivani rezultati</h2>
+      <ul>
+        <li>
+          <span class="placeholder">
+            Mjerljivi rezultati / pokazatelji iz ugovora (broj nalaza, broj
+            partnerskih ustanova, pokrivenost županija, itd.) — founder.
+          </span>
+        </li>
+      </ul>
+
+      <h2>Korisnik</h2>
+      <p>
+        <span class="placeholder">
+          Naziv korisnika prema ugovoru (Move Do d.o.o. ili Poliklinika Obad),
+          OIB, adresa sjedišta — founder.
+        </span>
+      </p>
+
+      <h2>Kontakt za projekt</h2>
+      <p>
+        Za sva pitanja u vezi s projektom obratite nam se na
+        <a href="mailto:info@holterservice.eu">info@holterservice.eu</a>.
+      </p>
+
+      <h2>Izjava o odgovornosti</h2>
+      <p class="disclaimer">
+        <span class="placeholder">
+          Točan tekst obvezne izjave o odricanju odgovornosti („disclaimer")
+          ovisi o konkretnom pozivu / fondu i propisan je u uputama za
+          korisnike. Tipični obrazac glasi: „Financira Europska unija. Izneseni
+          stavovi i mišljenja stavovi su i mišljenja autora i ne odražavaju
+          nužno službena stajališta Europske unije ili [nadležne agencije /
+          tijela koje provodi program]. Ni Europska unija ni tijelo koje
+          dodjeljuje sredstva ne mogu se smatrati odgovornima za njih." —
+          founder potvrđuje konačnu formulaciju iz ugovora.
+        </span>
+      </p>
+
+      <h2>Više informacija</h2>
+      <ul>
+        <li>
+          Strukturni fondovi:
+          <a href="https://strukturnifondovi.hr" target="_blank" rel="noopener noreferrer">
+            strukturnifondovi.hr
+          </a>
+        </li>
+        <li>
+          EU fondovi (Hrvatska):
+          <a href="https://eu-fondovi.hr" target="_blank" rel="noopener noreferrer">
+            eu-fondovi.hr
+          </a>
+        </li>
+        <li>
+          Smjernice EU komunikacije i vidljivosti:
+          <a
+            href="https://commission.europa.eu/funding-tenders/managing-your-project/communicating-and-raising-eu-visibility_en"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            commission.europa.eu — communicating and raising EU visibility
+          </a>
+        </li>
+      </ul>
+
+      <div class="eu-emblem-wrap" aria-label="Zastava Europske unije">
+        <img
+          src="/eu-flag.svg"
+          alt="Zastava Europske unije"
+          width="240"
+          height="160"
+          class="eu-emblem"
+          loading="lazy"
+        />
+        <p class="eu-emblem-caption">
+          <span class="placeholder">
+            Sufinancira / Financira Europska unija — founder potvrđuje točnu
+            formulaciju za ovaj program.
+          </span>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .lede {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-muted-foreground);
+    margin-bottom: var(--space-8);
+  }
+
+  .disclaimer {
+    border-left: 3px solid var(--color-primary);
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-surface-muted, #f7f5f2);
+    border-radius: 0.25rem;
+  }
+
+  .placeholder {
+    color: var(--color-muted-foreground);
+    font-style: italic;
+  }
+
+  .eu-emblem-wrap {
+    margin-top: var(--space-12);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border, #e4e1db);
+    border-radius: 0.5rem;
+    text-align: center;
+    background: #ffffff;
+  }
+
+  .eu-emblem {
+    /* keep 1.5:1 aspect; isolated, not overlapping (per EU 2021-2027 rules) */
+    width: min(240px, 60vw);
+    height: auto;
+    display: block;
+    margin: 0 auto var(--space-3);
+  }
+
+  .eu-emblem-caption {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    margin: 0;
+  }
+</style>

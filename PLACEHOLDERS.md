@@ -100,7 +100,38 @@ comment in code, add a row here too.
   `/og-default.png` when designer ships proper brand assets and update the
   default in `src/components/Seo.astro`.
 
-## 8. Analytics
+## 8. EU visibility (VEY-175)
+
+P0 for launch — Holterservice is EU-co-financed and must comply with EU
+2021-2027 visual identity rules. Site ships a structurally-complete page
+and a global footer banner; founder must supply the exact content below
+before public launch.
+
+- **Funding-agreement details.** Founder supplies (per ugovor o dodjeli
+  bespovratnih sredstava):
+  - Točan naziv projekta
+  - Operativni program / fond (NPOO, ESF+, EFRR, EU4Health, …) i poziv
+  - Ukupna vrijednost projekta + iznos i postotak EU sufinanciranja
+  - Datum početka i završetka projekta
+  - Cilj i mjerljivi očekivani rezultati / pokazatelji
+  - Korisnik (Move Do d.o.o. ili Poliklinika Obad — po ugovoru), OIB, adresa
+  - File: `src/pages/eu-projekt.astro`
+- **Disclaimer wording.** Each fund has its own propisana izjava o
+  odricanju odgovornosti. Founder confirms exact sentence for this
+  programme (template included as placeholder).
+  - File: `src/pages/eu-projekt.astro`
+- **Banner wording.** "Sufinancira" vs "Financira Europska unija" — founder
+  confirms which applies to this programme.
+  - File: `src/components/Footer.astro`
+- **Official combined logo lockup.** Generic geometrically-correct EU flag
+  ships at `public/eu-flag.svg` (Reflex Blue #003399 + Yellow #FFCC00,
+  3:2 = 1.5:1 aspect, 12 stars per spec). Founder should replace with the
+  official programme-specific lockup SVG (EU emblem + nacionalni / programski
+  logo, where mandated) once provided by the funding authority.
+  - File: `public/eu-flag.svg`, plus references in
+    `src/components/Footer.astro` and `src/pages/eu-projekt.astro`
+
+## 9. Analytics
 
 - **None installed.** Cookie policy currently states only technically
   necessary cookies. If analytics (e.g. Plausible, Umami) is added later,

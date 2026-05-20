@@ -48,6 +48,33 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
+  {/*
+    EU visibility banner (VEY-175). Required on every page per EU 2021-2027
+    visual identity rules. Flag is isolated (own row), in EU colours (#003399
+    + #FFCC00), 1.5:1 aspect, ≥24px height. Wording "Sufinancira / Financira
+    Europska unija" must be confirmed by founder per the specific funding
+    programme. Detailed project info lives on /eu-projekt.
+  */}
+  <div class="footer-eu" aria-label="Sufinancira Europska unija">
+    <div class="container footer-eu-inner">
+      <a href="/eu-projekt" class="footer-eu-link">
+        <img
+          src="/eu-flag.svg"
+          alt="Zastava Europske unije"
+          width="42"
+          height="28"
+          class="footer-eu-flag"
+          loading="lazy"
+        />
+        <span class="footer-eu-text">
+          {/* PLACEHOLDER (VEY-175): founder potvrđuje „Sufinancira" ili „Financira" — ovisi o programu. */}
+          Sufinancira Europska unija
+        </span>
+        <span class="footer-eu-cta" aria-hidden="true">Saznajte više o projektu →</span>
+      </a>
+    </div>
+  </div>
+
   <div class="footer-bottom">
     <div class="container footer-meta">
       <small>&copy; {year} Holterservice. Sva prava pridržana.</small>
@@ -55,6 +82,7 @@ const year = new Date().getFullYear();
         <a href="/privatnost">Privatnost</a>
         <a href="/kolacici">Kolačići</a>
         <a href="/impressum">Impressum</a>
+        <a href="/eu-projekt">EU projekt</a>
       </small>
     </div>
   </div>
@@ -135,6 +163,55 @@ const year = new Date().getFullYear();
   }
 
   ul a:hover { color: var(--color-dark-fg); }
+
+  /* EU visibility banner (VEY-175) — isolated row above the bottom bar */
+  .footer-eu {
+    border-top: 1px solid var(--color-dark-border);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .footer-eu-inner {
+    padding-block: var(--space-4);
+  }
+
+  .footer-eu-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+    color: var(--color-dark-fg);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    padding: var(--space-2) 0;
+    transition: color 150ms ease;
+  }
+
+  .footer-eu-link:hover { color: var(--color-dark-fg); }
+  .footer-eu-link:hover .footer-eu-cta { text-decoration: underline; }
+
+  .footer-eu-flag {
+    /* 1.5:1 ratio, 28px height ≈ 1cm at typical screen DPI; isolated by gap */
+    width: 42px;
+    height: 28px;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+
+  .footer-eu-text {
+    font-weight: 600;
+    color: var(--color-dark-fg);
+  }
+
+  .footer-eu-cta {
+    color: var(--color-dark-fg-muted);
+    margin-left: auto;
+    font-size: var(--text-xs);
+  }
+
+  @media (max-width: 480px) {
+    .footer-eu-cta { margin-left: 0; }
+  }
 
   /* Bottom bar */
   .footer-bottom {
