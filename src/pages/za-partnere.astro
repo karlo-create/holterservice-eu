@@ -207,10 +207,20 @@ const description =
   </section>
 
   <!-- ═══ FORMA ═════════════════════════════════════════════════════════════ -->
-  <PartnerForm heading="Pošaljite upit za partnerstvo" id="partner-form-za-partnere" />
+  <div id="kontakt-forma" class="kontakt-forma-anchor">
+    <PartnerForm heading="Pošaljite upit za partnerstvo" id="partner-form-za-partnere" />
+  </div>
 </BaseLayout>
 
 <style>
+  /* ── Anchor target ───────────────────────────────────────────────────
+     `scroll-margin-top` lifts the scroll landing point so the fixed
+     header doesn't cover the form heading when navigating to
+     /za-partnere#kontakt-forma. */
+  .kontakt-forma-anchor {
+    scroll-margin-top: 80px;
+  }
+
   /* ── Page hero ───────────────────────────────────────────────────────── */
   .page-hero {
     background: var(--color-accent);

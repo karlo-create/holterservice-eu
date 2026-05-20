@@ -102,6 +102,18 @@ comment in code, add a row here too.
 
 ## 8. Analytics
 
-- **None installed.** Cookie policy currently states only technically
-  necessary cookies. If analytics (e.g. Plausible, Umami) is added later,
-  update `/kolacici` table and re-evaluate consent banner need.
+- **Plausible (cookieless) — opt-in via env var.** Set
+  `PUBLIC_PLAUSIBLE_DOMAIN=holterservice.eu` (Vercel project env) to enable
+  the script in `BaseLayout.astro`. When unset, no script is loaded and no
+  events fire. Plausible is cookieless and does not collect personal data,
+  so no consent banner is required.
+- **Custom events fired automatically** (see `BaseLayout.astro`):
+  `partner_form_view`, `partner_form_submit_attempt`,
+  `partner_email_click`, `partner_phone_click`,
+  `partner_calendar_book_click`, `patient_partner_card_click`.
+- **Pending:** `partner_form_submit_success` / `partner_form_submit_error`
+  are wired in spirit but cannot fire today because the form is `mailto:`.
+  Add them in the response handler once a real POST endpoint replaces the
+  mailto action (see PartnerForm.astro).
+- **If GA4 is chosen instead:** requires full cookie consent flow
+  (banner + reject-all + cookie table update). Leave Plausible as default.
