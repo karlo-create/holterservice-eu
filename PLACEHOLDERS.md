@@ -100,29 +100,29 @@ comment in code, add a row here too.
   `/og-default.png` when designer ships proper brand assets and update the
   default in `src/components/Seo.astro`.
 
-## 8. EU visibility (VEY-175)
+## 8. EU visibility (VEY-175 / VEY-181)
 
-P0 for launch — Holterservice is EU-co-financed and must comply with EU
-2021-2027 visual identity rules. Site ships a structurally-complete page
-and a global footer banner; founder must supply the exact content below
-before public launch.
+Content resolved in VEY-181 from founder-verified source
+(holterservice.eu/?page_id=212). Page `/eu-projekt` now carries the exact
+project content, fields, and disclaimer; footer banner wording confirmed
+as "Sufinancira Europska unija" (~31.28% EU share, NPOO).
 
-- **Funding-agreement details.** Founder supplies (per ugovor o dodjeli
-  bespovratnih sredstava):
-  - Točan naziv projekta
-  - Operativni program / fond (NPOO, ESF+, EFRR, EU4Health, …) i poziv
-  - Ukupna vrijednost projekta + iznos i postotak EU sufinanciranja
-  - Datum početka i završetka projekta
-  - Cilj i mjerljivi očekivani rezultati / pokazatelji
-  - Korisnik (Move Do d.o.o. ili Poliklinika Obad — po ugovoru), OIB, adresa
-  - File: `src/pages/eu-projekt.astro`
-- **Disclaimer wording.** Each fund has its own propisana izjava o
-  odricanju odgovornosti. Founder confirms exact sentence for this
-  programme (template included as placeholder).
-  - File: `src/pages/eu-projekt.astro`
-- **Banner wording.** "Sufinancira" vs "Financira Europska unija" — founder
-  confirms which applies to this programme.
-  - File: `src/components/Footer.astro`
+Resolved fields:
+- Naziv projekta: "Holterservice — Inovativna digitalna platforma za rano
+  otkrivanje kardiovaskularnih bolesti"
+- Operativni program / fond: Mehanizam za oporavak i otpornost
+  (NPOO / NextGenerationEU)
+- Ukupna vrijednost: 933.155,18 EUR
+- EU sufinanciranje: 291.877,05 EUR
+- Razdoblje provedbe: 16.01.2023. – 16.01.2025.
+- Korisnik: Poliklinika dr. Obad
+- Disclaimer: "Projekt je sufinanciran iz Mehanizma za oporavak i
+  otpornost. Sadržaj objavljenog materijala isključiva je odgovornost
+  Poliklinike dr. Obad."
+- Banner wording: "Sufinancira Europska unija"
+- Files: `src/pages/eu-projekt.astro`, `src/components/Footer.astro`
+
+Still open:
 - **Official combined logo lockup.** Generic geometrically-correct EU flag
   ships at `public/eu-flag.svg` (Reflex Blue #003399 + Yellow #FFCC00,
   3:2 = 1.5:1 aspect, 12 stars per spec). Founder should replace with the

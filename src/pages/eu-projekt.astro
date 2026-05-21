@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const title = 'EU projekt';
 const description =
-  'Informacije o projektu sufinanciranom sredstvima Europske unije — naziv projekta, fond, iznos sufinanciranja, trajanje, ciljevi i korisnik.';
+  'Holterservice — Inovativna digitalna platforma za rano otkrivanje kardiovaskularnih bolesti. Projekt sufinanciran iz Mehanizma za oporavak i otpornost (NPOO / NextGenerationEU).';
 ---
 
 <BaseLayout title={title} description={description} path="/eu-projekt">
@@ -13,137 +13,67 @@ const description =
       <h1>Projekt sufinanciran sredstvima Europske unije</h1>
 
       <p class="lede">
-        Holterservice je sufinanciran iz sredstava Europske unije. Sukladno
-        pravilima o vidljivosti EU sredstava za razdoblje 2021. – 2027.,
-        na ovoj stranici objavljujemo obvezne informacije o projektu.
+        Sukladno pravilima o vidljivosti EU sredstava za razdoblje 2021. – 2027.
+        objavljujemo obvezne informacije o projektu.
       </p>
-
-      {/*
-        PLACEHOLDER (VEY-175): cijeli sadržaj ove stranice ovisi o ugovoru o
-        dodjeli bespovratnih sredstava. Founder mora dostaviti:
-        - točan naziv projekta
-        - operativni program / fond (NPOO, ESF+, EFRR, EU4Health, …)
-        - ukupnu vrijednost projekta + iznos i postotak EU sufinanciranja
-        - trajanje (datum početka i završetka)
-        - cilj i očekivane rezultate
-        - korisnika (Move Do d.o.o. ili Poliklinika Obad — po ugovoru)
-        - točan tekst obvezne izjave o odricanju odgovornosti za taj fond
-        - službene SVG logotipe (EU + nacionalni / programski lockup)
-      */}
 
       <h2>Naziv projekta</h2>
       <p>
-        <span class="placeholder">
-          Točan naziv projekta prema ugovoru o dodjeli bespovratnih sredstava —
-          founder.
-        </span>
+        Holterservice — Inovativna digitalna platforma za rano otkrivanje
+        kardiovaskularnih bolesti
       </p>
 
-      <h2>Operativni program / fond</h2>
+      <h2>Kratki opis projekta</h2>
       <p>
-        <span class="placeholder">
-          Npr. „Nacionalni plan oporavka i otpornosti 2021. – 2026. (NPOO)",
-          „Europski socijalni fond plus (ESF+)", „Europski fond za regionalni
-          razvoj (EFRR)", „EU4Health" — founder potvrđuje točan naziv programa
-          i poziva.
-        </span>
+        Projektom se Prijavitelj projekta Poliklinika Dr. Obad priprema za
+        tržišnu komercijalizaciju novih usluga „Holterservice – telemedicinska
+        dijagnostika rada srca i dijagnostika krvnog tlaka". Kako bi se
+        inovativne usluge uspješno pružile na tržištu, društvo će tijekom
+        provedbe projekta inovirati organizaciju poslovanja te procese u
+        poslovanju. Nadalje, projektom se planira nabaviti materijalna i
+        nematerijalna imovina koja služi za jačanje inovativnog kapaciteta i
+        uvođenja novog procesa u poslovanje, a s ciljem spremnosti za
+        komercijalizaciju nove usluge.
       </p>
 
-      <h2>Vrijednost projekta i iznos sufinanciranja</h2>
-      <ul>
-        <li>
-          <strong>Ukupna vrijednost projekta:</strong>
-          <span class="placeholder">iznos u EUR — founder</span>
-        </li>
-        <li>
-          <strong>Iznos bespovratnih sredstava EU:</strong>
-          <span class="placeholder">iznos u EUR — founder</span>
-        </li>
-        <li>
-          <strong>Stopa sufinanciranja:</strong>
-          <span class="placeholder">postotak (%) — founder</span>
-        </li>
-      </ul>
-
-      <h2>Trajanje projekta</h2>
+      <h2>Ciljevi i očekivani rezultati projekta</h2>
       <p>
-        <span class="placeholder">
-          Datum početka – datum završetka projekta prema ugovoru — founder.
-        </span>
+        Projektom se stvara potpuno novi proces za Polikliniku — proces
+        pružanja telemedicinskih usluga u području kardiologije, što je ujedno
+        i temeljni iskorak u procesu digitalne transformacije Poliklinike.
+        Oprema koja se nabavlja omogućit će značajne promjene u smislu
+        implementacije i automatiziranja ovog inovativnog procesa.
       </p>
 
-      <h2>Cilj projekta</h2>
-      <p>
-        <span class="placeholder">
-          Kratki opis cilja projekta — što se njime postiže za pacijente,
-          partnerske ustanove i sustav zdravstva. Founder dostavlja u skladu s
-          formulacijom iz ugovora.
-        </span>
-      </p>
+      <h2>Podaci o projektu</h2>
+      <dl class="eu-facts">
+        <dt>Naziv korisnika</dt>
+        <dd>Poliklinika dr. Obad</dd>
 
-      <h2>Očekivani rezultati</h2>
-      <ul>
-        <li>
-          <span class="placeholder">
-            Mjerljivi rezultati / pokazatelji iz ugovora (broj nalaza, broj
-            partnerskih ustanova, pokrivenost županija, itd.) — founder.
-          </span>
-        </li>
-      </ul>
+        <dt>Ukupna vrijednost projekta</dt>
+        <dd>933.155,18 EUR</dd>
 
-      <h2>Korisnik</h2>
-      <p>
-        <span class="placeholder">
-          Naziv korisnika prema ugovoru (Move Do d.o.o. ili Poliklinika Obad),
-          OIB, adresa sjedišta — founder.
-        </span>
-      </p>
+        <dt>EU sufinanciranje projekta</dt>
+        <dd>291.877,05 EUR</dd>
 
-      <h2>Kontakt za projekt</h2>
-      <p>
-        Za sva pitanja u vezi s projektom obratite nam se na
-        <a href="mailto:info@holterservice.eu">info@holterservice.eu</a>.
-      </p>
+        <dt>Razdoblje provedbe projekta</dt>
+        <dd>16.01.2023. – 16.01.2025.</dd>
 
-      <h2>Izjava o odgovornosti</h2>
-      <p class="disclaimer">
-        <span class="placeholder">
-          Točan tekst obvezne izjave o odricanju odgovornosti („disclaimer")
-          ovisi o konkretnom pozivu / fondu i propisan je u uputama za
-          korisnike. Tipični obrazac glasi: „Financira Europska unija. Izneseni
-          stavovi i mišljenja stavovi su i mišljenja autora i ne odražavaju
-          nužno službena stajališta Europske unije ili [nadležne agencije /
-          tijela koje provodi program]. Ni Europska unija ni tijelo koje
-          dodjeljuje sredstva ne mogu se smatrati odgovornima za njih." —
-          founder potvrđuje konačnu formulaciju iz ugovora.
-        </span>
-      </p>
+        <dt>Operativni program / fond</dt>
+        <dd>Mehanizam za oporavak i otpornost (NPOO / NextGenerationEU)</dd>
+      </dl>
 
       <h2>Više informacija</h2>
-      <ul>
-        <li>
-          Strukturni fondovi:
-          <a href="https://strukturnifondovi.hr" target="_blank" rel="noopener noreferrer">
-            strukturnifondovi.hr
-          </a>
-        </li>
-        <li>
-          EU fondovi (Hrvatska):
-          <a href="https://eu-fondovi.hr" target="_blank" rel="noopener noreferrer">
-            eu-fondovi.hr
-          </a>
-        </li>
-        <li>
-          Smjernice EU komunikacije i vidljivosti:
-          <a
-            href="https://commission.europa.eu/funding-tenders/managing-your-project/communicating-and-raising-eu-visibility_en"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            commission.europa.eu — communicating and raising EU visibility
-          </a>
-        </li>
-      </ul>
+      <p>
+        Poveznica na nadležno tijelo / više informacija o NPOO:
+        <a
+          href="https://fondovieu.gov.hr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://fondovieu.gov.hr/
+        </a>
+      </p>
 
       <div class="eu-emblem-wrap" aria-label="Zastava Europske unije">
         <img
@@ -154,13 +84,13 @@ const description =
           class="eu-emblem"
           loading="lazy"
         />
-        <p class="eu-emblem-caption">
-          <span class="placeholder">
-            Sufinancira / Financira Europska unija — founder potvrđuje točnu
-            formulaciju za ovaj program.
-          </span>
-        </p>
+        <p class="eu-emblem-caption">Sufinancira Europska unija</p>
       </div>
+
+      <p class="disclaimer">
+        Projekt je sufinanciran iz Mehanizma za oporavak i otpornost. Sadržaj
+        objavljenog materijala isključiva je odgovornost Poliklinike dr. Obad.
+      </p>
     </div>
   </section>
 </BaseLayout>
@@ -182,16 +112,50 @@ const description =
     margin-bottom: var(--space-8);
   }
 
-  .disclaimer {
-    border-left: 3px solid var(--color-primary);
-    padding: var(--space-4) var(--space-5);
+  /* Key-value block for project facts */
+  .eu-facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2) var(--space-6);
+    margin: var(--space-4) 0 var(--space-8);
+    padding: var(--space-5) var(--space-6);
+    border: 1px solid var(--color-border, #e4e1db);
+    border-radius: 0.5rem;
     background: var(--color-surface-muted, #f7f5f2);
-    border-radius: 0.25rem;
   }
 
-  .placeholder {
+  @media (min-width: 640px) {
+    .eu-facts {
+      grid-template-columns: max-content 1fr;
+      align-items: baseline;
+    }
+  }
+
+  .eu-facts dt {
+    font-weight: 600;
+    color: var(--color-foreground, inherit);
+  }
+
+  .eu-facts dd {
+    margin: 0 0 var(--space-2) 0;
     color: var(--color-muted-foreground);
+  }
+
+  @media (min-width: 640px) {
+    .eu-facts dd {
+      margin-bottom: 0;
+    }
+  }
+
+  .disclaimer {
+    margin-top: var(--space-10);
+    padding: var(--space-4) var(--space-5);
+    border-left: 3px solid var(--color-primary);
+    background: var(--color-surface-muted, #f7f5f2);
+    border-radius: 0.25rem;
     font-style: italic;
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
   }
 
   .eu-emblem-wrap {
@@ -215,5 +179,6 @@ const description =
     font-size: var(--text-sm);
     color: var(--color-muted-foreground);
     margin: 0;
+    font-weight: 600;
   }
 </style>
