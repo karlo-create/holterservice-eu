@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  European Union flag — compliant geometry per Council of Europe / EU
+  visibility guidelines 2021-2027.
+
+  - Background: Reflex Blue (#003399)
+  - Stars:      Yellow      (#FFCC00)
+  - Aspect:     3:2 (1.5:1, W:H)
+  - 12 five-pointed stars on an invisible circle of radius = height / 3
+  - Each star inscribed in an invisible circle of radius = height / 18
+  - Star points are vertical; one point of each star points to flag top
+
+  This is a generic, geometrically-correct rendition. Founder should replace
+  with the official combined funding-programme logo lockup (NPOO / ESF+ /
+  EFRR / etc.) when the funding agreement asset is provided.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 540"
+     role="img" aria-labelledby="eu-flag-title" focusable="false">
+  <title id="eu-flag-title">Zastava Europske unije</title>
+  <rect width="810" height="540" fill="#003399"/>
+  <g fill="#FFCC00">
+    <g id="eu-star">
+      <path d="M0,-30 L6.74,-9.27 L28.53,-9.27 L10.90,3.54 L17.63,24.27 L0,11.46 L-17.63,24.27 L-10.90,3.54 L-28.53,-9.27 L-6.74,-9.27 Z"/>
+    </g>
+  </g>
+  <!-- 12 stars at clock positions, center (405, 270), radius 180 -->
+  <use href="#eu-star" x="405" y="90"/>
+  <use href="#eu-star" x="495" y="114.12"/>
+  <use href="#eu-star" x="560.88" y="180"/>
+  <use href="#eu-star" x="585" y="270"/>
+  <use href="#eu-star" x="560.88" y="360"/>
+  <use href="#eu-star" x="495" y="425.88"/>
+  <use href="#eu-star" x="405" y="450"/>
+  <use href="#eu-star" x="315" y="425.88"/>
+  <use href="#eu-star" x="249.12" y="360"/>
+  <use href="#eu-star" x="225" y="270"/>
+  <use href="#eu-star" x="249.12" y="180"/>
+  <use href="#eu-star" x="315" y="114.12"/>
+</svg>

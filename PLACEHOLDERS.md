@@ -164,7 +164,38 @@ Templates are GDPR-aligned + HR e-trgovina, but final wording needs **pravna pro
 
 ---
 
-## 8. Analytics
+## 8. EU visibility (VEY-175 / VEY-181)
+
+Content resolved in VEY-181 from founder-verified source
+(holterservice.eu/?page_id=212). Page `/eu-projekt` now carries the exact
+project content, fields, and disclaimer; footer banner wording confirmed
+as "Sufinancira Europska unija" (~31.28% EU share, NPOO).
+
+Resolved fields:
+- Naziv projekta: "Holterservice — Inovativna digitalna platforma za rano
+  otkrivanje kardiovaskularnih bolesti"
+- Operativni program / fond: Mehanizam za oporavak i otpornost
+  (NPOO / NextGenerationEU)
+- Ukupna vrijednost: 933.155,18 EUR
+- EU sufinanciranje: 291.877,05 EUR
+- Razdoblje provedbe: 16.01.2023. – 16.01.2025.
+- Korisnik: Poliklinika dr. Obad
+- Disclaimer: "Projekt je sufinanciran iz Mehanizma za oporavak i
+  otpornost. Sadržaj objavljenog materijala isključiva je odgovornost
+  Poliklinike dr. Obad."
+- Banner wording: "Sufinancira Europska unija"
+- Files: `src/pages/eu-projekt.astro`, `src/components/Footer.astro`
+
+Still open:
+- **Official combined logo lockup.** Generic geometrically-correct EU flag
+  ships at `public/eu-flag.svg` (Reflex Blue #003399 + Yellow #FFCC00,
+  3:2 = 1.5:1 aspect, 12 stars per spec). Founder should replace with the
+  official programme-specific lockup SVG (EU emblem + nacionalni / programski
+  logo, where mandated) once provided by the funding authority.
+  - File: `public/eu-flag.svg`, plus references in
+    `src/components/Footer.astro` and `src/pages/eu-projekt.astro`
+
+## 9. Analytics
 
 > **Note:** Plausible details below describe planned/in-flight work on parallel branches (VEY-170, VEY-177). The VEY-172 branch itself does not yet contain that wiring; this doc reflects the consolidated state once the in-flight branches merge to main.
 

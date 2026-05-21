@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'EU projekt';
+const description =
+  'Holterservice - Inovativna digitalna platforma za rano otkrivanje kardiovaskularnih bolesti. Projekt sufinanciran iz Mehanizma za oporavak i otpornost (NPOO / NextGenerationEU).';
+---
+
+<BaseLayout title={title} description={description} path="/eu-projekt">
+  <section class="section">
+    <div class="container prose">
+      <p class="eyebrow">EU vidljivost</p>
+      <h1>Projekt sufinanciran sredstvima Europske unije</h1>
+
+      <p class="lede">
+        Sukladno pravilima o vidljivosti EU sredstava za razdoblje 2021. – 2027.
+        objavljujemo obvezne informacije o projektu.
+      </p>
+
+      <h2>Naziv projekta</h2>
+      <p>
+        Holterservice - Inovativna digitalna platforma za rano otkrivanje
+        kardiovaskularnih bolesti
+      </p>
+
+      <h2>Kratki opis projekta</h2>
+      <p>
+        Projektom se Prijavitelj projekta Poliklinika Dr. Obad priprema za
+        tržišnu komercijalizaciju novih usluga „Holterservice – telemedicinska
+        dijagnostika rada srca i dijagnostika krvnog tlaka". Kako bi se
+        inovativne usluge uspješno pružile na tržištu, društvo će tijekom
+        provedbe projekta inovirati organizaciju poslovanja te procese u
+        poslovanju. Nadalje, projektom se planira nabaviti materijalna i
+        nematerijalna imovina koja služi za jačanje inovativnog kapaciteta i
+        uvođenja novog procesa u poslovanje, a s ciljem spremnosti za
+        komercijalizaciju nove usluge.
+      </p>
+
+      <h2>Ciljevi i očekivani rezultati projekta</h2>
+      <p>
+        Projektom se stvara potpuno novi proces za Polikliniku — proces
+        pružanja telemedicinskih usluga u području kardiologije, što je ujedno
+        i temeljni iskorak u procesu digitalne transformacije Poliklinike.
+        Oprema koja se nabavlja omogućit će značajne promjene u smislu
+        implementacije i automatiziranja ovog inovativnog procesa.
+      </p>
+
+      <h2>Podaci o projektu</h2>
+      <dl class="eu-facts">
+        <dt>Naziv korisnika</dt>
+        <dd>Poliklinika dr. Obad</dd>
+
+        <dt>Ukupna vrijednost projekta</dt>
+        <dd>933.155,18 EUR</dd>
+
+        <dt>EU sufinanciranje projekta</dt>
+        <dd>291.877,05 EUR</dd>
+
+        <dt>Razdoblje provedbe projekta</dt>
+        <dd>16.01.2023. – 16.01.2025.</dd>
+
+        <dt>Operativni program / fond</dt>
+        <dd>Mehanizam za oporavak i otpornost (NPOO / NextGenerationEU)</dd>
+      </dl>
+
+      <h2>Više informacija</h2>
+      <p>
+        Poveznica na nadležno tijelo / više informacija o NPOO:
+        <a
+          href="https://fondovieu.gov.hr/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://fondovieu.gov.hr/
+        </a>
+      </p>
+
+      <div class="eu-emblem-wrap" aria-label="Zastava Europske unije">
+        <img
+          src="/eu-flag.svg"
+          alt="Zastava Europske unije"
+          width="240"
+          height="160"
+          class="eu-emblem"
+          loading="lazy"
+        />
+        <p class="eu-emblem-caption">Sufinancira Europska unija</p>
+      </div>
+
+      <p class="disclaimer">
+        Projekt je sufinanciran iz Mehanizma za oporavak i otpornost. Sadržaj
+        objavljenog materijala isključiva je odgovornost Poliklinike dr. Obad.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-3);
+  }
+
+  .lede {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--color-muted-foreground);
+    margin-bottom: var(--space-8);
+  }
+
+  /* Key-value block for project facts */
+  .eu-facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2) var(--space-6);
+    margin: var(--space-4) 0 var(--space-8);
+    padding: var(--space-5) var(--space-6);
+    border: 1px solid var(--color-border, #e4e1db);
+    border-radius: 0.5rem;
+    background: var(--color-surface-muted, #f7f5f2);
+  }
+
+  @media (min-width: 640px) {
+    .eu-facts {
+      grid-template-columns: max-content 1fr;
+      align-items: baseline;
+    }
+  }
+
+  .eu-facts dt {
+    font-weight: 600;
+    color: var(--color-foreground, inherit);
+  }
+
+  .eu-facts dd {
+    margin: 0 0 var(--space-2) 0;
+    color: var(--color-muted-foreground);
+  }
+
+  @media (min-width: 640px) {
+    .eu-facts dd {
+      margin-bottom: 0;
+    }
+  }
+
+  .disclaimer {
+    margin-top: var(--space-10);
+    padding: var(--space-4) var(--space-5);
+    border-left: 3px solid var(--color-primary);
+    background: var(--color-surface-muted, #f7f5f2);
+    border-radius: 0.25rem;
+    font-style: italic;
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
+  }
+
+  .eu-emblem-wrap {
+    margin-top: var(--space-12);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border, #e4e1db);
+    border-radius: 0.5rem;
+    text-align: center;
+    background: #ffffff;
+  }
+
+  .eu-emblem {
+    /* keep 1.5:1 aspect; isolated, not overlapping (per EU 2021-2027 rules) */
+    width: min(240px, 60vw);
+    height: auto;
+    display: block;
+    margin: 0 auto var(--space-3);
+  }
+
+  .eu-emblem-caption {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    margin: 0;
+    font-weight: 600;
+  }
+</style>
