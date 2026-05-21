@@ -1,6 +1,6 @@
 ---
 /**
- * CroatiaMap — inline SVG of Croatia with partner pins.
+ * CroatiaMap: inline SVG of Croatia with partner pins.
  *
  * Receives a list of pins with lat/lng/label/slug. Projects coordinates onto
  * the SVG viewport using a simple equirectangular projection bounded to
@@ -14,7 +14,7 @@
  * borders (mainland + main islands). It is not a survey-grade map; it is a
  * legible storytelling map for showing geographic spread. The pin coordinates
  * project correctly so the spread of Virovitica/Zagreb/Hvar reads as
- * "kontinent — glavni grad — otok".
+ * "kontinent, glavni grad, otok".
  */
 
 interface Pin {
@@ -35,8 +35,8 @@ const { pins } = Astro.props as Props;
 
 // ── Projection ─────────────────────────────────────────────────────────────
 // Croatia bounding box (rough):
-//   lng: 13.30  – 19.45
-//   lat: 42.30  – 46.55
+//   lng: 13.30 to 19.45
+//   lat: 42.30 to 46.55
 // SVG viewBox is 0 0 800 600.
 const VIEW_W = 800;
 const VIEW_H = 600;
@@ -64,7 +64,7 @@ const projectedPins = pins.map((p) => ({
     role="img"
     aria-labelledby="croatia-map-title croatia-map-desc"
   >
-    <title id="croatia-map-title">Mapa Hrvatske — lokacije partnera</title>
+    <title id="croatia-map-title">Mapa Hrvatske: lokacije partnera</title>
     <desc id="croatia-map-desc">
       Stilizirana mapa Hrvatske s pinovima na lokacijama partnerskih klinika.
     </desc>
@@ -72,7 +72,7 @@ const projectedPins = pins.map((p) => ({
     {/* ── Croatia mainland + Istria outline (simplified) ─────────────────── */}
     {/*
       Path constructed from approximated control points along HR borders.
-      Stylized — not survey-grade. Recognizable shape: Istria + Lika +
+      Stylized, not survey-grade. Recognizable shape: Istria + Lika +
       Slavonia panhandle + Dalmatian coast.
     */}
     <path
@@ -160,7 +160,7 @@ const projectedPins = pins.map((p) => ({
         <text x={p.x} y={p.y - 22} class="hr-pin-label" text-anchor="middle">
           {p.city}
         </text>
-        <title>{p.name ? `${p.name} — ${p.city}` : p.city}</title>
+        <title>{p.name ? `${p.name}, ${p.city}` : p.city}</title>
       </a>
     ))}
   </svg>

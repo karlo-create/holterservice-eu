@@ -38,12 +38,12 @@ export interface Partner {
   website?: string;
   /** Geo coordinates for map plotting. */
   coordinates: { lat: number; lng: number };
-  /** Short 1–2 sentence description. */
+  /** Short 1 to 2 sentence description. */
   description?: string;
 }
 
 /**
- * DEMO DATA — placeholders for Vercel preview shown to dr. Obad.
+ * DEMO DATA: placeholders for Vercel preview shown to dr. Obad.
  * Real partner data (names, addresses, contacts) will replace these entries
  * once consent and details are confirmed. Coordinates are real geographic
  * data for the three target cities (Virovitica, Hvar, Zagreb) and can stay.
@@ -61,7 +61,7 @@ export const partners: Partner[] = [
     website: 'https://example.hr',
     coordinates: { lat: 45.8311, lng: 17.3833 },
     description:
-      'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz — konačni partner bit će potvrđen.)',
+      'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz, konačni partner bit će potvrđen.)',
   },
   {
     slug: 'demo-hvar',
@@ -75,7 +75,7 @@ export const partners: Partner[] = [
     website: 'https://example.hr',
     coordinates: { lat: 43.1729, lng: 16.4413 },
     description:
-      'Partner u programu Holter monitoringa za područje otoka Hvara i okolice. (Demo prikaz — konačni partner bit će potvrđen.)',
+      'Partner u programu Holter monitoringa za područje otoka Hvara i okolice. (Demo prikaz, konačni partner bit će potvrđen.)',
   },
   {
     slug: 'demo-zagreb',
@@ -89,13 +89,13 @@ export const partners: Partner[] = [
     website: 'https://example.hr',
     coordinates: { lat: 45.8150, lng: 15.9819 },
     description:
-      'Partner u programu Holter monitoringa za područje grada Zagreba. (Demo prikaz — konačni partner bit će potvrđen.)',
+      'Partner u programu Holter monitoringa za područje grada Zagreba. (Demo prikaz, konačni partner bit će potvrđen.)',
   },
 ];
 
 /**
  * Known partner cities for SEO meta (long-tail) and map preview.
- * Coordinates are public/known geographic data — safe to ship without consent.
+ * Coordinates are public/known geographic data, safe to ship without consent.
  */
 export const PARTNER_CITIES: ReadonlyArray<{
   city: string;

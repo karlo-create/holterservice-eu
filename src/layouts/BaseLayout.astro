@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, path, ogImage, type } = Astro.props;
 
-// Plausible analytics — only enabled when NEXT_PUBLIC_PLAUSIBLE_DOMAIN is set
+// Plausible analytics: only enabled when NEXT_PUBLIC_PLAUSIBLE_DOMAIN is set
 // (e.g. holterservice.eu). Naming follows spec from VEY-177 even though we
 // run on Astro, so the founder can re-use it if/when stack changes.
 const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
@@ -28,7 +28,7 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#1457a4" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Fonts: Source Serif 4 Variable + Inter Variable — self-hosted via fontsource (imported in global.css) -->
+    <!-- Fonts: Source Serif 4 Variable + Inter Variable, self-hosted via fontsource (imported in global.css) -->
     <Seo title={title} description={description} path={path} ogImage={ogImage} type={type} />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
@@ -36,7 +36,7 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
       name: 'Holterservice',
       url: 'https://holterservice.eu',
       email: 'info@holterservice.eu',
-      description: 'Specijalistički Holter EKG nalaz iz vrhunske ustanove — dostupan u partnerskim klinikama diljem Hrvatske.',
+      description: 'Specijalistički Holter EKG nalaz iz referentne ustanove, dostupan u partnerskim klinikama diljem Hrvatske.',
       areaServed: { '@type': 'Country', name: 'Hrvatska' },
       inLanguage: 'hr-HR',
       medicalSpecialty: 'Cardiovascular'
@@ -115,7 +115,7 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN
               p('partner_form_view');
             }
             form.addEventListener('submit', function () {
-              // mailto: form — we can't observe true success/error from the
+              // mailto: form, we can't observe true success/error from the
               // mail client, so only `submit_attempt` fires here. Once a real
               // POST endpoint exists, fire `partner_form_submit_success` and
               // `partner_form_submit_error` from the response handler.

@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
         <span>Holterservice</span>
       </div>
       <p class="footer-tag">
-        Specijalistički Holter EKG nalaz iz referentne ustanove —
+        Specijalistički Holter EKG nalaz iz referentne ustanove,
         dostupan u partnerskim klinikama diljem Hrvatske.
       </p>
     </div>
@@ -36,13 +36,14 @@ const year = new Date().getFullYear();
         <li><a href="/privatnost">Politika privatnosti</a></li>
         <li><a href="/kolacici">Kolačići</a></li>
         <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/eu-projekt">EU projekt</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <p class="footer-heading">Kontakt</p>
       <ul>
-        {/* PLACEHOLDER: add phone/address when founder confirms — for now only email */}
+        {/* PLACEHOLDER: add phone/address when founder confirms. For now only email */}
         <li><a href="mailto:info@holterservice.eu">info@holterservice.eu</a></li>
       </ul>
     </div>
@@ -52,7 +53,7 @@ const year = new Date().getFullYear();
     EU visibility banner (VEY-175/VEY-181). Required on every page per EU
     2021-2027 visual identity rules. Flag isolated (own row), in EU colours
     (#003399 + #FFCC00), 1.5:1 aspect, ≥24px height. Wording confirmed:
-    "Sufinancira Europska unija" — project is co-financed (~31.28% EU share)
+    "Sufinancira Europska unija" project is co-financed (~31.28% EU share)
     via NPOO. Detailed project info lives on /eu-projekt.
   */}
   <div class="footer-eu" aria-label="Sufinancira Europska unija">
@@ -81,12 +82,6 @@ const year = new Date().getFullYear();
       </p>
       <div class="footer-meta">
         <small>&copy; {year} Holterservice. Sva prava pridržana.</small>
-        <small class="footer-legal-links">
-          <a href="/privatnost">Privatnost</a>
-          <a href="/kolacici">Kolačići</a>
-          <a href="/impressum">Impressum</a>
-          <a href="/eu-projekt">EU projekt</a>
-        </small>
       </div>
     </div>
   </div>
@@ -127,7 +122,7 @@ const year = new Date().getFullYear();
     margin-bottom: var(--space-4);
   }
 
-  /* Gold is used ONLY here — the micro-accent for the footer ECG mark */
+  /* Gold is used ONLY here: the micro-accent for the footer ECG mark */
   .brand-ecg { color: var(--color-gold); }
 
   .footer-tag {
@@ -168,7 +163,7 @@ const year = new Date().getFullYear();
 
   ul a:hover { color: var(--color-dark-fg); }
 
-  /* EU visibility banner (VEY-175) — isolated row above the bottom bar */
+  /* EU visibility banner (VEY-175): isolated row above the bottom bar */
   .footer-eu {
     border-top: 1px solid var(--color-dark-border);
     background: rgba(255, 255, 255, 0.02);

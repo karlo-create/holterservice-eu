@@ -1,8 +1,8 @@
 # Ugovor o obradi osobnih podataka (DPA)
-## Holterservice — predložak za partnersku ustanovu
+## Holterservice: predložak za partnersku ustanovu
 
-**Verzija:** 1.0 (predložak — popuniti podatke o partneru prije potpisa)
-**Pravni okvir:** Uredba (EU) 2016/679 (Opća uredba o zaštiti podataka — GDPR), Zakon o provedbi Opće uredbe o zaštiti podataka (NN 42/2018), Zakon o zdravstvenoj zaštiti (NN 100/2018, izmjene i dopune).
+**Verzija:** 1.0 (predložak, popuniti podatke o partneru prije potpisa)
+**Pravni okvir:** Uredba (EU) 2016/679 (Opća uredba o zaštiti podataka, GDPR), Zakon o provedbi Opće uredbe o zaštiti podataka (NN 42/2018), Zakon o zdravstvenoj zaštiti (NN 100/2018, izmjene i dopune).
 
 ---
 
@@ -26,7 +26,7 @@ Odgovorna osoba: [ime, funkcija, e-pošta]
 
 ## 2. Predmet i svrha obrade
 
-Predmet ovog Ugovora je obrada osobnih podataka pacijenata kojima Partner postavlja Schiller medilog Holter EKG uređaj u sklopu usluge Holterservice. Obrada se obavlja **isključivo u svrhu** kardiološke dijagnostike — snimanje EKG-a, prijenos snimka voditelju obrade, te omogućavanje da specijalist kardiologije analizira snimak i izda nalaz.
+Predmet ovog Ugovora je obrada osobnih podataka pacijenata kojima Partner postavlja Schiller medilog Holter EKG uređaj u sklopu usluge Holterservice. Obrada se obavlja **isključivo u svrhu** kardiološke dijagnostike: snimanje EKG-a, prijenos snimka voditelju obrade, te omogućavanje da specijalist kardiologije analizira snimak i izda nalaz.
 
 Partner ne obrađuje podatke za vlastite svrhe niti ih koristi izvan opsega definiranog ovim Ugovorom.
 
@@ -65,7 +65,7 @@ c) Provoditi odgovarajuće **tehničke i organizacijske mjere** sigurnosti (čl.
 d) Bez odgode (najkasnije 24 sata) **obavijestiti Voditelja obrade** o svakoj povredi sigurnosti osobnih podataka (curenje, gubitak uređaja, neovlašteni pristup), s dovoljno informacija za prijavu AZOP-u.
 e) Pomagati Voditelju obrade pri odgovaranju na zahtjeve ispitanika (pravo pristupa, ispravka, brisanja, ograničenja, prigovora), kao i pri procjenama učinka na zaštitu podataka (DPIA).
 f) **Ne angažirati pod-izvršitelje** bez prethodne pisane suglasnosti Voditelja obrade.
-g) Po isteku ili raskidu ovog Ugovora — vratiti ili uništiti sve osobne podatke i njihove kopije, osim ako pravo Unije ili nacionalno pravo zahtijeva pohranu.
+g) Po isteku ili raskidu ovog Ugovora, vratiti ili uništiti sve osobne podatke i njihove kopije, osim ako pravo Unije ili nacionalno pravo zahtijeva pohranu.
 
 ---
 
@@ -124,11 +124,11 @@ Po raskidu, Partner u roku od 14 dana **vraća ili dokazivo uništava** sve osob
 
 ---
 
-**Voditelj obrade — Poliklinika Dr. Obad**
+**Voditelj obrade: Poliklinika Dr. Obad**
 
 Datum: __________________  Potpis: __________________
 
-**Izvršitelj obrade — Partner**
+**Izvršitelj obrade: Partner**
 
 Datum: __________________  Potpis: __________________
 
