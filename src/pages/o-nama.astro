@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'O nama — dr. Obad i ustanova';
+const title = 'O nama — prof. dr. sc. Ante Obad i Poliklinika Dr. Obad';
 const description =
-  'Iza Holterservice-a stoji dr. Obad, specijalist kardiologije iz provjerene ustanove. Pružamo Holter EKG nalaz partnerskim klinikama diljem Hrvatske.';
+  'Iza Holterservice projekta stoji prof. dr. sc. Ante Obad, dr. med., specijalist interne medicine i subspecijalist kardiologije. Poliklinika Dr. Obad u Splitu — nastavna baza Sveučilišta u Splitu.';
 ---
 
 <BaseLayout title={title} description={description} path="/o-nama">
@@ -14,10 +14,10 @@ const description =
       <p class="page-eyebrow">O nama</p>
       <h1>Specijalistički nalaz, gdje god se nalazite.</h1>
       <p class="page-lead">
-        Holterservice je inicijativa dr. Obada, specijalista kardiologije, čiji
-        je cilj učiniti kvalitetan Holter EKG nalaz dostupnim pacijentima u
-        manjim sredinama — bez putovanja u Split, Zagreb ili druga velika
-        središta.
+        Holterservice je inicijativa prof. dr. sc. Ante Obada, specijalista
+        interne medicine i subspecijalista kardiologije, čiji je cilj učiniti
+        kvalitetan Holter EKG nalaz dostupnim pacijentima u manjim sredinama —
+        bez putovanja u Split, Zagreb ili druga velika središta.
       </p>
     </div>
   </section>
@@ -27,37 +27,95 @@ const description =
     <div class="container about-section">
       <div class="about-card">
         <div class="about-card-label">Osnivač i specijalist</div>
-        <h2>Dr. Obad</h2>
-        <p>
-          Specijalist kardiologije iz provjerene ustanove. Posjeduje flotu
-          Holter EKG uređaja koje stavlja na korištenje partnerskim klinikama,
-          obučava njihovo osoblje i osobno potpisuje svaki nalaz.
+
+        <!-- Photo placeholder — awaiting high-res photo + permission from founder/dr. Obad.
+             Backup source: poliklinika-obad.hr/profile/izv-prof-dr-sc-ante-obad-dr-med-spec/ -->
+        <figure class="about-photo about-photo--placeholder" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
+            <circle cx="32" cy="24" r="11" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 56c0-12.15 9.85-22 22-22s22 9.85 22 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </figure>
+
+        <h2>prof. dr. sc. Ante Obad, dr. med.</h2>
+        <p class="about-card-subtitle">
+          Specijalist interne medicine · subspecijalist kardiologije ·
+          izvanredni profesor, Sveučilišni odjel zdravstvenih studija,
+          Sveučilište u Splitu
         </p>
-        <p class="placeholder-note">
-          {/* PLACEHOLDER: točan ustanovski naziv, titule, biografija — founder potvrđuje */}
+        <p>
+          Iza Holterservice projekta stoji prof. dr. sc. Ante Obad, dr. med.,
+          specijalist interne medicine i subspecijalist kardiologije,
+          izvanredni profesor na Sveučilišnom odjelu zdravstvenih studija
+          Sveučilišta u Splitu.
+        </p>
+        <p>
+          Karijeru je gradio kroz Klinički bolnički centar Split i Kliničku
+          bolnicu Dubrava. Doktorat iz biomedicine i zdravstva obranio je
+          2009. godine s temom iz kardiovaskularne fiziologije. Aktivan je u
+          znanosti i visokom obrazovanju kao zamjenik pročelnika
+          Sveučilišnog odjela zdravstvenih studija i pomoćnik za inovacije i
+          razvoj.
         </p>
       </div>
 
       <div class="about-context">
-        <p class="section-eyebrow">Zašto ovaj model</p>
-        <h2>Kardiološka dijagnostika — dostupna svugdje</h2>
+        <p class="section-eyebrow">Poliklinika Dr. Obad</p>
+        <h2>Vodeća privatna medicinska ustanova u Dalmaciji</h2>
         <p>
-          Kardiološka dijagnostika u Hrvatskoj često znači dugotrajno čekanje
-          i putovanje u jedan od većih gradova. Za pacijente s otoka i iz
-          udaljenih područja to je neproporcionalno opterećenje — vremensko,
-          financijsko i zdravstveno.
+          Poliklinika Dr. Obad osnovana je 1995. godine i jedna je od vodećih
+          privatnih medicinskih ustanova u Dalmaciji. Osnovao ju je mr. sc.
+          Marko Obad, dr. med., a danas je vodi prof. dr. sc. Ante Obad uz
+          tim vrhunskih mladih liječnika specijalista.
         </p>
         <p>
-          Naš model rješava to tako da opremu i ekspertizu donosimo lokalno.
-          Partnerska klinika u vašem mjestu postavlja uređaj, a vrhunski
-          specijalistički nalaz dolazi iz referentne ustanove.
+          Poliklinika je <strong>nastavna baza Sveučilišta u Splitu,
+          Sveučilišnog odjela zdravstvenih studija</strong>. Specijalizirana
+          je za kompletnu obradu srca i pruža usluge u području kardiologije,
+          gastroenterologije, endokrinologije, reumatologije i drugih grana
+          interne medicine.
+        </p>
+        <p>
+          Holterservice projekt nastao je iz želje da se ova razina kvalitete
+          učini dostupnom pacijentima izvan Splita, bez putovanja.
+        </p>
+        <p class="about-outbound">
+          <a
+            href="https://poliklinika-obad.hr"
+            target="_blank"
+            rel="noopener"
+          >
+            Saznajte više o Poliklinici Dr. Obad
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M6 3h7v7M13 3L4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ═══ ŠTO RADIMO / NE RADIMO ════════════════════════════════════════ -->
+  <!-- ═══ ZAŠTO OVAJ MODEL ═══════════════════════════════════════════════ -->
   <section class="section section-muted">
+    <div class="container about-context about-context--full">
+      <p class="section-eyebrow">Zašto ovaj model</p>
+      <h2>Kardiološka dijagnostika — dostupna svugdje</h2>
+      <p>
+        Kardiološka dijagnostika u Hrvatskoj često znači dugotrajno čekanje
+        i putovanje u jedan od većih gradova. Za pacijente s otoka i iz
+        udaljenih područja to je neproporcionalno opterećenje — vremensko,
+        financijsko i zdravstveno.
+      </p>
+      <p>
+        Naš model rješava to tako da opremu i ekspertizu donosimo lokalno.
+        Partnerska klinika u vašem mjestu postavlja uređaj, a vrhunski
+        specijalistički nalaz dolazi iz Poliklinike Dr. Obad u Splitu.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ ŠTO RADIMO / NE RADIMO ════════════════════════════════════════ -->
+  <section class="section">
     <div class="container scope-section">
       <div class="scope-col">
         <p class="section-eyebrow">Što radimo</p>
@@ -219,10 +277,24 @@ const description =
   }
 
   .about-card h2 {
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
+    margin: 0 0 var(--space-2);
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .about-card h2 { font-size: var(--text-3xl); }
+  }
+
+  .about-card-subtitle {
+    font-size: var(--text-sm) !important;
+    font-weight: 500;
+    color: var(--color-primary) !important;
+    margin: 0 0 var(--space-5) !important;
+    line-height: var(--leading-snug);
+    opacity: 0.85;
   }
 
   .about-card p {
@@ -232,7 +304,58 @@ const description =
     margin: 0 0 var(--space-4);
   }
 
-  .placeholder-note { display: none; }
+  /* Photo (or placeholder while founder provides high-res photo) */
+  .about-photo {
+    margin: 0 0 var(--space-6);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-background);
+    border: 1px solid rgba(20, 87, 164, 0.15);
+    aspect-ratio: 1 / 1;
+    max-width: 280px;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-photo--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    opacity: 0.35;
+  }
+
+  /* Outbound link to Poliklinika Obad */
+  .about-outbound {
+    margin-top: var(--space-6) !important;
+  }
+
+  .about-outbound a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: var(--text-base);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+  }
+
+  .about-outbound a:hover { opacity: 0.8; }
+  .about-outbound a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .about-outbound svg { flex-shrink: 0; }
+
+  .about-context--full h2 { max-width: 32rem; }
 
   /* Context text */
   .about-context .section-eyebrow {
