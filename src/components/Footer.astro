@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
         <span>Holterservice</span>
       </div>
       <p class="footer-tag">
-        Specijalistički Holter EKG nalaz iz vrhunske ustanove —
+        Specijalistički Holter EKG nalaz iz referentne ustanove —
         dostupan u partnerskim klinikama diljem Hrvatske.
       </p>
     </div>
@@ -73,14 +73,21 @@ const year = new Date().getFullYear();
   </div>
 
   <div class="footer-bottom">
-    <div class="container footer-meta">
-      <small>&copy; {year} Holterservice. Sva prava pridržana.</small>
-      <small class="footer-legal-links">
-        <a href="/privatnost">Privatnost</a>
-        <a href="/kolacici">Kolačići</a>
-        <a href="/impressum">Impressum</a>
-        <a href="/eu-projekt">EU projekt</a>
-      </small>
+    <div class="container footer-legal-block">
+      <p class="footer-legal-entity">
+        Holterservice je projekt poduzeća Move Do d.o.o.<br />
+        Put Žnjana 8E, 21000 Split &middot; OIB: 71670543114<br />
+        Voditelj projekta: prof. dr. sc. Ante Obad, dr. med.
+      </p>
+      <div class="footer-meta">
+        <small>&copy; {year} Holterservice. Sva prava pridržana.</small>
+        <small class="footer-legal-links">
+          <a href="/privatnost">Privatnost</a>
+          <a href="/kolacici">Kolačići</a>
+          <a href="/impressum">Impressum</a>
+          <a href="/eu-projekt">EU projekt</a>
+        </small>
+      </div>
     </div>
   </div>
 </footer>
@@ -215,13 +222,27 @@ const year = new Date().getFullYear();
     border-top: 1px solid var(--color-dark-border);
   }
 
+  .footer-legal-block {
+    padding-block: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .footer-legal-entity {
+    margin: 0;
+    color: var(--color-dark-fg-muted);
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+    opacity: 0.75;
+  }
+
   .footer-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--space-3);
-    padding-block: var(--space-5);
     color: var(--color-dark-fg-muted);
     font-size: var(--text-xs);
   }
