@@ -115,9 +115,25 @@ const steps = [
       <div class="tech-intro">
         <p class="section-eyebrow">Tehnologija</p>
         <h2>Tehnologija koju koristimo</h2>
+        {/*
+          Stock cardiology image from Unsplash (license: https://unsplash.com/license — free for
+          commercial use, no attribution required). Photo by Robina Weermeijer:
+          https://unsplash.com/photos/iqfxOuY9vco
+          Subject: anatomical heart model on a cardiology textbook with ECG diagrams — generic
+          cardiology imagery, no Schiller branding, no patient identifiers.
+        */}
+        <img
+          src="/images/ecg-monitor.jpg"
+          alt="Anatomski model srca na kardiološkom udžbeniku s prikazima EKG ritma"
+          width="1200"
+          height="800"
+          loading="lazy"
+          decoding="async"
+          class="tech-image"
+        />
         <p>
           Uređaji koje raspoređujemo u partnerske ustanove su
-          <strong>Schiller medilog</strong> profesionalni Holter EKG monitori
+          <strong>Schiller medilog AR</strong> profesionalni Holter EKG monitori
           švicarske proizvodnje. Schiller AG je jedan od vodećih svjetskih
           proizvođača kardiološke dijagnostičke opreme, prisutan u više od
           100 zemalja od 1974. godine.
@@ -369,6 +385,17 @@ const steps = [
   .tech-intro strong {
     color: var(--color-foreground);
     font-weight: 600;
+  }
+
+  .tech-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    margin: 0 0 var(--space-5);
+    border: 1px solid var(--color-border);
   }
 
   .tech-list {
