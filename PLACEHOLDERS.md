@@ -105,3 +105,21 @@ comment in code, add a row here too.
 - **None installed.** Cookie policy currently states only technically
   necessary cookies. If analytics (e.g. Plausible, Umami) is added later,
   update `/kolacici` table and re-evaluate consent banner need.
+
+## 9. Schiller device + GDPR (VEY-174)
+
+- **Exact Schiller device model.** `/usluga` "Tehnologija koju koristimo"
+  section currently says only "Schiller medilog profesionalni Holter EKG
+  monitori". The exact model (medilog AR / AR12Plus / FD) must be confirmed
+  by founder + dr. Obad before launch; once confirmed, add the model name to
+  the opening paragraph.
+  - File: `src/pages/usluga.astro`
+- **Schiller logo.** DO NOT add the Schiller logo on the site until written
+  permission from Schiller AG is received. No logo is rendered today.
+- **Device photo.** No device photo is rendered on `/usluga`. If Poliklinika
+  Dr. Obad has its own device photos, render one in the tech section. Do
+  NOT use Schiller press-kit images without permission.
+- **DPA template.** GDPR section references "Sporazum o partnerstvu" and
+  "Ugovor o obradi osobnih podataka". Founder to confirm whether an existing
+  DPA template is used or a new one is needed before launch.
+  - File: `src/pages/za-partnere.astro`
