@@ -42,25 +42,55 @@ export interface Partner {
   description?: string;
 }
 
+/**
+ * DEMO DATA — placeholders for Vercel preview shown to dr. Obad.
+ * Real partner data (names, addresses, contacts) will replace these entries
+ * once consent and details are confirmed. Coordinates are real geographic
+ * data for the three target cities (Virovitica, Hvar, Zagreb) and can stay.
+ */
 export const partners: Partner[] = [
-  // PLACEHOLDER: real partner list. Founder/dr. Obad supplies:
-  // name, address, phone, email, website, description + consent.
-  // Three partners expected: Virovitica, Hvar, Zagreb.
-  //
-  // Example:
-  // {
-  //   slug: 'virovitica-partner',
-  //   name: 'Naziv klinike',
-  //   city: 'Virovitica',
-  //   region: 'Virovitičko-podravska',
-  //   type: 'klinika',
-  //   address: 'Ulica 1, 33000 Virovitica',
-  //   phone: '+385 33 000 000',
-  //   email: 'info@example.hr',
-  //   website: 'https://example.hr',
-  //   coordinates: { lat: 45.8311, lng: 17.3833 },
-  //   description: 'Kratak opis partnera u 1–2 rečenice.',
-  // },
+  {
+    slug: 'demo-virovitica',
+    name: 'Poliklinika Primjer Virovitica',
+    city: 'Virovitica',
+    region: 'Virovitičko-podravska',
+    type: 'klinika',
+    address: 'Trg kralja Tomislava 1, 33000 Virovitica',
+    phone: '+385 33 123 4567',
+    email: 'info@partner-example.hr',
+    website: 'https://example.hr',
+    coordinates: { lat: 45.8311, lng: 17.3833 },
+    description:
+      'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz — konačni partner bit će potvrđen.)',
+  },
+  {
+    slug: 'demo-hvar',
+    name: 'Ordinacija Primjer Hvar',
+    city: 'Hvar',
+    region: 'Splitsko-dalmatinska',
+    type: 'dom-zdravlja',
+    address: 'Riva 5, 21450 Hvar',
+    phone: '+385 21 234 5678',
+    email: 'info@partner-example.hr',
+    website: 'https://example.hr',
+    coordinates: { lat: 43.1729, lng: 16.4413 },
+    description:
+      'Partner u programu Holter monitoringa za područje otoka Hvara i okolice. (Demo prikaz — konačni partner bit će potvrđen.)',
+  },
+  {
+    slug: 'demo-zagreb',
+    name: 'Agencija Primjer Zagreb',
+    city: 'Zagreb',
+    region: 'Grad Zagreb',
+    type: 'agencija',
+    address: 'Ilica 100, 10000 Zagreb',
+    phone: '+385 1 234 5678',
+    email: 'info@partner-example.hr',
+    website: 'https://example.hr',
+    coordinates: { lat: 45.8150, lng: 15.9819 },
+    description:
+      'Partner u programu Holter monitoringa za područje grada Zagreba. (Demo prikaz — konačni partner bit će potvrđen.)',
+  },
 ];
 
 /**
