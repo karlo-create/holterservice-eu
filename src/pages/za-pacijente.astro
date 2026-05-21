@@ -18,7 +18,7 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
       <h1>Kako do nalaza preko partnerske klinike</h1>
       <p class="lede">
         Pretraga je dostupna u partnerskim klinikama, najčešće u manjim mjestima i
-        otocima — bez potrebe za putovanjem u Split, Zagreb ili druga središta.
+        otocima, bez potrebe za putovanjem u Split, Zagreb ili druga središta.
         Nalaz potpisuje specijalist kardiologije.
       </p>
 
@@ -40,7 +40,7 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
         <li>Uputnicu ili medicinsku dokumentaciju liječnika koji vas šalje.</li>
         <li>Osobnu iskaznicu.</li>
         <li>Popis lijekova koje uzimate.</li>
-        <li>Praktičnu odjeću — gornji dio bi trebao biti lagano dostupan radi
+        <li>Praktičnu odjeću. Gornji dio bi trebao biti lako dostupan radi
           postavljanja elektroda.</li>
       </ul>
 
@@ -48,7 +48,7 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
       <p>
         Educirano osoblje partnera postavlja uređaj. Cijeli dan obavljate svoje
         uobičajene aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
-        dnevnik — kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
+        dnevnik. Kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
       </p>
       <p>
         <strong>Nemojte:</strong> tuširati se ili kupati s uređajem, osim ako vas
@@ -76,8 +76,34 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
         kontaktirajte odabranog partnera.
       </p>
 
+      <div class="next-step">
+        <p class="section-eyebrow">Sljedeći korak</p>
+        <h2>Što vam je sljedeći korak?</h2>
+        <div class="next-step-grid">
+          <a
+            href="/partneri"
+            class="next-step-card"
+            data-event="patient_partner_card_click"
+            data-partner="cta_imate_preporuku"
+          >
+            <p class="next-step-card-body">
+              Imate preporuku liječnika za Holter EKG i tražite gdje ga obaviti?
+            </p>
+            <p class="next-step-card-cta">Pronađite partnera u svom mjestu →</p>
+          </a>
+          <a
+            href="/kontakt"
+            class="next-step-card"
+          >
+            <p class="next-step-card-body">
+              Niste sigurni gdje vam je najbliži partner ili imate dodatno pitanje?
+            </p>
+            <p class="next-step-card-cta">Kontaktirajte nas →</p>
+          </a>
+        </div>
+      </div>
+
       <div class="cta-block">
-        <a href="/partneri" class="btn btn-primary" data-event="patient_partner_card_click" data-partner="cta_pronadjite_partnera">Pronađite partnera</a>
         <a href="/usluga" class="btn btn-secondary">Što je Holter EKG</a>
       </div>
     </div>
@@ -102,4 +128,65 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
   }
   .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
   .cta-block { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
+
+  .next-step {
+    margin-top: var(--space-16);
+    padding-top: var(--space-12);
+    border-top: 1px solid var(--color-border);
+  }
+  .next-step .section-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-3);
+    opacity: 0.8;
+  }
+  .next-step h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-8);
+    color: var(--color-foreground);
+  }
+  .next-step-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .next-step-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .next-step-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: var(--color-foreground);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+    min-height: 12rem;
+  }
+  .next-step-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+  .next-step-card-body {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-foreground);
+    margin: 0;
+  }
+  .next-step-card-cta {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: var(--text-base);
+    margin: 0;
+  }
 </style>

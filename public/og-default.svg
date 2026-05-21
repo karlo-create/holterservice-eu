@@ -10,7 +10,7 @@
   <path d="M80 380h180l50-140 110 320 90-260 60 100h540" fill="none" stroke="#0e7490" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity="0.85"/>
   <g font-family="Georgia, 'Times New Roman', serif" fill="#0f172a">
     <text x="80" y="180" font-size="56" font-weight="600">Holterservice</text>
-    <text x="80" y="240" font-size="32" fill="#475569">Specijalistički Holter EKG nalaz —</text>
+    <text x="80" y="240" font-size="32" fill="#475569">Specijalistički Holter EKG nalaz,</text>
     <text x="80" y="282" font-size="32" fill="#475569">bez putovanja u Split ili Zagreb.</text>
   </g>
   <text x="80" y="570" font-family="-apple-system, Arial, sans-serif" font-size="22" fill="#475569">holterservice.eu</text>

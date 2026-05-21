@@ -20,7 +20,7 @@ interface Props {
 const { title, description, path, ogImage = '/og-default.svg', type = 'website' } = Astro.props;
 
 const siteName = 'Holterservice';
-const fullTitle = title === siteName ? siteName : `${title} — ${siteName}`;
+const fullTitle = title === siteName ? siteName : `${title} | ${siteName}`;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://holterservice.eu';
 const canonical = `${siteUrl}${path === '/' ? '' : path}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;

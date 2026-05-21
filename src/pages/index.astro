@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Holter EKG nalaz iz referentne ustanove — bez putovanja';
+const title = 'Holter EKG nalaz iz referentne ustanove, bez putovanja';
 const description =
   'Holterservice opskrbljuje partnerske klinike Holter EKG uređajima i specijalističkim nalazom, kako bi pacijenti dobili kardiološku dijagnostiku bez putovanja u Split ili Zagreb.';
 
@@ -30,7 +30,7 @@ const medicalBusinessJsonLd = {
     slot="head"
   />
 
-  <!-- ═══ HERO — light editorial, typographic authority ══════════════════ -->
+  <!-- ═══ HERO: light editorial, typographic authority ══════════════════ -->
   <section class="hero">
     <!-- Subtle ECG waveform background -->
     <div class="hero-bg-wave" aria-hidden="true">
@@ -42,7 +42,7 @@ const medicalBusinessJsonLd = {
     <div class="container hero-inner">
       <!-- Left: editorial copy -->
       <div class="hero-copy">
-        <!-- Credential badge — trust signal above the headline -->
+        <!-- Credential badge: trust signal above the headline -->
         <div class="hero-badge">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
@@ -52,7 +52,7 @@ const medicalBusinessJsonLd = {
         </div>
 
         <!-- Display headline -->
-        <h1>Specijalistički kardiološki nalaz —<br class="hero-br"> dostupan u vašem mjestu.</h1>
+        <h1>Specijalistički kardiološki nalaz,<br class="hero-br"> dostupan u vašem mjestu.</h1>
 
         <p class="hero-lead">
           Holter EKG uređaj u vašoj lokalnoj klinici. Snimak očita
@@ -62,7 +62,7 @@ const medicalBusinessJsonLd = {
         <!-- CTAs -->
         <div class="hero-cta-row">
           <a href="/za-partnere" class="btn btn-primary">Postanite partner</a>
-          <a href="/za-pacijente" class="btn btn-secondary">Tražim nalaz u svom mjestu</a>
+          <a href="/za-pacijente" class="btn btn-secondary">Pronađite kliniku u svom mjestu</a>
         </div>
       </div>
 
@@ -98,8 +98,8 @@ const medicalBusinessJsonLd = {
             <span class="cred-metric-lbl">monitoring srca</span>
           </div>
           <div class="cred-metric">
-            <span class="cred-metric-val">1:1</span>
-            <span class="cred-metric-lbl">osobni pregled svakog nalaza</span>
+            <span class="cred-metric-val">100%</span>
+            <span class="cred-metric-lbl">Specijalist osobno pregledava svaki nalaz</span>
           </div>
           <div class="cred-metric">
             <span class="cred-metric-val">HR</span>
@@ -121,27 +121,31 @@ const medicalBusinessJsonLd = {
   <!-- ═══ VALUE PILLARS ══════════════════════════════════════════════════ -->
   <section class="section section-muted">
     <div class="container">
+      <div class="pillars-heading">
+        <p class="section-eyebrow">Što čini razliku</p>
+        <h2>Tri stupa kvalitete</h2>
+      </div>
       <div class="pillars-grid">
         <div class="pillar">
           <div class="pillar-num">01</div>
-          <h2>Specijalistički nalaz</h2>
+          <h3>Specijalistički nalaz</h3>
           <p>
-            Svaki snimak pregledava i potpisuje specijalist kardiologije —
-            bez delegiranja, bez automatskih izvještaja.
+            Svaki snimak pregledava i potpisuje specijalist kardiologije,
+            bez delegiranja i bez automatskih izvještaja.
           </p>
         </div>
         <div class="pillar">
           <div class="pillar-num">02</div>
-          <h2>Dostupnost u manjim mjestima</h2>
+          <h3>Dostupnost u manjim mjestima</h3>
           <p>
             Uređaji su raspoređeni u partnerskim klinikama u područjima u
-            kojima kardiološka obrada inače znači cjelodnevni put. Lastovo,
-            Virovitica i drugi.
+            kojima kardiološka obrada inače znači cjelodnevni put. Hvar,
+            Virovitica, Zagreb i drugi.
           </p>
         </div>
         <div class="pillar">
           <div class="pillar-num">03</div>
-          <h2>Edukacija osoblja</h2>
+          <h3>Edukacija osoblja</h3>
           <p>
             Obučavamo medicinsko i ne-medicinsko osoblje partnera za ispravno
             postavljanje i skidanje uređaja. Po potrebi izdajemo certifikat
@@ -159,7 +163,7 @@ const medicalBusinessJsonLd = {
         <p class="section-eyebrow">Tijek pretrage</p>
         <h2>Kako proces izgleda</h2>
         <p class="how-desc">
-          Tri koraka — od dolaska pacijenta u partnersku kliniku do
+          Tri koraka. Od dolaska pacijenta u partnersku kliniku do
           preuzimanja potpisanog nalaza.
         </p>
       </div>
@@ -207,7 +211,7 @@ const medicalBusinessJsonLd = {
     </div>
   </section>
 
-  <!-- ═══ PARTNER CTA — light blue panel ══════════════════════════════════ -->
+  <!-- ═══ PARTNER CTA: light blue panel ══════════════════════════════════ -->
   <section class="section partner-cta-band">
     <div class="container partner-cta-inner">
       <div class="partner-cta-text">
@@ -241,7 +245,7 @@ const medicalBusinessJsonLd = {
     .hero { padding-block: var(--space-28); }
   }
 
-  /* Decorative ECG waveform — very subtle, behind content */
+  /* Decorative ECG waveform: very subtle, behind content */
   .hero-bg-wave {
     position: absolute;
     bottom: 0;
@@ -483,11 +487,27 @@ const medicalBusinessJsonLd = {
     opacity: 0.7;
   }
 
-  .pillar h2 {
+  .pillar h3 {
     font-size: var(--text-xl);
     font-weight: 600;
     margin: 0 0 var(--space-3);
     letter-spacing: -0.01em;
+  }
+
+  .pillars-heading {
+    margin-bottom: var(--space-10);
+    max-width: 36rem;
+  }
+
+  .pillars-heading h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .pillars-heading h2 { font-size: var(--text-4xl); }
   }
 
   .pillar p { color: var(--color-muted-foreground); font-size: var(--text-base); margin: 0; }

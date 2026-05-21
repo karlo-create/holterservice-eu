@@ -1,12 +1,12 @@
 /*
- * Design Tokens — Holterservice.eu (v2 — VEY-160)
+ * Design Tokens for Holterservice.eu (v2, VEY-160)
  *
  * V2 direction: light-first, professional, trustworthy.
  *
  * Primary audience:
  *   - Croatian private clinic owners/GPs considering Holterservice as a
  *     partner. Conservative medical professionals who evaluate credibility.
- *   - Patients (40–70+) who trust traditional professional aesthetics.
+ *   - Patients (40 to 70+) who trust traditional professional aesthetics.
  *
  * Neither audience wants dark/tech-startup design. They want what a respected
  * specialist's practice looks like: clean, precise, and earned.
@@ -26,16 +26,16 @@
    * Dark surfaces are restricted to the footer only.
    */
   --color-background: #ffffff;
-  --color-foreground: #111827;       /* near-black — authoritative, readable */
-  --color-primary: #1457a4;          /* deep trust blue — medical precision */
+  --color-foreground: #111827;       /* near-black, authoritative, readable */
+  --color-primary: #1457a4;          /* deep trust blue, medical precision */
   --color-primary-contrast: #ffffff;
   --color-primary-hover: #0f4589;    /* darker on hover */
-  --color-primary-light: #e6f0fa;    /* very light blue — callout backgrounds */
+  --color-primary-light: #e6f0fa;    /* very light blue, callout backgrounds */
 
   --color-muted: #f0f5fa;            /* cool clinical off-white */
-  --color-muted-foreground: #4b5563; /* cool mid-gray — readable */
+  --color-muted-foreground: #4b5563; /* cool mid-gray, readable */
   --color-border: #dde4ee;           /* cool precise divider */
-  --color-accent: #f2f7fc;           /* subtle blue-tint off-white — hero bg */
+  --color-accent: #f2f7fc;           /* subtle blue-tint off-white, hero bg */
 
   --color-surface: #ffffff;
 
@@ -54,7 +54,7 @@
   --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* Type scale — modular, mobile-first */
+  /* Type scale: modular, mobile-first */
   --text-xs: 0.75rem;      /* 12px */
   --text-sm: 0.875rem;     /* 14px */
   --text-base: 1rem;       /* 16px */
@@ -65,7 +65,7 @@
   --text-4xl: 2.25rem;     /* 36px */
   --text-5xl: 3rem;        /* 48px */
   --text-6xl: 3.75rem;     /* 60px */
-  --text-display: 4.25rem; /* 68px — hero display on desktop */
+  --text-display: 4.25rem; /* 68px, hero display on desktop */
 
   --leading-tight: 1.1;
   --leading-snug: 1.35;

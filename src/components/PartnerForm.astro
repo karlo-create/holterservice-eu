@@ -2,7 +2,7 @@
 /**
  * Partner inquiry form.
  *
- * v1 ships as a `mailto:` form — no backend wired up. When a real
+ * v1 ships as a `mailto:` form, no backend wired up. When a real
  * endpoint exists, swap the `<form action>` to a POST handler and add a
  * server-side recipient. See PLACEHOLDERS.md.
  */
@@ -34,7 +34,7 @@ const {
       <form
         id={id}
         method="post"
-        action={`mailto:${to}?subject=${encodeURIComponent('Upit za partnerstvo — Holterservice')}`}
+        action={`mailto:${to}?subject=${encodeURIComponent('Upit za partnerstvo, Holterservice')}`}
         enctype="text/plain"
         data-plausible-form="partner"
       >
