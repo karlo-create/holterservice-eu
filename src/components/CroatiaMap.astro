@@ -1,0 +1,275 @@
+---
+/**
+ * CroatiaMap — inline SVG of Croatia with partner pins.
+ *
+ * Receives a list of pins with lat/lng/label/slug. Projects coordinates onto
+ * the SVG viewport using a simple equirectangular projection bounded to
+ * Croatia's mainland + islands bounding box.
+ *
+ * Pins:
+ *   - hover  → tooltip with name + city
+ *   - click  → scrolls to <li id={slug}> in the partner list
+ *
+ * The Croatia outline below is a simplified, schematic representation of HR
+ * borders (mainland + main islands). It is not a survey-grade map; it is a
+ * legible storytelling map for showing geographic spread. The pin coordinates
+ * project correctly so the spread of Virovitica/Zagreb/Hvar reads as
+ * "kontinent — glavni grad — otok".
+ */
+
+interface Pin {
+  slug: string;
+  name?: string;
+  city: string;
+  region?: string;
+  coordinates: { lat: number; lng: number };
+  /** When true, the pin is a "city marker" only (no real partner yet). */
+  placeholder?: boolean;
+}
+
+interface Props {
+  pins: Pin[];
+}
+
+const { pins } = Astro.props as Props;
+
+// ── Projection ─────────────────────────────────────────────────────────────
+// Croatia bounding box (rough):
+//   lng: 13.30  – 19.45
+//   lat: 42.30  – 46.55
+// SVG viewBox is 0 0 800 600.
+const VIEW_W = 800;
+const VIEW_H = 600;
+const MIN_LNG = 13.3;
+const MAX_LNG = 19.45;
+const MIN_LAT = 42.3;
+const MAX_LAT = 46.55;
+
+const project = (lng: number, lat: number): { x: number; y: number } => {
+  const x = ((lng - MIN_LNG) / (MAX_LNG - MIN_LNG)) * VIEW_W;
+  const y = VIEW_H - ((lat - MIN_LAT) / (MAX_LAT - MIN_LAT)) * VIEW_H;
+  return { x, y };
+};
+
+const projectedPins = pins.map((p) => ({
+  ...p,
+  ...project(p.coordinates.lng, p.coordinates.lat),
+}));
+---
+
+<figure class="croatia-map" aria-label="Mapa Hrvatske s lokacijama partnerskih klinika">
+  <svg
+    viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby="croatia-map-title croatia-map-desc"
+  >
+    <title id="croatia-map-title">Mapa Hrvatske — lokacije partnera</title>
+    <desc id="croatia-map-desc">
+      Stilizirana mapa Hrvatske s pinovima na lokacijama partnerskih klinika.
+    </desc>
+
+    {/* ── Croatia mainland + Istria outline (simplified) ─────────────────── */}
+    {/*
+      Path constructed from approximated control points along HR borders.
+      Stylized — not survey-grade. Recognizable shape: Istria + Lika +
+      Slavonia panhandle + Dalmatian coast.
+    */}
+    <path
+      class="hr-shape"
+      d={`
+        M ${project(13.50, 45.45).x} ${project(13.50, 45.45).y}
+        L ${project(13.92, 45.62).x} ${project(13.92, 45.62).y}
+        L ${project(14.55, 45.50).x} ${project(14.55, 45.50).y}
+        L ${project(15.65, 45.80).x} ${project(15.65, 45.80).y}
+        L ${project(16.30, 46.40).x} ${project(16.30, 46.40).y}
+        L ${project(16.85, 46.48).x} ${project(16.85, 46.48).y}
+        L ${project(17.65, 46.00).x} ${project(17.65, 46.00).y}
+        L ${project(18.85, 45.85).x} ${project(18.85, 45.85).y}
+        L ${project(19.10, 45.55).x} ${project(19.10, 45.55).y}
+        L ${project(19.45, 45.15).x} ${project(19.45, 45.15).y}
+        L ${project(18.95, 45.10).x} ${project(18.95, 45.10).y}
+        L ${project(18.55, 45.10).x} ${project(18.55, 45.10).y}
+        L ${project(17.90, 45.10).x} ${project(17.90, 45.10).y}
+        L ${project(17.30, 45.20).x} ${project(17.30, 45.20).y}
+        L ${project(16.50, 45.20).x} ${project(16.50, 45.20).y}
+        L ${project(16.20, 45.00).x} ${project(16.20, 45.00).y}
+        L ${project(15.80, 45.20).x} ${project(15.80, 45.20).y}
+        L ${project(15.75, 44.85).x} ${project(15.75, 44.85).y}
+        L ${project(16.10, 44.45).x} ${project(16.10, 44.45).y}
+        L ${project(16.55, 44.20).x} ${project(16.55, 44.20).y}
+        L ${project(17.00, 43.50).x} ${project(17.00, 43.50).y}
+        L ${project(17.55, 42.95).x} ${project(17.55, 42.95).y}
+        L ${project(18.45, 42.60).x} ${project(18.45, 42.60).y}
+        L ${project(18.55, 42.50).x} ${project(18.55, 42.50).y}
+        L ${project(18.10, 42.65).x} ${project(18.10, 42.65).y}
+        L ${project(17.65, 42.85).x} ${project(17.65, 42.85).y}
+        L ${project(16.85, 43.20).x} ${project(16.85, 43.20).y}
+        L ${project(16.10, 43.50).x} ${project(16.10, 43.50).y}
+        L ${project(15.45, 43.85).x} ${project(15.45, 43.85).y}
+        L ${project(15.15, 44.10).x} ${project(15.15, 44.10).y}
+        L ${project(14.85, 44.55).x} ${project(14.85, 44.55).y}
+        L ${project(14.45, 45.10).x} ${project(14.45, 45.10).y}
+        L ${project(14.20, 45.20).x} ${project(14.20, 45.20).y}
+        L ${project(13.95, 45.05).x} ${project(13.95, 45.05).y}
+        L ${project(13.60, 45.10).x} ${project(13.60, 45.10).y}
+        L ${project(13.50, 45.45).x} ${project(13.50, 45.45).y}
+        Z
+      `.replace(/\s+/g, ' ').trim()}
+    />
+
+    {/* ── Hvar island (simplified) ──────────────────────────────────────── */}
+    <ellipse
+      class="hr-island"
+      cx={project(16.55, 43.16).x}
+      cy={project(16.55, 43.16).y}
+      rx="30"
+      ry="6"
+      transform={`rotate(-8 ${project(16.55, 43.16).x} ${project(16.55, 43.16).y})`}
+    />
+
+    {/* ── Brač island (context for Hvar) ─────────────────────────────────── */}
+    <ellipse
+      class="hr-island"
+      cx={project(16.65, 43.32).x}
+      cy={project(16.65, 43.32).y}
+      rx="22"
+      ry="6"
+      transform={`rotate(-8 ${project(16.65, 43.32).x} ${project(16.65, 43.32).y})`}
+    />
+
+    {/* ── Krk island (Kvarner context) ──────────────────────────────────── */}
+    <ellipse
+      class="hr-island"
+      cx={project(14.65, 45.05).x}
+      cy={project(14.65, 45.05).y}
+      rx="9"
+      ry="14"
+    />
+
+    {/* ── Pins ──────────────────────────────────────────────────────────── */}
+    {projectedPins.map((p) => (
+      <a
+        href={`#${p.slug}`}
+        class:list={['hr-pin', p.placeholder && 'is-placeholder']}
+        data-slug={p.slug}
+        data-city={p.city}
+      >
+        <circle cx={p.x} cy={p.y} r="18" class="hr-pin-halo" />
+        <circle cx={p.x} cy={p.y} r="9" class="hr-pin-dot" />
+        <text x={p.x} y={p.y - 22} class="hr-pin-label" text-anchor="middle">
+          {p.city}
+        </text>
+        <title>{p.name ? `${p.name} — ${p.city}` : p.city}</title>
+      </a>
+    ))}
+  </svg>
+  <figcaption class="visually-hidden">
+    Mapa Hrvatske s lokacijama partnerskih klinika. Kliknite pin za detalje.
+  </figcaption>
+</figure>
+
+<script>
+  // Smooth-scroll partner pins to the matching card.
+  document.querySelectorAll<SVGAElement>('.croatia-map a.hr-pin').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.classList.add('partner-flash');
+      window.setTimeout(() => target.classList.remove('partner-flash'), 1600);
+    });
+  });
+</script>
+
+<style>
+  .croatia-map {
+    margin: 0;
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
+  }
+
+  .croatia-map svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: var(--color-accent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .hr-shape {
+    fill: var(--color-muted, #e5e7eb);
+    stroke: var(--color-border);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+  }
+
+  .hr-island {
+    fill: var(--color-muted, #e5e7eb);
+    stroke: var(--color-border);
+    stroke-width: 1.2;
+  }
+
+  /* Pin */
+  .hr-pin { cursor: pointer; outline: none; }
+
+  .hr-pin-halo {
+    fill: var(--color-primary, #1457a4);
+    opacity: 0.15;
+    transition: opacity 180ms ease, r 180ms ease;
+  }
+
+  .hr-pin-dot {
+    fill: var(--color-primary, #1457a4);
+    stroke: #fff;
+    stroke-width: 2.5;
+    transition: r 180ms ease;
+  }
+
+  .hr-pin-label {
+    fill: var(--color-foreground);
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 600;
+    paint-order: stroke;
+    stroke: var(--color-accent);
+    stroke-width: 4;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+
+  .hr-pin:hover .hr-pin-halo,
+  .hr-pin:focus .hr-pin-halo {
+    opacity: 0.32;
+  }
+
+  .hr-pin:hover .hr-pin-dot,
+  .hr-pin:focus .hr-pin-dot {
+    r: 11;
+  }
+
+  .hr-pin.is-placeholder .hr-pin-dot {
+    fill: var(--color-muted-foreground, #6b7280);
+  }
+
+  .hr-pin.is-placeholder .hr-pin-halo {
+    fill: var(--color-muted-foreground, #6b7280);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
