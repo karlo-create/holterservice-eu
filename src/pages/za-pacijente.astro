@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Faq from '../components/Faq.astro';
+import { patientFaq, buildFaqJsonLd } from '../data/faq';
 
 const title = 'Za pacijente';
 const description =
   'Kako do Holter EKG nalaza specijalista preko partnerske klinike u vašem mjestu. Saznajte što ponijeti, kako teče pretraga i kada očekivati nalaz.';
+
+const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
 ---
 
 <BaseLayout title={title} description={description} path="/za-pacijente">
+  <script slot="head" type="application/ld+json" set:html={faqJsonLd} />
   <section class="section">
     <div class="container prose">
       <p class="eyebrow">Za pacijente</p>
@@ -77,6 +82,13 @@ const description =
       </div>
     </div>
   </section>
+
+  <Faq
+    id="faq"
+    eyebrow="Česta pitanja"
+    heading="Što pacijenti najčešće pitaju"
+    items={patientFaq}
+  />
 </BaseLayout>
 
 <style>

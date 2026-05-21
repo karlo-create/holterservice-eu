@@ -1,0 +1,220 @@
+---
+/**
+ * FAQ accordion (native <details>/<summary>).
+ *
+ * - Default: all closed (no `open` attribute set on any <details>).
+ * - Multi-open allowed (each <details> is independent — no shared `name`).
+ * - Keyboard nav comes for free with native elements (Tab + Enter/Space).
+ * - Smooth open animation when the browser supports `interpolate-size`.
+ *
+ * FAQPage JSON-LD is NOT emitted by this component. The same item list
+ * should be injected into <head> by the consuming page using
+ * `buildFaqJsonLd` from `../data/faq`, so the schema lives next to the
+ * page <title> / <meta> tags.
+ *
+ * Props:
+ * - items: array of { question, answer }
+ * - eyebrow?: small section label above the heading
+ * - heading?: section h2 text
+ * - id?: anchor id for the wrapping <section>
+ */
+
+import type { FaqItem } from '../data/faq';
+
+interface Props {
+  items: FaqItem[];
+  eyebrow?: string;
+  heading?: string;
+  id?: string;
+}
+
+const { items, eyebrow, heading, id } = Astro.props;
+---
+
+<section class="section faq-section" id={id}>
+  <div class="container">
+    {(eyebrow || heading) && (
+      <div class="faq-header">
+        {eyebrow && <p class="section-eyebrow">{eyebrow}</p>}
+        {heading && <h2>{heading}</h2>}
+      </div>
+    )}
+
+    <ul class="faq-list">
+      {items.map((item) => (
+        <li class="faq-item">
+          <details class="faq-details">
+            <summary class="faq-summary">
+              <span class="faq-question">{item.question}</span>
+              <span class="faq-indicator" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M10 4v12M4 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: var(--color-background);
+  }
+
+  .faq-header {
+    margin-bottom: var(--space-10);
+    max-width: 42rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-3);
+    opacity: 0.8;
+  }
+
+  .faq-header h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .faq-header h2 { font-size: var(--text-4xl); }
+  }
+
+  .faq-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 48rem;
+  }
+
+  .faq-item {
+    margin: 0;
+  }
+
+  .faq-details {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .faq-details:hover {
+    border-color: rgba(20, 87, 164, 0.25);
+  }
+
+  .faq-details[open] {
+    border-color: rgba(20, 87, 164, 0.35);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  /* Remove default disclosure marker (Chrome/Safari + Firefox) */
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-summary::marker { content: ''; }
+
+  .faq-summary:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-xl);
+  }
+
+  .faq-question {
+    font-family: var(--font-heading, var(--font-body));
+    font-size: var(--text-base);
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    color: var(--color-foreground);
+    line-height: var(--leading-snug);
+  }
+
+  @media (min-width: 768px) {
+    .faq-question { font-size: var(--text-lg); }
+  }
+
+  .faq-indicator {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--color-primary-light, rgba(20, 87, 164, 0.08));
+    color: var(--color-primary);
+    transition: transform 220ms ease, background 220ms ease, color 220ms ease;
+  }
+
+  .faq-details[open] .faq-indicator {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  /* Plus -> rotated "x" gives a clean visual toggle indicator.
+     The icon itself is a plus; rotating 45° while open turns it into
+     an x, which reads as "close". */
+  .faq-indicator svg {
+    transition: transform 220ms ease;
+  }
+  .faq-details[open] .faq-indicator svg {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-6) var(--space-6);
+    color: var(--color-muted-foreground);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed, 1.65);
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* Smooth open animation. Browsers that don't support
+     `interpolate-size: allow-keywords` simply snap open/closed, which
+     is acceptable graceful degradation. */
+  @supports (interpolate-size: allow-keywords) {
+    :root { interpolate-size: allow-keywords; }
+    .faq-details::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size 220ms ease, content-visibility 220ms allow-discrete;
+    }
+    .faq-details[open]::details-content {
+      block-size: auto;
+    }
+  }
+</style>
