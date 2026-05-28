@@ -59,9 +59,9 @@ export const partnerFaq: FaqItem[] = [
 export const patientFaq: FaqItem[] = [
   {
     question:
-      'Koliko košta pretraga?',
+      'Kako se naručujem i kakvi su uvjeti pretrage?',
     answer:
-      'Pretraga je dostupna preko mreže partnera. Uvjete i način plaćanja dogovarate izravno s odabranom partnerskom klinikom — informirajte se kod najbližeg partnera.',
+      'Pretraga je dostupna preko mreže partnera. Uvjete i način naručivanja dogovarate izravno s odabranom partnerskom klinikom — informirajte se kod najbližeg partnera. Popis je na stranici Partneri.',
   },
   {
     question:
