@@ -34,7 +34,7 @@ const steps = [
   {
     num: '06',
     title: 'Preuzimanje nalaza',
-    body: 'Službeni potpisani nalaz preuzimate kod partnera, obično u roku od nekoliko radnih dana.',
+    body: 'Službeni potpisani nalaz preuzimate kod partnera, obično u roku od 3–5 radnih dana. Hitan nalaz dostupan unutar 24 h (uz dodatnu cijenu).',
   },
 ];
 ---
@@ -230,6 +230,23 @@ const steps = [
           <li>Osobnu iskaznicu</li>
           <li>Popis lijekova koje uzimate</li>
         </ul>
+        <div class="sla-block" aria-label="Rokovi nalaza">
+          <p class="section-eyebrow">Rok nalaza</p>
+          <ul class="sla-list">
+            <li>
+              <span class="sla-label">Obični nalaz</span>
+              <span class="sla-value">3–5 radnih dana</span>
+            </li>
+            <li>
+              <span class="sla-label">Hitni nalaz</span>
+              <span class="sla-value">unutar 24 h <small>(uz dodatnu cijenu)</small></span>
+            </li>
+          </ul>
+          <p class="sla-note">
+            Rok se računa od trenutka kad uređaj stigne u laboratorij
+            Poliklinike Dr. Obad. Hitni nalaz dogovara se s partnerskom klinikom.
+          </p>
+        </div>
         <p class="price-note">
           <strong>Cijena:</strong> Određuje je partnerska klinika. Kontaktirajte
           odabranog partnera za točne uvjete.
@@ -555,6 +572,52 @@ const steps = [
     left: 0;
     color: var(--color-primary);
     font-weight: 600;
+  }
+
+  .sla-block {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-5);
+    margin-top: var(--space-5);
+  }
+
+  .sla-block .section-eyebrow { margin-bottom: var(--space-3); }
+
+  .sla-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .sla-list li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-foreground);
+  }
+
+  .sla-label {
+    font-weight: 600;
+    min-width: 9rem;
+  }
+
+  .sla-value { color: var(--color-foreground); }
+
+  .sla-value small {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  .sla-note {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-snug);
+    margin: 0;
   }
 
   .price-note {

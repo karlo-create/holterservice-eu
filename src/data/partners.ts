@@ -43,10 +43,10 @@ export interface Partner {
 }
 
 /**
- * DEMO DATA: placeholders for Vercel preview shown to dr. Obad.
+ * DEMO DATA: placeholders for Vercel preview shown to the client.
  * Real partner data (names, addresses, contacts) will replace these entries
  * once consent and details are confirmed. Coordinates are real geographic
- * data for the three target cities (Virovitica, Hvar, Zagreb) and can stay.
+ * data for the three target cities (Virovitica, Brač, Zagreb) and can stay.
  */
 export const partners: Partner[] = [
   {
@@ -64,18 +64,18 @@ export const partners: Partner[] = [
       'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz, konačni partner bit će potvrđen.)',
   },
   {
-    slug: 'demo-hvar',
-    name: 'Ordinacija Primjer Hvar',
-    city: 'Hvar',
+    slug: 'demo-brac',
+    name: 'Ordinacija Primjer Brač',
+    city: 'Brač',
     region: 'Splitsko-dalmatinska',
     type: 'dom-zdravlja',
-    address: 'Riva 5, 21450 Hvar',
+    address: 'Riva 5, 21400 Supetar',
     phone: '+385 21 234 5678',
     email: 'info@partner-example.hr',
     website: 'https://example.hr',
-    coordinates: { lat: 43.1729, lng: 16.4413 },
+    coordinates: { lat: 43.3850, lng: 16.5527 },
     description:
-      'Partner u programu Holter monitoringa za područje otoka Hvara i okolice. (Demo prikaz, konačni partner bit će potvrđen.)',
+      'Partner u programu Holter monitoringa za područje otoka Brača i okolice. (Demo prikaz, konačni partner bit će potvrđen.)',
   },
   {
     slug: 'demo-zagreb',
@@ -104,5 +104,5 @@ export const PARTNER_CITIES: ReadonlyArray<{
 }> = [
   { city: 'Zagreb', region: 'Grad Zagreb', coordinates: { lat: 45.8150, lng: 15.9819 } },
   { city: 'Virovitica', region: 'Virovitičko-podravska', coordinates: { lat: 45.8311, lng: 17.3833 } },
-  { city: 'Hvar', region: 'Splitsko-dalmatinska', coordinates: { lat: 43.1729, lng: 16.4413 } },
+  { city: 'Brač', region: 'Splitsko-dalmatinska', coordinates: { lat: 43.3850, lng: 16.5527 } },
 ];

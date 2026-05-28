@@ -13,7 +13,7 @@
  * The Croatia outline below is a simplified, schematic representation of HR
  * borders (mainland + main islands). It is not a survey-grade map; it is a
  * legible storytelling map for showing geographic spread. The pin coordinates
- * project correctly so the spread of Virovitica/Zagreb/Hvar reads as
+ * project correctly so the spread of Virovitica/Zagreb/Brač reads as
  * "kontinent, glavni grad, otok".
  */
 
@@ -118,17 +118,7 @@ const projectedPins = pins.map((p) => ({
       `.replace(/\s+/g, ' ').trim()}
     />
 
-    {/* ── Hvar island (simplified) ──────────────────────────────────────── */}
-    <ellipse
-      class="hr-island"
-      cx={project(16.55, 43.16).x}
-      cy={project(16.55, 43.16).y}
-      rx="30"
-      ry="6"
-      transform={`rotate(-8 ${project(16.55, 43.16).x} ${project(16.55, 43.16).y})`}
-    />
-
-    {/* ── Brač island (context for Hvar) ─────────────────────────────────── */}
+    {/* ── Brač island (simplified) ──────────────────────────────────────── */}
     <ellipse
       class="hr-island"
       cx={project(16.65, 43.32).x}
@@ -136,6 +126,16 @@ const projectedPins = pins.map((p) => ({
       rx="22"
       ry="6"
       transform={`rotate(-8 ${project(16.65, 43.32).x} ${project(16.65, 43.32).y})`}
+    />
+
+    {/* ── Hvar island (context, southern neighbour) ──────────────────────── */}
+    <ellipse
+      class="hr-island"
+      cx={project(16.55, 43.16).x}
+      cy={project(16.55, 43.16).y}
+      rx="30"
+      ry="6"
+      transform={`rotate(-8 ${project(16.55, 43.16).x} ${project(16.55, 43.16).y})`}
     />
 
     {/* ── Krk island (Kvarner context) ──────────────────────────────────── */}
