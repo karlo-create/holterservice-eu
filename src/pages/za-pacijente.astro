@@ -12,11 +12,13 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
 
 <BaseLayout title={title} description={description} path="/za-pacijente">
   <script slot="head" type="application/ld+json" set:html={faqJsonLd} />
-  <section class="section">
-    <div class="container prose">
-      <p class="eyebrow">Za pacijente</p>
+
+  <!-- ═══ PAGE HERO ══════════════════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-eyebrow">Za pacijente</p>
       <h1>Kako do nalaza preko partnerske klinike</h1>
-      <p class="lede">
+      <p class="page-lead">
         Pretraga je dostupna u partnerskim klinikama, najčešće u manjim mjestima i
         otocima, bez potrebe za putovanjem u Split, Zagreb ili druga središta.
         Dostupne su dvije paralelne pretrage — <strong>Holter EKG</strong>
@@ -24,114 +26,165 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
         (24-satno mjerenje krvnog tlaka, ABPM). Nalaz potpisuje specijalist
         kardiologije.
       </p>
+    </div>
+  </section>
 
-      <h2>1. Pronađite partnera u svom mjestu</h2>
-      <p>
-        Popis partnerskih klinika nalazi se na stranici <a href="/partneri">Partneri</a>.
-        {/* PLACEHOLDER: kad founder dostavi popis, ovaj odjeljak će linkati na konkretne klinike */}
-      </p>
+  <!-- ═══ KORACI PRETRAGE ════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="process-header">
+        <p class="section-eyebrow">Tijek pretrage</p>
+        <h2>Kako teče pretraga</h2>
+      </div>
 
-      <h2>2. Naručite se</h2>
-      <p>
-        Naručivanje obavljate izravno kod partnerske klinike, telefonom ili e-mailom.
-        Mi ne vodimo centralni raspored. Termin i sve administrativne detalje
-        dogovara partner.
-      </p>
-
-      <h2>3. Što ponijeti na pregled</h2>
-      <ul>
-        <li>Uputnicu ili medicinsku dokumentaciju liječnika koji vas šalje.</li>
-        <li>Osobnu iskaznicu.</li>
-        <li>Popis lijekova koje uzimate.</li>
-        <li>Praktičnu odjeću. Gornji dio bi trebao biti lako dostupan radi
-          postavljanja elektroda.</li>
-      </ul>
-
-      <h2>4. Pretraga traje 24 sata</h2>
-      <p>
-        Educirano osoblje partnera postavlja uređaj (elektrode za Holter EKG
-        ili manžeta za Holter KMAT). Cijeli dan obavljate svoje uobičajene
-        aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
-        dnevnik. Kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
-      </p>
-      <p>
-        Za 24-satno mjerenje krvnog tlaka (Holter KMAT / ABPM) uređaj
-        automatski mjeri tlak u intervalima danju i noću, pa ne morate
-        ništa ručno bilježiti vezano uz tlak — dovoljno je da nastavite
-        svoj uobičajen dan.
-      </p>
-      <p>
-        <strong>Nemojte:</strong> tuširati se ili kupati s uređajem, osim ako vas
-        partner izričito uputi drugačije.
-      </p>
-
-      <h2>5. Skidanje i očitanje</h2>
-      <p>
-        Vraćate uređaj u kliniku, partner skida elektrode i prosljeđuje snimak
-        na specijalističku obradu. Nalaz očitava i potpisuje specijalist
-        kardiologije.
-      </p>
-
-      <h2>6. Preuzimanje nalaza</h2>
-      <p>
-        Službeni nalaz dobivate od partnerske klinike u roku od
-        <strong>3–5 radnih dana</strong> od trenutka kad uređaj stigne u
-        laboratorij Poliklinike Dr. Obad. Nalaz pokažete svom obiteljskom
-        liječniku ili kardiologu radi daljnjeg vođenja.
-      </p>
-      <p>
-        Po potrebi je dostupan i <strong>hitan nalaz unutar 24 h</strong>.
-        Dostupnost i uvjete dogovorite s partnerskom klinikom pri naručivanju.
-      </p>
-
-      <h2>7. Razgovor s kardiologom nakon nalaza (po potrebi)</h2>
-      <p>
-        Nakon što ste preuzeli nalaz, dostupna je
-        <strong>video konzultacija s kardiologom</strong> — online razgovor
-        sa specijalistom bez putovanja u Polikliniku. Korisno za pojašnjenje
-        nalaza i smjernice za daljnje praćenje. Ako vam je važno dodatno
-        sigurno, dostupna je i usluga <strong>drugog mišljenja</strong>
-        — neovisna analiza iste snimke od drugog kardiologa s platforme.
-      </p>
-      <p>
-        Obje usluge <strong>pruža Poliklinika izravno</strong> i
-        <strong>dostupne su svim pacijentima</strong>, neovisno o tome kojeg
-        ste partnera odabrali za snimanje. Možete se raspitati i kod partnera —
-        sve informacije su i ovdje na stranici.
-      </p>
-
-      <h2>Dostupnost i uvjeti</h2>
-      <p>
-        Pretraga je dostupna preko mreže partnera. O uvjetima i načinu
-        naručivanja informirajte se kod najbližeg partnera — popis je na
-        stranici <a href="/partneri">Partneri</a>.
-      </p>
-
-      <div class="next-step">
-        <p class="section-eyebrow">Sljedeći korak</p>
-        <h2>Što vam je sljedeći korak?</h2>
-        <div class="next-step-grid">
-          <a
-            href="/partneri"
-            class="next-step-card"
-            data-event="patient_partner_card_click"
-            data-partner="cta_imate_preporuku"
-          >
-            <p class="next-step-card-body">
-              Imate preporuku liječnika za Holter EKG i tražite gdje ga obaviti?
+      <ol class="process-steps">
+        <li class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-body">
+            <h3>Pronađite partnera u svom mjestu</h3>
+            <p>
+              Popis partnerskih klinika nalazi se na stranici <a href="/partneri">Partneri</a>.
+              {/* PLACEHOLDER: kad founder dostavi popis, ovaj odjeljak će linkati na konkretne klinike */}
             </p>
-            <p class="next-step-card-cta">Pronađite partnera u svom mjestu →</p>
-          </a>
-          <a
-            href="/kontakt"
-            class="next-step-card"
-          >
-            <p class="next-step-card-body">
-              Niste sigurni gdje vam je najbliži partner ili imate dodatno pitanje?
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-body">
+            <h3>Naručite se</h3>
+            <p>
+              Naručivanje obavljate izravno kod partnerske klinike, telefonom ili e-mailom.
+              Mi ne vodimo centralni raspored. Termin i sve administrativne detalje
+              dogovara partner.
             </p>
-            <p class="next-step-card-cta">Kontaktirajte nas →</p>
-          </a>
-        </div>
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-body">
+            <h3>Što ponijeti na pregled</h3>
+            <ul>
+              <li>Uputnicu ili medicinsku dokumentaciju liječnika koji vas šalje.</li>
+              <li>Osobnu iskaznicu.</li>
+              <li>Popis lijekova koje uzimate.</li>
+              <li>Praktičnu odjeću. Gornji dio bi trebao biti lako dostupan radi
+                postavljanja elektroda.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-body">
+            <h3>Pretraga traje 24 sata</h3>
+            <p>
+              Educirano osoblje partnera postavlja uređaj (elektrode za Holter EKG
+              ili manžeta za Holter KMAT). Cijeli dan obavljate svoje uobičajene
+              aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
+              dnevnik. Kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
+            </p>
+            <p>
+              Za 24-satno mjerenje krvnog tlaka (Holter KMAT / ABPM) uređaj
+              automatski mjeri tlak u intervalima danju i noću, pa ne morate
+              ništa ručno bilježiti vezano uz tlak — dovoljno je da nastavite
+              svoj uobičajen dan.
+            </p>
+            <p>
+              <strong>Nemojte:</strong> tuširati se ili kupati s uređajem, osim ako vas
+              partner izričito uputi drugačije.
+            </p>
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">05</div>
+          <div class="process-body">
+            <h3>Skidanje i očitanje</h3>
+            <p>
+              Vraćate uređaj u kliniku, partner skida elektrode i prosljeđuje snimak
+              na specijalističku obradu. Nalaz očitava i potpisuje specijalist
+              kardiologije.
+            </p>
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">06</div>
+          <div class="process-body">
+            <h3>Preuzimanje nalaza</h3>
+            <p>
+              Službeni nalaz dobivate od partnerske klinike u roku od
+              <strong>3–5 radnih dana</strong> od trenutka kad uređaj stigne u
+              laboratorij Poliklinike Dr. Obad. Nalaz pokažete svom obiteljskom
+              liječniku ili kardiologu radi daljnjeg vođenja.
+            </p>
+            <p>
+              Po potrebi je dostupan i <strong>hitan nalaz unutar 24 h</strong>.
+              Dostupnost i uvjete dogovorite s partnerskom klinikom pri naručivanju.
+            </p>
+          </div>
+        </li>
+        <li class="process-step">
+          <div class="process-num">07</div>
+          <div class="process-body">
+            <h3>Razgovor s kardiologom nakon nalaza (po potrebi)</h3>
+            <p>
+              Nakon što ste preuzeli nalaz, dostupna je
+              <strong>video konzultacija s kardiologom</strong> — online razgovor
+              sa specijalistom bez putovanja u Polikliniku. Korisno za pojašnjenje
+              nalaza i smjernice za daljnje praćenje. Ako vam je važno dodatno
+              sigurno, dostupna je i usluga <strong>drugog mišljenja</strong>
+              — neovisna analiza iste snimke od drugog kardiologa s platforme.
+            </p>
+            <p>
+              Obje usluge <strong>pruža Poliklinika izravno</strong> i
+              <strong>dostupne su svim pacijentima</strong>, neovisno o tome kojeg
+              ste partnera odabrali za snimanje. Možete se raspitati i kod partnera —
+              sve informacije su i ovdje na stranici.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ DOSTUPNOST I UVJETI ═══════════════════════════════════════════════ -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="availability-section">
+        <h2>Dostupnost i uvjeti</h2>
+        <p>
+          Pretraga je dostupna preko mreže partnera. O uvjetima i načinu
+          naručivanja informirajte se kod najbližeg partnera — popis je na
+          stranici <a href="/partneri">Partneri</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEXT STEP CTAs ════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <p class="section-eyebrow">Sljedeći korak</p>
+      <h2 class="next-step-heading">Što vam je sljedeći korak?</h2>
+      <div class="next-step-grid">
+        <a
+          href="/partneri"
+          class="next-step-card"
+          data-event="patient_partner_card_click"
+          data-partner="cta_imate_preporuku"
+        >
+          <p class="next-step-card-body">
+            Imate preporuku liječnika za Holter EKG i tražite gdje ga obaviti?
+          </p>
+          <p class="next-step-card-cta">Pronađite partnera u svom mjestu →</p>
+        </a>
+        <a
+          href="/kontakt"
+          class="next-step-card"
+        >
+          <p class="next-step-card-body">
+            Niste sigurni gdje vam je najbliži partner ili imate dodatno pitanje?
+          </p>
+          <p class="next-step-card-cta">Kontaktirajte nas →</p>
+        </a>
       </div>
 
       <div class="cta-block">
@@ -149,23 +202,51 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
 </BaseLayout>
 
 <style>
-  .eyebrow {
-    color: var(--color-primary);
-    font-weight: 600;
-    font-size: var(--text-sm);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: var(--space-3);
+  /* ── Page hero ───────────────────────────────────────────────────────── */
+  .page-hero {
+    background: var(--color-accent);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-16) var(--space-20);
   }
-  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
-  .cta-block { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-10); }
 
-  .next-step {
-    margin-top: var(--space-16);
-    padding-top: var(--space-12);
-    border-top: 1px solid var(--color-border);
+  @media (min-width: 768px) {
+    .page-hero { padding-block: var(--space-20) var(--space-24); }
   }
-  .next-step .section-eyebrow {
+
+  .page-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-5);
+  }
+
+  .page-hero h1 {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--color-foreground);
+    margin: 0 0 var(--space-5);
+    max-width: 42rem;
+  }
+
+  @media (min-width: 768px) {
+    .page-hero h1 { font-size: var(--text-5xl); }
+  }
+
+  .page-lead {
+    font-size: var(--text-lg);
+    color: var(--color-muted-foreground);
+    max-width: 38rem;
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  /* ── Section eyebrow ─────────────────────────────────────────────────── */
+  .section-eyebrow {
     font-family: var(--font-body);
     font-weight: 600;
     font-size: var(--text-xs);
@@ -173,23 +254,136 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
     text-transform: uppercase;
     color: var(--color-primary);
     margin: 0 0 var(--space-3);
-    opacity: 0.8;
   }
-  .next-step h2 {
+
+  /* ── Process header ──────────────────────────────────────────────────── */
+  .process-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .process-header h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 24rem;
+  }
+
+  @media (min-width: 768px) {
+    .process-header h2 { font-size: var(--text-4xl); }
+  }
+
+  /* ── Process steps grid ──────────────────────────────────────────────── */
+  .process-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .process-steps { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .process-step {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .process-num {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+  }
+
+  .process-body h3 {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-2);
+    color: var(--color-foreground);
+  }
+
+  .process-body p {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    margin: 0 0 var(--space-2);
+  }
+
+  .process-body p:last-child { margin-bottom: 0; }
+
+  .process-body ul {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    margin: var(--space-2) 0 0;
+    padding-left: var(--space-5);
+    list-style: disc;
+  }
+
+  .process-body li { margin-block: var(--space-1); }
+
+  /* ── Availability section (narrower text column) ─────────────────────── */
+  .availability-section {
+    max-width: 44rem;
+  }
+
+  .availability-section h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .availability-section h2 { font-size: var(--text-3xl); }
+  }
+
+  .availability-section p {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  /* ── Next step CTAs ──────────────────────────────────────────────────── */
+  .next-step-heading {
     font-size: var(--text-3xl);
     font-weight: 700;
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-8);
     color: var(--color-foreground);
   }
+
+  @media (min-width: 768px) {
+    .next-step-heading { font-size: var(--text-4xl); }
+  }
+
   .next-step-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
+
   @media (min-width: 640px) {
     .next-step-grid { grid-template-columns: 1fr 1fr; }
   }
+
   .next-step-card {
     display: flex;
     flex-direction: column;
@@ -204,20 +398,30 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
     transition: border-color 200ms ease, box-shadow 200ms ease;
     min-height: 12rem;
   }
+
   .next-step-card:hover {
     border-color: var(--color-primary);
     box-shadow: var(--shadow-md);
   }
+
   .next-step-card-body {
     font-size: var(--text-base);
     line-height: var(--leading-normal);
     color: var(--color-foreground);
     margin: 0;
   }
+
   .next-step-card-cta {
     font-weight: 600;
     color: var(--color-primary);
     font-size: var(--text-base);
     margin: 0;
+  }
+
+  .cta-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-10);
   }
 </style>
