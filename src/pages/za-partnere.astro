@@ -6,7 +6,7 @@ import { partnerFaq, buildFaqJsonLd } from '../data/faq';
 
 const title = 'Za partnerske klinike';
 const description =
-  'Ponudite pacijentima Holter EKG i Holter KMAT (24h mjerenje krvnog tlaka, ABPM) nalaz specijalista bez slanja u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi ostvarujete novu uslugu i prihod.';
+  'Ponudite pacijentima Holter EKG i Holter KMAT (24h mjerenje krvnog tlaka, ABPM) nalaz specijalista bez slanja u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi proširujete svoju ponudu bez kapitalnog ulaganja.';
 
 const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
 ---
@@ -103,29 +103,31 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
           </p>
         </div>
 
-        <!-- Prihod -->
+        <!-- Model suradnje -->
         <div class="bento-card bento-card--accent">
           <div class="bento-icon bento-icon--white">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <h3>Jasan komercijalni model</h3>
+          <h3>Jasan model suradnje</h3>
           <p>
-            Cijena pretrage za pacijenta je fiksna i transparentna.
-            Vi naplaćujete pretragu pacijentu i zadržavate udio koji pokriva vaše
-            operativne troškove, postavljanje i skidanje uređaja, prostor, osoblje
-            i administraciju.
+            Mi se brinemo za uređaje, prijenos podataka i specijalističko
+            očitanje nalaza koje potpisuje specijalist kardiologije.
+            Vi se brinete za pacijenta, postavljanje i skidanje uređaja
+            te administraciju kod sebe.
           </p>
           <p>
-            Preostali iznos prepuštate Holterservicu za održavanje uređaja,
-            prijenos podataka i specijalističko očitanje nalaza koje potpisuje
-            specijalist kardiologije.
+            Detalje suradnje, uključujući komercijalne uvjete, dogovaramo
+            bilateralno sa svakom partnerskom ustanovom i definiramo ih u
+            Sporazumu o partnerstvu.
           </p>
           <ul class="commercial-highlights" aria-label="Ključne pogodnosti partnerstva">
             <li><strong>Bez kapitalnog ulaganja.</strong></li>
             <li><strong>Bez fiksnih mjesečnih naknada.</strong></li>
-            <li>Vi zarađujete na svakoj realiziranoj pretrazi.</li>
+            <li>Bez obveze zapošljavanja specijalista kardiologije.</li>
           </ul>
         </div>
       </div>
@@ -258,8 +260,9 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
               specijalist kardiologije.
             </p>
             <p class="segments-panel-volume">
-              <strong>Tipičan volumen:</strong> 6 do 8 pretraga mjesečno.
-              Obučavamo medicinsko i ne-medicinsko osoblje (npr. njegovateljice).
+              <strong>Edukacija osoblja:</strong> obučavamo medicinsko i
+              ne-medicinsko osoblje (npr. njegovateljice) za postavljanje
+              uređaja i osnovni protokol.
             </p>
           </div>
         </div>
@@ -277,13 +280,16 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
               Privatne ordinacije i poliklinike
             </h3>
             <p class="segments-panel-desc">
-              Proširite portfelj dijagnostike Holter EKG-om bez kapitalnog
-              ulaganja u opremu ni zapošljavanja kardiologa. Vaši pacijenti
-              dobivaju nalaz specijalističke kvalitete potpisan od strane
-              specijalista kardiologije.
+              Proširite portfelj dijagnostike Holter EKG i Holter KMAT (24-satno
+              mjerenje krvnog tlaka, ABPM) pretragama bez kapitalnog ulaganja u
+              opremu ni zapošljavanja kardiologa. Vaši pacijenti dobivaju nalaz
+              specijalističke kvalitete potpisan od strane specijalista
+              kardiologije.
             </p>
             <p class="segments-panel-volume">
-              <strong>Tipičan volumen:</strong> 12 do 15 pretraga mjesečno.
+              <strong>Pogodno za:</strong> ordinacije obiteljske medicine,
+              internističke i kardiološke ambulante koje žele ponuditi nalaz
+              specijalista bez slanja pacijenata u Split ili Zagreb.
             </p>
           </div>
         </div>
@@ -306,8 +312,9 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
               referentne ustanove.
             </p>
             <p class="segments-panel-volume">
-              <strong>Tipičan volumen:</strong> 8 do 12 pretraga mjesečno.
-              Pristup prilagođen institucionalnom procesu i dokumentaciji.
+              <strong>Institucionalna integracija:</strong> pristup prilagođen
+              vašem internom procesu i dokumentaciji, uz Sporazum o
+              partnerstvu i Ugovor o obradi osobnih podataka.
             </p>
           </div>
         </div>
@@ -401,7 +408,7 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
           <div class="process-num">02</div>
           <div class="process-body">
             <h3>Kratki poziv</h3>
-            <p>Dogovaramo 15-minutni razgovor da razumijemo lokaciju, volumen i potrebe vaše prakse.</p>
+            <p>Dogovaramo 15-minutni razgovor da razumijemo lokaciju i potrebe vaše prakse.</p>
           </div>
         </li>
         <li class="process-step">
