@@ -7,6 +7,7 @@ import {
   PARTNER_TYPE_LABEL,
   SERVICE_LABEL,
   sortServices,
+  isPlatformService,
 } from '../data/partners';
 
 const title = 'Naša mreža partnera: Zagreb, Virovitica, Brač';
@@ -45,17 +46,25 @@ const partnerJsonLd = partners.map((p) => ({
 // Map pins: real partners if present, else fall back to placeholder city
 // markers so the geographic spread (kontinent / glavni grad / otok) reads
 // even before founder supplies the partner contact data.
+//
+// `serviceFlags` mirrors `services` order and marks Poliklinika platform
+// services (video-konzultacija, drugo-misljenje) so the map popup can label
+// them as universal — they're available everywhere, regardless of partner.
 const mapPins =
   partners.length > 0
-    ? partners.map((p) => ({
-        slug: p.slug,
-        name: p.name,
-        city: p.city,
-        region: p.region,
-        coordinates: p.coordinates,
-        services: sortServices(p.services),
-        serviceLabels: sortServices(p.services).map((s) => SERVICE_LABEL[s]),
-      }))
+    ? partners.map((p) => {
+        const ordered = sortServices(p.services);
+        return {
+          slug: p.slug,
+          name: p.name,
+          city: p.city,
+          region: p.region,
+          coordinates: p.coordinates,
+          services: ordered,
+          serviceLabels: ordered.map((s) => SERVICE_LABEL[s]),
+          serviceFlags: ordered.map((s) => (isPlatformService(s) ? 'universal' : 'partner')),
+        };
+      })
     : PARTNER_CITIES.map((c) => ({
         slug: `placeholder-${c.city.toLowerCase()}`,
         city: c.city,
@@ -106,6 +115,21 @@ const mapPins =
   <section class="section section-partners">
     <div class="container">
       {partners.length > 0 && (
+        <div class="universal-callout" role="note" aria-label="Univerzalne usluge Poliklinike">
+          <p class="universal-callout-eyebrow">Uz svakog partnera</p>
+          <p class="universal-callout-body">
+            <strong>Video konzultacija</strong> i <strong>drugo mišljenje</strong>
+            dostupni su uz svakog partnera — pruža ih
+            <strong>Poliklinika izravno</strong>, neovisno o tome kojeg
+            partnera odaberete za snimanje.
+          </p>
+          <p class="universal-callout-legend" aria-hidden="true">
+            <span class="universal-dot"></span>
+            <span class="universal-legend-text">Oznaka uz badge označava polikliničku platformsku uslugu.</span>
+          </p>
+        </div>
+      )}
+      {partners.length > 0 && (
         <p class="demo-banner" role="note">
           <span class="demo-banner-dot" aria-hidden="true"></span>
           Prikazani podaci su demo. Konačni partneri bit će potvrđeni prije pokretanja.
@@ -147,11 +171,27 @@ const mapPins =
                 <div class="partner-services" aria-label="Usluge koje partner nudi">
                   <p class="partner-services-label">Usluge</p>
                   <ul class="partner-services-list">
-                    {sortServices(p.services).map((service) => (
-                      <li class={`partner-service-chip partner-service-chip-${service}`}>
-                        {SERVICE_LABEL[service]}
-                      </li>
-                    ))}
+                    {sortServices(p.services).map((service) => {
+                      const universal = isPlatformService(service);
+                      return (
+                        <li
+                          class:list={[
+                            'partner-service-chip',
+                            `partner-service-chip-${service}`,
+                            universal && 'partner-service-chip-universal',
+                          ]}
+                          title={universal ? 'Pruža Poliklinika — dostupno svim pacijentima' : undefined}
+                        >
+                          {universal && (
+                            <span class="universal-dot" aria-hidden="true"></span>
+                          )}
+                          {SERVICE_LABEL[service]}
+                          {universal && (
+                            <span class="visually-hidden"> (pruža Poliklinika, dostupno svima)</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -342,6 +382,51 @@ const mapPins =
     gap: var(--space-3);
   }
 
+  /* ── Universal services callout ────────────────────────────────────── */
+  .universal-callout {
+    margin: 0 0 var(--space-6);
+    padding: var(--space-5) var(--space-6);
+    background: var(--color-primary-light);
+    border: 1px solid rgba(20, 87, 164, 0.25);
+    border-radius: var(--radius-lg);
+  }
+
+  .universal-callout-eyebrow {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .universal-callout-body {
+    margin: 0;
+    color: var(--color-foreground);
+    line-height: var(--leading-normal);
+    font-size: var(--text-base);
+  }
+
+  .universal-callout-legend {
+    margin: var(--space-3) 0 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-muted-foreground);
+    font-size: var(--text-xs);
+  }
+
+  .universal-callout-legend .universal-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(20, 87, 164, 0.18);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
   /* ── Demo data banner ──────────────────────────────────────────────── */
   .demo-banner {
     display: inline-flex;
@@ -512,6 +597,35 @@ const mapPins =
     background: rgba(100, 60, 160, 0.08);
     border-color: rgba(100, 60, 160, 0.22);
     color: #5b3aa0;
+  }
+
+  /* Universal chips share a subtle dot + ring so they read as platform
+     services next to partner-specific Holter chips. */
+  .partner-service-chip-universal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .partner-service-chip-universal .universal-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+    flex-shrink: 0;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   .partner-contact {

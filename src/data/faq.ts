@@ -103,13 +103,13 @@ export const patientFaq: FaqItem[] = [
     question:
       'Mogu li nakon nalaza razgovarati sa specijalistom?',
     answer:
-      'Da. Nakon nalaza dostupna je video konzultacija s kardiologom — online razgovor sa specijalistom bez putovanja u Polikliniku. Pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin dogovarate preko mreže partnera; informirajte se kod najbližeg partnera.',
+      'Da. Video konzultaciju s kardiologom pruža Poliklinika izravno i dostupna je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o online razgovoru sa specijalistom bez putovanja u Polikliniku — za pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin možete dogovoriti i kod partnera; sve informacije su uvijek i ovdje na stranici.',
   },
   {
     question:
       'Mogu li dobiti drugo mišljenje na isti nalaz?',
     answer:
-      'Da. Dostupna je usluga drugog mišljenja, neovisna analiza iste snimke od strane drugog kardiologa s platforme. Korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi. Dostupno preko mreže partnera.',
+      'Da. Drugo mišljenje pruža Poliklinika izravno i dostupno je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o neovisnoj analizi iste snimke od strane drugog kardiologa s platforme — korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi.',
   },
   {
     question:
