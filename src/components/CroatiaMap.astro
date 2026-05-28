@@ -90,6 +90,7 @@ const projectedPins = pins.map((p) => ({
         class:list={['hr-pin', p.placeholder && 'is-placeholder']}
         data-slug={p.slug}
         data-city={p.city}
+        aria-label={p.name ? `${p.name}, ${p.city}` : `Partner: ${p.city}`}
       >
         <circle cx={p.x} cy={p.y} r="14" class="hr-pin-halo" />
         <circle cx={p.x} cy={p.y} r="7" class="hr-pin-dot" />
