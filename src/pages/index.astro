@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Holter EKG nalaz iz referentne ustanove, bez putovanja';
+const title = 'Holter EKG i Holter KMAT nalaz iz referentne ustanove, bez putovanja';
 const description =
-  'Holterservice opskrbljuje partnerske klinike Holter EKG uređajima i specijalističkim nalazom, kako bi pacijenti dobili kardiološku dijagnostiku bez putovanja u Split ili Zagreb.';
+  'Holterservice opskrbljuje partnerske klinike Holter EKG, Holter KMAT (24h mjerenje krvnog tlaka, ABPM) uređajima i specijalističkim nalazom, kako bi pacijenti dobili kardiološku dijagnostiku bez putovanja u Split ili Zagreb.';
 
 const medicalBusinessJsonLd = {
   '@context': 'https://schema.org',
@@ -55,8 +55,9 @@ const medicalBusinessJsonLd = {
         <h1>Specijalistički kardiološki nalaz,<br class="hero-br"> dostupan u vašem mjestu.</h1>
 
         <p class="hero-lead">
-          Holter EKG uređaj u vašoj lokalnoj klinici. Snimak očita
-          i potpiše specijalist kardiologije. Bez putovanja u Split ili Zagreb.
+          Holter EKG i Holter KMAT (24-satno mjerenje krvnog tlaka) u vašoj
+          lokalnoj klinici. Snimak očita i potpiše specijalist kardiologije.
+          Bez putovanja u Split ili Zagreb.
         </p>
 
         <!-- CTAs -->
@@ -118,6 +119,41 @@ const medicalBusinessJsonLd = {
     </div>
   </section>
 
+  <!-- ═══ SERVICES STRIP: Holter EKG + Holter KMAT ═══════════════════════ -->
+  <section class="section services-strip-section">
+    <div class="container">
+      <div class="services-strip-header">
+        <p class="section-eyebrow">Naše usluge</p>
+        <h2>Dvije paralelne dijagnostičke usluge</h2>
+      </div>
+      <div class="services-strip">
+        <a href="/usluga/holter-ekg" class="services-strip-card">
+          <span class="services-strip-pill">EKG</span>
+          <h3 class="services-strip-name">Holter EKG</h3>
+          <p class="services-strip-sub">24-satno snimanje rada srca</p>
+          <p class="services-strip-body">
+            Otkriva povremene aritmije i poremećaje provođenja koje
+            standardni EKG u ordinaciji često ne vidi.
+          </p>
+          <span class="services-strip-cta">Detalji o pretrazi →</span>
+        </a>
+        <a href="/usluga/holter-kmat" class="services-strip-card">
+          <span class="services-strip-pill">KMAT · ABPM</span>
+          <h3 class="services-strip-name">Holter KMAT</h3>
+          <p class="services-strip-sub">24-satno mjerenje krvnog tlaka (ABPM)</p>
+          <p class="services-strip-body">
+            Pokazuje stvarni 24-satni profil tlaka, koji jednokratno
+            mjerenje u ordinaciji ne razdvaja od situacijskog povišenja.
+          </p>
+          <span class="services-strip-cta">Detalji o pretrazi →</span>
+        </a>
+      </div>
+      <p class="services-strip-foot">
+        <a href="/usluga">Sve naše usluge, uključujući dodatne →</a>
+      </p>
+    </div>
+  </section>
+
   <!-- ═══ VALUE PILLARS ══════════════════════════════════════════════════ -->
   <section class="section section-muted">
     <div class="container">
@@ -176,8 +212,8 @@ const medicalBusinessJsonLd = {
           <div class="step-body">
             <h3>Pacijent dolazi u partnersku kliniku</h3>
             <p>
-              Osoblje partnera postavlja Holter EKG uređaj. Pacijent ga nosi
-              24 sata tijekom svog uobičajenog dana.
+              Osoblje partnera postavlja Holter EKG ili Holter KMAT uređaj.
+              Pacijent ga nosi 24 sata tijekom svog uobičajenog dana.
             </p>
           </div>
         </li>
@@ -232,6 +268,119 @@ const medicalBusinessJsonLd = {
 </BaseLayout>
 
 <style>
+  /* ── Services strip (Holter EKG + Holter KMAT) ───────────────────────── */
+  .services-strip-section {
+    padding-block: var(--space-16);
+  }
+
+  .services-strip-header {
+    margin-bottom: var(--space-8);
+    max-width: 36rem;
+  }
+
+  .services-strip-header h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .services-strip-header h2 { font-size: var(--text-4xl); }
+  }
+
+  .services-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .services-strip { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+  }
+
+  .services-strip-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-7);
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: var(--color-foreground);
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+
+  .services-strip-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+  }
+
+  .services-strip-pill {
+    align-self: flex-start;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .services-strip-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .services-strip-name { font-size: var(--text-3xl); }
+  }
+
+  .services-strip-sub {
+    font-size: var(--text-base);
+    color: var(--color-muted-foreground);
+    margin: 0;
+    line-height: var(--leading-snug);
+  }
+
+  .services-strip-body {
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-normal);
+    margin: 0;
+    font-size: var(--text-base);
+  }
+
+  .services-strip-cta {
+    margin-top: auto;
+    padding-top: var(--space-2);
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    letter-spacing: 0.01em;
+  }
+
+  .services-strip-foot {
+    margin-top: var(--space-6);
+    text-align: left;
+  }
+
+  .services-strip-foot a {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .services-strip-foot a:hover { text-decoration: underline; }
+
   /* ── Hero ─────────────────────────────────────────────────────────────── */
   .hero {
     background: var(--color-accent);

@@ -17,6 +17,45 @@ export const PARTNER_TYPE_LABEL: Record<PartnerType, string> = {
   'dom-zdravlja': 'Dom zdravlja',
 };
 
+/**
+ * Catalogue of usluga keys a partner can offer.
+ *
+ * Stays in sync with the four services described on `/usluga`:
+ *   - holter-ekg          → primary diagnostic service
+ *   - holter-kmat         → 24h ABPM blood-pressure monitoring
+ *   - video-konzultacija  → online follow-up s kardiologom
+ *   - drugo-misljenje     → independent second-opinion analysis
+ *
+ * Order matters for the partner-card badge row (left → right).
+ */
+export type ServiceKey =
+  | 'holter-ekg'
+  | 'holter-kmat'
+  | 'video-konzultacija'
+  | 'drugo-misljenje';
+
+export const SERVICE_LABEL: Record<ServiceKey, string> = {
+  'holter-ekg': 'Holter EKG',
+  'holter-kmat': 'Holter KMAT',
+  'video-konzultacija': 'Video konzultacija',
+  'drugo-misljenje': 'Drugo mišljenje',
+};
+
+/** Short form used in compact UIs (e.g. map popup). */
+export const SERVICE_SHORT_LABEL: Record<ServiceKey, string> = {
+  'holter-ekg': 'Holter EKG',
+  'holter-kmat': 'Holter KMAT',
+  'video-konzultacija': 'Video konzultacija',
+  'drugo-misljenje': 'Drugo mišljenje',
+};
+
+export const SERVICE_ORDER: ReadonlyArray<ServiceKey> = [
+  'holter-ekg',
+  'holter-kmat',
+  'video-konzultacija',
+  'drugo-misljenje',
+];
+
 export interface Partner {
   /** Unique slug (used for anchors). */
   slug: string;
@@ -40,6 +79,8 @@ export interface Partner {
   coordinates: { lat: number; lng: number };
   /** Short 1 to 2 sentence description. */
   description?: string;
+  /** Usluge koje partner nudi. */
+  services: ServiceKey[];
 }
 
 /**
@@ -47,6 +88,10 @@ export interface Partner {
  * Real partner data (names, addresses, contacts) will replace these entries
  * once consent and details are confirmed. Coordinates are real geographic
  * data for the three target cities (Virovitica, Brač, Zagreb) and can stay.
+ *
+ * Service distribution (dummy): Zagreb has the full bundle, Virovitica
+ * carries both Holter modalities, Brač pairs EKG with the online follow-up
+ * option. Final partner-service map is confirmed during onboarding.
  */
 export const partners: Partner[] = [
   {
@@ -62,6 +107,7 @@ export const partners: Partner[] = [
     coordinates: { lat: 45.8311, lng: 17.3833 },
     description:
       'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz, konačni partner bit će potvrđen.)',
+    services: ['holter-ekg', 'holter-kmat'],
   },
   {
     slug: 'demo-brac',
@@ -76,6 +122,7 @@ export const partners: Partner[] = [
     coordinates: { lat: 43.3850, lng: 16.5527 },
     description:
       'Partner u programu Holter monitoringa za područje otoka Brača i okolice. (Demo prikaz, konačni partner bit će potvrđen.)',
+    services: ['holter-ekg', 'video-konzultacija'],
   },
   {
     slug: 'demo-zagreb',
@@ -90,6 +137,7 @@ export const partners: Partner[] = [
     coordinates: { lat: 45.8150, lng: 15.9819 },
     description:
       'Partner u programu Holter monitoringa za područje grada Zagreba. (Demo prikaz, konačni partner bit će potvrđen.)',
+    services: ['holter-ekg', 'holter-kmat', 'video-konzultacija', 'drugo-misljenje'],
   },
 ];
 
@@ -106,3 +154,12 @@ export const PARTNER_CITIES: ReadonlyArray<{
   { city: 'Virovitica', region: 'Virovitičko-podravska', coordinates: { lat: 45.8311, lng: 17.3833 } },
   { city: 'Brač', region: 'Splitsko-dalmatinska', coordinates: { lat: 43.3850, lng: 16.5527 } },
 ];
+
+/**
+ * Sort a list of service keys into canonical UI order.
+ * Use before rendering badges to keep the visual order stable across
+ * the partner card, the map popup, and any future surfaces.
+ */
+export function sortServices(services: ServiceKey[]): ServiceKey[] {
+  return SERVICE_ORDER.filter((key) => services.includes(key));
+}

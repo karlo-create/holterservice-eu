@@ -5,7 +5,7 @@ import { patientFaq, buildFaqJsonLd } from '../data/faq';
 
 const title = 'Za pacijente';
 const description =
-  'Kako do Holter EKG nalaza specijalista preko partnerske klinike u vašem mjestu. Saznajte što ponijeti, kako teče pretraga i kada očekivati nalaz.';
+  'Kako do Holter EKG ili Holter KMAT (24-satno mjerenje krvnog tlaka) nalaza specijalista preko partnerske klinike u vašem mjestu. Saznajte što ponijeti, kako teče pretraga i kada očekivati nalaz.';
 
 const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
 ---
@@ -19,7 +19,10 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
       <p class="lede">
         Pretraga je dostupna u partnerskim klinikama, najčešće u manjim mjestima i
         otocima, bez potrebe za putovanjem u Split, Zagreb ili druga središta.
-        Nalaz potpisuje specijalist kardiologije.
+        Dostupne su dvije paralelne pretrage — <strong>Holter EKG</strong>
+        (24-satno snimanje rada srca) i <strong>Holter KMAT</strong>
+        (24-satno mjerenje krvnog tlaka, ABPM). Nalaz potpisuje specijalist
+        kardiologije.
       </p>
 
       <h2>1. Pronađite partnera u svom mjestu</h2>
@@ -46,9 +49,16 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
 
       <h2>4. Pretraga traje 24 sata</h2>
       <p>
-        Educirano osoblje partnera postavlja uređaj. Cijeli dan obavljate svoje
-        uobičajene aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
+        Educirano osoblje partnera postavlja uređaj (elektrode za Holter EKG
+        ili manžeta za Holter KMAT). Cijeli dan obavljate svoje uobičajene
+        aktivnosti. Uređaj je lagan i ne ometa kretanje. Vodite kratak
         dnevnik. Kad ste spavali, kad osjetili neki simptom, kad ste vježbali.
+      </p>
+      <p>
+        Za 24-satno mjerenje krvnog tlaka (Holter KMAT / ABPM) uređaj
+        automatski mjeri tlak u intervalima danju i noću, pa ne morate
+        ništa ručno bilježiti vezano uz tlak — dovoljno je da nastavite
+        svoj uobičajen dan.
       </p>
       <p>
         <strong>Nemojte:</strong> tuširati se ili kupati s uređajem, osim ako vas
@@ -72,6 +82,19 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(patientFaq));
       <p>
         Po potrebi je dostupan i <strong>hitan nalaz unutar 24 h</strong>,
         uz dodatnu cijenu — dogovara se s partnerskom klinikom pri naručivanju.
+      </p>
+
+      <h2>7. Razgovor s kardiologom nakon nalaza (po potrebi)</h2>
+      <p>
+        Nakon što ste preuzeli nalaz, kroz mrežu partnera dostupna je
+        i <strong>video konzultacija s kardiologom</strong> — online razgovor
+        sa specijalistom bez putovanja u Polikliniku. Korisno za pojašnjenje
+        nalaza i smjernice za daljnje praćenje. Ako vam je važno dodatno
+        sigurno, dostupna je i usluga <strong>drugog mišljenja</strong>
+        — neovisna analiza iste snimke od drugog kardiologa s platforme.
+      </p>
+      <p>
+        O obje dodatne usluge informirajte se kod najbližeg partnera.
       </p>
 
       <h2>Cijena</h2>

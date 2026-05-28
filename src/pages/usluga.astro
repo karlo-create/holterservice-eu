@@ -1,40 +1,62 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Što je Holter EKG i kako funkcionira nalaz';
+const title =
+  'Naše usluge — Holter EKG, Holter KMAT (ABPM) i dodatne kardiološke usluge';
 const description =
-  'Holter EKG je 24-satno snimanje rada srca. Saznajte kako uređaj funkcionira, kako se nosi i kako dolazi do specijalističkog nalaza koji potpisuje specijalist kardiologije.';
+  'Holter EKG (24-satno snimanje rada srca), Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM), video konzultacija s kardiologom i drugo mišljenje. Nalaz potpisuje specijalist kardiologije.';
 
-const steps = [
+interface ServiceCard {
+  slug: 'holter-ekg' | 'holter-kmat';
+  label: string;
+  heading: string;
+  abbr: string;
+  blurb: string;
+  bullets: string[];
+  href: string;
+}
+
+const services: ServiceCard[] = [
   {
-    num: '01',
-    title: 'Dolazak u partnersku kliniku',
-    body: 'Naručujete se kod partnera koji surađuje s nama. Vidite popis u sekciji Partneri.',
+    slug: 'holter-ekg',
+    label: 'EKG',
+    heading: 'Holter EKG',
+    abbr: '24-satno snimanje rada srca',
+    blurb:
+      'Prijenosni uređaj bilježi elektrokardiogram tijekom 24 sata, otkrivajući povremene aritmije i poremećaje provođenja koje standardni EKG u ordinaciji često ne vidi.',
+    bullets: [
+      'Palpitacije, vrtoglavica, nesvjestica',
+      'Praćenje poznatih aritmija',
+      'Kontrola nakon ugradnje pacemakera',
+    ],
+    href: '/usluga/holter-ekg',
   },
   {
-    num: '02',
-    title: 'Postavljanje uređaja',
-    body: 'Educirano osoblje partnera postavlja elektrode i pokreće snimanje. Cijela procedura traje desetak minuta.',
+    slug: 'holter-kmat',
+    label: 'KMAT · ABPM',
+    heading: 'Holter KMAT',
+    abbr: '24-satno mjerenje krvnog tlaka (ABPM)',
+    blurb:
+      'Uređaj s manžetom automatski mjeri tlak danju i noću, pokazujući stvarni 24-satni profil koji jednokratno mjerenje u ordinaciji ne razdvaja od situacijskog povišenja tlaka.',
+    bullets: [
+      'Hipertenzija bijele kute',
+      'Sumnja na sekundarnu hipertenziju',
+      'Evaluacija učinka antihipertenzivne terapije',
+    ],
+    href: '/usluga/holter-kmat',
+  },
+];
+
+const addons = [
+  {
+    title: 'Video konzultacija s kardiologom',
+    body:
+      'Nakon nalaza možete dogovoriti online razgovor sa specijalistom kardiologije bez putovanja u Polikliniku. Pojašnjenje nalaza, pitanja, smjernice za daljnje praćenje.',
   },
   {
-    num: '03',
-    title: 'Nošenje 24 sata',
-    body: 'Radite uobičajene aktivnosti. Preporuka: vodite kratak dnevnik (simptomi, fizička aktivnost), to pomaže pri tumačenju.',
-  },
-  {
-    num: '04',
-    title: 'Skidanje i slanje snimke',
-    body: 'Vraćate se u kliniku, osoblje skida uređaj i sigurno prosljeđuje snimak specijalistu kardiologije.',
-  },
-  {
-    num: '05',
-    title: 'Specijalist očitava nalaz',
-    body: 'Snimak pregledava i potpisuje specijalist kardiologije, bez delegiranja, bez automatskih izvještaja.',
-  },
-  {
-    num: '06',
-    title: 'Preuzimanje nalaza',
-    body: 'Službeni potpisani nalaz preuzimate kod partnera, obično u roku od 3–5 radnih dana. Hitan nalaz dostupan unutar 24 h (uz dodatnu cijenu).',
+    title: 'Drugo mišljenje',
+    body:
+      'Neovisna analiza iste snimke od strane drugog kardiologa s platforme. Dodatna potvrda za važne odluke o terapiji ili daljnjoj obradi.',
   },
 ];
 ---
@@ -44,214 +66,140 @@ const steps = [
   <!-- ═══ PAGE HERO ═══════════════════════════════════════════════════════ -->
   <section class="page-hero">
     <div class="container">
-      <p class="page-eyebrow">Usluga</p>
-      <h1>Holter EKG nalaz, kako izgleda od početka do kraja.</h1>
+      <p class="page-eyebrow">Usluge</p>
+      <h1>Naše usluge: Holter EKG i Holter KMAT.</h1>
       <p class="page-lead">
-        24-satno snimanje rada srca koje otkriva ono što standardni EKG ne vidi.
-        Pregled obavljate lokalno, nalaz potpisuje specijalist kardiologije.
+        Dvije paralelne dijagnostičke usluge — 24-satno snimanje rada srca
+        i 24-satno mjerenje krvnog tlaka — dostupne u partnerskim klinikama
+        diljem Hrvatske. Svaki nalaz potpisuje specijalist kardiologije.
       </p>
     </div>
   </section>
 
-  <!-- ═══ ŠTO JE HOLTER EKG ═══════════════════════════════════════════════ -->
-  <section class="section">
-    <div class="container what-section">
-      <div class="what-text">
-        <p class="section-eyebrow">Pretraga</p>
-        <h2>Što je Holter EKG?</h2>
-        <p>
-          Holter EKG je mali prijenosni uređaj koji se nosi na tijelu i bilježi rad
-          srca pomoću nekoliko elektroda zalijepljenih na kožu. Uređaj je tih, lagan
-          i ne ometa svakodnevne aktivnosti. Pacijent radi sve što inače radi.
-        </p>
-        <p>
-          Pomaže otkriti probleme koje standardni EKG u ordinaciji često ne vidi:
-          povremene aritmije, ishemiju i poremećaje provođenja.
-        </p>
-      </div>
-      <div class="what-indications">
-        <p class="section-eyebrow">Kome je namijenjen</p>
-        <ul class="indication-list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Palpitacije, vrtoglavica ili nesvjestica
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Praćenje poznatih aritmija
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Kontrola nakon ugradnje pacemakera
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Po preporuci obiteljskog liječnika ili kardiologa
-          </li>
-        </ul>
-        <p class="indication-note">
-          Holterservice ne ordinira terapiju, pružamo dijagnostički nalaz koji
-          potom koristite kod svog liječnika.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TEHNOLOGIJA: SCHILLER MEDILOG ═══════════════════════════════════ -->
-  <section class="section section-muted tech-section-wrap">
-    <div class="container tech-section">
-      <div class="tech-intro">
-        <p class="section-eyebrow">Tehnologija</p>
-        <h2>Tehnologija koju koristimo</h2>
-        {/*
-          Stock cardiology image from Unsplash (license: https://unsplash.com/license, free for
-          commercial use, no attribution required). Photo by Robina Weermeijer:
-          https://unsplash.com/photos/iqfxOuY9vco
-          Subject: anatomical heart model on a cardiology textbook with ECG diagrams, generic
-          cardiology imagery, no Schiller branding, no patient identifiers.
-        */}
-        <img
-          src="/images/ecg-monitor.jpg"
-          alt="Anatomski model srca na kardiološkom udžbeniku s prikazima EKG ritma"
-          width="1200"
-          height="800"
-          loading="lazy"
-          decoding="async"
-          class="tech-image"
-        />
-        <p>
-          Uređaji koje raspoređujemo u partnerske ustanove su
-          <strong>Schiller medilog AR</strong> profesionalni Holter EKG monitori
-          švicarske proizvodnje. Schiller AG je jedan od vodećih svjetskih
-          proizvođača kardiološke dijagnostičke opreme, prisutan u više od
-          100 zemalja od 1974. godine.
-        </p>
-        <p>
-          Snimak se analizira u <strong>DARWIN2</strong> specijalističkom
-          softveru, a finalno očitanje i potpis obavlja specijalist
-          kardiologije.
-        </p>
-      </div>
-
-      <div class="tech-specs">
-        <p class="section-eyebrow">Karakteristike važne za kvalitetu nalaza</p>
-        <ul class="tech-list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Snimanje 24 sata, uz mogućnost produženja do 14 dana po potrebi
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Visoka rezolucija snimke (sampling rate 32.000 Hz)
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Detekcija atrijske fibrilacije temeljem analize P-vala
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Praćenje ST segmenta i QT intervala
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Otporan na udarce i prskanje, nosivi tijekom uobičajenih aktivnosti
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TIJEK PREGLEDA ════════════════════════════════════════════════════ -->
+  <!-- ═══ PRIMARY SERVICES ════════════════════════════════════════════════ -->
   <section class="section">
     <div class="container">
-      <div class="steps-header">
-        <p class="section-eyebrow">Tijek pregleda</p>
-        <h2>Kako teče pregled, korak po korak</h2>
+      <div class="services-header">
+        <p class="section-eyebrow">Glavne dijagnostičke usluge</p>
+        <h2>Dvije paralelne pretrage, isti specijalistički standard</h2>
       </div>
-      <div class="steps-grid">
-        {steps.map((step) => (
-          <div class="step-card">
-            <div class="step-num">{step.num}</div>
-            <h3>{step.title}</h3>
-            <p>{step.body}</p>
-          </div>
+
+      <ul class="services-grid">
+        {services.map((service) => (
+          <li class="service-card">
+            <div class="service-card-head">
+              <span class="service-pill">{service.label}</span>
+              <h3 class="service-name">{service.heading}</h3>
+              <p class="service-abbr">{service.abbr}</p>
+            </div>
+
+            <p class="service-blurb">{service.blurb}</p>
+
+            <p class="service-eyebrow">Tipične indikacije</p>
+            <ul class="service-bullets">
+              {service.bullets.map((b) => (
+                <li>
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {b}
+                </li>
+              ))}
+            </ul>
+
+            <div class="service-cta">
+              <a class="btn btn-primary" href={service.href}>Detalji o pretrazi →</a>
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 
-  <!-- ═══ KVALITETA NALAZA ═════════════════════════════════════════════════ -->
+  <!-- ═══ ADD-ON USLUGE ═══════════════════════════════════════════════════ -->
+  <section class="section section-muted" id="dodatne-usluge">
+    <div class="container">
+      <div class="addons-header">
+        <p class="section-eyebrow">Dodatne usluge</p>
+        <h2>Nakon nalaza: razgovor s kardiologom ili neovisna provjera</h2>
+        <p class="addons-intro">
+          Pored Holter pretraga, kroz partnersku mrežu dostupne su i dvije
+          dodatne usluge koje produbljuju vrijednost nalaza za pacijenta.
+        </p>
+      </div>
+
+      <ul class="addons-grid">
+        {addons.map((addon) => (
+          <li class="addon-card">
+            <h3 class="addon-name">{addon.title}</h3>
+            <p class="addon-body">{addon.body}</p>
+            <p class="addon-meta">
+              Dostupno preko mreže partnera. Informirajte se kod najbližeg partnera.
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <p class="addons-cta">
+        <a class="btn btn-secondary" href="/partneri">Pronađite partnera u svom mjestu →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS (SHORT) ═══════════════════════════════════════════ -->
   <section class="section">
-    <div class="container quality-block">
-      <div class="quality-quote">
-        <blockquote>
-          Svaki snimak ručno pregledava i potpisuje specijalist kardiologije,
-          bez delegiranja i bez automatskih izvještaja koji često propuste
-          klinički relevantne nalaze.
-        </blockquote>
-        <cite>Holterservice, princip kvalitete</cite>
-      </div>
-      <div class="quality-detail">
-        <p class="section-eyebrow">Kvaliteta nalaza</p>
-        <p>
-          Cilj nam je da nalaz koji dobijete u partnerskoj klinici bude jednake
-          kvalitete kao nalaz koji biste dobili u referentnoj ustanovi.
-        </p>
-        <h3>Što treba ponijeti</h3>
-        <ul class="bring-list">
-          <li>Uputnicu ili nalaz/zapis liječnika koji vas šalje na pretragu</li>
-          <li>Osobnu iskaznicu</li>
-          <li>Popis lijekova koje uzimate</li>
-        </ul>
-        <div class="sla-block" aria-label="Rokovi nalaza">
-          <p class="section-eyebrow">Rok nalaza</p>
-          <ul class="sla-list">
-            <li>
-              <span class="sla-label">Obični nalaz</span>
-              <span class="sla-value">3–5 radnih dana</span>
-            </li>
-            <li>
-              <span class="sla-label">Hitni nalaz</span>
-              <span class="sla-value">unutar 24 h <small>(uz dodatnu cijenu)</small></span>
-            </li>
-          </ul>
-          <p class="sla-note">
-            Rok se računa od trenutka kad uređaj stigne u laboratorij
-            Poliklinike Dr. Obad. Hitni nalaz dogovara se s partnerskom klinikom.
-          </p>
-        </div>
-        <p class="price-note">
-          <strong>Cijena:</strong> Određuje je partnerska klinika. Kontaktirajte
-          odabranog partnera za točne uvjete.
+    <div class="container how-section">
+      <div class="how-header">
+        <p class="section-eyebrow">Tijek pretrage</p>
+        <h2>Tri koraka, ista logika za EKG i KMAT</h2>
+        <p class="how-desc">
+          Bilo da je riječ o snimanju rada srca ili o 24-satnom mjerenju
+          tlaka, model je isti: pretragu obavljate kod partnera, nalaz
+          potpisuje specijalist kardiologije.
         </p>
       </div>
+
+      <ol class="steps">
+        <li class="step">
+          <div class="step-num-wrap">
+            <span class="step-num" aria-hidden="true">1</span>
+          </div>
+          <div class="step-body">
+            <h3>Dolazak kod partnera</h3>
+            <p>
+              Naručujete se izravno kod partnerske klinike. Educirano
+              osoblje postavlja uređaj (elektrode za EKG ili manžeta za KMAT)
+              i pokreće 24-satno snimanje.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num-wrap">
+            <span class="step-num" aria-hidden="true">2</span>
+          </div>
+          <div class="step-body">
+            <h3>Snimak ide na specijalističku obradu</h3>
+            <p>
+              Nakon skidanja uređaja podatci se sigurno prosljeđuju u
+              ustanovu na očitanje. Snimak analizira specijalist kardiologije.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num-wrap">
+            <span class="step-num" aria-hidden="true">3</span>
+          </div>
+          <div class="step-body">
+            <h3>Potpisani nalaz</h3>
+            <p>
+              Pacijent preuzima potpisani nalaz kod partnera, obično u
+              roku od 3 do 5 radnih dana. Po želji se može dogovoriti
+              video konzultacija ili drugo mišljenje.
+            </p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -293,7 +241,7 @@ const steps = [
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.1;
-    max-width: 40rem;
+    max-width: 42rem;
     margin: 0 0 var(--space-5);
     color: var(--color-foreground);
   }
@@ -310,17 +258,7 @@ const steps = [
     margin: 0;
   }
 
-  /* ── What section ────────────────────────────────────────────────────── */
-  .what-section {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-
-  @media (min-width: 900px) {
-    .what-section { grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: start; }
-  }
-
+  /* ── Services grid ───────────────────────────────────────────────────── */
   .section-eyebrow {
     font-family: var(--font-body);
     font-weight: 600;
@@ -332,114 +270,12 @@ const steps = [
     opacity: 0.8;
   }
 
-  .what-text h2 {
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
+  .services-header {
+    margin-bottom: var(--space-10);
+    max-width: 36rem;
   }
 
-  .what-text p {
-    color: var(--color-muted-foreground);
-    line-height: var(--leading-normal);
-    margin: 0 0 var(--space-4);
-  }
-
-  .indication-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .indication-list li {
-    display: grid;
-    grid-template-columns: 1rem 1fr;
-    gap: var(--space-3);
-    align-items: start;
-    font-size: var(--text-base);
-    color: var(--color-foreground);
-  }
-
-  .indication-list svg { color: var(--color-primary); margin-top: 0.125rem; }
-
-  .indication-note {
-    font-size: var(--text-sm);
-    color: var(--color-muted-foreground);
-    font-style: italic;
-    margin: 0;
-    line-height: var(--leading-snug);
-    padding-top: var(--space-4);
-    border-top: 1px solid var(--color-border);
-  }
-
-  /* ── Tech section (Schiller medilog) ─────────────────────────────────── */
-  .tech-section {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-
-  @media (min-width: 900px) {
-    .tech-section { grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: start; }
-  }
-
-  .tech-intro h2 {
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin: 0 0 var(--space-5);
-  }
-
-  .tech-intro p {
-    color: var(--color-muted-foreground);
-    line-height: var(--leading-normal);
-    margin: 0 0 var(--space-4);
-  }
-
-  .tech-intro strong {
-    color: var(--color-foreground);
-    font-weight: 600;
-  }
-
-  .tech-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    border-radius: var(--radius-xl);
-    margin: 0 0 var(--space-5);
-    border: 1px solid var(--color-border);
-  }
-
-  .tech-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-  }
-
-  .tech-list li {
-    display: grid;
-    grid-template-columns: 1rem 1fr;
-    gap: var(--space-3);
-    align-items: start;
-    font-size: var(--text-base);
-    color: var(--color-foreground);
-    line-height: var(--leading-snug);
-  }
-
-  .tech-list svg { color: var(--color-primary); margin-top: 0.125rem; }
-
-  /* ── Steps grid ──────────────────────────────────────────────────────── */
-  .steps-header { margin-bottom: var(--space-10); }
-
-  .steps-header h2 {
+  .services-header h2 {
     font-size: var(--text-3xl);
     font-weight: 700;
     letter-spacing: -0.02em;
@@ -447,24 +283,161 @@ const steps = [
   }
 
   @media (min-width: 768px) {
-    .steps-header h2 { font-size: var(--text-4xl); }
+    .services-header h2 { font-size: var(--text-4xl); }
   }
 
-  .steps-grid {
+  .services-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .service-card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .service-card-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .service-pill {
+    align-self: flex-start;
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .service-name {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .service-name { font-size: var(--text-3xl); }
+  }
+
+  .service-abbr {
+    font-size: var(--text-base);
+    color: var(--color-muted-foreground);
+    margin: 0;
+    line-height: var(--leading-snug);
+  }
+
+  .service-blurb {
+    color: var(--color-foreground);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .service-eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .service-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .service-bullets li {
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    font-size: var(--text-sm);
+    color: var(--color-foreground);
+    line-height: var(--leading-snug);
+  }
+
+  .service-bullets svg {
+    color: var(--color-primary);
+    margin-top: 0.2rem;
+  }
+
+  .service-cta {
+    margin-top: auto;
+    padding-top: var(--space-3);
+  }
+
+  /* ── Addons ──────────────────────────────────────────────────────────── */
+  .addons-header {
+    margin-bottom: var(--space-10);
+    max-width: 42rem;
+  }
+
+  .addons-header h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .addons-header h2 { font-size: var(--text-4xl); }
+  }
+
+  .addons-intro {
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .addons-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-8);
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
 
-  @media (min-width: 640px) {
-    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 768px) {
+    .addons-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  @media (min-width: 1024px) {
-    .steps-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  .step-card {
+  .addon-card {
     background: var(--color-background);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
@@ -474,16 +447,7 @@ const steps = [
     gap: var(--space-3);
   }
 
-  .step-num {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--color-primary);
-    opacity: 0.7;
-  }
-
-  .step-card h3 {
+  .addon-name {
     font-size: var(--text-xl);
     font-weight: 600;
     letter-spacing: -0.01em;
@@ -491,142 +455,102 @@ const steps = [
     color: var(--color-foreground);
   }
 
-  .step-card p {
+  .addon-body {
     color: var(--color-muted-foreground);
-    font-size: var(--text-sm);
     line-height: var(--leading-normal);
     margin: 0;
   }
 
-  /* ── Quality block ───────────────────────────────────────────────────── */
-  .quality-block {
+  .addon-meta {
+    margin: var(--space-2) 0 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    font-style: italic;
+  }
+
+  .addons-cta {
+    margin: 0;
+  }
+
+  /* ── How section ─────────────────────────────────────────────────────── */
+  .how-section {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-12);
   }
 
   @media (min-width: 900px) {
-    .quality-block { grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: start; }
+    .how-section {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+    .how-header { position: sticky; top: calc(var(--header-height) + var(--space-8)); }
+    .steps { grid-column: 2; }
   }
 
-  .quality-quote {
-    background: var(--color-primary-light);
-    border-left: 3px solid var(--color-primary);
-    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-    padding: var(--space-8);
-  }
-
-  blockquote {
-    font-family: var(--font-heading);
-    font-size: var(--text-2xl);
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: var(--leading-snug);
-    color: var(--color-foreground);
+  .how-header h2 {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     margin: 0 0 var(--space-5);
-    font-style: italic;
   }
 
-  cite {
-    font-family: var(--font-body);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.8;
-    font-style: normal;
-  }
-
-  .quality-detail h3 {
-    font-size: var(--text-xl);
-    font-weight: 600;
-    margin: var(--space-6) 0 var(--space-3);
-  }
-
-  .quality-detail p {
+  .how-desc {
     color: var(--color-muted-foreground);
+    font-size: var(--text-base);
     line-height: var(--leading-normal);
-    margin: var(--space-3) 0;
-  }
-
-  .bring-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .bring-list li {
-    padding-left: var(--space-5);
-    position: relative;
-    font-size: var(--text-base);
-    color: var(--color-foreground);
-  }
-
-  .bring-list li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  .sla-block {
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--space-5);
-    margin-top: var(--space-5);
-  }
-
-  .sla-block .section-eyebrow { margin-bottom: var(--space-3); }
-
-  .sla-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 var(--space-4);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .sla-list li {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--space-3);
-    font-size: var(--text-base);
-    color: var(--color-foreground);
-  }
-
-  .sla-label {
-    font-weight: 600;
-    min-width: 9rem;
-  }
-
-  .sla-value { color: var(--color-foreground); }
-
-  .sla-value small {
-    color: var(--color-muted-foreground);
-    font-size: var(--text-sm);
-    font-weight: 400;
-  }
-
-  .sla-note {
-    font-size: var(--text-sm);
-    color: var(--color-muted-foreground);
-    line-height: var(--leading-snug);
+    max-width: 28rem;
     margin: 0;
   }
 
-  .price-note {
-    font-size: var(--text-sm);
-    color: var(--color-muted-foreground);
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--space-4);
-    margin-top: var(--space-5);
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
+
+  .step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--space-5);
+    align-items: start;
+    padding-block: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .step:first-child { border-top: 1px solid var(--color-border); }
+
+  .step-num-wrap { padding-top: 0.1rem; }
+
+  .step-num {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+  }
+
+  .step-body h3 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-2);
+    color: var(--color-foreground);
+  }
+
+  .step-body p { color: var(--color-muted-foreground); margin: 0; font-size: var(--text-base); }
 
   /* ── CTA ─────────────────────────────────────────────────────────────── */
   .cta-row {

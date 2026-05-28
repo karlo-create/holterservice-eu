@@ -99,6 +99,24 @@ export const patientFaq: FaqItem[] = [
     answer:
       'Dogovorite drugi termin. Snimka može trajati i nekoliko dana ako je tako dogovoreno.',
   },
+  {
+    question:
+      'Mogu li nakon nalaza razgovarati sa specijalistom?',
+    answer:
+      'Da. Nakon nalaza dostupna je video konzultacija s kardiologom — online razgovor sa specijalistom bez putovanja u Polikliniku. Pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin dogovarate preko mreže partnera; informirajte se kod najbližeg partnera.',
+  },
+  {
+    question:
+      'Mogu li dobiti drugo mišljenje na isti nalaz?',
+    answer:
+      'Da. Dostupna je usluga drugog mišljenja, neovisna analiza iste snimke od strane drugog kardiologa s platforme. Korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi. Dostupno preko mreže partnera.',
+  },
+  {
+    question:
+      'Što je Holter KMAT i koja je razlika u odnosu na Holter EKG?',
+    answer:
+      'Holter KMAT (poznat i kao ABPM) je 24-satno mjerenje krvnog tlaka pomoću uređaja s manžetom na nadlaktici. Daje cjelovitu sliku tlaka tijekom dana i noći. Holter EKG, s druge strane, 24 sata snima elektrokardiogram (rad srca). Dvije su to paralelne pretrage različite namjene; vaš liječnik vam može preporučiti jednu, drugu ili obje.',
+  },
 ];
 
 /**
