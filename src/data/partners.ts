@@ -89,9 +89,10 @@ export interface Partner {
  * once consent and details are confirmed. Coordinates are real geographic
  * data for the three target cities (Virovitica, Brač, Zagreb) and can stay.
  *
- * Service distribution (dummy): Zagreb has the full bundle, Virovitica
- * carries both Holter modalities, Brač pairs EKG with the online follow-up
- * option. Final partner-service map is confirmed during onboarding.
+ * Service distribution: all partners list `video-konzultacija` and
+ * `drugo-misljenje` because Poliklinika provides those services directly —
+ * they are platform-level and always available, not partner-specific. Holter
+ * modalities (EKG / KMAT) reflect what each individual partner offers on site.
  */
 export const partners: Partner[] = [
   {
@@ -107,7 +108,7 @@ export const partners: Partner[] = [
     coordinates: { lat: 45.8311, lng: 17.3833 },
     description:
       'Partner u programu Holter monitoringa za regiju Virovitičko-podravska. (Demo prikaz, konačni partner bit će potvrđen.)',
-    services: ['holter-ekg', 'holter-kmat'],
+    services: ['holter-ekg', 'holter-kmat', 'video-konzultacija', 'drugo-misljenje'],
   },
   {
     slug: 'demo-brac',
@@ -122,7 +123,7 @@ export const partners: Partner[] = [
     coordinates: { lat: 43.3850, lng: 16.5527 },
     description:
       'Partner u programu Holter monitoringa za područje otoka Brača i okolice. (Demo prikaz, konačni partner bit će potvrđen.)',
-    services: ['holter-ekg', 'video-konzultacija'],
+    services: ['holter-ekg', 'video-konzultacija', 'drugo-misljenje'],
   },
   {
     slug: 'demo-zagreb',
@@ -140,6 +141,21 @@ export const partners: Partner[] = [
     services: ['holter-ekg', 'holter-kmat', 'video-konzultacija', 'drugo-misljenje'],
   },
 ];
+
+/**
+ * Service keys that are Poliklinika platform services — always available to
+ * every patient regardless of which partner they choose for the on-site
+ * scan. Used by partner cards and the map popup to flag those badges as
+ * universal (vs. partner-specific).
+ */
+export const PLATFORM_SERVICES: ReadonlySet<ServiceKey> = new Set([
+  'video-konzultacija',
+  'drugo-misljenje',
+]);
+
+export function isPlatformService(service: ServiceKey): boolean {
+  return PLATFORM_SERVICES.has(service);
+}
 
 /**
  * Known partner cities for SEO meta (long-tail) and map preview.

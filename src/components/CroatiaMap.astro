@@ -30,6 +30,13 @@ interface Pin {
   services?: string[];
   /** Display labels matching `services` (precomputed by caller). */
   serviceLabels?: string[];
+  /**
+   * Per-service classification matching `services`: 'universal' (Poliklinika
+   * platform service available to every patient regardless of partner) or
+   * 'partner' (offered by this specific partner). Used to label chips in the
+   * popup so the user can tell platform-wide vs partner-specific apart.
+   */
+  serviceFlags?: Array<'universal' | 'partner'>;
 }
 
 interface Props {
@@ -102,6 +109,7 @@ const projectedPins = pins.map((p) => ({
             data-city={p.city}
             data-name={p.name || ''}
             data-services={(p.serviceLabels || []).join('|')}
+            data-service-flags={(p.serviceFlags || []).join('|')}
             aria-label={
               p.name
                 ? `${p.name}, ${p.city}${labelList}`
@@ -131,6 +139,10 @@ const projectedPins = pins.map((p) => ({
       <p class="croatia-map-popup-name" data-popup-name></p>
       <p class="croatia-map-popup-city" data-popup-city></p>
       <div class="croatia-map-popup-services" data-popup-services></div>
+      <p class="croatia-map-popup-note" data-popup-note hidden>
+        <span class="croatia-map-popup-dot" aria-hidden="true"></span>
+        <span>Pruža Poliklinika — dostupno svim pacijentima</span>
+      </p>
     </div>
   </div>
   <figcaption class="visually-hidden">
@@ -165,11 +177,15 @@ const projectedPins = pins.map((p) => ({
     const nameEl = popup.querySelector<HTMLElement>('[data-popup-name]');
     const cityEl = popup.querySelector<HTMLElement>('[data-popup-city]');
     const servicesEl = popup.querySelector<HTMLElement>('[data-popup-services]');
+    const noteEl = popup.querySelector<HTMLElement>('[data-popup-note]');
 
     function show(anchor: SVGAElement) {
       const name = anchor.getAttribute('data-name') || '';
       const city = anchor.getAttribute('data-city') || '';
       const services = (anchor.getAttribute('data-services') || '')
+        .split('|')
+        .filter(Boolean);
+      const flags = (anchor.getAttribute('data-service-flags') || '')
         .split('|')
         .filter(Boolean);
 
@@ -178,20 +194,31 @@ const projectedPins = pins.map((p) => ({
         cityEl.textContent = name && city ? city : '';
         cityEl.hidden = !(name && city);
       }
+      let hasUniversal = false;
       if (servicesEl) {
         servicesEl.innerHTML = '';
         if (services.length === 0) {
           servicesEl.hidden = true;
         } else {
           servicesEl.hidden = false;
-          services.forEach((label) => {
+          services.forEach((label, i) => {
+            const isUniversal = flags[i] === 'universal';
+            if (isUniversal) hasUniversal = true;
             const chip = document.createElement('span');
-            chip.className = 'croatia-map-popup-chip';
-            chip.textContent = label;
+            chip.className = 'croatia-map-popup-chip' +
+              (isUniversal ? ' croatia-map-popup-chip-universal' : '');
+            if (isUniversal) {
+              const dot = document.createElement('span');
+              dot.className = 'croatia-map-popup-chip-dot';
+              dot.setAttribute('aria-hidden', 'true');
+              chip.appendChild(dot);
+            }
+            chip.appendChild(document.createTextNode(label));
             servicesEl.appendChild(chip);
           });
         }
       }
+      if (noteEl) noteEl.hidden = !hasUniversal;
 
       // Position popup relative to the pin's bounding box in the figure frame.
       const frameRect = frame!.getBoundingClientRect();
@@ -350,7 +377,9 @@ const projectedPins = pins.map((p) => ({
   }
 
   .croatia-map-popup-chip {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -360,6 +389,42 @@ const projectedPins = pins.map((p) => ({
     background: var(--color-primary-light);
     color: var(--color-primary);
     line-height: 1.3;
+  }
+
+  .croatia-map-popup-chip-universal {
+    border-style: dashed;
+  }
+
+  .croatia-map-popup-chip-dot {
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    background: currentColor;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .croatia-map-popup-note {
+    margin: var(--space-2) 0 0;
+    padding-top: var(--space-2);
+    border-top: 1px dashed rgba(20, 87, 164, 0.2);
+    font-size: 10px;
+    color: var(--color-muted-foreground);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .croatia-map-popup-note[hidden] { display: none; }
+
+  .croatia-map-popup-dot {
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: inline-block;
+    flex-shrink: 0;
   }
 
   .visually-hidden {

@@ -59,6 +59,9 @@ const addons = [
       'Neovisna analiza iste snimke od strane drugog kardiologa s platforme. Dodatna potvrda za važne odluke o terapiji ili daljnjoj obradi.',
   },
 ];
+
+const addonsMeta =
+  'Pruža Poliklinika izravno — dostupno svim pacijentima, neovisno o tome kojeg partnera odaberete za snimanje.';
 ---
 
 <BaseLayout title={title} description={description} path="/usluga">
@@ -124,8 +127,9 @@ const addons = [
         <p class="section-eyebrow">Dodatne usluge</p>
         <h2>Nakon nalaza: razgovor s kardiologom ili neovisna provjera</h2>
         <p class="addons-intro">
-          Pored Holter pretraga, kroz partnersku mrežu dostupne su i dvije
-          dodatne usluge koje produbljuju vrijednost nalaza za pacijenta.
+          Video konzultaciju i drugo mišljenje pruža <strong>Poliklinika izravno</strong> —
+          dostupne su svim pacijentima, neovisno o tome kojeg partnera odaberete
+          za snimanje.
         </p>
       </div>
 
@@ -134,9 +138,7 @@ const addons = [
           <li class="addon-card">
             <h3 class="addon-name">{addon.title}</h3>
             <p class="addon-body">{addon.body}</p>
-            <p class="addon-meta">
-              Dostupno preko mreže partnera. Informirajte se kod najbližeg partnera.
-            </p>
+            <p class="addon-meta">{addonsMeta}</p>
           </li>
         ))}
       </ul>
