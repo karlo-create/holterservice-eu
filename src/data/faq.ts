@@ -34,7 +34,7 @@ export const partnerFaq: FaqItem[] = [
     question:
       'Koliko brzo pacijent dobiva nalaz?',
     answer:
-      'Nakon što je snimak proslijeđen referentnoj ustanovi, ciljni rok je nekoliko radnih dana. Hitnost se rješava bilateralno.',
+      'Standardno 3–5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Hitan nalaz dostupan je unutar 24 h, uz dodatnu cijenu — dogovara se bilateralno s partnerskom klinikom.',
   },
   {
     question:
@@ -61,7 +61,7 @@ export const patientFaq: FaqItem[] = [
     question:
       'Koliko košta pretraga?',
     answer:
-      'Cijenu određuje partnerska klinika. Tipično 60 EUR. Za točan iznos kontaktirajte partnera.',
+      'Cijenu određuje partnerska klinika — ovisi o partneru i dostupna je na upit. Za točan iznos kontaktirajte odabranog partnera.',
   },
   {
     question:
@@ -83,9 +83,9 @@ export const patientFaq: FaqItem[] = [
   },
   {
     question:
-      'Koliko dugo nakon pretrage dobivam nalaz?',
+      'Koliko traje da dobijem nalaz?',
     answer:
-      'Tipično nekoliko radnih dana nakon što vratite uređaj.',
+      'Standardno 3–5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Hitan nalaz dostupan je unutar 24 h, uz dodatnu cijenu — dogovara se s partnerskom klinikom.',
   },
   {
     question:
