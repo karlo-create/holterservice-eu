@@ -90,8 +90,8 @@ export interface Partner {
  * data for the three target cities (Virovitica, Brač, Zagreb) and can stay.
  *
  * Service distribution: all partners list `video-konzultacija` and
- * `drugo-misljenje` because Poliklinika provides those services directly —
- * they are platform-level and always available, not partner-specific. Holter
+ * `drugo-misljenje` because Poliklinika provides those services directly.
+ * They are platform-level and always available, not partner-specific. Holter
  * modalities (EKG / KMAT) reflect what each individual partner offers on site.
  */
 export const partners: Partner[] = [
@@ -143,7 +143,7 @@ export const partners: Partner[] = [
 ];
 
 /**
- * Service keys that are Poliklinika platform services — always available to
+ * Service keys that are Poliklinika platform services, always available to
  * every patient regardless of which partner they choose for the on-site
  * scan. Used by partner cards and the map popup to flag those badges as
  * universal (vs. partner-specific).

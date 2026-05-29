@@ -49,7 +49,7 @@ const partnerJsonLd = partners.map((p) => ({
 //
 // `serviceFlags` mirrors `services` order and marks Poliklinika platform
 // services (video-konzultacija, drugo-misljenje) so the map popup can label
-// them as universal — they're available everywhere, regardless of partner.
+// them as universal: they're available everywhere, regardless of partner.
 const mapPins =
   partners.length > 0
     ? partners.map((p) => {
@@ -119,7 +119,7 @@ const mapPins =
           <p class="universal-callout-eyebrow">Uz svakog partnera</p>
           <p class="universal-callout-body">
             <strong>Video konzultacija</strong> i <strong>drugo mišljenje</strong>
-            dostupni su uz svakog partnera — pruža ih
+            dostupni su uz svakog partnera. Pruža ih
             <strong>Poliklinika izravno</strong>, neovisno o tome kojeg
             partnera odaberete za snimanje.
           </p>
@@ -180,7 +180,7 @@ const mapPins =
                             `partner-service-chip-${service}`,
                             universal && 'partner-service-chip-universal',
                           ]}
-                          title={universal ? 'Pruža Poliklinika — dostupno svim pacijentima' : undefined}
+                          title={universal ? 'Pruža Poliklinika, dostupno svim pacijentima' : undefined}
                         >
                           {universal && (
                             <span class="universal-dot" aria-hidden="true"></span>
