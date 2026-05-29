@@ -34,7 +34,7 @@ export const partnerFaq: FaqItem[] = [
     question:
       'Koliko brzo pacijent dobiva nalaz?',
     answer:
-      'Standardno 3–5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Po potrebi je dostupan i hitan nalaz unutar 24 h — uvjete dogovarate bilateralno s partnerskom klinikom.',
+      'Standardno 3 do 5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Po potrebi je dostupan i hitan nalaz unutar 24 h. Uvjete dogovarate bilateralno s partnerskom klinikom.',
   },
   {
     question:
@@ -61,7 +61,7 @@ export const patientFaq: FaqItem[] = [
     question:
       'Kako se naručujem i kakvi su uvjeti pretrage?',
     answer:
-      'Pretraga je dostupna preko mreže partnera. Uvjete i način naručivanja dogovarate izravno s odabranom partnerskom klinikom — informirajte se kod najbližeg partnera. Popis je na stranici Partneri.',
+      'Pretraga je dostupna preko mreže partnera. Uvjete i način naručivanja dogovarate izravno s odabranom partnerskom klinikom. Informirajte se kod najbližeg partnera. Popis je na stranici Partneri.',
   },
   {
     question:
@@ -85,7 +85,7 @@ export const patientFaq: FaqItem[] = [
     question:
       'Koliko traje da dobijem nalaz?',
     answer:
-      'Standardno 3–5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Po potrebi je dostupan i hitan nalaz unutar 24 h — dostupnost i uvjete dogovarate s partnerskom klinikom pri naručivanju.',
+      'Standardno 3 do 5 radnih dana od trenutka kad uređaj stigne u laboratorij Poliklinike Dr. Obad. Po potrebi je dostupan i hitan nalaz unutar 24 h. Dostupnost i uvjete dogovarate s partnerskom klinikom pri naručivanju.',
   },
   {
     question:
@@ -103,13 +103,13 @@ export const patientFaq: FaqItem[] = [
     question:
       'Mogu li nakon nalaza razgovarati sa specijalistom?',
     answer:
-      'Da. Video konzultaciju s kardiologom pruža Poliklinika izravno i dostupna je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o online razgovoru sa specijalistom bez putovanja u Polikliniku — za pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin možete dogovoriti i kod partnera; sve informacije su uvijek i ovdje na stranici.',
+      'Da. Video konzultaciju s kardiologom pruža Poliklinika izravno i dostupna je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o online razgovoru sa specijalistom bez putovanja u Polikliniku, za pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin možete dogovoriti i kod partnera; sve informacije su uvijek i ovdje na stranici.',
   },
   {
     question:
       'Mogu li dobiti drugo mišljenje na isti nalaz?',
     answer:
-      'Da. Drugo mišljenje pruža Poliklinika izravno i dostupno je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o neovisnoj analizi iste snimke od strane drugog kardiologa s platforme — korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi.',
+      'Da. Drugo mišljenje pruža Poliklinika izravno i dostupno je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o neovisnoj analizi iste snimke od strane drugog kardiologa s platforme, korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi.',
   },
   {
     question:
