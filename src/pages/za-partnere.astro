@@ -200,6 +200,57 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
     </div>
   </section>
 
+  <!-- ═══ TEHNIČKE SPECIFIKACIJE ═══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container tech-specs-section">
+      <div class="tech-specs-intro">
+        <p class="section-eyebrow">Tehnologija</p>
+        <h2>Tehničke specifikacije uređaja</h2>
+        <p>
+          Uređaji koje raspoređujemo u partnerske ustanove zadovoljavaju
+          zahtjevne kliničke kriterije za pouzdan i kvalitetan nalaz.
+        </p>
+      </div>
+      <ul class="tech-list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Snimanje 24 sata, uz mogućnost produženja do 14 dana po potrebi
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Visoka rezolucija snimke (sampling rate 32.000 Hz)
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Detekcija atrijske fibrilacije temeljem analize P-vala
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Praćenje ST segmenta i QT intervala
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Otpornost na udarce i prskanje, nosivi tijekom uobičajenih aktivnosti
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ═══ GDPR: ZAŠTITA PODATAKA ══════════════════════════════════════════ -->
   <section class="section section-muted">
     <div class="container gdpr-section">
@@ -653,6 +704,64 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
   }
 
   .valueprop-ref strong { font-weight: 600; }
+
+  /* ── Tehničke specifikacije ──────────────────────────────────────────── */
+  .tech-specs-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .tech-specs-section {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+
+  .tech-specs-intro h2 {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-4);
+    color: var(--color-foreground);
+  }
+
+  @media (min-width: 768px) {
+    .tech-specs-intro h2 { font-size: var(--text-3xl); }
+  }
+
+  .tech-specs-intro p {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .tech-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-foreground);
+  }
+
+  .tech-list svg {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 0.2em;
+  }
 
   /* ── Bento grid header ───────────────────────────────────────────────── */
   .bento-header {
