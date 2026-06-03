@@ -28,6 +28,72 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
     </div>
   </section>
 
+  <!-- ═══ VALUE PROP: zašto partnerstvo ═══════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="valueprop-header">
+        <p class="section-eyebrow">Zašto partnerstvo</p>
+        <h2>Proširite ponudu bez vlastitog kardiologa, uređaja i softvera</h2>
+        <p class="valueprop-lead">
+          Mi donosimo cijeli sustav. Vi uz Holter dobivate
+          <strong>kardiološko mišljenje koje sami ne možete izdati</strong>,
+          a pacijent dobiva nalaz koji potpisuje specijalist kardiologije.
+        </p>
+      </div>
+
+      <ul class="valueprop-list">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 10l2.5 2.5L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Onboarding nove ustanove u 1 dan.</strong>
+            Od dogovora do prvog pacijenta brzo, bez dugotrajne pripreme.
+          </div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 10l2.5 2.5L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Ne treba vam vlastiti kardiolog, uređaj ni softver.</strong>
+            Opremu, prijenos podataka i specijalističko očitanje osiguravamo mi.
+          </div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 10l2.5 2.5L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Tehnička i klinička podrška.</strong>
+            Brinemo se za uređaje i održavanje te za stručnu podršku oko snimke i nalaza.
+          </div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6 10l2.5 2.5L14 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <strong>Kardiološko mišljenje koje sami ne možete izdati.</strong>
+            Uz Holter pacijentu pružate nalaz specijalista kardiologije, a ne samo snimku.
+          </div>
+        </li>
+      </ul>
+
+      <div class="valueprop-ref">
+        <p class="valueprop-ref-eyebrow">Referenca</p>
+        <p>
+          S partnerom <strong>Air medical</strong> surađujemo gotovo dvije godine,
+          bez problema s uređajima i s pouzdanim tijekom snimaka i nalaza.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ BENTO GRID: što partner dobiva ═════════════════════════════════ -->
   <section class="section">
     <div class="container">
@@ -494,6 +560,99 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
     line-height: var(--leading-normal);
     margin: 0;
   }
+
+  /* ── Value prop ──────────────────────────────────────────────────────── */
+  .valueprop-header {
+    margin-bottom: var(--space-8);
+    max-width: 40rem;
+  }
+
+  .valueprop-header h2 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .valueprop-header h2 { font-size: var(--text-4xl); }
+  }
+
+  .valueprop-lead {
+    color: var(--color-muted-foreground);
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .valueprop-lead strong { color: var(--color-foreground); font-weight: 600; }
+
+  .valueprop-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .valueprop-list { grid-template-columns: repeat(2, 1fr); gap: var(--space-5); }
+  }
+
+  .valueprop-list li {
+    display: grid;
+    grid-template-columns: 1.25rem 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+  }
+
+  .valueprop-list svg { color: var(--color-primary); margin-top: 0.125rem; }
+
+  .valueprop-list div {
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-muted-foreground);
+  }
+
+  .valueprop-list strong {
+    display: block;
+    color: var(--color-foreground);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+  }
+
+  .valueprop-ref {
+    margin-top: var(--space-6);
+    border-left: 3px solid var(--color-primary);
+    background: var(--color-primary-light);
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    padding: var(--space-5) var(--space-6);
+    max-width: 44rem;
+  }
+
+  .valueprop-ref-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-2);
+  }
+
+  .valueprop-ref p:last-child {
+    margin: 0;
+    color: var(--color-foreground);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+  }
+
+  .valueprop-ref strong { font-weight: 600; }
 
   /* ── Bento grid header ───────────────────────────────────────────────── */
   .bento-header {
