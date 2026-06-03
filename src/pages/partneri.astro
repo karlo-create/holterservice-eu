@@ -48,8 +48,8 @@ const partnerJsonLd = partners.map((p) => ({
 // even before founder supplies the partner contact data.
 //
 // `serviceFlags` mirrors `services` order and marks Poliklinika platform
-// services (video-konzultacija, drugo-misljenje) so the map popup can label
-// them as universal: they're available everywhere, regardless of partner.
+// services (video-konzultacija) so the map popup can label them as
+// universal: they're available everywhere, regardless of partner.
 const mapPins =
   partners.length > 0
     ? partners.map((p) => {
@@ -118,9 +118,8 @@ const mapPins =
         <div class="universal-callout" role="note" aria-label="Univerzalne usluge Poliklinike">
           <p class="universal-callout-eyebrow">Uz svakog partnera</p>
           <p class="universal-callout-body">
-            <strong>Video konzultacija</strong> i <strong>drugo mišljenje</strong>
-            dostupni su uz svakog partnera. Pruža ih
-            <strong>Poliklinika izravno</strong>, neovisno o tome kojeg
+            <strong>Video konzultacija</strong> dostupna je uz svakog partnera.
+            Pruža je <strong>Poliklinika izravno</strong>, neovisno o tome kojeg
             partnera odaberete za snimanje.
           </p>
           <p class="universal-callout-legend" aria-hidden="true">
@@ -591,12 +590,6 @@ const mapPins =
     background: rgba(160, 90, 30, 0.08);
     border-color: rgba(160, 90, 30, 0.22);
     color: #8a5414;
-  }
-
-  .partner-service-chip-drugo-misljenje {
-    background: rgba(100, 60, 160, 0.08);
-    border-color: rgba(100, 60, 160, 0.22);
-    color: #5b3aa0;
   }
 
   /* Universal chips share a subtle dot + ring so they read as platform

@@ -17,10 +17,7 @@ const isActive = (href: string) => pathname === href;
   <div class="container header-inner">
     <!-- Brand / wordmark -->
     <a href="/" class="brand" aria-label="Holterservice, početna">
-      <svg class="brand-ecg" width="20" height="14" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-        <path d="M0 8H4L5.5 2L7.5 14L9.5 5L11 11H14L15 8H22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="brand-text">Holterservice</span>
+      <img src="/holterservice-logo.svg" alt="Holterservice" class="brand-logo" width="211" height="32" />
     </a>
 
     <!-- Nav -->
@@ -68,26 +65,22 @@ const isActive = (href: string) => pathname === href;
     gap: var(--space-4);
   }
 
-  /* ── Brand wordmark ───────────────────────────────────────────────────── */
+  /* ── Brand logo ───────────────────────────────────────────────────────── */
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
     text-decoration: none;
-    color: var(--color-foreground);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: var(--text-lg);
-    letter-spacing: -0.02em;
     flex-shrink: 0;
   }
 
-  .brand:hover { text-decoration: none; color: var(--color-primary); }
-  .brand:hover .brand-ecg { color: var(--color-primary); }
+  .brand-logo {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
 
-  .brand-ecg {
-    color: var(--color-primary);
-    transition: color 150ms ease;
+  @media (max-width: 480px) {
+    .brand-logo { height: 26px; }
   }
 
   /* ── Hamburger (mobile only) ──────────────────────────────────────────── */

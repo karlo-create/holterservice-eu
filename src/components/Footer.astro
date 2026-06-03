@@ -7,10 +7,7 @@ const year = new Date().getFullYear();
     <!-- Brand col -->
     <div class="footer-col footer-col--brand">
       <div class="brand">
-        <svg class="brand-ecg" width="20" height="14" viewBox="0 0 22 16" fill="none" aria-hidden="true">
-          <path d="M0 8H4L5.5 2L7.5 14L9.5 5L11 11H14L15 8H22" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Holterservice</span>
+        <img src="/holterservice-logo-light.svg" alt="Holterservice" class="brand-logo" width="211" height="32" />
       </div>
       <p class="footer-tag">
         Specijalistički Holter EKG nalaz iz referentne ustanove,
@@ -112,17 +109,14 @@ const year = new Date().getFullYear();
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    color: var(--color-dark-fg);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: var(--text-lg);
-    letter-spacing: -0.015em;
     margin-bottom: var(--space-4);
   }
 
-  /* Gold is used ONLY here: the micro-accent for the footer ECG mark */
-  .brand-ecg { color: var(--color-gold); }
+  .brand-logo {
+    display: block;
+    height: 32px;
+    width: auto;
+  }
 
   .footer-tag {
     max-width: 24rem;

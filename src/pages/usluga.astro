@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title =
   'Naše usluge. Holter EKG, Holter KMAT (ABPM) i dodatne kardiološke usluge';
 const description =
-  'Holter EKG (24-satno snimanje rada srca), Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM), video konzultacija s kardiologom i drugo mišljenje. Nalaz potpisuje specijalist kardiologije.';
+  'Holter EKG (24-satno snimanje rada srca), Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM) i video konzultacija s kardiologom. Nalaz potpisuje specijalist kardiologije.';
 
 interface ServiceCard {
   slug: 'holter-ekg' | 'holter-kmat';
@@ -52,11 +52,6 @@ const addons = [
     title: 'Video konzultacija s kardiologom (20 min)',
     body:
       'Nakon nalaza možete dogovoriti online razgovor (okvirno 20 minuta) sa specijalistom kardiologije bez putovanja u Polikliniku. Pojašnjenje nalaza, pitanja, smjernice za daljnje praćenje.',
-  },
-  {
-    title: 'Drugo mišljenje',
-    body:
-      'Neovisna analiza iste snimke od strane drugog kardiologa s platforme. Dodatna potvrda za važne odluke o terapiji ili daljnjoj obradi.',
   },
 ];
 
@@ -125,10 +120,10 @@ const addonsMeta =
     <div class="container">
       <div class="addons-header">
         <p class="section-eyebrow">Dodatne usluge</p>
-        <h2>Nakon nalaza: razgovor s kardiologom ili neovisna provjera</h2>
+        <h2>Nakon nalaza: razgovor s kardiologom</h2>
         <p class="addons-intro">
-          Video konzultaciju i drugo mišljenje pruža <strong>Poliklinika izravno</strong>.
-          Dostupne su svim pacijentima, neovisno o tome kojeg partnera odaberete
+          Video konzultaciju pruža <strong>Poliklinika izravno</strong>.
+          Dostupna je svim pacijentima, neovisno o tome kojeg partnera odaberete
           za snimanje.
         </p>
       </div>
@@ -197,7 +192,7 @@ const addonsMeta =
             <p>
               Pacijent preuzima potpisani nalaz kod partnera, obično u
               roku od 3 do 5 radnih dana. Po želji se može dogovoriti
-              video konzultacija ili drugo mišljenje.
+              video konzultacija.
             </p>
           </div>
         </li>

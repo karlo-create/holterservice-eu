@@ -107,12 +107,6 @@ export const patientFaq: FaqItem[] = [
   },
   {
     question:
-      'Mogu li dobiti drugo mišljenje na isti nalaz?',
-    answer:
-      'Da. Drugo mišljenje pruža Poliklinika izravno i dostupno je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o neovisnoj analizi iste snimke od strane drugog kardiologa s platforme, korisno kao dodatna potvrda prije važnih odluka o terapiji ili daljnjoj obradi.',
-  },
-  {
-    question:
       'Što je Holter KMAT i koja je razlika u odnosu na Holter EKG?',
     answer:
       'Holter KMAT (poznat i kao ABPM) je 24-satno mjerenje krvnog tlaka pomoću uređaja s manžetom na nadlaktici. Daje cjelovitu sliku tlaka tijekom dana i noći. Holter EKG, s druge strane, 24 sata snima elektrokardiogram (rad srca). Dvije su to paralelne pretrage različite namjene; vaš liječnik vam može preporučiti jednu, drugu ili obje.',
