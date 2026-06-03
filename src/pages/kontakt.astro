@@ -9,16 +9,24 @@ const description =
 
 <BaseLayout title={title} description={description} path="/kontakt">
   <section class="section">
-    <div class="container prose">
-      <p class="eyebrow">Kontakt</p>
-      <h1>Stupite u kontakt</h1>
-      <p class="lede">
-        Pišite nam za sve što vas zanima, od pretrage u svom mjestu do uspostave
-        partnerstva. Trudimo se odgovoriti unutar dva radna dana.
-      </p>
+    <div class="container">
+      <div class="contact-intro">
+        <p class="eyebrow">Kontakt</p>
+        <h1>Stupite u kontakt</h1>
+        <p class="lede">
+          Pišite nam za sve što vas zanima, od pretrage u svom mjestu do uspostave
+          partnerstva. Trudimo se odgovoriti unutar dva radna dana.
+        </p>
+      </div>
 
       <div class="contact-grid">
-        <div class="card">
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h2>Općeniti upiti</h2>
           <p>
             <strong>E-pošta:</strong>
@@ -36,7 +44,14 @@ const description =
           </p>
         </div>
 
-        <div class="card">
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h2>Za partnerske klinike</h2>
           <p>
             <strong>E-pošta:</strong>
@@ -48,7 +63,13 @@ const description =
           </p>
         </div>
 
-        <div class="card">
+        <div class="card contact-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h2>Za pacijente</h2>
           <p>
             Za naručivanje na pretragu obratite se izravno odabranoj partnerskoj
@@ -68,6 +89,11 @@ const description =
 </BaseLayout>
 
 <style>
+  .contact-intro {
+    max-width: var(--container-prose);
+    margin-bottom: var(--space-10);
+  }
+
   .eyebrow {
     color: var(--color-primary);
     font-weight: 600;
@@ -76,19 +102,57 @@ const description =
     text-transform: uppercase;
     margin-bottom: var(--space-3);
   }
-  .lede { font-size: var(--text-lg); color: var(--color-muted-foreground); }
+
+  .lede {
+    font-size: var(--text-lg);
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-normal);
+    margin-top: var(--space-4);
+  }
 
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
+    gap: var(--space-5);
   }
 
   @media (min-width: 768px) {
     .contact-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  .contact-grid h2 { font-size: var(--text-xl); margin-top: 0; margin-bottom: var(--space-3); }
+  .contact-card {
+    border-radius: var(--radius-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-primary-light);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .contact-grid h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  .contact-card p {
+    font-size: var(--text-sm);
+    color: var(--color-muted-foreground);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
   .placeholder { color: var(--color-muted-foreground); font-style: italic; }
 </style>
