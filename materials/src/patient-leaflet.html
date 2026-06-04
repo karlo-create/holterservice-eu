@@ -8,7 +8,7 @@
   @page { size: A5; margin: 0; }
   .page {
     width: 148mm; height: 209.5mm;
-    padding: 12mm 13mm;
+    padding: 11mm 13mm 11mm;
     display: flex; flex-direction: column;
     page-break-after: always;
     overflow: hidden;
@@ -16,37 +16,64 @@
   }
   .page:last-child { page-break-after: auto; }
   .page.cover { background: var(--color-accent); }
+  .page.cover::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+  }
 
   .head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-  .head .brand img { height: 22px; }
-  .head .tag { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted-foreground); }
+  .head .brand img { height: 20px; }
+  .head .tag {
+    font-size: 8.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-primary); background: var(--color-primary-light);
+    padding: 2.5px 8px; border-radius: 999px;
+  }
 
   .cover .mid { margin-top: auto; margin-bottom: auto; }
-  .cover .kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 12px; }
-  .cover h1 { font-size: 26px; line-height: 1.12; font-weight: 700; margin-bottom: 12px; max-width: 16ch; }
-  .cover .sub { font-size: 13px; color: var(--color-muted-foreground); line-height: 1.5; max-width: 32ch; }
-
-  h2 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-  .sec { margin-bottom: 12px; }
-  .sec p { font-size: 11.5px; color: var(--color-muted-foreground); line-height: 1.5; }
-  .eyebrow.sm { font-size: 9px; display: block; margin-bottom: 6px; }
-
-  .check-list li { font-size: 11.5px; grid-template-columns: 16px 1fr; }
-  .check-list .ck { width: 16px; height: 16px; }
-
-  ol.book { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 8px; }
-  ol.book li { counter-increment: s; display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; }
-  ol.book li::before {
-    content: counter(s); width: 24px; height: 24px; border-radius: 999px;
-    background: var(--color-primary); color: #fff; font-weight: 700; font-size: 12px;
-    display: flex; align-items: center; justify-content: center;
+  .cover .kicker {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;
+    color: var(--color-primary); margin-bottom: 11px;
+    display: flex; align-items: center; gap: 8px;
   }
-  ol.book .bt { font-weight: 700; font-size: 12px; margin-bottom: 2px; }
-  ol.book .bd { font-size: 11px; color: var(--color-muted-foreground); line-height: 1.45; }
+  .cover .kicker::before {
+    content: ""; display: inline-block;
+    width: 20px; height: 2px; background: var(--color-primary);
+  }
+  .cover h1 { font-size: 27px; line-height: 1.1; font-weight: 700; margin-bottom: 11px; max-width: 17ch; letter-spacing: -0.02em; }
+  .cover .sub { font-size: 12.5px; color: var(--color-muted-foreground); line-height: 1.5; max-width: 32ch; }
 
-  .note { font-size: 10.5px; color: var(--color-muted-foreground); font-style: italic; line-height: 1.45; border-top: 1px solid var(--color-border); padding-top: 8px; margin-top: 4px; }
+  .cover .foot { margin-top: auto; padding-top: 10px; border-top: 1px solid rgba(20,87,164,0.15); }
 
-  .foot { margin-top: auto; padding-top: 10px; }
+  h2 { font-size: 15.5px; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .sec { margin-bottom: 11px; }
+  .sec p { font-size: 11px; color: var(--color-muted-foreground); line-height: 1.5; }
+  .eyebrow.sm { font-size: 8.5px; display: block; margin-bottom: 5px; }
+
+  .check-list li { font-size: 11px; grid-template-columns: 15px 1fr; gap: 8px; }
+  .check-list .ck { width: 15px; height: 15px; }
+
+  ol.book { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 7px; }
+  ol.book li { counter-increment: s; display: grid; grid-template-columns: 22px 1fr; gap: 9px; align-items: start; }
+  ol.book li::before {
+    content: counter(s); width: 22px; height: 22px; border-radius: 999px;
+    background: var(--color-primary); color: #fff; font-weight: 700; font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  ol.book .bt { font-weight: 700; font-size: 11.5px; margin-bottom: 1px; color: var(--color-foreground); }
+  ol.book .bd { font-size: 10.5px; color: var(--color-muted-foreground); line-height: 1.45; }
+
+  .note {
+    font-size: 10px; color: var(--color-muted-foreground); font-style: italic; line-height: 1.45;
+    border-top: 1px solid var(--color-border); padding-top: 7px; margin-top: 4px;
+    background: var(--color-muted); border-radius: 0 0 6px 6px; padding: 7px 10px;
+    border: 1px solid var(--color-border); border-radius: 6px; margin-top: 8px;
+  }
+
+  .foot { margin-top: auto; padding-top: 9px; }
 </style>
 </head>
 <body>
@@ -62,14 +89,12 @@
     <h1>Holter EKG i Holter KMAT, bez putovanja.</h1>
     <p class="sub">Pretragu obavljate kod partnerske klinike u svom mjestu. Nalaz potpisuje specijalist kardiologije.</p>
   </div>
-  <div class="foot">
-    <div class="check-list">
-      <ul class="check-list" style="display:grid;">
-        <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>24-satno snimanje rada srca ili mjerenje tlaka</div></li>
-        <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Nalaz specijalista kardiologije</div></li>
-        <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Bez putovanja u veće gradove</div></li>
-      </ul>
-    </div>
+  <div class="cover foot">
+    <ul class="check-list" style="display:grid;">
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>24-satno snimanje rada srca ili mjerenje tlaka</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Nalaz specijalista kardiologije</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Bez putovanja u veće gradove</div></li>
+    </ul>
   </div>
 </section>
 
@@ -90,10 +115,10 @@
     <span class="eyebrow sm">Zašto je važno</span>
     <h2>Kada je koristan</h2>
     <ul class="check-list">
-      <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Palpitacije, osjećaj lupanja ili preskakanja srca</div></li>
-      <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Vrtoglavica ili nesvjestica</div></li>
-      <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Praćenje poznatih aritmija ili kontrola tlaka</div></li>
-      <li><span class="ck"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Po preporuci obiteljskog liječnika ili kardiologa</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Palpitacije, osjećaj lupanja ili preskakanja srca</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Vrtoglavica ili nesvjestica</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Praćenje poznatih aritmija ili kontrola tlaka</div></li>
+      <li><span class="ck"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div>Po preporuci obiteljskog liječnika ili kardiologa</div></li>
     </ul>
   </div>
 

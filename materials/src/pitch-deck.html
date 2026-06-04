@@ -11,110 +11,174 @@
     page-break-after: always;
     overflow: hidden;
     position: relative;
-    padding: 64px 80px;
+    padding: 52px 80px 56px;
     display: flex;
     flex-direction: column;
   }
   .slide:last-child { page-break-after: auto; }
 
+  /* Consistent slide header bar */
   .slide-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1.5px solid var(--color-border);
+    flex-shrink: 0;
   }
   .slide-num {
-    font-size: var(--text-sm);
-    color: var(--color-muted-foreground);
-    font-weight: 600;
+    font-size: var(--text-xs);
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--color-primary-light);
+    padding: 4px 12px;
+    border-radius: 999px;
   }
-  .slide-eyebrow { margin-bottom: 18px; }
+  .slide-eyebrow { margin-bottom: 14px; }
   .slide h1 {
     font-size: 64px;
-    line-height: 1.05;
+    line-height: 1.04;
     font-weight: 700;
+    letter-spacing: -0.025em;
     max-width: 22ch;
   }
   .slide h2 {
-    font-size: 46px;
+    font-size: 44px;
     line-height: 1.08;
     font-weight: 700;
-    margin-bottom: 24px;
-    max-width: 24ch;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 26ch;
   }
   .slide .lead {
-    font-size: 24px;
+    font-size: 22px;
     color: var(--color-muted-foreground);
-    max-width: 60ch;
-    line-height: 1.5;
+    max-width: 56ch;
+    line-height: 1.55;
   }
 
   /* Cover */
   .cover { background: var(--color-accent); }
-  .cover .brand img { height: 44px; }
+  .cover .slide-top { border-bottom-color: rgba(20,87,164,0.12); }
+  .cover .brand img { height: 40px; }
   .cover .cover-mid { margin-top: auto; margin-bottom: auto; }
-  .cover h1 { font-size: 72px; margin-bottom: 24px; }
-  .cover .sub { font-size: 26px; color: var(--color-muted-foreground); max-width: 50ch; line-height: 1.5; }
-  .cover-foot { font-size: var(--text-base); color: var(--color-muted-foreground); }
+  .cover h1 {
+    font-size: 68px;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+    max-width: 20ch;
+  }
+  .cover .sub {
+    font-size: 24px;
+    color: var(--color-muted-foreground);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+  .cover-foot {
+    font-size: var(--text-base);
+    color: var(--color-muted-foreground);
+    padding-top: 20px;
+    border-top: 1px solid rgba(20,87,164,0.12);
+  }
   .cover-foot strong { color: var(--color-foreground); }
 
+  /* Left accent stripe for cover */
+  .cover::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--color-primary);
+  }
+
   /* Two column content */
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; flex: 1; align-items: start; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; flex: 1; align-items: start; }
   .cols.center { align-items: center; }
 
   .panel {
     background: var(--color-muted);
     border: 1px solid var(--color-border);
     border-radius: 16px;
-    padding: 32px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
   }
-  .panel.dark { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+  .panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-primary);
+    opacity: 0.3;
+    border-radius: 16px 16px 0 0;
+  }
+  .panel.dark {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+  .panel.dark::before { background: rgba(255,255,255,0.25); opacity: 1; }
   .panel.dark h3, .panel.dark p, .panel.dark li { color: #fff; }
-  .panel h3 { font-size: 26px; font-weight: 700; margin-bottom: 14px; }
-  .panel p { font-size: 19px; color: var(--color-muted-foreground); line-height: 1.5; }
+  .panel h3 { font-size: 25px; font-weight: 700; margin-bottom: 14px; line-height: 1.2; }
+  .panel p { font-size: 18px; color: var(--color-muted-foreground); line-height: 1.55; }
+  .panel.dark p { color: rgba(255,255,255,0.82); }
 
+  /* Big check-list for slide 4 */
   .big-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
   .big-list li {
-    display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: start;
-    font-size: 22px; line-height: 1.4;
+    display: grid; grid-template-columns: 30px 1fr; gap: 18px; align-items: start;
+    font-size: 21px; line-height: 1.4;
   }
   .big-list .ck {
-    width: 28px; height: 28px; border-radius: 999px;
-    background: var(--color-primary-light); color: var(--color-primary);
+    width: 30px; height: 30px; border-radius: 999px;
+    background: var(--color-primary); color: #fff;
     display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    flex-shrink: 0;
   }
-  .big-list strong { display: block; }
-  .big-list span.sub { font-size: 18px; color: var(--color-muted-foreground); font-weight: 400; }
+  .big-list strong { display: block; font-size: 22px; margin-bottom: 2px; }
+  .big-list span.sub { font-size: 17px; color: var(--color-muted-foreground); font-weight: 400; }
 
-  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1; align-content: center; }
+  /* Three-card grid */
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; align-content: center; }
   .card {
     background: var(--color-background);
     border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
     border-radius: 16px;
-    padding: 28px;
+    padding: 28px 26px;
   }
-  .card h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
-  .card p { font-size: 17px; color: var(--color-muted-foreground); line-height: 1.45; }
+  .card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; line-height: 1.2; }
+  .card p { font-size: 17px; color: var(--color-muted-foreground); line-height: 1.5; }
 
-  .spec-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  /* Technology spec list */
+  .spec-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
   .spec-list li {
-    font-size: 21px; padding-left: 28px; position: relative; line-height: 1.4;
+    font-size: 20px; padding-left: 28px; position: relative; line-height: 1.45;
     color: var(--color-foreground);
   }
   .spec-list li::before {
-    content: ""; position: absolute; left: 0; top: 11px;
-    width: 12px; height: 12px; border-radius: 999px; background: var(--color-primary);
+    content: ""; position: absolute; left: 0; top: 10px;
+    width: 10px; height: 10px; border-radius: 999px; background: var(--color-primary);
   }
 
+  /* Closing slide layout */
   .next-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; flex: 1; align-items: center; }
-  .step-flow { display: grid; gap: 18px; }
-  .step-flow .step { display: grid; grid-template-columns: 48px 1fr; gap: 18px; align-items: start; }
+
+  /* Step flow (slide 6) */
+  .step-flow { display: grid; gap: 20px; }
+  .step-flow .step { display: grid; grid-template-columns: 52px 1fr; gap: 20px; align-items: start; }
   .step-flow .n {
-    width: 48px; height: 48px; border-radius: 999px; background: var(--color-primary); color: #fff;
+    width: 52px; height: 52px; border-radius: 999px;
+    background: var(--color-primary); color: #fff;
     display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px;
+    flex-shrink: 0;
   }
-  .step-flow .step h3 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-  .step-flow .step p { font-size: 18px; color: var(--color-muted-foreground); line-height: 1.4; }
+  .step-flow .step h3 { font-size: 22px; font-weight: 700; margin-bottom: 5px; line-height: 1.2; }
+  .step-flow .step p { font-size: 18px; color: var(--color-muted-foreground); line-height: 1.45; }
 </style>
 </head>
 <body>
@@ -181,10 +245,10 @@
   <p class="eyebrow slide-eyebrow">Što partnerska klinika dobiva</p>
   <h2>Kompletan paket</h2>
   <ul class="big-list">
-    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Uređaji na korištenju</strong><span class="sub">Dostavljamo, postavljamo i mijenjamo. Oprema ostaje naša, vi je koristite.</span></div></li>
-    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Edukacija osoblja</strong><span class="sub">Obučavamo medicinsko i ne-medicinsko osoblje, po potrebi uz certifikat osposobljenosti.</span></div></li>
-    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Specijalist potpisuje svaki nalaz</strong><span class="sub">Svaki snimak očitava i potpisuje specijalist kardiologije.</span></div></li>
-    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Tehnička podrška i održavanje</strong><span class="sub">Kvarovi, kalibracija i zamjena uređaja, sve rješavamo mi.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Uređaji na korištenju</strong><span class="sub">Dostavljamo, postavljamo i mijenjamo. Oprema ostaje naša, vi je koristite.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Edukacija osoblja</strong><span class="sub">Obučavamo medicinsko i ne-medicinsko osoblje, po potrebi uz certifikat osposobljenosti.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Specijalist potpisuje svaki nalaz</strong><span class="sub">Svaki snimak očitava i potpisuje specijalist kardiologije.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Tehnička podrška i održavanje</strong><span class="sub">Kvarovi, kalibracija i zamjena uređaja, sve rješavamo mi.</span></div></li>
   </ul>
 </section>
 

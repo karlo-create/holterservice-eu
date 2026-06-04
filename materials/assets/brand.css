@@ -85,12 +85,33 @@ strong { font-weight: 600; }
 }
 .brand img { height: 28px; width: auto; display: block; }
 
-/* ── Shared contact block (real Poliklinika Dr. Obad data) ─────────────── */
+/* ── Page header bar (consistent across all A4/A5 sheets) ─────────────── */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--color-border);
+  margin-bottom: 16px;
+}
+.doc-header .brand img { height: 26px; }
+.doc-header .doc-tag {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* ── Shared contact block ──────────────────────────────────────────────── */
 .contact-block {
   border-top: 2px solid var(--color-primary);
-  padding-top: 14px;
+  padding-top: 12px;
   display: grid;
-  gap: 4px;
+  gap: 3px;
   font-size: var(--text-sm);
   color: var(--color-muted-foreground);
   line-height: var(--leading-snug);
@@ -100,12 +121,16 @@ strong { font-weight: 600; }
   font-weight: 700;
   font-size: var(--text-base);
   color: var(--color-foreground);
+  margin-bottom: 4px;
 }
-.contact-block .contact-row { display: flex; gap: 6px; }
+.contact-block .contact-row { display: flex; gap: 8px; align-items: baseline; }
 .contact-block .contact-row span:first-child {
   color: var(--color-primary);
   font-weight: 600;
-  min-width: 64px;
+  min-width: 58px;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ── Reusable check bullet ─────────────────────────────────────────────── */
@@ -120,8 +145,16 @@ strong { font-weight: 600; }
 .check-list .ck {
   width: 18px; height: 18px; flex-shrink: 0;
   border-radius: 999px;
-  background: var(--color-primary-light);
-  color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
   display: flex; align-items: center; justify-content: center;
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+/* ── Blue section divider ──────────────────────────────────────────────── */
+.section-rule {
+  border: none;
+  border-top: 2px solid var(--color-primary);
+  margin: 0;
+  opacity: 0.15;
 }
