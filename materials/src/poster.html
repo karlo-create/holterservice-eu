@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8" />
+<title>Holterservice - plakat za čekaonicu</title>
+<link rel="stylesheet" href="../assets/brand.css" />
+<style>
+  /* Patient-facing poster. Layout uses viewport units so the single A-series
+     page fills both A4 and A3 (identical aspect ratio) at proportional scale. */
+  @page { margin: 0; }
+  html, body { height: 100%; margin: 0; overflow: hidden; }
+  .poster {
+    width: 100%;
+    height: 100%;
+    background: var(--color-accent);
+    padding: 5vh 8vw;
+    display: flex;
+    flex-direction: column;
+  }
+  .poster .brand img { height: 5.2vh; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .badge {
+    font-size: 1.7vh; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-primary); background: var(--color-primary-light);
+    padding: 0.8vh 1.6vh; border-radius: 999px;
+  }
+
+  .mid { margin-top: auto; margin-bottom: auto; }
+  .kicker { font-size: 2.4vh; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 2vh; }
+  .poster h1 {
+    font-size: 6.2vh; line-height: 1.05; font-weight: 700; max-width: 18ch; margin-bottom: 2.4vh;
+  }
+  .poster .sub { font-size: 3vh; line-height: 1.45; color: var(--color-muted-foreground); max-width: 36ch; }
+
+  .pills { display: flex; gap: 2vh; margin-top: 3vh; flex-wrap: wrap; }
+  .pill {
+    background: var(--color-background); border: 1px solid var(--color-border);
+    border-radius: 1.6vh; padding: 2.2vh 2.8vh; flex: 1; min-width: 26%;
+  }
+  .pill .t { font-family: var(--font-heading); font-size: 2.6vh; font-weight: 700; margin-bottom: 0.8vh; }
+  .pill .d { font-size: 1.9vh; color: var(--color-muted-foreground); line-height: 1.4; }
+
+  .foot {
+    margin-top: 2vh; border-top: 0.4vh solid var(--color-primary); padding-top: 2.4vh;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 4vw;
+  }
+  .foot .label { font-size: 1.9vh; color: var(--color-muted-foreground); line-height: 1.5; }
+  .foot .label strong { color: var(--color-foreground); font-family: var(--font-heading); font-size: 2.3vh; display: block; margin-bottom: 0.6vh; }
+  .foot .ask { font-size: 2.4vh; font-weight: 700; color: var(--color-primary); text-align: right; max-width: 24ch; line-height: 1.25; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <span class="badge">Dostupno ovdje</span>
+  </div>
+
+  <div class="mid">
+    <p class="kicker">Kardiološka dijagnostika u vašem mjestu</p>
+    <h1>Holter EKG i Holter KMAT dostupni su ovdje.</h1>
+    <p class="sub">Bez putovanja u Split ili Zagreb. Nalaz očitava i potpisuje specijalist kardiologije.</p>
+
+    <div class="pills">
+      <div class="pill"><div class="t">24-satno snimanje</div><div class="d">Holter EKG prati rad srca tijekom cijelog dana svakodnevnog života.</div></div>
+      <div class="pill"><div class="t">24-satni tlak (ABPM)</div><div class="d">Holter KMAT mjeri krvni tlak danju i noću za stvarni 24-satni profil.</div></div>
+      <div class="pill"><div class="t">Nalaz specijalista</div><div class="d">Svaki nalaz potpisuje specijalist kardiologije Poliklinike dr. Obad.</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="label">
+      <strong>Naručivanje i informacije</strong>
+      Pitajte osoblje na recepciji o terminu za Holter EKG ili Holter KMAT.
+    </div>
+    <div class="ask">Pitajte nas kako do pretrage</div>
+  </div>
+</div>
+</body>
+</html>
