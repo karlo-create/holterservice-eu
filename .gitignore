@@ -1,5 +1,8 @@
 # build output
 dist/
+# but keep built promo material PDFs (delivered artifacts)
+!materials/dist/
+!materials/dist/**
 # generated types
 .astro/
 
