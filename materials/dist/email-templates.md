@@ -19,9 +19,9 @@ Biste li bili otvoreni za kratak, neobvezujući razgovor od 15 minuta da vidimo 
 Srdačan pozdrav,
 
 Poliklinika dr. Obad
-Poljička cesta 5, 21000 Split
-Telefon: 021 543-206, 021 543-207, 021 371-371
-E-pošta: poliklinika.obad@gmail.com
+{{ADRESA}}
+Telefon: {{TELEFON}}
+E-pošta: partneri@holterservice.eu
 Web: holterservice.eu
 
 ---
@@ -41,7 +41,7 @@ Ako vam odgovara, predlažem kratak poziv ovaj ili sljedeći tjedan. Slobodno pr
 Srdačan pozdrav,
 
 Poliklinika dr. Obad
-Poljička cesta 5, 21000 Split
-Telefon: 021 543-206, 021 543-207, 021 371-371
-E-pošta: poliklinika.obad@gmail.com
+{{ADRESA}}
+Telefon: {{TELEFON}}
+E-pošta: partneri@holterservice.eu
 Web: holterservice.eu
