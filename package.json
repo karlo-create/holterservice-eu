@@ -21,6 +21,7 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "docx": "^9.7.1",
     "playwright": "^1.60.0"
   }
 }

@@ -12,6 +12,7 @@ import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { mkdirSync, existsSync } from 'node:fs';
+import { buildEmailDocx } from './email-docx.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SRC = join(__dirname, 'src');
@@ -84,7 +85,12 @@ async function main() {
   }
 
   await browser.close();
-  console.log('Done. PDFs written to materials/dist/');
+
+  // Editable Word version of the outreach emails (VEY-282).
+  await buildEmailDocx(DIST);
+  console.log('  ok  email-templates.html -> dist/email-templates.docx');
+
+  console.log('Done. PDFs and DOCX written to materials/dist/');
 }
 
 main().catch((err) => {
