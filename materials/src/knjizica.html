@@ -179,12 +179,12 @@
   }
   ol.abc p { font-size: 9.2px; line-height: 1.45; color: #4b5563; }
 
-  .videoblock { margin-top: 7mm; padding-top: 6mm; border-top: 0.7px solid var(--rule); }
-  .videoblock .vb-grid { display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; align-items: center; }
-  .videoblock .qr { width: 30mm; height: 30mm; }
-  .videoblock .qr svg { width: 100%; height: 100%; display: block; }
-  .videoblock p { font-size: 9.2px; line-height: 1.45; color: #38414f; }
-  .videoblock .url { font-size: 9.2px; font-weight: 600; color: var(--color-primary); margin-top: 2mm; }
+  .infoblock { margin-top: 7mm; padding-top: 6mm; border-top: 0.7px solid var(--rule); }
+  .infoblock .vb-grid { display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; align-items: center; }
+  .infoblock .qr { width: 30mm; height: 30mm; }
+  .infoblock .qr svg { width: 100%; height: 100%; display: block; }
+  .infoblock p { font-size: 9.2px; line-height: 1.45; color: #38414f; }
+  .infoblock .url { font-size: 9.2px; font-weight: 600; color: var(--color-primary); margin-top: 2mm; }
 
   /* ═══ PAGE 8 — download ═══════════════════════════════════════════ */
   .stores { display: grid; grid-template-columns: 30mm 30mm; gap: 8mm; justify-content: center; }
@@ -601,14 +601,14 @@
     </ol>
   </div>
 
-  <div class="videoblock">
-    <p class="sublabel">Pogledajte videoupute</p>
+  <div class="infoblock">
+    <p class="sublabel">Više informacija</p>
     <div class="vb-grid">
       <div class="qr">
         <img src="../assets/qr/qr-upute.svg" alt="QR kod" style="width:100%;height:100%;display:block" />
       </div>
       <div>
-        <p>Skenirajte QR kod telefonom i pogledajte video s ovim uputama korak po korak.</p>
+        <p>Skenirajte QR kod telefonom za dodatne upute i odgovore na česta pitanja.</p>
         <p class="url">holterservice.eu/za-pacijente</p>
       </div>
     </div>
@@ -736,7 +736,7 @@
     <div class="cap">
       <div class="ic"><svg style="color:#111827"><use href="#i-glove" /></svg></div>
       <div>
-        <h3>Nanesite ljepilo</h3>
+        <h3>Navucite rukavice</h3>
         <p>Prije uporabe ljepljive maramice navucite priložene rukavice.</p>
       </div>
     </div>
@@ -914,6 +914,7 @@
         <g fill="none" stroke="#d92b1e" stroke-width="2.6" marker-end="url(#ah)">
           <path d="M92 46l-6 6" /><path d="M208 46l6 6" />
           <path d="M92 140l-6-6" /><path d="M208 140l6-6" />
+          <path d="M150 167l0-24" />
         </g>
         <g font-family="Inter Variable, sans-serif" font-size="12" font-weight="700" fill="#111827">
           <text x="58" y="46">A</text><text x="234" y="46">B</text>
@@ -929,7 +930,7 @@
       <div class="ic"><svg style="color:#111827"><use href="#i-hand" /></svg></div>
       <div>
         <h3>Pritisnite senzor uz kožu</h3>
-        <p>Prstom čvrsto pritišćite duž iscrtkanih linija i ponovite postupak 10 puta.</p>
+        <p>Prstom čvrsto pritisnite redom A, B, C i D, pa središnji dio E. Ponovite postupak 10 puta.</p>
       </div>
     </div>
   </div>
@@ -1103,8 +1104,8 @@
             <rect x="2" y="2" width="146" height="206" rx="6" fill="#fff" stroke="#111827" stroke-width="2" />
             <text x="12" y="18" font-family="Inter Variable, sans-serif" font-size="7" fill="#4b5563">Odaberite jedan ili više simptoma</text>
             <g font-family="Inter Variable, sans-serif" font-size="7" fill="#111827">
-              <rect x="12" y="24" width="70" height="14" rx="7" fill="#fff" stroke="#111827" stroke-width="1" />
-              <text x="22" y="33.5">Slučajan pritisak</text>
+              <rect x="12" y="24" width="105" height="14" rx="7" fill="#fff" stroke="#111827" stroke-width="1" />
+              <text x="22" y="33.5">Slučajan pritisak tipke</text>
 
               <rect x="12" y="44" width="62" height="24" rx="3" fill="#fff" stroke="#c9d3df" stroke-width="1" />
               <text x="43" y="60" text-anchor="middle">Tjeskoba</text>
@@ -1115,7 +1116,8 @@
               <rect x="12" y="72" width="62" height="24" rx="3" fill="#dceadf" stroke="#111827" stroke-width="1" />
               <text x="43" y="88" text-anchor="middle">Vrtoglavica</text>
               <rect x="78" y="72" width="60" height="24" rx="3" fill="#fff" stroke="#c9d3df" stroke-width="1" />
-              <text x="108" y="88" text-anchor="middle">Ubrzan rad</text>
+              <text x="108" y="84" text-anchor="middle">Ubrzan rad</text>
+              <text x="108" y="92" text-anchor="middle">srca</text>
 
               <rect x="12" y="100" width="62" height="24" rx="3" fill="#fff" stroke="#c9d3df" stroke-width="1" />
               <text x="43" y="116" text-anchor="middle">Umor</text>
@@ -1126,8 +1128,7 @@
               <text x="43" y="140" text-anchor="middle">Nedostatak</text>
               <text x="43" y="148" text-anchor="middle">zraka</text>
               <rect x="78" y="128" width="60" height="24" rx="3" fill="#fff" stroke="#c9d3df" stroke-width="1" />
-              <text x="108" y="140" text-anchor="middle">Ne sjećam</text>
-              <text x="108" y="148" text-anchor="middle">se</text>
+              <text x="108" y="144" text-anchor="middle">Nesvjestica</text>
             </g>
             <rect x="12" y="176" width="126" height="20" rx="4" fill="#4b5563" />
             <text x="75" y="189" font-family="Inter Variable, sans-serif" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">Dalje</text>

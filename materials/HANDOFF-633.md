@@ -52,9 +52,9 @@ reads as a REF slot any more.
 ## Page order (mirrors the reference exactly)
 
 1. Naslovnica — Paket i vodič za pacijenta, nosivi EKG senzor
-2. Holter snimanje, jednostavno — uvod, Što je obuhvaćeno A/B/C, videoupute QR
+2. Holter snimanje, jednostavno — uvod, Što je obuhvaćeno A/B/C, Više informacija QR
 3. Postavljanje: 1 obrijte dlake, 2 pripremite kožu
-4. 3 osušite kožu, 4 nanesite ljepilo (rukavice)
+4. 3 osušite kožu, 4 navucite rukavice
 5. 5 nanesite ljepilo (maramica), 6 izvadite senzor
 6. 7 skinite zaštitnu foliju, 8 postavite senzor
 7. 9 pritisnite senzor uz kožu (A–E) + upozorenja (jedan sat, sačuvajte vodič)
@@ -88,6 +88,39 @@ reads as a REF slot any more.
   of `HS-24`, `Holterservice Holter`, `Upute za pacijenta`, or the reference
   product name anywhere in the source.
 
+## PM audit round 3, how each was resolved
+
+**1. Page 2 promised a video that does not exist.** Resolved. The section is now
+`VIŠE INFORMACIJA` and the caption reads "Skenirajte QR kod telefonom za dodatne
+upute i odgovore na česta pitanja." That is truthful against the scan target:
+`/za-pacijente` carries a `Česta pitanja` FAQ block (`src/pages/za-pacijente.astro`
+renders `Faq` from `src/data/faq.ts`). The word `video` no longer appears anywhere
+in the booklet source, including the CSS class name.
+
+**2. Steps 4 and 5 shared one title.** Resolved. Step 4 is now
+`NAVUCITE RUKAVICE`, which matches both its own body copy and its glove
+illustration. Step 5 keeps `NANESITE LJEPILO`. Every step title in the booklet is
+now unique.
+
+**3. `Ne sjećam se` was a meaningless symptom label.** Resolved, now
+`Nesvjestica`, which fits the chip on one line. The neighbouring
+`Slučajan pritisak` is now `Slučajan pritisak tipke`, with the pill widened from
+70 to 105 units so the longer label keeps the same padding.
+
+**4. The A to E labels anchored nothing.** Resolved on both halves. `E` now has
+its own leader arrow into the central body of the sensor, in the same red stroke
+and marker as the A to D arrows, so all five labels point at the element they
+name. The caption names the order: "Prstom čvrsto pritisnite redom A, B, C i D,
+pa središnji dio E. Ponovite postupak 10 puta."
+
+**Found in the same pass, not in the audit.** The page 9 chip `Ubrzan rad` was
+incomplete Croatian, the same defect class as finding 3. It now reads
+`Ubrzan rad srca`, set on two lines like the other long chips.
+
+**Front cover composition.** Left as is. The band between the title and the torso
+reads as deliberate rest, and tightening it would push the torso off the cover's
+optical centre.
+
 ## Not done yet
 
 Bleed and crop marks are not in the file. They go in once the format and printer
@@ -96,8 +129,11 @@ are locked, because bleed depends on the printer's spec.
 ## How to rebuild
 
 ```
-npm run materials          # builds every material including the booklet
+npm run materials                      # builds every material including the booklet
+node materials/preview-knjizica.mjs    # regenerates the 12 per-page preview PNGs
 ```
 
 Preview PNGs are captured with Playwright at `deviceScaleFactor: 2`, one
-screenshot per `section.page`.
+screenshot per `section.page`, from the same source the PDF is built from. That
+step used to be ad hoc; it is now a committed script so review evidence is
+reproducible.
