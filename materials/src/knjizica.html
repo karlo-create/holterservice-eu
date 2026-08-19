@@ -9,9 +9,9 @@
    * Knjižica za pacijenta (VEY-629)
    *
    * 12 pages, A5 portrait, saddle-stitch friendly (12 = multiple of 4).
-   * Modelled 1:1 on the UbiqVue Holter "Patient Kit and Guide" the founder
-   * supplied: same page order, same step sequence, same icon vocabulary,
-   * Croatian copy, Holterservice brand tokens.
+   * Modelled 1:1 on the patient kit guide the founder supplied as reference:
+   * same page order, same step sequence, same icon vocabulary, Croatian copy,
+   * Holterservice brand tokens. Concept marketing material, not an IFU.
    *
    * Illustration language: single-weight line art on a tinted panel, one
    * numbered step per panel, red accent used only for motion arrows and
@@ -213,9 +213,12 @@
   .colophon { margin-top: 7mm; padding-top: 5mm; border-top: 0.7px solid var(--rule); display: grid; gap: 4mm; }
   .colophon .cl { display: grid; grid-template-columns: 20mm 1fr; gap: 5mm; align-items: start; }
   .colophon .tagbox {
-    border: 0.9px solid var(--ink); border-radius: 1px;
-    padding: 0.8mm 0; text-align: center;
-    font-size: 8.6px; font-weight: 700; letter-spacing: 0.06em;
+    font-size: 8.2px; font-weight: 700; letter-spacing: 0.11em;
+    text-transform: uppercase; color: #6b7c93; padding-top: 0.4mm;
+  }
+  .colophon .disclaimer {
+    margin-top: 2mm; padding-top: 3.5mm; border-top: 0.7px solid var(--rule);
+    font-size: 8px; line-height: 1.5; color: #6b7c93;
   }
   .colophon p { font-size: 8.4px; line-height: 1.5; color: #38414f; }
   .colophon .lg img { width: 20mm; height: auto; display: block; }
@@ -493,11 +496,11 @@
   <div class="cov-body">
     <div class="brandmark"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
     <p class="kick">Holter EKG</p>
-    <h1>Paket i upute za pacijenta</h1>
+    <h1>Paket i vodič za pacijenta</h1>
 
     <div class="prod">
-      <div class="pname">HS-24</div>
-      <div class="psub">Nosivi EKG senzor</div>
+      <div class="pname">Nosivi EKG senzor</div>
+      <div class="psub">Holter EKG, 24-satno snimanje</div>
       <div class="dots">
         <svg width="80" height="10" viewBox="0 0 80 10">
           <g fill="#1457a4">
@@ -611,7 +614,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">2</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">2</span></div>
 </section>
 
 
@@ -674,7 +677,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">3</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">3</span></div>
 </section>
 
 
@@ -739,7 +742,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">4</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">4</span></div>
 </section>
 
 
@@ -811,7 +814,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">5</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">5</span></div>
 </section>
 
 
@@ -880,7 +883,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">6</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">6</span></div>
 </section>
 
 
@@ -939,11 +942,11 @@
     </div>
     <div class="row">
       <svg viewBox="0 0 48 40"><use href="#i-keep" /></svg>
-      <p>Sačuvajte ove upute do kraja snimanja.</p>
+      <p>Sačuvajte ovaj vodič do kraja snimanja.</p>
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">7</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">7</span></div>
 </section>
 
 
@@ -959,31 +962,30 @@
   <div class="step">
     <div class="panel connect" style="flex-direction:column;align-items:stretch">
       <div class="badge">1</div>
+      <!-- One scannable QR only. The platform icons mark availability, they are
+           not separate store codes. -->
       <div class="stores" style="margin-top:5mm">
-        <div class="st">
-          <div class="qr">
-            <img src="../assets/qr/qr-app-ios.svg" alt="QR kod" style="width:100%;height:100%;display:block" />
+        <div class="st" style="grid-column:1 / -1">
+          <div class="qr" style="margin:0 auto">
+            <img src="../assets/qr/qr-upute.svg" alt="QR kod za holterservice.eu/za-pacijente" style="width:100%;height:100%;display:block" />
           </div>
-          <div class="os"><svg style="color:#111827"><use href="#i-apple" /></svg></div>
-        </div>
-        <div class="st">
-          <div class="qr">
-            <img src="../assets/qr/qr-app-android.svg" alt="QR kod" style="width:100%;height:100%;display:block" />
+          <div class="os" style="gap:5mm">
+            <svg style="color:#111827"><use href="#i-apple" /></svg>
+            <svg style="color:#111827"><use href="#i-android" /></svg>
           </div>
-          <div class="os"><svg style="color:#111827"><use href="#i-android" /></svg></div>
         </div>
       </div>
       <div class="orrule"><span>ILI</span></div>
       <div class="searchpill">
         <svg style="color:#111827"><use href="#i-search" /></svg>
-        <span>Holterservice Holter</span>
+        <span>holterservice.eu/za-pacijente</span>
       </div>
     </div>
     <div class="cap">
       <div class="ic"><svg style="color:#111827"><use href="#i-phone-down" /></svg></div>
       <div>
         <h3>Preuzmite aplikaciju</h3>
-        <p>Skenirajte QR kod i preuzmite aplikaciju na svoj pametni telefon. Ili u trgovini aplikacija potražite Holterservice Holter.</p>
+        <p>Skenirajte QR kod ili u pregledniku otvorite holterservice.eu/za-pacijente. Ondje se nalaze upute za preuzimanje Holterservice aplikacije za iPhone i Android.</p>
       </div>
     </div>
   </div>
@@ -1040,7 +1042,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">8</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">8</span></div>
 </section>
 
 
@@ -1154,7 +1156,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">9</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">9</span></div>
 </section>
 
 
@@ -1214,7 +1216,7 @@
     </div>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">10</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">10</span></div>
 </section>
 
 
@@ -1252,11 +1254,11 @@
 
   <div class="colophon">
     <div class="cl">
-      <div class="tagbox">HS-24</div>
+      <div class="tagbox">Sadržaj</div>
       <p>Nosivi EKG senzor, paket za pacijenta.</p>
     </div>
     <div class="cl">
-      <div class="tagbox">IZDAVAČ</div>
+      <div class="tagbox">Izdavač</div>
       <p>
         <strong>Holterservice</strong><br />
         holterservice.eu<br />
@@ -1264,12 +1266,17 @@
       </p>
     </div>
     <div class="cl">
-      <div class="tagbox">v1.0</div>
-      <p>Upute za pacijenta, verzija 1.0, kolovoz 2026.</p>
+      <div class="tagbox">Verzija</div>
+      <p>Vodič za pacijenta, verzija 1.0, kolovoz 2026.</p>
     </div>
+    <p class="disclaimer">
+      Ovaj vodič je informativni i promotivni materijal Holterservicea.
+      Nije uputa za uporabu medicinskog proizvoda i ne zamjenjuje upute
+      proizvođača uređaja ni savjet vašeg liječnika.
+    </p>
   </div>
 
-  <div class="pf"><span>Holterservice · Upute za pacijenta</span><span class="num">11</span></div>
+  <div class="pf"><span>Holterservice · Vodič za pacijenta</span><span class="num">11</span></div>
 </section>
 
 
@@ -1294,7 +1301,8 @@
       <img src="../assets/holterservice-logo.svg" alt="Holterservice" />
       <p>
         Holter EKG i Holter KMAT u vašem mjestu, bez putovanja.<br />
-        holterservice.eu
+        holterservice.eu<br /><br />
+        <span style="color:#93a1b5">Informativni i promotivni materijal. Nije uputa za uporabu medicinskog proizvoda.</span>
       </p>
     </div>
   </div>

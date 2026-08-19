@@ -1,22 +1,19 @@
 # QR assets
 
-Generated once and committed so the print build needs no extra dependency.
+One scannable QR code, generated once and committed so the print build needs no
+extra dependency. There is deliberately only one: separate App Store and Google
+Play codes were removed because those listings do not exist, and a code under a
+platform icon that resolves somewhere else is worse than no code.
 
-To regenerate after the target URLs change:
+Target: `qr-upute.svg` -> https://holterservice.eu/za-pacijente
+
+To regenerate after the target URL changes:
 
 ```
 npm i -D qrcode
 node -e "
 const QR=require('qrcode'),fs=require('fs');
-const jobs=[['qr-upute.svg','<URL>'],['qr-app-ios.svg','<URL>'],['qr-app-android.svg','<URL>']];
-(async()=>{for(const [f,u] of jobs){
-  let s=await QR.toString(u,{type:'svg',errorCorrectionLevel:'M',margin:0});
-  s=s.replace('#000000','#111827').replace('fill=\"#ffffff\"','fill=\"none\"');
-  fs.writeFileSync('materials/assets/qr/'+f,s);
-}})();"
+QR.toString('https://holterservice.eu/za-pacijente',{type:'svg',errorCorrectionLevel:'M',margin:0})
+  .then(s=>fs.writeFileSync('materials/assets/qr/qr-upute.svg',
+    s.replace('#000000','#111827').replace('fill=\"#ffffff\"','fill=\"none\"')));"
 ```
-
-Current targets (all three, pending founder decision on real destinations):
-- `qr-upute.svg` -> https://holterservice.eu/za-pacijente
-- `qr-app-ios.svg` -> https://holterservice.eu/za-pacijente
-- `qr-app-android.svg` -> https://holterservice.eu/za-pacijente
