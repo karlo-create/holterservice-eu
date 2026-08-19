@@ -52,6 +52,11 @@ const JOBS = [
     page: { format: 'A5', printBackground: true },
   },
   {
+    source: 'knjizica.html',
+    out: 'knjizica-za-pacijenta.pdf',
+    page: { format: 'A5', printBackground: true },
+  },
+  {
     source: 'email-templates.html',
     out: 'email-templates.pdf',
     page: { format: 'A4', printBackground: true },
