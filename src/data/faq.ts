@@ -103,7 +103,7 @@ export const patientFaq: FaqItem[] = [
     question:
       'Mogu li nakon nalaza razgovarati sa specijalistom?',
     answer:
-      'Da. Video konzultaciju s kardiologom pruža Poliklinika izravno i dostupna je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o online razgovoru sa specijalistom bez putovanja u Polikliniku, za pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin možete dogovoriti i kod partnera; sve informacije su uvijek i ovdje na stranici.',
+      'Da. Video konzultaciju s kardiologom pruža Poliklinika izravno i dostupna je svim pacijentima, neovisno o tome kojeg ste partnera odabrali za snimanje. Riječ je o online razgovoru sa specijalistom, za pojašnjenje nalaza, pitanja i smjernice za daljnje praćenje. Termin možete dogovoriti i kod partnera; sve informacije su uvijek i ovdje na stranici.',
   },
   {
     question:
