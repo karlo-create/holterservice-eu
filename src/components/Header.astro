@@ -32,25 +32,36 @@ const isActive = (href: string) => pathname === href;
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Otvori izbornik">
         <span></span><span></span><span></span>
       </label>
-      <ul class="nav-list">
-        {nav.map((item) => (
+      <!-- The panel is the mobile dropdown. On desktop it is a flex row that is
+           allowed to wrap: the tabs hold the first line, the action group drops
+           to a second line when the viewport cannot seat all nine items. -->
+      <div class="nav-panel">
+        <ul class="nav-list">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                class={isActive(item.href) ? 'active' : ''}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ul class="nav-actions">
           <li>
             <a
-              href={item.href}
-              aria-current={isActive(item.href) ? 'page' : undefined}
-              class={isActive(item.href) ? 'active' : ''}
-            >
-              {item.label}
-            </a>
+              href="/partnerski-portal"
+              aria-current={isActive('/partnerski-portal') ? 'page' : undefined}
+              class="btn btn-secondary nav-cta nav-cta--portal"
+            >Partnerski portal</a>
           </li>
-        ))}
-        <li class="nav-cta-item nav-cta-item--portal">
-          <a href="/partnerski-portal" class="btn btn-secondary nav-cta">Partnerski portal</a>
-        </li>
-        <li class="nav-cta-item">
-          <a href="/za-partnere#kontakt-forma" class="btn btn-primary nav-cta">Postanite partner</a>
-        </li>
-      </ul>
+          <li>
+            <a href="/za-partnere#kontakt-forma" class="btn btn-primary nav-cta">Postanite partner</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
 </header>
@@ -132,8 +143,8 @@ const isActive = (href: string) => pathname === href;
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Nav list: mobile dropdown */
-  .nav-list {
+  /* ── Mobile dropdown panel ────────────────────────────────────────────── */
+  .nav-panel {
     display: none;
     position: absolute;
     top: var(--header-height);
@@ -142,16 +153,33 @@ const isActive = (href: string) => pathname === href;
     background: #fff;
     border-bottom: 1px solid var(--color-border);
     flex-direction: column;
-    list-style: none;
-    margin: 0;
     padding: var(--space-3) var(--space-3) var(--space-4);
-    gap: 2px;
     box-shadow: var(--shadow-lg);
   }
 
-  .nav-toggle:checked ~ .nav-list { display: flex; }
+  .nav-toggle:checked ~ .nav-panel { display: flex; }
 
-  .nav-list li { width: 100%; }
+  .nav-list,
+  .nav-actions {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2px;
+  }
+
+  /* Mobile: the action block sits below the tabs, divided from them once so the
+     two actions read as one group rather than two sections. */
+  .nav-actions {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+    gap: var(--space-2);
+  }
+
+  .nav-list li,
+  .nav-actions li { width: 100%; }
 
   .nav-list a {
     display: block;
@@ -167,50 +195,60 @@ const isActive = (href: string) => pathname === href;
   .nav-list a:hover { background: var(--color-muted); color: var(--color-primary); text-decoration: none; }
   .nav-list a.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; }
 
-  /* Mobile: the CTA block sits below the tabs. Only the first CTA carries the
-     divider so the two buttons read as one group, not two sections. */
-  .nav-cta-item {
-    margin-top: var(--space-2);
-  }
-
-  .nav-cta-item--portal {
-    margin-top: var(--space-3);
-    padding-top: var(--space-3);
-    border-top: 1px solid var(--color-border);
-  }
-
   .nav-cta { width: 100%; justify-content: center; }
 
   /* ── Desktop nav ──────────────────────────────────────────────────────────
-     Breakpoint is 1140px, not the usual 768px (VEY-910). Measured: brand
-     149.5px + gap 16px + nav row 901px = 1066.5px of content, which needs a
-     1131px viewport once the 2x32px container padding is counted. Below that
-     the row overflows and clips the trailing button, so the hamburger menu
-     (which lists every item) stays in charge instead. This also fixes the
-     pre-existing clipping that live prod shows at 768px today.
-     Desktop treatment for 7 tabs + 2 buttons in a 72rem container is a design
-     call, not an engineering one: routed to Designer. */
-  @media (min-width: 1140px) {
+     Breakpoint is 1024px (VEY-911), replacing the 1140px interim from VEY-910.
+
+     Measured on the built page at 14px type: the brand block is 149.5px and the
+     full nine item row is 900.7px, so one line needs a 1131px viewport once the
+     container's 2x32px padding is counted. Tightening padding and gaps as far as
+     they go without crushing only gets that to 1052px, and 1024px is reachable
+     only by also dropping nav type to 13px at 98% fill. Both were rejected.
+
+     Instead the row is allowed to wrap. Brand plus the seven tabs is 750px, so
+     the tab line alone is comfortable from a 814px viewport. Above roughly
+     1100px everything seats on one line; between 1024px and that point the two
+     action buttons drop to a second right aligned line. Nothing is dropped,
+     truncated, reordered or shrunk at any width, and below 1024px the hamburger
+     still lists all nine entries. */
+  @media (min-width: 1024px) {
     .nav-toggle-label { display: none; }
 
-    .nav-list {
+    .nav-panel {
       display: flex !important;
       position: static;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
       background: transparent;
       border: none;
       box-shadow: none;
       padding: 0;
-      /* Explicit gap that doesn't depend on CSS variables parsing order */
-      gap: 2px;
-      align-items: center;
+      /* Row gap gives the wrapped action line air; column gap separates the
+         tab group from the action group. */
+      gap: var(--space-2) var(--space-3);
     }
 
-    .nav-list li { width: auto; }
+    .nav-list,
+    .nav-actions {
+      flex-direction: row;
+      align-items: center;
+      gap: 2px;
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .nav-actions { gap: 6px; }
+
+    .nav-list li,
+    .nav-actions li { width: auto; }
 
     .nav-list a {
       display: block;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 0.6875rem;
       font-size: var(--text-sm);
       font-weight: 500;
       color: var(--color-muted-foreground);
@@ -220,45 +258,62 @@ const isActive = (href: string) => pathname === href;
     .nav-list a:hover { background: var(--color-muted); color: var(--color-foreground); text-decoration: none; }
     .nav-list a.active { color: var(--color-primary); background: var(--color-primary-light); }
 
-    .nav-cta-item,
-    .nav-cta-item--portal {
-      margin-top: 0;
-      padding-top: 0;
-      border-top: none;
-      margin-left: var(--space-2);
-    }
+    .nav-cta { width: auto; padding: 0.6rem 0.875rem; }
 
-    /* Only the leading CTA gets the wider gap that separates buttons from tabs */
-    .nav-cta-item--portal { margin-left: var(--space-3); }
-
-    .nav-cta { width: auto; }
-
-    /* Two header buttons plus 7 tabs is a dense row at 72rem. Trim the button
-       padding on desktop only so nothing wraps or truncates. */
-    .nav-list a.nav-cta { padding: 0.6rem 1rem; }
+    /* When the header wraps to two lines it needs vertical breathing room that a
+       fixed 4rem min-height cannot give it. */
+    .header-inner { padding-block: var(--space-2); }
   }
 
-  /* Keep the CTA button white on its blue fill even when nested under .nav-list
-     (overrides the desktop .nav-list a muted color which has higher specificity
-     than the base .btn-primary rule). */
-  .nav-list a.btn-primary {
+  /* Keep the CTA button white on its blue fill even when nested under .nav-actions
+     (overrides the desktop muted link colour, which has higher specificity than
+     the base .btn-primary rule). */
+  .nav-actions a.btn-primary {
     color: var(--color-primary-contrast);
   }
-  .nav-list a.btn-primary:hover {
+  .nav-actions a.btn-primary:hover {
     color: var(--color-primary-contrast);
     background: var(--color-primary-hover, var(--color-primary));
   }
 
-  /* Same specificity fight for the outline CTA: without this it inherits the
-     desktop .nav-list a muted colour and, worse, used to inherit the white
-     .nav-cta colour above and disappear against its transparent fill. */
-  .nav-list a.btn-secondary {
+  /* Same specificity fight for the outline action. */
+  .nav-actions a.btn-secondary {
     color: var(--color-foreground);
     background: transparent;
   }
-  .nav-list a.btn-secondary:hover {
+  .nav-actions a.btn-secondary:hover {
     color: var(--color-foreground);
     background: var(--color-muted);
     border-color: #c4cedd;
+  }
+
+  /* ── Action hierarchy (VEY-911) ───────────────────────────────────────────
+     The two header actions are not peers. "Postanite partner" is the conversion
+     CTA; "Partnerski portal" is a sign in entry point for partners who already
+     converted. Rendered as two same size buttons they competed for the same
+     attention. On desktop the portal drops its fill and border and reads as a
+     weighted link, so the filled blue button is the only button in the header.
+     It keeps its full label, its position and its place in the header, so
+     nothing is dropped or truncated. The mobile dropdown keeps both as buttons
+     because a full width tap target is the right affordance there. */
+  @media (min-width: 1024px) {
+    .nav-actions a.nav-cta--portal {
+      background: transparent;
+      border-color: transparent;
+      color: var(--color-foreground);
+      font-weight: 600;
+      padding: 0.6rem 0.625rem;
+    }
+    .nav-actions a.nav-cta--portal:hover {
+      background: var(--color-muted);
+      border-color: transparent;
+      color: var(--color-primary);
+    }
+    /* As a link it can now carry the same current page treatment as a tab,
+       which the button form could not show. */
+    .nav-actions a.nav-cta--portal[aria-current='page'] {
+      color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
   }
 </style>
