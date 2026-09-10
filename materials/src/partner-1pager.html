@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8" />
+<title>Holterservice - partnerski 1-pager</title>
+<link rel="stylesheet" href="../assets/brand.css" />
+<style>
+  @page { size: A4; margin: 0; }
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 13mm 16mm 12mm;
+    display: flex;
+    flex-direction: column;
+  }
+  .head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 10px; border-bottom: 1.5px solid var(--color-border); margin-bottom: 16px;
+  }
+  .head .brand img { height: 24px; }
+  .head .tag {
+    font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--color-primary);
+    background: var(--color-primary-light); padding: 3px 10px; border-radius: 999px;
+  }
+
+  .hero { margin-bottom: 2px; }
+  .hero h1 {
+    font-size: 28px; line-height: 1.1; font-weight: 700;
+    letter-spacing: -0.02em; max-width: 26ch; margin-bottom: 10px;
+  }
+  .hero .lead {
+    font-size: var(--text-sm); color: var(--color-muted-foreground);
+    max-width: 72ch; line-height: 1.55;
+  }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+  .feature {
+    border: 1px solid var(--color-border);
+    border-top: 2.5px solid var(--color-primary);
+    border-radius: 10px; padding: 12px 14px;
+    background: var(--color-background);
+  }
+  .feature h3 { font-size: var(--text-base); font-weight: 700; margin-bottom: 5px; color: var(--color-foreground); }
+  .feature p { font-size: var(--text-sm); color: var(--color-muted-foreground); line-height: 1.45; }
+
+  .model { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .model .box { border-radius: 10px; padding: 14px 16px; }
+  .model .ours { background: var(--color-primary); color: #fff; }
+  .model .ours h3, .model .ours p, .model .ours li { color: #fff; }
+  .model .yours { background: var(--color-muted); border: 1px solid var(--color-border); }
+  .model h3 { font-size: var(--text-base); font-weight: 700; margin-bottom: 8px; }
+  .model ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .model li {
+    font-size: var(--text-sm); line-height: 1.45;
+    padding-left: 14px; position: relative;
+  }
+  .model li::before {
+    content: ""; position: absolute; left: 0; top: 7px;
+    width: 5px; height: 5px; border-radius: 999px; background: currentColor; opacity: 0.55;
+  }
+
+  .highlights { margin-top: 14px; }
+  .highlights .eyebrow { margin-bottom: 9px; display: block; }
+  .hl-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .hl {
+    font-size: var(--text-sm); font-weight: 600; color: var(--color-primary);
+    background: var(--color-primary-light); border-radius: 999px; padding: 5px 13px;
+  }
+
+  .foot { margin-top: auto; padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="tag">Za partnerske klinike</div>
+  </div>
+
+  <div class="hero">
+    <p class="eyebrow" style="margin-bottom:9px;">B2B partnerstvo</p>
+    <h1>Specijalistički Holter EKG i Holter KMAT u vašoj ordinaciji, bez ulaganja u opremu.</h1>
+    <p class="lead">
+      Ponudite pacijentima Holter EKG (24-satno snimanje rada srca) i Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM) nalaz koji inače zahtijeva put u Split ili Zagreb. Mi dajemo uređaje, obučavamo osoblje i potpisujemo nalaz. Vi proširujete ponudu bez kapitalnog ulaganja.
+    </p>
+  </div>
+
+  <div class="grid2">
+    <div class="feature"><h3>Uređaji na korištenju</h3><p>Dostavljamo, postavljamo i mijenjamo prema potrebi. Oprema ostaje naša, vi je koristite za Holter EKG, Holter KMAT ili obje pretrage.</p></div>
+    <div class="feature"><h3>Edukacija osoblja</h3><p>Obučavamo medicinsko i ne-medicinsko osoblje, na licu mjesta ili online. Provodimo svu potrebnu edukaciju.</p></div>
+    <div class="feature"><h3>Specijalist potpisuje svaki nalaz</h3><p>Svaki snimak očitava i potpisuje liječnik specijalist kardiologije. Vaši pacijenti dobivaju pravi specijalistički nalaz.</p></div>
+    <div class="feature"><h3>Tehnička podrška i održavanje</h3><p>Kvarovi, kalibracija i zamjena uređaja. Vaša klinika ne mora brinuti o tehničkim problemima.</p></div>
+  </div>
+
+  <div class="model">
+    <div class="box ours">
+      <h3>Što radimo mi</h3>
+      <ul>
+        <li>Uređaji, prijenos podataka i specijalističko očitanje</li>
+        <li>Nalaz potpisuje liječnik specijalist kardiologije</li>
+        <li>Edukacija osoblja i tehnička podrška</li>
+      </ul>
+    </div>
+    <div class="box yours">
+      <h3>Što radi partner</h3>
+      <ul>
+        <li>Briga za pacijenta i administracija kod sebe</li>
+        <li>Postavljanje i skidanje uređaja</li>
+        <li>Naručivanje pacijenata na pretragu</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlights">
+    <span class="eyebrow">Ključne pogodnosti</span>
+    <div class="hl-row">
+      <span class="hl">Bez kapitalnog ulaganja</span>
+      <span class="hl">Bez fiksnih mjesečnih naknada</span>
+      <span class="hl">Bez vlastitog kardiologa</span>
+      <span class="hl">Postavljanje sustava i obuka osoblja traju 1 dan</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="contact-block">
+      <div class="contact-name">Poliklinika dr. Obad</div>
+      <div class="contact-row"><span>Adresa</span><span>{{ADRESA}}</span></div>
+      <div class="contact-row"><span>Telefon</span><span>{{TELEFON}}</span></div>
+      <div class="contact-row"><span>E-pošta</span><span>partneri@holterservice.eu</span></div>
+      <div class="contact-row"><span>Web</span><span>holterservice.eu</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const title =
   'Naše usluge. Holter EKG, Holter KMAT (ABPM) i dodatne kardiološke usluge';
 const description =
-  'Holter EKG (24-satno snimanje rada srca), Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM), video konzultacija s kardiologom i drugo mišljenje. Nalaz potpisuje specijalist kardiologije.';
+  'Holter EKG (24-satno snimanje rada srca), Holter KMAT (24-satno mjerenje krvnog tlaka, ABPM), video konzultacija s kardiologom i drugo mišljenje. Nalaz potpisuje liječnik specijalist kardiologije.';
 
 interface ServiceCard {
   slug: 'holter-ekg' | 'holter-kmat';
@@ -23,7 +23,7 @@ const services: ServiceCard[] = [
     heading: 'Holter EKG',
     abbr: '24-satno snimanje rada srca',
     blurb:
-      'Prijenosni uređaj bilježi elektrokardiogram tijekom 24 sata, otkrivajući povremene aritmije i poremećaje provođenja koje standardni EKG u ordinaciji često ne vidi.',
+      'Holter EKG je 24-satno kontinuirano snimanje električne aktivnosti srca tijekom uobičajenih dnevnih aktivnosti, rada, odmora i spavanja. Pretraga omogućuje otkrivanje poremećaja srčanog ritma, epizoda ubrzanog ili usporenog rada srca, preskakanja srca, pauza u radu srca te mogućih promjena koje se ne moraju registrirati kratkim EKG snimanjem u ordinaciji.',
     bullets: [
       'Palpitacije, vrtoglavica, nesvjestica',
       'Praćenje poznatih aritmija',
@@ -37,7 +37,7 @@ const services: ServiceCard[] = [
     heading: 'Holter KMAT',
     abbr: '24-satno mjerenje krvnog tlaka (ABPM)',
     blurb:
-      'Uređaj s manžetom automatski mjeri tlak danju i noću, pokazujući stvarni 24-satni profil koji jednokratno mjerenje u ordinaciji ne razdvaja od situacijskog povišenja tlaka.',
+      'Holter KMAT, odnosno 24-satno ambulatorno mjerenje arterijskog tlaka, automatski mjeri krvni tlak u pravilnim vremenskim razmacima tijekom dana i noći. Na taj način dobiva se stvarni uvid u dnevni i noćni profil krvnog tlaka, prosječne vrijednosti kroz 24 sata, varijabilnost tlaka te noćni pad tlaka, što pomaže u dijagnostici i praćenju arterijske hipertenzije te procjeni učinkovitosti terapije.',
     bullets: [
       'Hipertenzija bijele kute',
       'Sumnja na sekundarnu hipertenziju',
@@ -51,7 +51,7 @@ const addons = [
   {
     title: 'Video konzultacija s kardiologom',
     body:
-      'Nakon nalaza možete dogovoriti online razgovor sa specijalistom kardiologije bez putovanja u Polikliniku. Pojašnjenje nalaza, pitanja, smjernice za daljnje praćenje.',
+      'Nakon nalaza možete po potrebi dogovoriti online razgovor sa specijalistom kardiologije. Pojašnjenje nalaza, pitanja, smjernice za daljnje praćenje.',
   },
   {
     title: 'Drugo mišljenje',
@@ -74,7 +74,7 @@ const addonsMeta =
       <p class="page-lead">
         Dvije paralelne dijagnostičke usluge, 24-satno snimanje rada srca
         i 24-satno mjerenje krvnog tlaka, dostupne u partnerskim klinikama
-        diljem Hrvatske. Svaki nalaz potpisuje specijalist kardiologije.
+        diljem Hrvatske. Svaki nalaz potpisuje liječnik specijalist kardiologije.
       </p>
     </div>
   </section>
@@ -158,7 +158,7 @@ const addonsMeta =
         <p class="how-desc">
           Bilo da je riječ o snimanju rada srca ili o 24-satnom mjerenju
           tlaka, model je isti: pretragu obavljate kod partnera, nalaz
-          potpisuje specijalist kardiologije.
+          potpisuje liječnik specijalist kardiologije.
         </p>
       </div>
 
@@ -168,11 +168,9 @@ const addonsMeta =
             <span class="step-num" aria-hidden="true">1</span>
           </div>
           <div class="step-body">
-            <h3>Dolazak kod partnera</h3>
+            <h3>Pronađite partnersku ustanovu</h3>
             <p>
-              Naručujete se izravno kod partnerske klinike. Educirano
-              osoblje postavlja uređaj (elektrode za EKG ili manžeta za KMAT)
-              i pokreće 24-satno snimanje.
+              Holter EKG i Holter KMAT dostupni su u odabranim partnerskim klinikama i ordinacijama.
             </p>
           </div>
         </li>
@@ -181,10 +179,9 @@ const addonsMeta =
             <span class="step-num" aria-hidden="true">2</span>
           </div>
           <div class="step-body">
-            <h3>Snimak ide na specijalističku obradu</h3>
+            <h3>Dogovorite termin</h3>
             <p>
-              Nakon skidanja uređaja podatci se sigurno prosljeđuju u
-              ustanovu na očitanje. Snimak analizira specijalist kardiologije.
+              Termin pretrage dogovarate izravno s partnerskom ustanovom, telefonom ili e-mailom.
             </p>
           </div>
         </li>
@@ -193,11 +190,20 @@ const addonsMeta =
             <span class="step-num" aria-hidden="true">3</span>
           </div>
           <div class="step-body">
-            <h3>Potpisani nalaz</h3>
+            <h3>Obavite pretragu</h3>
             <p>
-              Pacijent preuzima potpisani nalaz kod partnera, obično u
-              roku od 3 do 5 radnih dana. Po želji se može dogovoriti
-              video konzultacija ili drugo mišljenje.
+              Stručno osoblje postavlja uređaj, a snimanje ili mjerenje traje 24 sata tijekom uobičajenih dnevnih aktivnosti i spavanja.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-num-wrap">
+            <span class="step-num" aria-hidden="true">4</span>
+          </div>
+          <div class="step-body">
+            <h3>Preuzmite nalaz</h3>
+            <p>
+              Liječnički verificiran i potpisan nalaz najčešće je dostupan u roku od 3 do 5 radnih dana.
             </p>
           </div>
         </li>

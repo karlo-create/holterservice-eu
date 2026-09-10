@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = 'Holter EKG. 24-satno snimanje rada srca';
 const description =
-  'Holter EKG je 24-satno snimanje rada srca. Saznajte kako uređaj funkcionira, kako se nosi i kako dolazi do specijalističkog nalaza koji potpisuje specijalist kardiologije.';
+  'Holter EKG je 24-satno snimanje rada srca. Saznajte kako uređaj funkcionira, kako se nosi i kako dolazi do specijalističkog nalaza koji potpisuje liječnik specijalist kardiologije.';
 
 const steps = [
   {
@@ -29,7 +29,7 @@ const steps = [
   {
     num: '05',
     title: 'Specijalist očitava nalaz',
-    body: 'Snimak pregledava i potpisuje specijalist kardiologije, bez delegiranja, bez automatskih izvještaja.',
+    body: 'Snimak pregledava i potpisuje liječnik specijalist kardiologije, bez delegiranja, bez automatskih izvještaja.',
   },
   {
     num: '06',
@@ -48,7 +48,7 @@ const steps = [
       <h1>Holter EKG nalaz, kako izgleda od početka do kraja.</h1>
       <p class="page-lead">
         24-satno snimanje rada srca koje otkriva ono što standardni EKG ne vidi.
-        Pregled obavljate lokalno, nalaz potpisuje specijalist kardiologije.
+        Pregled obavljate lokalno, nalaz potpisuje liječnik specijalist kardiologije.
       </p>
     </div>
   </section>
@@ -60,45 +60,53 @@ const steps = [
         <p class="section-eyebrow">Pretraga</p>
         <h2>Što je Holter EKG?</h2>
         <p>
-          Holter EKG je mali prijenosni uređaj koji se nosi na tijelu i bilježi rad
-          srca pomoću nekoliko elektroda zalijepljenih na kožu. Uređaj je tih, lagan
-          i ne ometa svakodnevne aktivnosti. Pacijent radi sve što inače radi.
-        </p>
-        <p>
-          Pomaže otkriti probleme koje standardni EKG u ordinaciji često ne vidi:
-          povremene aritmije, ishemiju i poremećaje provođenja.
+          Holter EKG je 24-satno kontinuirano snimanje električne aktivnosti srca tijekom uobičajenih dnevnih aktivnosti, rada, odmora i spavanja. Pretraga omogućuje otkrivanje poremećaja srčanog ritma, epizoda ubrzanog ili usporenog rada srca, preskakanja srca, pauza u radu srca te mogućih promjena koje se ne moraju registrirati kratkim EKG snimanjem u ordinaciji.
         </p>
       </div>
       <div class="what-indications">
-        <p class="section-eyebrow">Kome je namijenjen</p>
+        <p class="section-eyebrow">Kada je pretraga korisna</p>
         <ul class="indication-list">
           <li>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
               <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Palpitacije, vrtoglavica ili nesvjestica
+            Kod osjećaja lupanja, ubrzanog rada ili preskakanja srca
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
               <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Praćenje poznatih aritmija
+            Kod vrtoglavice, omaglice ili nesvjestice
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
               <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Kontrola nakon ugradnje pacemakera
+            Kod sumnje na poremećaje srčanog ritma
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
               <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            Po preporuci obiteljskog liječnika ili kardiologa
+            Za praćenje poznatih aritmija
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Za 24-satnu kontrolu krvnog tlaka i procjenu učinkovitosti terapije
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="7.25" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Po preporuci obiteljskog liječnika, kardiologa ili drugog specijalista
           </li>
         </ul>
         <p class="indication-note">
@@ -212,7 +220,7 @@ const steps = [
     <div class="container quality-block">
       <div class="quality-quote">
         <blockquote>
-          Svaki snimak ručno pregledava i potpisuje specijalist kardiologije,
+          Svaki snimak ručno pregledava i potpisuje liječnik specijalist kardiologije,
           bez delegiranja i bez automatskih izvještaja koji često propuste
           klinički relevantne nalaze.
         </blockquote>

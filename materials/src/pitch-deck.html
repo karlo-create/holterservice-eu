@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="hr">
+<head>
+<meta charset="utf-8" />
+<title>Holterservice - prezentacija za partnere</title>
+<link rel="stylesheet" href="../assets/brand.css" />
+<style>
+  .slide {
+    width: 1280px;
+    height: 720px;
+    page-break-after: always;
+    overflow: hidden;
+    position: relative;
+    padding: 52px 80px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  /* Consistent slide header bar */
+  .slide-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    border-bottom: 1.5px solid var(--color-border);
+    flex-shrink: 0;
+  }
+  .slide-num {
+    font-size: var(--text-xs);
+    color: var(--color-primary);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--color-primary-light);
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
+  .slide-eyebrow { margin-bottom: 14px; }
+  .slide h1 {
+    font-size: 64px;
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    max-width: 22ch;
+  }
+  .slide h2 {
+    font-size: 44px;
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 26ch;
+  }
+  .slide .lead {
+    font-size: 22px;
+    color: var(--color-muted-foreground);
+    max-width: 56ch;
+    line-height: 1.55;
+  }
+
+  /* Cover */
+  .cover { background: var(--color-accent); }
+  .cover .slide-top { border-bottom-color: rgba(20,87,164,0.12); }
+  .cover .brand img { height: 40px; }
+  .cover .cover-mid { margin-top: auto; margin-bottom: auto; }
+  .cover h1 {
+    font-size: 68px;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+    max-width: 20ch;
+  }
+  .cover .sub {
+    font-size: 24px;
+    color: var(--color-muted-foreground);
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+  .cover-foot {
+    font-size: var(--text-base);
+    color: var(--color-muted-foreground);
+    padding-top: 20px;
+    border-top: 1px solid rgba(20,87,164,0.12);
+  }
+  .cover-foot strong { color: var(--color-foreground); }
+
+  /* Left accent stripe for cover */
+  .cover::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--color-primary);
+  }
+
+  /* Two column content */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; flex: 1; align-items: start; }
+  .cols.center { align-items: center; }
+
+  .panel {
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--color-primary);
+    opacity: 0.3;
+    border-radius: 16px 16px 0 0;
+  }
+  .panel.dark {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+  .panel.dark::before { background: rgba(255,255,255,0.25); opacity: 1; }
+  .panel.dark h3, .panel.dark p, .panel.dark li { color: #fff; }
+  .panel h3 { font-size: 25px; font-weight: 700; margin-bottom: 14px; line-height: 1.2; }
+  .panel p { font-size: 18px; color: var(--color-muted-foreground); line-height: 1.55; }
+  .panel.dark p { color: rgba(255,255,255,0.82); }
+
+  /* Big check-list for slide 4 */
+  .big-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 20px; }
+  .big-list li {
+    display: grid; grid-template-columns: 30px 1fr; gap: 18px; align-items: start;
+    font-size: 21px; line-height: 1.4;
+  }
+  .big-list .ck {
+    width: 30px; height: 30px; border-radius: 999px;
+    background: var(--color-primary); color: #fff;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .big-list strong { display: block; font-size: 22px; margin-bottom: 2px; }
+  .big-list span.sub { font-size: 17px; color: var(--color-muted-foreground); font-weight: 400; }
+
+  /* Three-card grid */
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; flex: 1; align-content: center; }
+  .card {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 16px;
+    padding: 28px 26px;
+  }
+  .card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; line-height: 1.2; }
+  .card p { font-size: 17px; color: var(--color-muted-foreground); line-height: 1.5; }
+
+  /* Technology spec list */
+  .spec-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .spec-list li {
+    font-size: 20px; padding-left: 28px; position: relative; line-height: 1.45;
+    color: var(--color-foreground);
+  }
+  .spec-list li::before {
+    content: ""; position: absolute; left: 0; top: 10px;
+    width: 10px; height: 10px; border-radius: 999px; background: var(--color-primary);
+  }
+
+  /* Closing slide layout */
+  .next-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; flex: 1; align-items: center; }
+
+  /* Step flow (slide 6) */
+  .step-flow { display: grid; gap: 20px; }
+  .step-flow .step { display: grid; grid-template-columns: 52px 1fr; gap: 20px; align-items: start; }
+  .step-flow .n {
+    width: 52px; height: 52px; border-radius: 999px;
+    background: var(--color-primary); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px;
+    flex-shrink: 0;
+  }
+  .step-flow .step h3 { font-size: 22px; font-weight: 700; margin-bottom: 5px; line-height: 1.2; }
+  .step-flow .step p { font-size: 18px; color: var(--color-muted-foreground); line-height: 1.45; }
+</style>
+</head>
+<body>
+
+<!-- 1 - Cover -->
+<section class="slide cover">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">Za partnerske klinike</div>
+  </div>
+  <div class="cover-mid">
+    <p class="eyebrow slide-eyebrow">B2B partnerstvo, kardiološka dijagnostika</p>
+    <h1>Specijalistički Holter EKG i Holter KMAT u vašoj ordinaciji.</h1>
+    <p class="sub">Bez ulaganja u opremu, bez vlastitog kardiologa. Vi proširujete ponudu, mi donosimo uređaje i specijalističko očitanje.</p>
+  </div>
+  <div class="cover-foot">Iza projekta stoji <strong>Poliklinika dr. Obad</strong>, Split.</div>
+</section>
+
+<!-- 2 - Problem -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">02</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Problem</p>
+  <h2>Kardiološka dijagnostika znači čekanje i putovanje</h2>
+  <div class="cols center">
+    <p class="lead">
+      Holter EKG i Holter KMAT u Hrvatskoj često znače dugotrajno čekanje i put u jedan od većih gradova. Za pacijente s otoka i iz udaljenih područja to je nesrazmjerno opterećenje, vremensko, financijsko i zdravstveno.
+    </p>
+    <div class="panel">
+      <h3>Posljedica za ordinacije izvan središta</h3>
+      <p>Pacijenti odlaze drugamo na pretragu, a ordinacija ne može ponuditi nalaz specijalista kardiologije bez vlastitog uređaja, softvera i kardiologa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3 - Model -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">03</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Naš model</p>
+  <h2>Partnerstvo bez kapitalnog ulaganja</h2>
+  <div class="cols center">
+    <div class="panel dark">
+      <h3>Što radimo mi</h3>
+      <p>Dajemo Holter EKG i Holter KMAT uređaje na korištenje, prenosimo podatke sigurnim kanalom i osiguravamo specijalističko očitanje koje potpisuje liječnik specijalist kardiologije.</p>
+    </div>
+    <div class="panel">
+      <h3>Što radi partner</h3>
+      <p>Brine se za pacijenta, postavljanje i skidanje uređaja te administraciju kod sebe. Uz Holter pacijentu pruža kardiološko mišljenje koje sam ne može izdati.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 - Što partner dobiva -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">04</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Što partnerska klinika dobiva</p>
+  <h2>Kompletan paket</h2>
+  <ul class="big-list">
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Uređaji na korištenju</strong><span class="sub">Dostavljamo, postavljamo i mijenjamo. Oprema ostaje naša, vi je koristite.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Edukacija osoblja</strong><span class="sub">Obučavamo medicinsko i ne-medicinsko osoblje. Provodimo svu potrebnu edukaciju.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Specijalist potpisuje svaki nalaz</strong><span class="sub">Svaki snimak očitava i potpisuje liječnik specijalist kardiologije.</span></div></li>
+    <li><span class="ck"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><strong>Tehnička podrška i održavanje</strong><span class="sub">Kvarovi, kalibracija i zamjena uređaja, sve rješavamo mi.</span></div></li>
+  </ul>
+</section>
+
+<!-- 5 - Kome odgovara -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">05</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Kome odgovara</p>
+  <h2>Tri segmenta partnera</h2>
+  <div class="cards-3">
+    <div class="card"><h3>Ordinacije i poliklinike</h3><p>Privatne ordinacije obiteljske medicine, internističke i kardiološke ambulante koje žele ponuditi nalaz specijalista bez slanja pacijenata u Split ili Zagreb.</p></div>
+    <div class="card"><h3>Agencije njege u kući</h3><p>Pružatelji socijalnih usluga koji korisnicima omogućuju kardiološku dijagnostiku bez transporta u kliniku.</p></div>
+    <div class="card"><h3>Domovi zdravlja</h3><p>Ustanove primarne zdravstvene zaštite koje žele smanjiti čekanje pacijenata na kardiološku obradu.</p></div>
+  </div>
+</section>
+
+<!-- 6 - Tijek suradnje -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">06</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Tijek suradnje</p>
+  <h2>Od upita do prvog pacijenta</h2>
+  <div class="step-flow" style="flex:1; align-content:center;">
+    <div class="step"><div class="n">1</div><div><h3>Pošaljete upit</h3><p>Kratak razgovor da razumijemo lokaciju i potrebe vaše prakse. Nema obveza.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h3>Ugovor i isporuka</h3><p>Potpisujemo okvirni ugovor i isporučujemo uređaj. Bez skrivenih troškova.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h3>Edukacija i start</h3><p>Obučavamo vaše osoblje i zajedno primamo prve pacijente. Specijalist potpisuje od prvog nalaza.</p></div></div>
+  </div>
+</section>
+
+<!-- 7 - Tehnologija -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">07</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Tehnologija</p>
+  <h2>Uređaji za pouzdan klinički nalaz</h2>
+  <div class="cols center">
+    <ul class="spec-list">
+      <li>Snimanje 24 sata, uz mogućnost produženja do 14 dana po potrebi</li>
+      <li>Visoka rezolucija snimke (sampling rate 32.000 Hz)</li>
+      <li>Detekcija atrijske fibrilacije temeljem analize P-vala</li>
+      <li>Praćenje ST segmenta i QT intervala</li>
+      <li>Otpornost na udarce i prskanje, nosivi tijekom uobičajenih aktivnosti</li>
+    </ul>
+    <div class="panel">
+      <h3>Dvije paralelne pretrage</h3>
+      <p><strong>Holter EKG</strong>, 24-satno snimanje rada srca. <strong>Holter KMAT</strong>, 24-satno mjerenje krvnog tlaka (ABPM). Isti specijalistički standard za obje pretrage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 - Zaštita podataka -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">08</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Pravna sigurnost</p>
+  <h2>Zaštita podataka pacijenata</h2>
+  <div class="cols center">
+    <p class="lead">
+      Voditelj obrade osobnih podataka u sklopu usluge je Poliklinika dr. Obad. Sve obrade snimaka i nalaza obavljaju se u skladu s GDPR-om i hrvatskim Zakonom o zaštiti osobnih podataka.
+    </p>
+    <div class="panel">
+      <h3>Jasni protokoli</h3>
+      <p>Snimak se s partnerskog mjesta prosljeđuje sigurnim kanalom u referentnu ustanovu. Protokoli su definirani u Sporazumu o partnerstvu i Ugovoru o obradi osobnih podataka.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 - Tko stoji iza -->
+<section class="slide">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">09</div>
+  </div>
+  <p class="eyebrow slide-eyebrow">Tko stoji iza projekta</p>
+  <h2>Poliklinika dr. Obad</h2>
+  <div class="cols center">
+    <p class="lead">
+      Poliklinika dr. Obad osnovana je 1995. godine i jedna je od vodećih privatnih medicinskih ustanova u Dalmaciji. Iza nje stoji tim iskusnih liječnika specijalista, s naglaskom na kardiologiju i kompletnu obradu srca.
+    </p>
+    <div class="panel">
+      <h3>Nastavna baza</h3>
+      <p>Poliklinika je nastavna baza Sveučilišta u Splitu, Sveučilišnog odjela zdravstvenih studija. Razinu kvalitete te ustanove ovim modelom činimo dostupnom i izvan Splita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 - Sljedeći korak -->
+<section class="slide cover">
+  <div class="slide-top">
+    <div class="brand"><img src="../assets/holterservice-logo.svg" alt="Holterservice" /></div>
+    <div class="slide-num">10</div>
+  </div>
+  <div class="next-row">
+    <div>
+      <p class="eyebrow slide-eyebrow">Sljedeći korak</p>
+      <h2>Razgovarajmo o partnerstvu</h2>
+      <p class="lead">Javite nam se za kratak, neobvezujući razgovor. Dogovaramo lokaciju, potrebe i tijek uvođenja u vašu ordinaciju.</p>
+    </div>
+    <div class="contact-block">
+      <div class="contact-name">Poliklinika dr. Obad</div>
+      <div class="contact-row"><span>Adresa</span><span>{{ADRESA}}</span></div>
+      <div class="contact-row"><span>Telefon</span><span>{{TELEFON}}</span></div>
+      <div class="contact-row"><span>E-pošta</span><span>partneri@holterservice.eu</span></div>
+      <div class="contact-row"><span>Web</span><span>holterservice.eu</span></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

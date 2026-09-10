@@ -20,15 +20,15 @@ export const partnerFaq: FaqItem[] = [
   },
   {
     question:
-      'Koliko dugo traje onboarding od potpisa do prve pretrage?',
+      'Koliko dugo traje postavljanje sustava od potpisa do prve pretrage?',
     answer:
-      'Tipično 2 tjedna. Tjedan dana dostava + edukacija osoblja, tjedan dana priprema lokalnih protokola.',
+      'Postavljanje sustava i obuka osoblja traju 1 dan.',
   },
   {
     question:
       'Trebam li medicinsko osoblje da bih postavljao uređaj?',
     answer:
-      'Ne nužno. Obučavamo i medicinsko i ne-medicinsko osoblje (npr. njegovateljice). Po potrebi izdajemo certifikat osposobljenosti.',
+      'Ne nužno. Obučavamo i medicinsko i ne-medicinsko osoblje (npr. njegovateljice).',
   },
   {
     question:
