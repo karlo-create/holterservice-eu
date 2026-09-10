@@ -115,19 +115,22 @@ Vercel auto-detects Astro. No `vercel.json` is required. The build command
 is `npm run build` and the output directory is `dist/`. Static-only — no
 serverless functions needed for v1.
 
-**One-click hookup:**
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkarlo-create%2Fholterservice-eu&project-name=holterservice-eu&repository-name=holterservice-eu)
+The project is already connected via the Vercel GitHub App, and `main` is the
+Vercel production branch. **Production deploys happen by merging into `main`** —
+each push to `main` is itself a production build, and every PR gets its own
+preview URL.
 
-Or from the CLI (after `vercel login`):
+Do **not** run `vercel --prod` from a feature branch. It writes to the same
+production surface while bypassing `main`, which lets the two drift apart. See
+[AGENTS.md](AGENTS.md) for the full rule and what went wrong on 2026-09-10.
 
 ```bash
-npx vercel link        # one-time, connects local dir to a Vercel project
-npx vercel             # preview deploy
-npx vercel --prod      # production deploy
+npx vercel             # preview deploy — fine
+npx vercel --prod      # DON'T — merge into main instead
 ```
 
-Connecting via the Vercel GitHub App is preferred — each push to `main`
-becomes a production deploy and every PR gets its own preview URL.
+**One-click hookup** (only for standing up a *new* project from this template):
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkarlo-create%2Fholterservice-eu&project-name=holterservice-eu&repository-name=holterservice-eu)
 
 ## What's intentionally NOT in here
 
