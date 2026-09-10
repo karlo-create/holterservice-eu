@@ -1,12 +1,15 @@
 ---
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
+// Nav order is founder-defined (VEY-910): patients tab comes directly after
+// the service tab. Keep this identical to the "Stranice" list in Footer.astro.
 const nav = [
   { href: '/usluga', label: 'Usluga' },
-  { href: '/za-partnere', label: 'Za partnere' },
   { href: '/za-pacijente', label: 'Za pacijente' },
+  { href: '/za-partnere', label: 'Za partnere' },
   { href: '/partneri', label: 'Partneri' },
   { href: '/o-nama', label: 'O nama' },
+  { href: '/eu-projekt', label: 'Projekt' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
 
@@ -41,6 +44,9 @@ const isActive = (href: string) => pathname === href;
             </a>
           </li>
         ))}
+        <li class="nav-cta-item nav-cta-item--portal">
+          <a href="/partnerski-portal" class="btn btn-secondary nav-cta">Partnerski portal</a>
+        </li>
         <li class="nav-cta-item">
           <a href="/za-partnere#kontakt-forma" class="btn btn-primary nav-cta">Postanite partner</a>
         </li>
@@ -161,7 +167,13 @@ const isActive = (href: string) => pathname === href;
   .nav-list a:hover { background: var(--color-muted); color: var(--color-primary); text-decoration: none; }
   .nav-list a.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; }
 
+  /* Mobile: the CTA block sits below the tabs. Only the first CTA carries the
+     divider so the two buttons read as one group, not two sections. */
   .nav-cta-item {
+    margin-top: var(--space-2);
+  }
+
+  .nav-cta-item--portal {
     margin-top: var(--space-3);
     padding-top: var(--space-3);
     border-top: 1px solid var(--color-border);
@@ -169,8 +181,16 @@ const isActive = (href: string) => pathname === href;
 
   .nav-cta { width: 100%; justify-content: center; }
 
-  /* ── Desktop nav ──────────────────────────────────────────────────────── */
-  @media (min-width: 768px) {
+  /* ── Desktop nav ──────────────────────────────────────────────────────────
+     Breakpoint is 1140px, not the usual 768px (VEY-910). Measured: brand
+     149.5px + gap 16px + nav row 901px = 1066.5px of content, which needs a
+     1131px viewport once the 2x32px container padding is counted. Below that
+     the row overflows and clips the trailing button, so the hamburger menu
+     (which lists every item) stays in charge instead. This also fixes the
+     pre-existing clipping that live prod shows at 768px today.
+     Desktop treatment for 7 tabs + 2 buttons in a 72rem container is a design
+     call, not an engineering one: routed to Designer. */
+  @media (min-width: 1140px) {
     .nav-toggle-label { display: none; }
 
     .nav-list {
@@ -200,26 +220,45 @@ const isActive = (href: string) => pathname === href;
     .nav-list a:hover { background: var(--color-muted); color: var(--color-foreground); text-decoration: none; }
     .nav-list a.active { color: var(--color-primary); background: var(--color-primary-light); }
 
-    .nav-cta-item {
+    .nav-cta-item,
+    .nav-cta-item--portal {
       margin-top: 0;
       padding-top: 0;
       border-top: none;
-      margin-left: var(--space-3);
+      margin-left: var(--space-2);
     }
 
+    /* Only the leading CTA gets the wider gap that separates buttons from tabs */
+    .nav-cta-item--portal { margin-left: var(--space-3); }
+
     .nav-cta { width: auto; }
+
+    /* Two header buttons plus 7 tabs is a dense row at 72rem. Trim the button
+       padding on desktop only so nothing wraps or truncates. */
+    .nav-list a.nav-cta { padding: 0.6rem 1rem; }
   }
 
   /* Keep the CTA button white on its blue fill even when nested under .nav-list
      (overrides the desktop .nav-list a muted color which has higher specificity
      than the base .btn-primary rule). */
-  .nav-list a.btn-primary,
-  .nav-list a.nav-cta {
+  .nav-list a.btn-primary {
     color: var(--color-primary-contrast);
   }
-  .nav-list a.btn-primary:hover,
-  .nav-list a.nav-cta:hover {
+  .nav-list a.btn-primary:hover {
     color: var(--color-primary-contrast);
     background: var(--color-primary-hover, var(--color-primary));
+  }
+
+  /* Same specificity fight for the outline CTA: without this it inherits the
+     desktop .nav-list a muted colour and, worse, used to inherit the white
+     .nav-cta colour above and disappear against its transparent fill. */
+  .nav-list a.btn-secondary {
+    color: var(--color-foreground);
+    background: transparent;
+  }
+  .nav-list a.btn-secondary:hover {
+    color: var(--color-foreground);
+    background: var(--color-muted);
+    border-color: #c4cedd;
   }
 </style>

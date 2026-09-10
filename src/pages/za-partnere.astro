@@ -429,6 +429,25 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
     </div>
   </section>
 
+  <!-- ═══ PARTNERSKI PORTAL (VEY-910) ═══════════════════════════════════════
+       Entry point for existing partners. The portal page itself holds the two
+       system links, so this stays a single pointer. -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="portal-callout">
+        <div>
+          <p class="section-eyebrow">Već ste partner</p>
+          <h2>Partnerski portal</h2>
+          <p>
+            Pristup sustavima za partnerske ustanove, Liberty Scanlab i
+            Appointments, nalazi se na jednom mjestu.
+          </p>
+        </div>
+        <a href="/partnerski-portal" class="btn btn-primary">Otvorite partnerski portal</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ FAQ ═══════════════════════════════════════════════════════════════ -->
   <Faq
     id="faq"
@@ -444,6 +463,27 @@ const faqJsonLd = JSON.stringify(buildFaqJsonLd(partnerFaq));
 </BaseLayout>
 
 <style>
+  /* ── Partnerski portal callout (VEY-910) ─────────────────────────────── */
+  .portal-callout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .portal-callout h2 { margin: 0 0 var(--space-2); }
+  .portal-callout p { margin: 0; color: var(--color-muted-foreground); max-width: 44ch; }
+
+  @media (min-width: 768px) {
+    .portal-callout {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-8);
+    }
+    .portal-callout .btn { flex-shrink: 0; }
+  }
+
   /* ── Anchor target ───────────────────────────────────────────────────
      `scroll-margin-top` lifts the scroll landing point so the fixed
      header doesn't cover the form heading when navigating to
